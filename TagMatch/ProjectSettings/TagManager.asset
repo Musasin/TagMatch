@@ -41,3 +41,45 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: New Layer
+    uniqueID: 3749927535
+    locked: 0
+  - name: BackGround1
+    uniqueID: 1485881661
+    locked: 0
+  - name: BackGround2
+    uniqueID: 206432445
+    locked: 0
+  - name: BackGround3
+    uniqueID: 1150863821
+    locked: 0
+  - name: BackGround4
+    uniqueID: 1321807191
+    locked: 0
+  - name: BackGround5
+    uniqueID: 1470622939
+    locked: 0
+  - name: Map1
+    uniqueID: 2464599495
+    locked: 0
+  - name: Map2
+    uniqueID: 3977949303
+    locked: 0
+  - name: Map3
+    uniqueID: 1612838143
+    locked: 0
+  - name: Map4
+    uniqueID: 50971829
+    locked: 0
+  - name: Player
+    uniqueID: 1528146579
+    locked: 0
+  - name: Map5
+    uniqueID: 4121127613
+    locked: 0
+  - name: New Layer
+    uniqueID: 2883478537
+    locked: 0
+  - name: New Layer
+    uniqueID: 4260846869
+    locked: 0
