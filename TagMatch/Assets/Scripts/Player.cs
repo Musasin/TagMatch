@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    const float MOVE_VELOCITY = 5.0f;
-    const float JUMP_VELOCITY = 16.0f;
+    const float MOVE_VELOCITY = 6.0f;
+    const float JUMP_VELOCITY = 15.0f;
     float velocityX = 0, velocityY = 0;
     Rigidbody2D rb;
     bool isRight = true;
