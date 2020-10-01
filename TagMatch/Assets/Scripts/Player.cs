@@ -6,8 +6,11 @@ public class Player : MonoBehaviour
 {
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
-    float velocityX = 0, velocityY = 0;
+
     Rigidbody2D rb;
+
+    float velocityX = 0;
+    float velocityY = 0;
     bool isRight = true;
 
     // Start is called before the first frame update
@@ -23,6 +26,7 @@ public class Player : MonoBehaviour
         velocityY = rb.velocity.y;
         UpdateMove();
         UpdateJump();
+        UpdateDirection();
         rb.velocity = new Vector2(velocityX, velocityY);
     }
 
@@ -33,13 +37,11 @@ public class Player : MonoBehaviour
         {
             velocityX = MOVE_VELOCITY;
             isRight = true;
-            transform.localScale = new Vector2(1, 1);
         }
         else if (dx < 0)
         {
             velocityX = -MOVE_VELOCITY;
             isRight = false;
-            transform.localScale = new Vector2(-1, 1);
         }
         else
         {
@@ -51,6 +53,17 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             velocityY = JUMP_VELOCITY;
+        }
+    }
+    private void UpdateDirection()
+    {
+        if (isRight)
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector2(-1, 1);
         }
     }
 }
