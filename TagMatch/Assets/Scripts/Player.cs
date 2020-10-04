@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
 
+    enum AnimationState { STAND = 0, RUN = 1, JUMP = 2};
+    AnimationState animationState, newAnimationState;
+
     float velocityX = 0;
     float velocityY = 0;
     bool isRight = true;
@@ -19,6 +22,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        animationState = AnimationState.STAND;
+        newAnimationState = AnimationState.STAND;
     }
 
     // Update is called once per frame
@@ -29,6 +34,7 @@ public class Player : MonoBehaviour
         UpdateMove();
         UpdateJump();
         UpdateDirection();
+        UpdateState();
         rb.velocity = new Vector2(velocityX, velocityY);
     }
 
@@ -37,19 +43,18 @@ public class Player : MonoBehaviour
         float dx = Input.GetAxisRaw("Horizontal");
         if (dx > 0)
         {
-            anim.SetInteger("state", 1);
+            newAnimationState = AnimationState.RUN;
             velocityX = MOVE_VELOCITY;
             isRight = true;
         }
         else if (dx < 0)
         {
-            anim.SetInteger("state", 1);
+            newAnimationState = AnimationState.RUN;
             velocityX = -MOVE_VELOCITY;
             isRight = false;
         }
         else
         {
-            anim.SetInteger("state", 0);
             velocityX = 0;
         }
     }
@@ -69,6 +74,27 @@ public class Player : MonoBehaviour
         else
         {
             transform.localScale = new Vector2(-1, 1);
+        }
+    }
+    private void UpdateState()
+    {
+        if (velocityY != 0)
+        {
+            newAnimationState = AnimationState.JUMP;
+        }
+        else if (velocityX == 0)
+        {
+            newAnimationState = AnimationState.STAND;
+        }
+        else 
+        {
+            newAnimationState = AnimationState.RUN;
+        }
+
+        if (animationState != newAnimationState)
+        {
+            animationState = newAnimationState;
+            anim.SetInteger("state", (int)animationState);
         }
     }
 }

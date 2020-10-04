@@ -50,6 +50,102 @@ TextureImporter:
   - first:
       213: 7165614654797141392
     second: yukari_15
+  - first:
+      213: 2381494984212700408
+    second: yukari_0
+  - first:
+      213: 8293602943825180213
+    second: yukari_1
+  - first:
+      213: -8624762908844862319
+    second: yukari_2
+  - first:
+      213: -836514578076245863
+    second: yukari_3
+  - first:
+      213: 8657295575050940875
+    second: yukari_4
+  - first:
+      213: 2445471446111413702
+    second: yukari_5
+  - first:
+      213: -8170057001820225016
+    second: yukari_6
+  - first:
+      213: -3910264297769979123
+    second: yukari_7
+  - first:
+      213: -1789448814414456236
+    second: yukari_8
+  - first:
+      213: 5750746434895074217
+    second: yukari_9
+  - first:
+      213: 6732769084160480266
+    second: yukari_10
+  - first:
+      213: 7679050661802809962
+    second: yukari_11
+  - first:
+      213: 6186694745128976765
+    second: yukari_12
+  - first:
+      213: -2542382872632062526
+    second: yukari_13
+  - first:
+      213: -9167416909252968174
+    second: yukari_14
+  - first:
+      213: -8899119254108976597
+    second: yukari_15
+  - first:
+      213: 6266328886908813087
+    second: yukari_16
+  - first:
+      213: 4690849462139288610
+    second: yukari_17
+  - first:
+      213: -1705435212745340282
+    second: yukari_18
+  - first:
+      213: 1642314802290833181
+    second: yukari_19
+  - first:
+      213: -4202262739981499320
+    second: yukari_20
+  - first:
+      213: 8392072638532727177
+    second: yukari_21
+  - first:
+      213: 6157278021932708119
+    second: yukari_22
+  - first:
+      213: 3978426108794593430
+    second: yukari_23
+  - first:
+      213: -2675161875900984047
+    second: yukari_24
+  - first:
+      213: 7906732070977376806
+    second: yukari_25
+  - first:
+      213: 4241293518516975008
+    second: yukari_26
+  - first:
+      213: -4558121657206772584
+    second: yukari_27
+  - first:
+      213: -7901581771170960016
+    second: yukari_28
+  - first:
+      213: -2920627137387324738
+    second: yukari_29
+  - first:
+      213: 1132239975660442751
+    second: yukari_30
+  - first:
+      213: -5565817217495491415
+    second: yukari_31
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,8 +259,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6e8b6a93e4b32480800000000000000
-      internalID: -8925091146876875158
+      spriteID: 8fc5f580215cc0120800000000000000
+      internalID: 2381494984212700408
       vertices: []
       indices: 
       edges: []
@@ -184,8 +280,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e1c3874fa947b9e0800000000000000
-      internalID: -1605733724966370840
+      spriteID: 53675de9febc81370800000000000000
+      internalID: 8293602943825180213
       vertices: []
       indices: 
       edges: []
@@ -205,8 +301,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b7c3e090056892e0800000000000000
-      internalID: -2118832571572566087
+      spriteID: 194565294dfae4880800000000000000
+      internalID: -8624762908844862319
       vertices: []
       indices: 
       edges: []
@@ -226,8 +322,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9209067a530370c90800000000000000
-      internalID: -7203736071956295639
+      spriteID: 990645c5c6a1464f0800000000000000
+      internalID: -836514578076245863
       vertices: []
       indices: 
       edges: []
@@ -247,8 +343,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 297cbe1d5bed326a0800000000000000
-      internalID: -6475086966736304238
+      spriteID: bc1f87a0574e42870800000000000000
+      internalID: 8657295575050940875
       vertices: []
       indices: 
       edges: []
@@ -268,8 +364,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e26cb138336f8b9e0800000000000000
-      internalID: -1605262566054181330
+      spriteID: 6c5e4d5d25f00f120800000000000000
+      internalID: 2445471446111413702
       vertices: []
       indices: 
       edges: []
@@ -289,8 +385,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a3d32c8cb7d22360800000000000000
-      internalID: 7143509163768009636
+      spriteID: 80200d391702e9e80800000000000000
+      internalID: -8170057001820225016
       vertices: []
       indices: 
       edges: []
@@ -310,8 +406,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e6788c5bcfb37730800000000000000
-      internalID: 3995748174559475427
+      spriteID: d033781b653fbb9c0800000000000000
+      internalID: -3910264297769979123
       vertices: []
       indices: 
       edges: []
@@ -331,8 +427,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cfb96dab6e2d5b00800000000000000
-      internalID: 818861747257065417
+      spriteID: 45a1511c8c99a27e0800000000000000
+      internalID: -1789448814414456236
       vertices: []
       indices: 
       edges: []
@@ -352,8 +448,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c75ff81160a937e00800000000000000
-      internalID: 1041345289707844988
+      spriteID: 9a3d34de961cecf40800000000000000
+      internalID: 5750746434895074217
       vertices: []
       indices: 
       edges: []
@@ -373,8 +469,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8217fd9b11eca340800000000000000
-      internalID: 4876520005265986186
+      spriteID: a041e107fc99f6d50800000000000000
+      internalID: 6732769084160480266
       vertices: []
       indices: 
       edges: []
@@ -394,8 +490,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ed4da8d8f98be440800000000000000
-      internalID: 4966214715986234848
+      spriteID: a6a1cfc34e7719a60800000000000000
+      internalID: 7679050661802809962
       vertices: []
       indices: 
       edges: []
@@ -415,8 +511,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0ae49b1d11767150800000000000000
-      internalID: 5870003534154754573
+      spriteID: d714039971e8bd550800000000000000
+      internalID: 6186694745128976765
       vertices: []
       indices: 
       edges: []
@@ -436,8 +532,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fb081e54b1cd81d0800000000000000
-      internalID: -3346805967649502215
+      spriteID: 2cd8ab95f34a7bcd0800000000000000
+      internalID: -2542382872632062526
       vertices: []
       indices: 
       edges: []
@@ -457,8 +553,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3713e92677c6744a0800000000000000
-      internalID: -6609194668131470989
+      spriteID: 211411064eac6c080800000000000000
+      internalID: -9167416909252968174
       vertices: []
       indices: 
       edges: []
@@ -478,8 +574,344 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09554804090617360800000000000000
-      internalID: 7165614654797141392
+      spriteID: b2acefc103aff7480800000000000000
+      internalID: -8899119254108976597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1ff7f51ce876f650800000000000000
+      internalID: 6266328886908813087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cf4ad8bbe391140800000000000000
+      internalID: 4690849462139288610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a0fd4b5b31558e0800000000000000
+      internalID: -1705435212745340282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1739ef7c9caac610800000000000000
+      internalID: 1642314802290833181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_20
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8440b827d409ea5c0800000000000000
+      internalID: -4202262739981499320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_21
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981b4050a91a67470800000000000000
+      internalID: 8392072638532727177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_22
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7117e900dbb037550800000000000000
+      internalID: 6157278021932708119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_23
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69067d3a775363730800000000000000
+      internalID: 3978426108794593430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115114e827aefdad0800000000000000
+      internalID: -2675161875900984047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6229bc84dea5abd60800000000000000
+      internalID: 7906732070977376806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a5fe57dbf91cda30800000000000000
+      internalID: 4241293518516975008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89cec23b08c4eb0c0800000000000000
+      internalID: -4558121657206772584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d27a55e31f75290800000000000000
+      internalID: -7901581771170960016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba99aab719d777d0800000000000000
+      internalID: -2920627137387324738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_30
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f74dcbd424686bf00800000000000000
+      internalID: 1132239975660442751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yukari_31
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac9d6acabe32c2b0800000000000000
+      internalID: -5565817217495491415
       vertices: []
       indices: 
       edges: []
