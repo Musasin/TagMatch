@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     const float DASH_TIME = 0.1f;
 
     Rigidbody2D rb;
+    SpriteRenderer sr;
     Animator anim;
     FootJudgement footJudgement;
 
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         footJudgement = GetComponentInChildren<FootJudgement>();
         animationState = AnimationState.STAND;
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
         UpdateDirection();
         UpdateJump();
         UpdateState();
+        UpdateColor();
         Debug.Log(velocityX);
         rb.velocity = new Vector2(velocityX, velocityY);
     }
@@ -116,6 +119,16 @@ public class Player : MonoBehaviour
         {
             animationState = newAnimationState;
             anim.SetInteger("state", (int)animationState);
+        }
+    }
+    private void UpdateColor()
+    {
+        if (dashTime > 0)
+        {
+            sr.color = new Color(0.3f, 0.8f, 1.0f);
+        } else
+        {
+            sr.color = new Color(1.0f, 1.0f, 1.0f);
         }
     }
 }
