@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     const float JUMP_VELOCITY = 15.0f;
 
     Rigidbody2D rb;
+    Animator anim;
 
     float velocityX = 0;
     float velocityY = 0;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -35,16 +37,19 @@ public class Player : MonoBehaviour
         float dx = Input.GetAxisRaw("Horizontal");
         if (dx > 0)
         {
+            anim.SetInteger("state", 1);
             velocityX = MOVE_VELOCITY;
             isRight = true;
         }
         else if (dx < 0)
         {
+            anim.SetInteger("state", 1);
             velocityX = -MOVE_VELOCITY;
             isRight = false;
         }
         else
         {
+            anim.SetInteger("state", 0);
             velocityX = 0;
         }
     }
