@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
+    const float DASH_VELOCITY_X = 25.0f;
+    const float DASH_VELOCITY_Y = 0.0f;
+    const float DASH_TIME = 0.1f;
 
     Rigidbody2D rb;
     Animator anim;
@@ -16,6 +19,7 @@ public class Player : MonoBehaviour
 
     float velocityX = 0;
     float velocityY = 0;
+    float dashTime = 0;
     bool isRight = true;
 
     // Start is called before the first frame update
@@ -31,17 +35,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dashTime -= Time.deltaTime;
         velocityX = rb.velocity.x;
         velocityY = rb.velocity.y;
         UpdateMove();
-        UpdateJump();
         UpdateDirection();
+        UpdateJump();
         UpdateState();
+        Debug.Log(velocityX);
         rb.velocity = new Vector2(velocityX, velocityY);
     }
 
     private void UpdateMove()
     {
+        if (dashTime > 0)
+        {
+            velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
+            velocityY = DASH_VELOCITY_Y;
+            return;
+        }
         float dx = Input.GetAxisRaw("Horizontal");
         if (dx > 0)
         {
@@ -54,17 +66,24 @@ public class Player : MonoBehaviour
             newAnimationState = AnimationState.RUN;
             velocityX = -MOVE_VELOCITY;
             isRight = false;
-        }
-        else
+        } else
         {
             velocityX = 0;
         }
     }
     private void UpdateJump()
     {
-        if (Input.GetButtonDown("Jump") && footJudgement.GetIsLanding())
+        if (Input.GetButtonDown("Jump"))
         {
-            velocityY = JUMP_VELOCITY;
+            if (footJudgement.GetIsLanding())
+            {
+                velocityY = JUMP_VELOCITY;
+            } else
+            {
+                velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
+                velocityY = DASH_VELOCITY_Y;
+                dashTime = DASH_TIME;
+            }
         }
     }
     private void UpdateDirection()
@@ -84,7 +103,7 @@ public class Player : MonoBehaviour
         {
             newAnimationState = AnimationState.JUMP;
         }
-        else if (velocityX == 0)
+        else if (Mathf.Abs(velocityX) < 0.2)
         {
             newAnimationState = AnimationState.STAND;
         }
