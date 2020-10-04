@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
-    const float DASH_VELOCITY_X = 25.0f;
+    const float DASH_VELOCITY_X = 35.0f;
     const float DASH_VELOCITY_Y = 0.0f;
-    const float DASH_TIME = 0.1f;
+    const float DASH_TIME = 0.13f;
 
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     float velocityX = 0;
     float velocityY = 0;
     float dashTime = 0;
+    bool isUsedDash = false;
     bool isRight = true;
 
     // Start is called before the first frame update
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
         if (dashTime > 0)
         {
             velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
+            velocityX *= (dashTime / DASH_TIME);
             velocityY = DASH_VELOCITY_Y;
             return;
         }
@@ -81,11 +83,12 @@ public class Player : MonoBehaviour
             if (footJudgement.GetIsLanding())
             {
                 velocityY = JUMP_VELOCITY;
-            } else
+            } else if (!isUsedDash)
             {
                 velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
                 velocityY = DASH_VELOCITY_Y;
                 dashTime = DASH_TIME;
+                isUsedDash = true;
             }
         }
     }
@@ -105,14 +108,17 @@ public class Player : MonoBehaviour
         if (footJudgement.GetIsLanding() == false)
         {
             newAnimationState = AnimationState.JUMP;
-        }
-        else if (Mathf.Abs(velocityX) < 0.2)
+        } else
         {
-            newAnimationState = AnimationState.STAND;
-        }
-        else 
-        {
-            newAnimationState = AnimationState.RUN;
+            isUsedDash = false;
+            if (Mathf.Abs(velocityX) < 0.2)
+            {
+                newAnimationState = AnimationState.STAND;
+            }
+            else 
+            {
+                newAnimationState = AnimationState.RUN;
+            }
         }
 
         if (animationState != newAnimationState)
