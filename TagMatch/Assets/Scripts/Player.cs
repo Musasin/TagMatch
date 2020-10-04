@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
+    FootJudgement footJudgement;
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2};
     AnimationState animationState, newAnimationState;
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        footJudgement = GetComponentInChildren<FootJudgement>();
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
     }
@@ -60,7 +62,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateJump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && footJudgement.GetIsLanding())
         {
             velocityY = JUMP_VELOCITY;
         }
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateState()
     {
-        if (velocityY != 0)
+        if (footJudgement.GetIsLanding() == false)
         {
             newAnimationState = AnimationState.JUMP;
         }
