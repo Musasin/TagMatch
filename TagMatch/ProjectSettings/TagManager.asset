@@ -72,14 +72,14 @@ TagManager:
   - name: Map4
     uniqueID: 50971829
     locked: 0
+  - name: Enemy
+    uniqueID: 2883478537
+    locked: 0
   - name: Player
     uniqueID: 1528146579
     locked: 0
   - name: Map5
     uniqueID: 4121127613
-    locked: 0
-  - name: New Layer
-    uniqueID: 2883478537
     locked: 0
   - name: New Layer
     uniqueID: 4260846869
