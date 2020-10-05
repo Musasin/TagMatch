@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject starBullet;
+
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
     const float DASH_VELOCITY_X = 35.0f;
     const float DASH_VELOCITY_Y = 0.0f;
     const float DASH_TIME = 0.13f;
+    const float SHOT_POWER = 400.0f;
 
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
     FootJudgement footJudgement;
+    GameObject bulletPivot;
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2};
     AnimationState animationState, newAnimationState;
@@ -31,6 +35,7 @@ public class Player : MonoBehaviour
         sr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         footJudgement = GetComponentInChildren<FootJudgement>();
+        bulletPivot = GameObject.Find("BulletPivot");
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
     }
@@ -44,6 +49,7 @@ public class Player : MonoBehaviour
         UpdateMove();
         UpdateDirection();
         UpdateJump();
+        UpdateShot();
         UpdateState();
         UpdateColor();
         Debug.Log(velocityX);
@@ -90,6 +96,16 @@ public class Player : MonoBehaviour
                 dashTime = DASH_TIME;
                 isUsedDash = true;
             }
+        }
+    }
+    private void UpdateShot()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject bullet = Instantiate(starBullet);
+            bullet.transform.position = bulletPivot.transform.position;
+            bullet.transform.localScale = new Vector2(bullet.transform.localScale.x * (isRight ? 1 : -1), bullet.transform.localScale.y);
+            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(SHOT_POWER * (isRight ? 1 : -1), 0));
         }
     }
     private void UpdateDirection()

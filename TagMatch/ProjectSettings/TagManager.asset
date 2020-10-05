@@ -75,12 +75,15 @@ TagManager:
   - name: Enemy
     uniqueID: 2883478537
     locked: 0
+  - name: Bullet1
+    uniqueID: 711491665
+    locked: 0
+  - name: Bullet2
+    uniqueID: 4260846869
+    locked: 0
   - name: Player
     uniqueID: 1528146579
     locked: 0
   - name: Map5
     uniqueID: 4121127613
-    locked: 0
-  - name: New Layer
-    uniqueID: 4260846869
     locked: 0
