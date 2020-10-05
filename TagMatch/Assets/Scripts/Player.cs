@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class Player : MonoBehaviour
     const float JUMP_VELOCITY = 15.0f;
     const float DASH_VELOCITY_X = 35.0f;
     const float DASH_VELOCITY_Y = 0.0f;
+    const float BACKFLIP_VELOCITY_X = 10.0f;
     const float DAMAGE_VELOCITY_X = 4.0f;
     const float DAMAGE_VELOCITY_Y = 8.0f;
     const float DASH_TIME = 0.13f;
+    const float BACKFLIP_TIME = 0.4f;
     const float SHOT_POWER = 400.0f;
 
     const float STOP_TIME = 0.3f;
@@ -24,6 +27,7 @@ public class Player : MonoBehaviour
     Animator anim;
     FootJudgement footJudgement;
     GameObject bulletPivot;
+    GameObject playerImage;
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2};
     AnimationState animationState, newAnimationState;
@@ -31,6 +35,7 @@ public class Player : MonoBehaviour
     float velocityX = 0;
     float velocityY = 0;
     float dashTime = 0;
+    float backflipTime = 0;
     float stopTime = 0;
     float invincibleTime = 0;
     bool isUsedDash = false;
@@ -44,6 +49,7 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         footJudgement = GetComponentInChildren<FootJudgement>();
         bulletPivot = GameObject.Find("BulletPivot");
+        playerImage = GameObject.Find("PlayerImage");
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
     }
@@ -52,6 +58,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         dashTime -= Time.deltaTime;
+        backflipTime -= Time.deltaTime;
         stopTime -= Time.deltaTime;
         invincibleTime -= Time.deltaTime;
 
@@ -62,8 +69,10 @@ public class Player : MonoBehaviour
         {
             UpdateMove();
             UpdateDirection();
-            UpdateJump();
-            UpdateShot();
+            if (dashTime <= 0 && backflipTime <= 0) {
+                UpdateJump();
+                UpdateShot();
+            }
         }
         UpdateState();
         UpdateColor();
@@ -77,6 +86,12 @@ public class Player : MonoBehaviour
             velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
             velocityX *= (dashTime / DASH_TIME);
             velocityY = DASH_VELOCITY_Y;
+            return;
+        }
+        if (backflipTime > 0)
+        {
+            velocityX = isRight ? -BACKFLIP_VELOCITY_X : BACKFLIP_VELOCITY_X;
+            velocityX *= (backflipTime / BACKFLIP_TIME);
             return;
         }
         float dx = Input.GetAxisRaw("Horizontal");
@@ -120,11 +135,40 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject bullet = Instantiate(starBullet);
-            bullet.transform.position = bulletPivot.transform.position;
-            bullet.transform.localScale = new Vector2(bullet.transform.localScale.x * (isRight ? 1 : -1), bullet.transform.localScale.y);
-            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(SHOT_POWER * (isRight ? 1 : -1), 0));
+            float dy = Input.GetAxisRaw("Vertical");
+            if (dy > 0)
+            {
+                backflipTime = BACKFLIP_TIME;
+
+                Sequence bulletSequence = DOTween.Sequence()
+                    .AppendCallback(() => { InstantiateBullet(isRight ? 30 : 150); })
+                    .AppendInterval(0.1f)
+                    .AppendCallback(() => { InstantiateBullet(isRight ? 45 : 135); })
+                    .AppendInterval(0.1f)
+                    .AppendCallback(() => { InstantiateBullet(isRight ? 60 : 120); });
+
+                Sequence sequence = DOTween.Sequence()
+                    .Append(playerImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360))
+                    .Join(bulletSequence);
+                sequence.Play();
+            } 
+            else
+            {
+                InstantiateBullet(isRight ? 0 : 180);
+            }
+
         }
+    }
+    private void InstantiateBullet(float angleZ)
+    {
+        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
+        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
+
+        GameObject bullet = Instantiate(starBullet);
+        bullet.transform.position = bulletPivot.transform.position;
+        //bullet.transform.localScale = new Vector2(bullet.transform.localScale.x * (isRight ? 1 : -1), bullet.transform.localScale.y);
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
+        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
     }
     private void UpdateDirection()
     {
@@ -139,7 +183,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateState()
     {
-        if (footJudgement.GetIsLanding() == false)
+        if (footJudgement.GetIsLanding() == false || backflipTime > 0)
         {
             newAnimationState = AnimationState.JUMP;
         } else

@@ -22,9 +22,7 @@ public class WallJudgement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Map")
         {
-            Debug.Log("HIT");
             enemy.HitWall();
         }
-            Debug.Log("HI_T");
     }
 }
