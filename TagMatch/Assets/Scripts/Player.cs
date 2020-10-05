@@ -11,8 +11,13 @@ public class Player : MonoBehaviour
     const float JUMP_VELOCITY = 15.0f;
     const float DASH_VELOCITY_X = 35.0f;
     const float DASH_VELOCITY_Y = 0.0f;
+    const float DAMAGE_VELOCITY_X = 4.0f;
+    const float DAMAGE_VELOCITY_Y = 8.0f;
     const float DASH_TIME = 0.13f;
     const float SHOT_POWER = 400.0f;
+
+    const float STOP_TIME = 0.3f;
+    const float INVINCIBLE_TIME = 0.6f;
 
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -26,6 +31,8 @@ public class Player : MonoBehaviour
     float velocityX = 0;
     float velocityY = 0;
     float dashTime = 0;
+    float stopTime = 0;
+    float invincibleTime = 0;
     bool isUsedDash = false;
     bool isRight = true;
 
@@ -45,12 +52,19 @@ public class Player : MonoBehaviour
     void Update()
     {
         dashTime -= Time.deltaTime;
+        stopTime -= Time.deltaTime;
+        invincibleTime -= Time.deltaTime;
+
         velocityX = rb.velocity.x;
         velocityY = rb.velocity.y;
-        UpdateMove();
-        UpdateDirection();
-        UpdateJump();
-        UpdateShot();
+
+        if (stopTime <= 0)
+        {
+            UpdateMove();
+            UpdateDirection();
+            UpdateJump();
+            UpdateShot();
+        }
         UpdateState();
         UpdateColor();
         rb.velocity = new Vector2(velocityX, velocityY);
@@ -149,12 +163,31 @@ public class Player : MonoBehaviour
     }
     private void UpdateColor()
     {
+        float alpha = (invincibleTime > 0) ? 0.5f : 1.0f;
         if (dashTime > 0)
         {
-            sr.color = new Color(0.3f, 0.8f, 1.0f);
+            sr.color = new Color(0.3f, 0.8f, 1.0f, alpha);
         } else
         {
-            sr.color = new Color(1.0f, 1.0f, 1.0f);
+            sr.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+        }
+    }
+
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (invincibleTime > 0)
+        {
+            return;
+        }
+        if (collision.gameObject.tag == "Damage")
+        {
+            stopTime = STOP_TIME;
+            invincibleTime = INVINCIBLE_TIME;
+            
+            bool isEnemyRight = transform.position.x < collision.gameObject.transform.position.x;
+            velocityX = isEnemyRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X;
+            rb.velocity = new Vector2(velocityX, DAMAGE_VELOCITY_Y);
         }
     }
 }

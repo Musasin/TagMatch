@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Map
   - Enemy
+  - Damage
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - Enemy
   - Map
-  - 
+  - Damage
   - 
   - 
   - 
@@ -82,12 +83,15 @@ TagManager:
   - name: Bullet2
     uniqueID: 4260846869
     locked: 0
-  - name: BulletEffect
-    uniqueID: 1363070627
-    locked: 0
   - name: Player
     uniqueID: 1528146579
     locked: 0
   - name: Map5
     uniqueID: 4121127613
+    locked: 0
+  - name: BulletEffect
+    uniqueID: 1363070627
+    locked: 0
+  - name: Map6
+    uniqueID: 1941882229
     locked: 0
