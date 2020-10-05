@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject starBullet;
+    public GameObject jumpEffect;
 
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
@@ -52,7 +53,6 @@ public class Player : MonoBehaviour
         UpdateShot();
         UpdateState();
         UpdateColor();
-        Debug.Log(velocityX);
         rb.velocity = new Vector2(velocityX, velocityY);
     }
 
@@ -89,7 +89,11 @@ public class Player : MonoBehaviour
             if (footJudgement.GetIsLanding())
             {
                 velocityY = JUMP_VELOCITY;
-            } else if (!isUsedDash)
+                GameObject effect = Instantiate(jumpEffect);
+                effect.transform.position = new Vector2(transform.position.x + (isRight ? -0.3f : 0.3f), transform.position.y);
+                effect.transform.localScale = new Vector2(effect.transform.localScale.x * (isRight ? 1 : -1), effect.transform.localScale.y);
+            }
+            else if (!isUsedDash)
             {
                 velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
                 velocityY = DASH_VELOCITY_Y;
