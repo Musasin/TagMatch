@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class WallJudgement : MonoBehaviour
 {
-    public int damage;
-    public GameObject deadEffect;
+    Enemy enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemy = GetComponentInParent<Enemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Map" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Map")
         {
-            GameObject effect = Instantiate(deadEffect);
-            effect.transform.position = transform.position;
-            Destroy(gameObject);
+            Debug.Log("HIT");
+            enemy.HitWall();
         }
+            Debug.Log("HI_T");
     }
 }
