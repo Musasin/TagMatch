@@ -5855,7 +5855,7 @@ GameObject:
   - component: {fileID: 1999996848}
   - component: {fileID: 1999996847}
   - component: {fileID: 1999996849}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ground
   m_TagString: Map
   m_Icon: {fileID: 0}
@@ -7425,6 +7425,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1125446380103258047, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125446380103258047, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125446380228976033, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125446380617308719, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233513318161422541, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e80ebdb3c65a74bb7a9e332d9a59743a, type: 3}
 --- !u!1001 &1693449698356172803
@@ -8564,6 +8589,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: kinoko
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724149761113533260, guid: f58eb907d41854a46bc44e593d54e4d6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724149761113533260, guid: f58eb907d41854a46bc44e593d54e4d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58eb907d41854a46bc44e593d54e4d6, type: 3}
