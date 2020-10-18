@@ -7676,47 +7676,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1125446380103258044, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
-        type: 3}
-      propertyPath: starBullet
-      value: 
-      objectReference: {fileID: 1167715330987728161, guid: e963395ebf90c499596c99b63d670816,
-        type: 3}
-    - target: {fileID: 1125446380103258044, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
-        type: 3}
-      propertyPath: jumpEffect
-      value: 
-      objectReference: {fileID: 6879508804347818747, guid: b6d79ebe498a94f808417e890b3220e3,
-        type: 3}
     - target: {fileID: 1125446380103258047, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125446380103258047, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125446380103258047, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125446380228976033, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125446380617308719, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6233513318161422541, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e80ebdb3c65a74bb7a9e332d9a59743a, type: 3}
@@ -8801,12 +8764,12 @@ PrefabInstance:
     - target: {fileID: 5724149761113533259, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.45
+      value: -6.27
       objectReference: {fileID: 0}
     - target: {fileID: 5724149761113533259, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.38
+      value: -4.26
       objectReference: {fileID: 0}
     - target: {fileID: 5724149761113533259, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}

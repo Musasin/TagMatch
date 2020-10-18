@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     SpriteRenderer sr;
     Animator anim;
     FootJudgement footJudgement;
-    GameObject bulletPivot;
+    GameObject bulletPivot, squatBulletPivot;
     GameObject playerImage;
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         footJudgement = GetComponentInChildren<FootJudgement>();
         bulletPivot = GameObject.Find("BulletPivot");
+        squatBulletPivot = GameObject.Find("SquatBulletPivot");
         playerImage = GameObject.Find("PlayerImage");
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
@@ -114,7 +115,8 @@ public class Player : MonoBehaviour
         {
             velocityX = -MOVE_VELOCITY;
             isRight = false;
-        } else
+        } 
+        else
         {
             velocityX = 0;
         }
@@ -160,6 +162,10 @@ public class Player : MonoBehaviour
                     .Join(bulletSequence);
                 sequence.Play();
             } 
+            else if (Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding()) // しゃがみ判定
+            {
+                InstantiateBullet(isRight ? 0 : 180, true);
+            }
             else
             {
                 InstantiateBullet(isRight ? 0 : 180);
@@ -167,14 +173,13 @@ public class Player : MonoBehaviour
 
         }
     }
-    private void InstantiateBullet(float angleZ)
+    private void InstantiateBullet(float angleZ, bool isSquat = false)
     {
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
 
         GameObject bullet = Instantiate(starBullet);
-        bullet.transform.position = bulletPivot.transform.position;
-        //bullet.transform.localScale = new Vector2(bullet.transform.localScale.x * (isRight ? 1 : -1), bullet.transform.localScale.y);
+        bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
         bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
         bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
     }
@@ -194,10 +199,13 @@ public class Player : MonoBehaviour
         if (footJudgement.GetIsLanding() == false || backflipTime > 0)
         {
             newAnimationState = AnimationState.JUMP;
-        } else if (Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding()) // しゃがみ判定
+        } 
+        else if (Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding()) // しゃがみ判定
         {
             newAnimationState = AnimationState.SQUAT;
-        } else {
+        } 
+        else 
+        {
             isUsedDash = false;
             if (Mathf.Abs(velocityX) < 0.2)
             {
@@ -221,7 +229,8 @@ public class Player : MonoBehaviour
         if (dashTime > 0)
         {
             sr.color = new Color(0.3f, 0.8f, 1.0f, alpha);
-        } else
+        } 
+        else
         {
             sr.color = new Color(1.0f, 1.0f, 1.0f, alpha);
         }
