@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     GameObject bulletPivot;
     GameObject playerImage;
 
-    enum AnimationState { STAND = 0, RUN = 1, JUMP = 2};
+    enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
     AnimationState animationState, newAnimationState;
 
     float velocityX = 0;
@@ -94,16 +94,24 @@ public class Player : MonoBehaviour
             velocityX *= (backflipTime / BACKFLIP_TIME);
             return;
         }
+
+        // しゃがみ判定
+        float dy = Input.GetAxisRaw("Vertical");
+        if (dy < 0 && footJudgement.GetIsLanding())
+        {
+            velocityX = 0;
+            return;
+        }
+
+        // 移動判定
         float dx = Input.GetAxisRaw("Horizontal");
         if (dx > 0)
         {
-            newAnimationState = AnimationState.RUN;
             velocityX = MOVE_VELOCITY;
             isRight = true;
         }
         else if (dx < 0)
         {
-            newAnimationState = AnimationState.RUN;
             velocityX = -MOVE_VELOCITY;
             isRight = false;
         } else
@@ -186,8 +194,10 @@ public class Player : MonoBehaviour
         if (footJudgement.GetIsLanding() == false || backflipTime > 0)
         {
             newAnimationState = AnimationState.JUMP;
-        } else
+        } else if (Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding()) // しゃがみ判定
         {
+            newAnimationState = AnimationState.SQUAT;
+        } else {
             isUsedDash = false;
             if (Mathf.Abs(velocityX) < 0.2)
             {
