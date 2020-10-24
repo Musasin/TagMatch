@@ -23,14 +23,15 @@ public class Player : MonoBehaviour
     const float INVINCIBLE_TIME = 0.6f;
 
     Rigidbody2D rb;
-    SpriteRenderer sr;
-    Animator anim;
     FootJudgement footJudgement;
     GameObject bulletPivot, squatBulletPivot;
-    GameObject playerImage;
+    GameObject playerImage, yukariImage, makiImage;
+    Animator playerImageAnimator, yukariAnimator, makiAnimator;
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
     AnimationState animationState, newAnimationState;
+    enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
+    SwitchState switchState;
 
     float velocityX = 0;
     float velocityY = 0;
@@ -45,12 +46,17 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponentInChildren<SpriteRenderer>();
-        anim = GetComponentInChildren<Animator>();
         footJudgement = GetComponentInChildren<FootJudgement>();
-        bulletPivot = GameObject.Find("BulletPivot");
-        squatBulletPivot = GameObject.Find("SquatBulletPivot");
-        playerImage = GameObject.Find("PlayerImage");
+        bulletPivot = transform.Find("BulletPivot").gameObject;
+        squatBulletPivot = transform.Find("SquatBulletPivot").gameObject;
+
+        playerImage = transform.Find("PlayerImage").gameObject;
+        yukariImage = playerImage.transform.Find("Yukari").gameObject;
+        makiImage = playerImage.transform.Find("Maki").gameObject;
+        playerImageAnimator = playerImage.GetComponent<Animator>();
+        yukariAnimator = yukariImage.GetComponent<Animator>();
+        makiAnimator = makiImage.GetComponent<Animator>();
+
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
     }
@@ -73,6 +79,7 @@ public class Player : MonoBehaviour
             if (dashTime <= 0 && backflipTime <= 0) {
                 UpdateJump();
                 UpdateShot();
+                UpdateSwitch();
             }
         }
         UpdateState();
@@ -158,7 +165,7 @@ public class Player : MonoBehaviour
                     .AppendCallback(() => { InstantiateBullet(isRight ? 60 : 120); });
 
                 Sequence sequence = DOTween.Sequence()
-                    .Append(playerImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360))
+                    .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360))
                     .Join(bulletSequence);
                 sequence.Play();
             } 
@@ -171,6 +178,34 @@ public class Player : MonoBehaviour
                 InstantiateBullet(isRight ? 0 : 180);
             }
 
+        }
+    }
+    private void UpdateSwitch()
+    {
+        Debug.Log("A");
+        if (Input.GetButtonDown("Switch"))
+        {
+        Debug.Log("B");
+            if (footJudgement.GetIsLanding())
+            {
+        Debug.Log("C");
+                switch (switchState)
+                {
+                    case SwitchState.YUKARI:
+        Debug.Log("CA");
+                        switchState = SwitchState.MAKI;
+                        playerImageAnimator.SetInteger("switchState", (int)switchState);
+                        break;
+                    case SwitchState.MAKI:
+        Debug.Log("CB");
+                        switchState = SwitchState.YUKARI;
+                        playerImageAnimator.SetInteger("switchState", (int)switchState);
+                        break;
+                    default:
+        Debug.Log("CC");
+                        break;
+                }
+            }
         }
     }
     private void InstantiateBullet(float angleZ, bool isSquat = false)
@@ -220,7 +255,8 @@ public class Player : MonoBehaviour
         if (animationState != newAnimationState)
         {
             animationState = newAnimationState;
-            anim.SetInteger("state", (int)animationState);
+            yukariAnimator.SetInteger("state", (int)animationState);
+            makiAnimator.SetInteger("state", (int)animationState);
         }
     }
     private void UpdateColor()
@@ -228,11 +264,13 @@ public class Player : MonoBehaviour
         float alpha = (invincibleTime > 0) ? 0.5f : 1.0f;
         if (dashTime > 0)
         {
-            sr.color = new Color(0.3f, 0.8f, 1.0f, alpha);
+            yukariImage.GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.8f, 1.0f, alpha);
+            makiImage.GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.8f, 1.0f, alpha);
         } 
         else
         {
-            sr.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+            yukariImage.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, alpha);
+            makiImage.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, alpha);
         }
     }
 
