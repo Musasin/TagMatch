@@ -182,27 +182,21 @@ public class Player : MonoBehaviour
     }
     private void UpdateSwitch()
     {
-        Debug.Log("A");
         if (Input.GetButtonDown("Switch"))
         {
-        Debug.Log("B");
             if (footJudgement.GetIsLanding())
             {
-        Debug.Log("C");
                 switch (switchState)
                 {
                     case SwitchState.YUKARI:
-        Debug.Log("CA");
                         switchState = SwitchState.MAKI;
                         playerImageAnimator.SetInteger("switchState", (int)switchState);
                         break;
                     case SwitchState.MAKI:
-        Debug.Log("CB");
                         switchState = SwitchState.YUKARI;
                         playerImageAnimator.SetInteger("switchState", (int)switchState);
                         break;
                     default:
-        Debug.Log("CC");
                         break;
                 }
             }
