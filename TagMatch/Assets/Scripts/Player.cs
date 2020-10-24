@@ -184,21 +184,18 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Switch"))
         {
-            if (footJudgement.GetIsLanding())
+            switch (switchState)
             {
-                switch (switchState)
-                {
-                    case SwitchState.YUKARI:
-                        switchState = SwitchState.MAKI;
-                        playerImageAnimator.SetInteger("switchState", (int)switchState);
-                        break;
-                    case SwitchState.MAKI:
-                        switchState = SwitchState.YUKARI;
-                        playerImageAnimator.SetInteger("switchState", (int)switchState);
-                        break;
-                    default:
-                        break;
-                }
+                case SwitchState.YUKARI:
+                    switchState = SwitchState.MAKI;
+                    playerImageAnimator.SetInteger("switchState", (int)switchState);
+                    break;
+                case SwitchState.MAKI:
+                    switchState = SwitchState.YUKARI;
+                    playerImageAnimator.SetInteger("switchState", (int)switchState);
+                    break;
+                default:
+                    break;
             }
         }
     }
