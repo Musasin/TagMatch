@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
-    const float DASH_VELOCITY_X = 35.0f;
+    const float DASH_VELOCITY_X = 45.0f;
     const float DASH_VELOCITY_Y = 0.0f;
     const float BACKFLIP_VELOCITY_X = 10.0f;
     const float DAMAGE_VELOCITY_X = 4.0f;

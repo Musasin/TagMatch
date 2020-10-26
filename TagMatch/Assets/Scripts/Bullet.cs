@@ -19,16 +19,36 @@ public class Bullet : MonoBehaviour
     {
 
     }
+    
+    private void Dead()
+    {
+        GameObject effect = Instantiate(deadEffect);
+        effect.transform.position = transform.position;
+        Destroy(gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Map" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Map")
         {
             if (!isTrample)
             {
-                GameObject effect = Instantiate(deadEffect);
-                effect.transform.position = transform.position;
-                Destroy(gameObject);
+                Dead();
+            }
+        }
+        else if (collision.gameObject.tag == "Enemy")
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                if (!enemy.IsInvincible())
+                {
+                    enemy.HitBullet(damage);
+                    if (!isTrample)
+                    {
+                        Dead();
+                    }
+                }
             }
         }
     }
