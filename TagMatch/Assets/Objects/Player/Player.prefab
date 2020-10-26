@@ -155,6 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starBullet: {fileID: 1167715330987728161, guid: e963395ebf90c499596c99b63d670816,
     type: 3}
+  mustangBullet: {fileID: 4638337299276677076, guid: 543622361302447e79971a208c6082ff,
+    type: 3}
   jumpEffect: {fileID: 6879508804347818747, guid: b6d79ebe498a94f808417e890b3220e3,
     type: 3}
 --- !u!1 &1125446380228976033
@@ -589,6 +591,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 212903779799699256, guid: 84bb8dcedcb75424b95f53e6809df043,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84bb8dcedcb75424b95f53e6809df043, type: 3}

@@ -6,7 +6,7 @@ Sprite:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: T_common_letter_all_s_28
+  m_Name: damage_2
   m_Rect:
     serializedVersion: 2
     x: 31

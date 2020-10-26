@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DamagePointEffect : MonoBehaviour
 {
+    float time;
+    const float MINIMUM_TIME = 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +16,8 @@ public class DamagePointEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
+        DestroyWhenOffScreen();
     }
 
     public void SetDamagePointAndPlay(int damage)
@@ -29,5 +33,19 @@ public class DamagePointEffect : MonoBehaviour
             transform.Find("TenthPlace").gameObject.GetComponent<DamagePointNumber>().SetNumber(damage / 10);
         }
         GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.0f, 2.0f), 15.0f);
+    }
+    
+    private void DestroyWhenOffScreen()
+    {
+        if (time < MINIMUM_TIME)
+            return;
+
+        SpriteRenderer[] spriteList = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in spriteList)
+        {
+            if (sprite.isVisible)
+                return;
+        }
+        Destroy(gameObject);
     }
 }

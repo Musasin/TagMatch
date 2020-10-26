@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     public int damage;
     public GameObject deadEffect;
     public bool isTrample;
+    float time;
+    const float MINIMUM_TIME = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,22 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        DestroyWhenOffScreen();
+    }
 
+    private void DestroyWhenOffScreen()
+    {
+        if (time < MINIMUM_TIME)
+            return;
+
+        SpriteRenderer[] spriteList = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in spriteList)
+        {
+            if (sprite.isVisible)
+                return;
+        }
+        Destroy(gameObject);
     }
     
     private void Dead()

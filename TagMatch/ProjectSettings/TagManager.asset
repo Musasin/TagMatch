@@ -95,3 +95,6 @@ TagManager:
   - name: Map6
     uniqueID: 1941882229
     locked: 0
+  - name: DamagePointEffect
+    uniqueID: 1975484607
+    locked: 0
