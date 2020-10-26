@@ -18,8 +18,9 @@ public class Player : MonoBehaviour
     const float DASH_TIME = 0.13f;
     const float BACKFLIP_TIME = 0.4f;
     const float SHOT_POWER = 400.0f;
-
+    
     const float STOP_TIME = 0.3f;
+    const float SHOT_IMPOSSIBLE_TIME = 0.4f;
     const float INVINCIBLE_TIME = 0.6f;
 
     Rigidbody2D rb;
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
     float dashTime = 0;
     float backflipTime = 0;
     float stopTime = 0;
+    float shotImpossibleTime = 0;
     float invincibleTime = 0;
     bool isUsedDash = false;
     bool isRight = true;
@@ -67,6 +69,7 @@ public class Player : MonoBehaviour
         dashTime -= Time.deltaTime;
         backflipTime -= Time.deltaTime;
         stopTime -= Time.deltaTime;
+        shotImpossibleTime -= Time.deltaTime;
         invincibleTime -= Time.deltaTime;
 
         velocityX = rb.velocity.x;
@@ -78,8 +81,11 @@ public class Player : MonoBehaviour
             UpdateDirection();
             if (dashTime <= 0 && backflipTime <= 0) {
                 UpdateJump();
-                UpdateShot();
-                UpdateSwitch();
+                if (shotImpossibleTime <= 0)
+                {
+                    UpdateShot();
+                    UpdateSwitch();
+                }
             }
         }
         UpdateState();
@@ -208,6 +214,7 @@ public class Player : MonoBehaviour
                 default:
                     break;
             }
+            shotImpossibleTime = SHOT_IMPOSSIBLE_TIME;
         }
     }
     private void InstantiateBullet(float angleZ, bool isSquat = false)
