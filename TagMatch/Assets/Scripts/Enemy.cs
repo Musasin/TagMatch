@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float velocityY;
     public bool isFall;
     public bool isRight;
+    public GameObject damagePointEffect;
 
     const float INVINCIBLE_TIME = 0.2f;
     
@@ -60,6 +61,9 @@ public class Enemy : MonoBehaviour
         }
         hp -= damage;
         invincibleTime = INVINCIBLE_TIME;
+        GameObject dp = Instantiate(damagePointEffect);
+        dp.transform.position = transform.position;
+        dp.GetComponent<DamagePointEffect>().SetDamagePointAndPlay(damage);
     }
     public bool IsInvincible()
     {

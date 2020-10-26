@@ -314,6 +314,8 @@ MonoBehaviour:
   velocityY: 0
   isFall: 0
   isRight: 0
+  damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
+    type: 3}
 --- !u!1 &6436363539246527689
 GameObject:
   m_ObjectHideFlags: 0
