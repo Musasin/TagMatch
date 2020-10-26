@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    public GameObject starBullet;
+    public GameObject starBullet, mustangBullet;
     public GameObject jumpEffect;
 
     const float MOVE_VELOCITY = 6.0f;
@@ -204,10 +204,19 @@ public class Player : MonoBehaviour
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
 
-        GameObject bullet = Instantiate(starBullet);
-        bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
-        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
-        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+        if (switchState == SwitchState.YUKARI || switchState == SwitchState.YUKARI_ONLY)
+        {
+            GameObject bullet = Instantiate(starBullet);
+            bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
+            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+        } else
+        {
+            GameObject bullet = Instantiate(mustangBullet);
+            bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
+            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+        }
     }
     private void UpdateDirection()
     {

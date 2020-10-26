@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public int damage;
     public GameObject deadEffect;
+    public bool isTrample;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +24,12 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Map" || collision.gameObject.tag == "Enemy")
         {
-            GameObject effect = Instantiate(deadEffect);
-            effect.transform.position = transform.position;
-            Destroy(gameObject);
+            if (!isTrample)
+            {
+                GameObject effect = Instantiate(deadEffect);
+                effect.transform.position = transform.position;
+                Destroy(gameObject);
+            }
         }
     }
 }
