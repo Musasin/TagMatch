@@ -141,10 +141,21 @@ public class Player : MonoBehaviour
             }
             else if (!isUsedDash)
             {
-                velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
-                velocityY = DASH_VELOCITY_Y;
-                dashTime = DASH_TIME;
-                isUsedDash = true;
+                if (IsYukari())
+                {
+                    velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
+                    velocityY = DASH_VELOCITY_Y;
+                    dashTime = DASH_TIME;
+                    isUsedDash = true;
+                }
+                else if (IsMaki())
+                {
+                    velocityY = JUMP_VELOCITY;
+                    GameObject effect = Instantiate(jumpEffect);
+                    effect.transform.position = new Vector2(transform.position.x + (isRight ? -0.3f : 0.3f), transform.position.y);
+                    effect.transform.localScale = new Vector2(effect.transform.localScale.x * (isRight ? 1 : -1), effect.transform.localScale.y);
+                    isUsedDash = true;
+                }
             }
         }
     }
@@ -204,13 +215,13 @@ public class Player : MonoBehaviour
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
 
-        if (switchState == SwitchState.YUKARI || switchState == SwitchState.YUKARI_ONLY)
+        if (IsYukari())
         {
             GameObject bullet = Instantiate(starBullet);
             bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
             bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
             bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
-        } else
+        } else if (IsMaki())
         {
             GameObject bullet = Instantiate(mustangBullet);
             bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
@@ -290,5 +301,14 @@ public class Player : MonoBehaviour
             velocityX = isEnemyRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X;
             rb.velocity = new Vector2(velocityX, DAMAGE_VELOCITY_Y);
         }
+    }
+    
+    private bool IsYukari()
+    {
+        return switchState == SwitchState.YUKARI || switchState == SwitchState.YUKARI_ONLY;
+    }
+    private bool IsMaki()
+    {
+        return switchState == SwitchState.MAKI || switchState == SwitchState.MAKI_ONLY;
     }
 }
