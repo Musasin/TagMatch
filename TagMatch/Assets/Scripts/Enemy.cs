@@ -38,8 +38,8 @@ public class Enemy : MonoBehaviour
     
     private void UpdateColor()
     {
-        float alpha = (invincibleTime > 0) ? 0.5f : 1.0f;
-        sr.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+        float f = (invincibleTime > 0) ? 0.5f : 1.0f;
+        sr.color = new Color(1.0f, f, f, f);
     }
 
     public void HitWall()
