@@ -90,8 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  deadEffect: {fileID: 6131153675658059256, guid: f97e6d6c2555942e780d61406ed9f58a,
-    type: 3}
+  hitEffect: {fileID: 1288359779778476, guid: 1d4b5b94f11394b71a6b98fb2c72ff32, type: 3}
   isTrample: 1
 --- !u!61 &371683277016192917
 BoxCollider2D:

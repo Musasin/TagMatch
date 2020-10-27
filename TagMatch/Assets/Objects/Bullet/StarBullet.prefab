@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  deadEffect: {fileID: 6131153675658059256, guid: f97e6d6c2555942e780d61406ed9f58a,
+  hitEffect: {fileID: 6131153675658059256, guid: f97e6d6c2555942e780d61406ed9f58a,
     type: 3}
   isTrample: 0
 --- !u!61 &449726761122187683

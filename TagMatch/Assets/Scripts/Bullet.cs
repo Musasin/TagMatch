@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public int damage;
-    public GameObject deadEffect;
+    public GameObject hitEffect;
     public bool isTrample;
     float time;
     const float MINIMUM_TIME = 0.1f;
@@ -44,9 +44,9 @@ public class Bullet : MonoBehaviour
         Dead();
     }
 
-    private void PlayDeadEffect()
+    private void PlayHitEffect()
     {
-        GameObject effect = Instantiate(deadEffect);
+        GameObject effect = Instantiate(hitEffect);
         effect.transform.position = transform.position;
     }
     
@@ -62,7 +62,7 @@ public class Bullet : MonoBehaviour
         {
             if (!isTrample)
             {
-                PlayDeadEffect();
+                PlayHitEffect();
                 Dead();
             }
         }
@@ -74,9 +74,9 @@ public class Bullet : MonoBehaviour
                 if (!enemy.IsInvincible())
                 {
                     enemy.HitBullet(damage);
+                    PlayHitEffect();
                     if (!isTrample)
                     {
-                        PlayDeadEffect();
                         Dead();
                     }
                 }
