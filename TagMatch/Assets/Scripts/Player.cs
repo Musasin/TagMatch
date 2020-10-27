@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     const float STOP_TIME = 0.3f;
     const float SHOT_IMPOSSIBLE_TIME = 0.4f;
     const float INVINCIBLE_TIME = 0.6f;
+    
+    const int YUKARI_BULLET_EXIST_MAX = 5;
+    const int MAKI_BULLET_EXIST_MAX = 2;
 
     Rigidbody2D rb;
     FootJudgement footJudgement;
@@ -43,6 +46,9 @@ public class Player : MonoBehaviour
     float invincibleTime = 0;
     bool isUsedDash = false;
     bool isRight = true;
+    
+    int yukariBulletCount = 0;
+    int makiBulletCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -172,27 +178,33 @@ public class Player : MonoBehaviour
             float dy = Input.GetAxisRaw("Vertical");
             if (dy > 0)
             {
+                if (IsMaki()) return; // マキさんの上射撃は未実装
+
                 backflipTime = BACKFLIP_TIME;
 
                 Sequence bulletSequence = DOTween.Sequence()
-                    .AppendCallback(() => { InstantiateBullet(isRight ? 30 : 150); })
+                    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 30 : 150); })
                     .AppendInterval(0.1f)
-                    .AppendCallback(() => { InstantiateBullet(isRight ? 45 : 135); })
+                    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 45 : 135); })
                     .AppendInterval(0.1f)
-                    .AppendCallback(() => { InstantiateBullet(isRight ? 60 : 120); });
+                    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 60 : 120); });
 
                 Sequence sequence = DOTween.Sequence()
                     .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360))
                     .Join(bulletSequence);
                 sequence.Play();
             } 
-            else if (Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding()) // しゃがみ判定
-            {
-                InstantiateBullet(isRight ? 0 : 180, true);
-            }
             else
             {
-                InstantiateBullet(isRight ? 0 : 180);
+                bool isSquat = Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding();
+                if (IsYukari() && yukariBulletCount < YUKARI_BULLET_EXIST_MAX)
+                {
+                    InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 0 : 180, isSquat);
+                } 
+                else if (IsMaki() && makiBulletCount < MAKI_BULLET_EXIST_MAX)
+                {
+                    InstantiateBullet(Bullet.BulletType.MAKI, mustangBullet, isRight ? 0 : 180, isSquat);
+                }
             }
 
         }
@@ -217,24 +229,18 @@ public class Player : MonoBehaviour
             shotImpossibleTime = SHOT_IMPOSSIBLE_TIME;
         }
     }
-    private void InstantiateBullet(float angleZ, bool isSquat = false)
+    private void InstantiateBullet(Bullet.BulletType bulletType, GameObject bulletObj, float angleZ, bool isSquat = false)
     {
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
 
-        if (IsYukari())
-        {
-            GameObject bullet = Instantiate(starBullet);
-            bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
-            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
-            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
-        } else if (IsMaki())
-        {
-            GameObject bullet = Instantiate(mustangBullet);
-            bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
-            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
-            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
-        }
+        GameObject bullet = Instantiate(bulletObj);
+        bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
+        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+        bullet.GetComponent<Bullet>().SetBulletType(bulletType);
+        bullet.GetComponent<Bullet>().SetPlayerScript(this);
+        AddBulletCount(bulletType, 1);
     }
     private void UpdateDirection()
     {
@@ -317,5 +323,17 @@ public class Player : MonoBehaviour
     private bool IsMaki()
     {
         return switchState == SwitchState.MAKI || switchState == SwitchState.MAKI_ONLY;
+    }
+
+    public void AddBulletCount(Bullet.BulletType bulletType, int count)
+    {
+        if (bulletType == Bullet.BulletType.YUKARI)
+        {
+            yukariBulletCount += count;
+        } 
+        else if (bulletType == Bullet.BulletType.MAKI)
+        {
+            makiBulletCount += count;
+        }
     }
 }

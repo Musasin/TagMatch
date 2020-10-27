@@ -9,11 +9,18 @@ public class Bullet : MonoBehaviour
     public bool isTrample;
     float time;
     const float MINIMUM_TIME = 0.1f;
+    Player player;
+
+    public enum BulletType
+    {
+        INVALID = 0, YUKARI = 1, MAKI = 2,
+    }
+    BulletType bulletType;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -34,13 +41,18 @@ public class Bullet : MonoBehaviour
             if (sprite.isVisible)
                 return;
         }
-        Destroy(gameObject);
+        Dead();
+    }
+
+    private void PlayDeadEffect()
+    {
+        GameObject effect = Instantiate(deadEffect);
+        effect.transform.position = transform.position;
     }
     
     private void Dead()
     {
-        GameObject effect = Instantiate(deadEffect);
-        effect.transform.position = transform.position;
+        player.AddBulletCount(bulletType, -1);
         Destroy(gameObject);
     }
 
@@ -50,6 +62,7 @@ public class Bullet : MonoBehaviour
         {
             if (!isTrample)
             {
+                PlayDeadEffect();
                 Dead();
             }
         }
@@ -63,10 +76,19 @@ public class Bullet : MonoBehaviour
                     enemy.HitBullet(damage);
                     if (!isTrample)
                     {
+                        PlayDeadEffect();
                         Dead();
                     }
                 }
             }
         }
+    }
+
+    public void SetPlayerScript(Player p)
+    {
+        player = p;
+    }
+    public void SetBulletType(BulletType type) {
+        bulletType = type;    
     }
 }
