@@ -4404,6 +4404,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1125446380103258044, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
+        type: 3}
+      propertyPath: invincibleEffect
+      value: 
+      objectReference: {fileID: 8094870835206760138, guid: bf7bef80b6bf74a099b2765b41e2151b,
+        type: 3}
     - target: {fileID: 1125446380103258047, guid: e80ebdb3c65a74bb7a9e332d9a59743a,
         type: 3}
       propertyPath: m_Name

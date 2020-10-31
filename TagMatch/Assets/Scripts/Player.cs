@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Player : MonoBehaviour
 {
     public GameObject starBullet, mustangBullet;
-    public GameObject jumpEffect;
+    public GameObject jumpEffect, invincibleEffect;
 
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     float stopTime = 0;
     float shotImpossibleTime = 0;
     float invincibleTime = 0;
+    float squatInvincibleTime = 0;
     bool isUsedDash = false;
     bool isRight = true;
     
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
         stopTime -= Time.deltaTime;
         shotImpossibleTime -= Time.deltaTime;
         invincibleTime -= Time.deltaTime;
+        squatInvincibleTime -= Time.deltaTime;
 
         velocityX = rb.velocity.x;
         velocityY = rb.velocity.y;
@@ -278,6 +280,22 @@ public class Player : MonoBehaviour
 
         if (animationState != newAnimationState)
         {
+            if (IsMaki())
+            {
+                // 他のステート -> しゃがみ でしゃがみ無敵
+                if (newAnimationState == AnimationState.SQUAT)
+                {
+                    squatInvincibleTime = 1.0f;
+                    GameObject effect = Instantiate(invincibleEffect);
+                    effect.transform.position = new Vector2(transform.position.x, transform.position.y - 0.3f);
+                } 
+                // しゃがみ -> 他のステート でしゃがみ無敵解除
+                else if (animationState == AnimationState.SQUAT)
+                {
+                    squatInvincibleTime = 0.0f;
+                }
+            }
+
             animationState = newAnimationState;
             yukariAnimator.SetInteger("state", (int)animationState);
             makiAnimator.SetInteger("state", (int)animationState);
@@ -285,7 +303,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateColor()
     {
-        float alpha = (invincibleTime > 0) ? 0.5f : 1.0f;
+        float alpha = (invincibleTime > 0 || squatInvincibleTime > 0) ? 0.5f : 1.0f;
         if (dashTime > 0)
         {
             yukariImage.GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.8f, 1.0f, alpha);
@@ -301,7 +319,7 @@ public class Player : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (invincibleTime > 0)
+        if (invincibleTime > 0 || squatInvincibleTime > 0)
         {
             return;
         }
