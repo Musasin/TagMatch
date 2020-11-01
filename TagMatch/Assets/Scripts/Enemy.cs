@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     
     float invincibleTime = 0;
     bool isKnockBack;
+    bool isDead;
     Rigidbody2D rb;
     SpriteRenderer sr;
     Vector2 defaultScale;
@@ -88,17 +89,29 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
         hp -= damage;
-        invincibleTime = INVINCIBLE_TIME;
         GameObject dp = Instantiate(damagePointEffect);
         dp.transform.position = transform.position;
         dp.GetComponent<DamagePointEffect>().SetDamagePointAndPlay(damage);
 
-        if (!isSuperArmor)
+        if (hp <= 0)
         {
-            isKnockBack = true;
-            bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0; // vecolicyがマイナスなら右から左に向かっている
+            isDead = true;
+            transform.GetComponent<BoxCollider2D>().enabled = false;
+            bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0;
             rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
+            transform.Rotate(new Vector3(0, 0, 180.0f));
+        } 
+        else
+        {
+            invincibleTime = INVINCIBLE_TIME;
+            if (!isSuperArmor)
+            {
+                isKnockBack = true;
+                bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0; // vecolicyがマイナスなら右から左に向かっている
+                rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
+            }
         }
     }
     public bool IsInvincible()
