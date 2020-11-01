@@ -73,7 +73,7 @@ public class Bullet : MonoBehaviour
             {
                 if (!enemy.IsInvincible())
                 {
-                    enemy.HitBullet(damage);
+                    enemy.HitBullet(damage, gameObject);
                     PlayHitEffect();
                     if (!isTrample)
                     {

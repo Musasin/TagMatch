@@ -9,12 +9,17 @@ public class Enemy : MonoBehaviour
     public float velocityX;
     public float velocityY;
     public bool isFall;
+    public bool isSuperArmor;
     public bool isRight;
     public GameObject damagePointEffect;
-
+    
     const float INVINCIBLE_TIME = 0.2f;
+    const float STOP_TIME = 0.2f;
+    const float DAMAGE_VELOCITY_X = 4.0f;
+    const float DAMAGE_VELOCITY_Y = 8.0f;
     
     float invincibleTime = 0;
+    bool isKnockBack;
     Rigidbody2D rb;
     SpriteRenderer sr;
     Vector2 defaultScale;
@@ -31,9 +36,14 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         invincibleTime -= Time.deltaTime;
+        UpdateColor();
+        
+        if (isKnockBack) // 被ダメージ硬直
+        {
+            return;
+        }
         rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), rb.velocity.y);
         transform.localScale = new Vector2(defaultScale.x * (isRight ? -1 : 1), defaultScale.y); // デフォルトは左向き
-        UpdateColor();
     }
     
     private void UpdateColor()
@@ -44,16 +54,35 @@ public class Enemy : MonoBehaviour
 
     public void HitWall()
     {
-        isRight = !isRight;
+        // 向いてる方向と進んでいる方向が一致している時のみ方向転換する (ノックバックで背中から当たる場合があるため)
+        if (rb.velocity.x > 0 && isRight || rb.velocity.x < 0 && !isRight)
+        {
+            isRight = !isRight;
+        }
+        if (isKnockBack) // 壁にぶつかってもノックバック状態を解除
+        {
+            isKnockBack = false;
+        }
+    }
+    public void HitGround()
+    {
+        if (isKnockBack) // 着地でノックバック状態を解除
+        {
+            isKnockBack = false;
+        }
     }
     public void HitGroundEnd()
     {
+        if (isKnockBack) // ダメージを受けて足が離れた時は判定しない
+        {
+            return;
+        }
         if (!isFall)
         {
             isRight = !isRight;
         }
     }
-    public void HitBullet(int damage)
+    public void HitBullet(int damage, GameObject hitObject)
     {
         if (invincibleTime > 0)
         {
@@ -64,6 +93,13 @@ public class Enemy : MonoBehaviour
         GameObject dp = Instantiate(damagePointEffect);
         dp.transform.position = transform.position;
         dp.GetComponent<DamagePointEffect>().SetDamagePointAndPlay(damage);
+
+        if (!isSuperArmor)
+        {
+            isKnockBack = true;
+            bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0; // vecolicyがマイナスなら右から左に向かっている
+            rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
+        }
     }
     public bool IsInvincible()
     {

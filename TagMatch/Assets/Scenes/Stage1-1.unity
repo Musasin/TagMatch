@@ -4599,6 +4599,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5724149761113533262, guid: f58eb907d41854a46bc44e593d54e4d6,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 066504c253b8640bf94d0c6acccb97b8, type: 2}
     - target: {fileID: 7893879862553920029, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}
       propertyPath: isRight
@@ -5944,12 +5949,12 @@ PrefabInstance:
     - target: {fileID: 5724149761113533259, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.37
+      value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: 5724149761113533259, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.17
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5724149761113533259, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}
@@ -6006,6 +6011,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5724149761113533262, guid: f58eb907d41854a46bc44e593d54e4d6,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 066504c253b8640bf94d0c6acccb97b8, type: 2}
     - target: {fileID: 7893879862553920029, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}
       propertyPath: isRight
@@ -15422,10 +15432,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5724149761113533262, guid: f58eb907d41854a46bc44e593d54e4d6,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 066504c253b8640bf94d0c6acccb97b8, type: 2}
     - target: {fileID: 7893879862553920029, guid: f58eb907d41854a46bc44e593d54e4d6,
         type: 3}
       propertyPath: velocityX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893879862553920029, guid: f58eb907d41854a46bc44e593d54e4d6,
+        type: 3}
+      propertyPath: isSuperArmor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58eb907d41854a46bc44e593d54e4d6, type: 3}

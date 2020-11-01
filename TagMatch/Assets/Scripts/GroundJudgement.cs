@@ -24,6 +24,7 @@ public class GroundJudgement : MonoBehaviour
         if (collision.gameObject.tag == "Map")
         {
             hitObjectCount++;
+            enemy.HitGround();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
