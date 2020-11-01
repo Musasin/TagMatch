@@ -39,6 +39,11 @@ public class Enemy : MonoBehaviour
         invincibleTime -= Time.deltaTime;
         UpdateColor();
         
+        if (isDead)
+        {
+            DestroyWhenOffScreen();
+            return;
+        }
         if (isKnockBack) // 被ダメージ硬直
         {
             return;
@@ -51,6 +56,16 @@ public class Enemy : MonoBehaviour
     {
         float f = (invincibleTime > 0) ? 0.5f : 1.0f;
         sr.color = new Color(1.0f, f, f, f);
+    }
+    private void DestroyWhenOffScreen()
+    {
+        SpriteRenderer[] spriteList = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in spriteList)
+        {
+            if (sprite.isVisible)
+                return;
+        }
+        Destroy(gameObject);
     }
 
     public void HitWall()
