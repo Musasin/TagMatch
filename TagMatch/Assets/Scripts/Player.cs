@@ -319,6 +319,14 @@ public class Player : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Item")
+        {
+            Coin coin = collision.gameObject.GetComponent<Coin>();
+            if (coin != null)
+            {
+                coin.GetCoin();
+            }
+        }
         if (invincibleTime > 0 || squatInvincibleTime > 0)
         {
             return;

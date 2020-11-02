@@ -7,6 +7,8 @@ TagManager:
   - Map
   - Enemy
   - Damage
+  - Item
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -85,6 +87,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1528146579
+    locked: 0
+  - name: Item
+    uniqueID: 3769319575
     locked: 0
   - name: Map5
     uniqueID: 4121127613

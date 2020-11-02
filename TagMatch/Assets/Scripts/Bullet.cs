@@ -81,6 +81,14 @@ public class Bullet : MonoBehaviour
                     }
                 }
             }
+        } 
+        else if (collision.gameObject.tag == "Item")
+        {
+            Coin coin = collision.gameObject.GetComponent<Coin>();
+            if (coin != null)
+            {
+                coin.GetCoin();
+            }
         }
     }
 
