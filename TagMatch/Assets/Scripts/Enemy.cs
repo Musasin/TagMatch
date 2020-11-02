@@ -18,19 +18,37 @@ public class Enemy : MonoBehaviour
     const float DAMAGE_VELOCITY_X = 4.0f;
     const float DAMAGE_VELOCITY_Y = 8.0f;
     
+    int maxHp;
     float invincibleTime = 0;
     bool isKnockBack;
     bool isDead;
     Rigidbody2D rb;
     SpriteRenderer sr;
+    Vector2 defaultPosition;
     Vector2 defaultScale;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxHp = hp;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        defaultPosition = transform.localPosition;
         defaultScale = transform.localScale;
+    }
+
+    public void Reset()
+    {
+        hp = maxHp;
+        invincibleTime = 0;
+        isKnockBack = false;
+        isDead = false;
+        transform.localPosition = defaultPosition;
+        transform.localScale = defaultScale;
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+        transform.GetComponent<BoxCollider2D>().enabled = true;
+        rb.velocity = Vector2.zero;
+        
     }
 
     // Update is called once per frame
@@ -38,10 +56,15 @@ public class Enemy : MonoBehaviour
     {
         invincibleTime -= Time.deltaTime;
         UpdateColor();
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reset();
+        }
         
         if (isDead)
         {
-            DestroyWhenOffScreen();
+            //DestroyWhenOffScreen();
             return;
         }
         if (isKnockBack) // 被ダメージ硬直
