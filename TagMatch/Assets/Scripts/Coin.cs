@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public int point;
+    public int score;
+
     Animator anim;
     bool isGot;
 
