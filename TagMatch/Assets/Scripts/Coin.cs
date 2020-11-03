@@ -24,7 +24,12 @@ public class Coin : MonoBehaviour
 
     public void GetCoin()
     {
+        if (isGot)
+            return;
+
         isGot = true;
         anim.SetBool("isGot", isGot);
+        StaticValues.score += score;
+        StaticValues.coinCount += point;
     }
 }

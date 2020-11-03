@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
     AnimationState animationState, newAnimationState;
-    enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
+    public enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
     SwitchState switchState;
 
     float velocityX = 0;
@@ -361,5 +361,10 @@ public class Player : MonoBehaviour
         {
             makiBulletCount += count;
         }
+    }
+
+    public SwitchState GetSwitchState()
+    {
+        return switchState;
     }
 }
