@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     const float DASH_VELOCITY_X = 45.0f;
     const float DASH_VELOCITY_Y = 0.0f;
     const float BACKFLIP_VELOCITY_X = 10.0f;
+    const float DOWNSHOT_VELOCITY_Y = 7.0f;
     const float DAMAGE_VELOCITY_X = 4.0f;
     const float DAMAGE_VELOCITY_Y = 8.0f;
     const float DASH_TIME = 0.13f;
     const float BACKFLIP_TIME = 0.4f;
+    const float DOWNSHOT_TIME = 0.4f;
     const float SHOT_POWER = 400.0f;
     
     const float STOP_TIME = 0.3f;
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
     float velocityY = 0;
     float dashTime = 0;
     float backflipTime = 0;
+    float downShotTime = 0;
     float stopTime = 0;
     float shotImpossibleTime = 0;
     float invincibleTime = 0;
@@ -75,6 +78,7 @@ public class Player : MonoBehaviour
     {
         dashTime -= Time.deltaTime;
         backflipTime -= Time.deltaTime;
+        downShotTime -= Time.deltaTime;
         stopTime -= Time.deltaTime;
         shotImpossibleTime -= Time.deltaTime;
         invincibleTime -= Time.deltaTime;
@@ -87,7 +91,7 @@ public class Player : MonoBehaviour
         {
             UpdateMove();
             UpdateDirection();
-            if (dashTime <= 0 && backflipTime <= 0) {
+            if (dashTime <= 0 && backflipTime <= 0 && downShotTime <= 0) {
                 UpdateJump();
                 if (shotImpossibleTime <= 0)
                 {
@@ -114,6 +118,12 @@ public class Player : MonoBehaviour
         {
             velocityX = isRight ? -BACKFLIP_VELOCITY_X : BACKFLIP_VELOCITY_X;
             velocityX *= (backflipTime / BACKFLIP_TIME);
+            return;
+        }
+        if (downShotTime > 0)
+        {
+            velocityY = DOWNSHOT_VELOCITY_Y;
+            velocityY *= ((DOWNSHOT_TIME - downShotTime) / DOWNSHOT_TIME);
             return;
         }
 
@@ -180,22 +190,49 @@ public class Player : MonoBehaviour
             float dy = Input.GetAxisRaw("Vertical");
             if (dy > 0)
             {
-                if (IsMaki()) return; // マキさんの上射撃は未実装
+                if (IsYukari())
+                {
+                    backflipTime = BACKFLIP_TIME;
 
-                backflipTime = BACKFLIP_TIME;
+                    Sequence bulletSequence = DOTween.Sequence()
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 30 : 150); })
+                        .AppendInterval(0.1f)
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 45 : 135); })
+                        .AppendInterval(0.1f)
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 60 : 120); });
 
-                Sequence bulletSequence = DOTween.Sequence()
-                    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 30 : 150); })
-                    .AppendInterval(0.1f)
-                    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 45 : 135); })
-                    .AppendInterval(0.1f)
-                    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 60 : 120); });
-
-                Sequence sequence = DOTween.Sequence()
-                    .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360))
-                    .Join(bulletSequence);
-                sequence.Play();
+                    Sequence sequence = DOTween.Sequence()
+                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360))
+                        .Join(bulletSequence);
+                    sequence.Play();
+                }
+                else if (IsMaki()) 
+                {
+                    // マキさんの上射撃は未実装
+                }
             } 
+            else if (dy < 0 && !footJudgement.GetIsLanding()) // 空中下射撃
+            {
+                if (IsYukari())
+                {
+                    downShotTime = DOWNSHOT_TIME;
+
+                    Sequence sequence = DOTween.Sequence()
+                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -45), BACKFLIP_TIME / 8))
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -45 : -135); })
+                        .AppendInterval(BACKFLIP_TIME / 8)
+                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -60), BACKFLIP_TIME / 8))
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -80 : -100); })
+                        .AppendInterval(BACKFLIP_TIME / 8)
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -120 : -60); })
+                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -360), BACKFLIP_TIME * 4 / 8, RotateMode.FastBeyond360));
+                    sequence.Play();
+                }
+                else if (IsMaki()) 
+                {
+                    // マキさんの空中下射撃は未実装
+                }
+            }
             else
             {
                 bool isSquat = Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding();
@@ -208,7 +245,6 @@ public class Player : MonoBehaviour
                     InstantiateBullet(Bullet.BulletType.MAKI, mustangBullet, isRight ? 0 : 180, isSquat);
                 }
             }
-
         }
     }
     private void UpdateSwitch()
