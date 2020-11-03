@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public GameObject hitEffect;
     public bool isTrample;
     float time;
+    float deadTime;
     const float MINIMUM_TIME = 0.1f;
     Player player;
 
@@ -17,6 +18,7 @@ public class Bullet : MonoBehaviour
         YUKARI, 
         MAKI,
         MAKI_BARRIER,
+        MAKI_ELECTRIC_FIRE,
     }
     BulletType bulletType;
 
@@ -31,6 +33,10 @@ public class Bullet : MonoBehaviour
     {
         time += Time.deltaTime;
         DestroyWhenOffScreen();
+        if (deadTime != 0 && time > deadTime)
+        {
+            Dead();
+        }
     }
 
     private void DestroyWhenOffScreen()
@@ -47,10 +53,10 @@ public class Bullet : MonoBehaviour
         Dead();
     }
 
-    private void PlayHitEffect()
+    private void PlayHitEffect(Vector2 pos)
     {
         GameObject effect = Instantiate(hitEffect);
-        effect.transform.position = transform.position;
+        effect.transform.position = pos;
     }
     
     private void Dead()
@@ -65,7 +71,7 @@ public class Bullet : MonoBehaviour
         {
             if (!isTrample)
             {
-                PlayHitEffect();
+                PlayHitEffect(transform.position);
                 Dead();
             }
         }
@@ -77,7 +83,7 @@ public class Bullet : MonoBehaviour
                 if (!enemy.IsInvincible())
                 {
                     enemy.HitBullet(damage, gameObject);
-                    PlayHitEffect();
+                    PlayHitEffect(collision.gameObject.transform.position);
                     if (!isTrample)
                     {
                         Dead();
@@ -101,5 +107,9 @@ public class Bullet : MonoBehaviour
     }
     public void SetBulletType(BulletType type) {
         bulletType = type;    
+    }
+    public void SetDeadTime(float dt)
+    {
+        deadTime = dt;
     }
 }

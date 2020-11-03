@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    public GameObject starBullet, mustangBullet, electricBarrier;
+    public GameObject starBullet, mustangBullet, electricBarrier, greatElectricFire;
     public GameObject jumpEffect, invincibleEffect;
 
     const float MOVE_VELOCITY = 6.0f;
@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
     
     int yukariBulletCount = 0;
     int makiBulletCount = 0;
+    int barrierBulletCount = 0;
+    int electricFireCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -209,8 +211,16 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki()) 
                 {
-                    invincibleTime = BARRIER_INVINCIBLE_TIME;
-                    InstantiateSpecialBullet(Bullet.BulletType.MAKI_BARRIER, electricBarrier);
+                    if (barrierBulletCount > 0)
+                    {
+                        InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
+                        AddBulletCount(Bullet.BulletType.MAKI_ELECTRIC_FIRE, 1);
+                    } else
+                    {
+                        invincibleTime = BARRIER_INVINCIBLE_TIME;
+                        InstantiateSpecialBullet(Bullet.BulletType.MAKI_BARRIER, electricBarrier, BARRIER_INVINCIBLE_TIME);
+                        AddBulletCount(Bullet.BulletType.MAKI_BARRIER, 1);
+                    }
                 }
             } 
             else if (dy < 0 && !footJudgement.GetIsLanding()) // 空中下射撃
@@ -282,12 +292,13 @@ public class Player : MonoBehaviour
         bullet.GetComponent<Bullet>().SetPlayerScript(this);
         AddBulletCount(bulletType, 1);
     }
-    private void InstantiateSpecialBullet(Bullet.BulletType bulletType, GameObject bulletObj)
+    private void InstantiateSpecialBullet(Bullet.BulletType bulletType, GameObject bulletObj, float deadTime)
     {
         GameObject bullet = Instantiate(bulletObj);
-        bullet.transform.position = bulletPivot.transform.position;
+        bullet.transform.position = transform.position;
         bullet.GetComponent<Bullet>().SetBulletType(bulletType);
         bullet.GetComponent<Bullet>().SetPlayerScript(this);
+        bullet.GetComponent<Bullet>().SetDeadTime(deadTime);
     }
     private void UpdateDirection()
     {
@@ -405,6 +416,14 @@ public class Player : MonoBehaviour
         else if (bulletType == Bullet.BulletType.MAKI)
         {
             makiBulletCount += count;
+        } 
+        else if (bulletType == Bullet.BulletType.MAKI_BARRIER)
+        {
+            barrierBulletCount += count;
+        }
+        else if (bulletType == Bullet.BulletType.MAKI_ELECTRIC_FIRE)
+        {
+            electricFireCount += count;
         }
     }
 
