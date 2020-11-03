@@ -13,7 +13,10 @@ public class Bullet : MonoBehaviour
 
     public enum BulletType
     {
-        INVALID = 0, YUKARI = 1, MAKI = 2,
+        INVALID = 0, 
+        YUKARI, 
+        MAKI,
+        MAKI_BARRIER,
     }
     BulletType bulletType;
 
@@ -56,7 +59,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Map")
         {

@@ -157,7 +157,11 @@ MonoBehaviour:
     type: 3}
   mustangBullet: {fileID: 4638337299276677076, guid: 543622361302447e79971a208c6082ff,
     type: 3}
+  electricBarrier: {fileID: 2232852547091252447, guid: 7dcd3e05a0c5f41ffafaf0102d1eb827,
+    type: 3}
   jumpEffect: {fileID: 6879508804347818747, guid: b6d79ebe498a94f808417e890b3220e3,
+    type: 3}
+  invincibleEffect: {fileID: 8094870835206760138, guid: bf7bef80b6bf74a099b2765b41e2151b,
     type: 3}
 --- !u!1 &1125446380228976033
 GameObject:

@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    public GameObject starBullet, mustangBullet;
+    public GameObject starBullet, mustangBullet, electricBarrier;
     public GameObject jumpEffect, invincibleEffect;
 
     const float MOVE_VELOCITY = 6.0f;
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     const float STOP_TIME = 0.3f;
     const float SHOT_IMPOSSIBLE_TIME = 0.4f;
     const float INVINCIBLE_TIME = 0.6f;
+    const float BARRIER_INVINCIBLE_TIME = 3.0f;
     
     const int YUKARI_BULLET_EXIST_MAX = 5;
     const int MAKI_BULLET_EXIST_MAX = 2;
@@ -208,7 +209,8 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki()) 
                 {
-                    // マキさんの上射撃は未実装
+                    invincibleTime = BARRIER_INVINCIBLE_TIME;
+                    InstantiateSpecialBullet(Bullet.BulletType.MAKI_BARRIER, electricBarrier);
                 }
             } 
             else if (dy < 0 && !footJudgement.GetIsLanding()) // 空中下射撃
@@ -279,6 +281,13 @@ public class Player : MonoBehaviour
         bullet.GetComponent<Bullet>().SetBulletType(bulletType);
         bullet.GetComponent<Bullet>().SetPlayerScript(this);
         AddBulletCount(bulletType, 1);
+    }
+    private void InstantiateSpecialBullet(Bullet.BulletType bulletType, GameObject bulletObj)
+    {
+        GameObject bullet = Instantiate(bulletObj);
+        bullet.transform.position = bulletPivot.transform.position;
+        bullet.GetComponent<Bullet>().SetBulletType(bulletType);
+        bullet.GetComponent<Bullet>().SetPlayerScript(this);
     }
     private void UpdateDirection()
     {
