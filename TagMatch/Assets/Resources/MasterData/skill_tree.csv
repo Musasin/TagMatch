@@ -1,0 +1,37 @@
+unique_key,name,description,level,release_condition,pos_x,pos_y,r_key,l_key,u_key,d_key
+y_heart_1,HP+25,ゆかりの最大HPが25増加する,0,,-260,235,y_heart_2,m_heart_1,y_down_1,y_damage_1
+y_heart_2,HP+25,ゆかりの最大HPが25増加する,1,y_heart_1,-200,235,y_heart_3,y_heart_1,y_down_1,y_damage_2
+y_heart_3,HP+25,ゆかりの最大HPが25増加する,2,y_heart_2,-140,235,y_heart_4,y_heart_2,y_down_2,y_damage_3
+y_heart_4,HP+25,ゆかりの最大HPが25増加する,3,y_heart_3,-80,235,m_heart_4,y_heart_3,y_down_2,y_damage_4
+m_heart_4,HP+25,マキの最大HPが25増加する,3,m_heart_3,80,235,m_heart_3,y_heart_4,m_down_2,m_damage_4
+m_heart_3,HP+25,マキの最大HPが25増加する,2,m_heart_2,140,235,m_heart_2,m_heart_4,m_down_2,m_damage_3
+m_heart_2,HP+25,マキの最大HPが25増加する,1,m_heart_1,200,235,m_heart_1,m_heart_3,m_down_1,m_damage_2
+m_heart_1,HP+25,マキの最大HPが25増加する,0,,260,235,y_heart_1,m_heart_2,m_down_1,m_damage_1
+y_damage_1,攻撃力+25%,ゆかりの攻撃によるダメージが25%増加する,0,,-260,165,y_damage_2,m_damage_1,y_heart_1,y_mp_1
+y_damage_2,攻撃力+25%,ゆかりの攻撃によるダメージが25%増加する,1,y_damage_1,-200,165,y_damage_3,y_damage_1,y_heart_2,y_mp_2
+y_damage_3,攻撃力+25%,ゆかりの攻撃によるダメージが25%増加する,2,y_damage_2,-140,165,y_damage_4,y_damage_2,y_heart_3,y_mp_3
+y_damage_4,攻撃力+25%,ゆかりの攻撃によるダメージが25%増加する,3,y_damage_3,-80,165,m_damage_4,y_damage_3,y_heart_4,y_mp_4
+m_damage_4,攻撃力+25%,マキの攻撃によるダメージが25%増加する,3,m_damage_3,80,165,m_damage_3,y_damage_4,m_heart_4,m_mp_4
+m_damage_3,攻撃力+25%,マキの攻撃によるダメージが25%増加する,2,m_damage_2,140,165,m_damage_2,m_damage_4,m_heart_3,m_mp_3
+m_damage_2,攻撃力+25%,マキの攻撃によるダメージが25%増加する,1,m_damage_1,200,165,m_damage_1,m_damage_3,m_heart_2,m_mp_2
+m_damage_1,攻撃力+25%,マキの攻撃によるダメージが25%増加する,0,,260,165,y_damage_1,m_damage_2,m_heart_1,m_mp_1
+y_mp_1,MP+25,ゆかりの最大MPが25増加する,0,,-260,95,y_mp_2,m_mp_1,y_damage_1,y_dash_1
+y_mp_2,MP+25,ゆかりの最大MPが25増加する,1,y_mp_1,-200,95,y_mp_3,y_mp_1,y_damage_2,y_dash_1
+y_mp_3,MP+25,ゆかりの最大MPが25増加する,2,y_mp_2,-140,95,y_mp_4,y_mp_2,y_damage_3,y_dash_2
+y_mp_4,MP+25,ゆかりの最大MPが25増加する,3,y_mp_3,-80,95,m_mp_4,y_mp_3,y_damage_4,y_dash_2
+m_mp_4,MP+25,マキの最大MPが25増加する,3,m_mp_3,80,95,m_mp_3,y_mp_4,m_damage_4,m_jump_2
+m_mp_3,MP+25,マキの最大MPが25増加する,2,m_mp_2,140,95,m_mp_2,m_mp_4,m_damage_3,m_jump_2
+m_mp_2,MP+25,マキの最大MPが25増加する,1,m_mp_1,200,95,m_mp_1,m_mp_3,m_damage_2,m_jump_1
+m_mp_1,MP+25,マキの最大MPが25増加する,0,,260,95,y_mp_1,m_mp_2,m_damage_1,m_jump_1
+y_dash_1,空中ダッシュ,【[ジャンプ中]ジャンプボタン】\n空中で前方にダッシュする\n消費MP: 5,0,,-215,20,y_dash_2,m_jump_1,y_mp_2,y_shot_1
+y_dash_2,ダッシュ中無敵,空中ダッシュ中無敵になる,0,y_dash_2,-80,20,m_jump_2,y_dash_1,y_mp_4,y_shot_2
+m_jump_2,くるりんジャンプ,二段ジャンプ中に攻撃が発生する,0,m_jump_1,80,20,m_jump_1,y_dash_2,m_mp_4,m_shot_2
+m_jump_1,二段ジャンプ,【[ジャンプ中]ジャンプボタン】\n空中でもう一度ジャンプする\n消費MP: 5,0,,215,20,y_dash_1,m_jump_2,m_mp_2,m_shot_1
+y_shot_1,対空射撃,【上+射撃ボタン】\n後方に転がりながら対空射撃を行う\n消費MP: 5,0,,-215,-60,y_shot_2,m_shot_1,y_dash_1,y_down_1
+y_shot_2,対地射撃,【[ジャンプ中]下+射撃ボタン】\n空中で斜め下方向に攻撃する\n滞空時間も少し伸びる\n消費MP: 10,0,,-80,-60,m_shot_2,y_shot_1,y_dash_2,y_down_2
+m_shot_2,グレートエレキファイヤー,【[エレキバリヤー展開中]上+射撃ボタン】\n上空から雷を呼び出し、\n自身の周囲に大ダメージを与える\n消費MP: 30,0,m_shot_1,80,-60,m_shot_1,y_shot_2,m_jump_2,m_down_2
+m_shot_1,エレキバリヤー,【上+射撃ボタン】\n自身の周囲に攻撃するバリアを展開し、\n少しの間無敵となる\n消費MP: 20,0,,215,-60,y_shot_1,m_shot_2,m_jump_1,m_down_1
+y_down_1,低姿勢射撃,【下+射撃ボタン】\nしゃがみながら攻撃する,0,,-215,-140,y_down_2,m_down_1,y_shot_1,y_heart_2
+y_down_2,精密射撃,低姿勢射撃中の攻撃力が50%増加する,0,y_down_1,-80,-140,m_down_2,y_down_1,y_shot_2,y_heart_4
+m_down_2,かくれる,しゃがみ中少しの間無敵になる,0,,80,-140,m_down_1,y_down_2,m_shot_2,m_heart_4
+m_down_1,ヒール,【下+射撃ボタン】\n味方のHPを50回復する\n消費MP: 20,0,,215,-140,y_down_1,m_down_2,m_shot_1,m_heart_2
