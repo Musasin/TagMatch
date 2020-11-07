@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using DG.Tweening;
 
 public class SkillSelect : MonoBehaviour
 {
@@ -78,9 +79,9 @@ public class SkillSelect : MonoBehaviour
                 nowKey = datas[0];
             }
             var skillData = new SkillTreeData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9],datas[10]);
-            Debug.Log(skillData);
             skillTrees.Add(datas[0], skillData);
         }
+        transform.localPosition = new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y);
     }
 
     // Update is called once per frame
@@ -92,6 +93,8 @@ public class SkillSelect : MonoBehaviour
                 nowKey = skillTrees[nowKey].l_key;
             else if (Input.GetAxisRaw("Horizontal") > 0)
                 nowKey = skillTrees[nowKey].r_key;
+
+            transform.DOLocalMove(new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y), 0.1f).Play();
         }
 
         if (AxisDownChecker.GetAxisDownVertical())
@@ -100,14 +103,38 @@ public class SkillSelect : MonoBehaviour
                 nowKey = skillTrees[nowKey].d_key;
             else if (Input.GetAxisRaw("Vertical") > 0)
                 nowKey = skillTrees[nowKey].u_key;
+            transform.DOLocalMove(new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y), 0.1f).Play();
         }
         
-        Debug.Log(skillTrees[nowKey].pos_x);
-        Debug.Log(skillTrees[nowKey].pos_y);
-        transform.localPosition = new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y);
+        if (Input.GetButtonDown("Fire1"))
+        {
+            StaticValues.AddSkill(skillTrees[nowKey].unique_key, true);
+            UpdateSkillIcons();
+        }
+        
         skillNameText.text = skillTrees[nowKey].name;
         skillDescriptionText.text = skillTrees[nowKey].description.Replace("\\n", lf.ToString());
         
         AxisDownChecker.AxisDownUpdate();
+    }
+
+    void UpdateSkillIcons()
+    {
+        foreach (KeyValuePair<string, SkillTreeData> kvp in skillTrees)
+        {
+            SkillTreeData skill = kvp.Value;
+            if (StaticValues.GetSkill(skill.release_condition))
+            {
+                GameObject rockPanel = skill.gameObject.transform.Find("RockPanel").gameObject;
+                if (rockPanel != null)
+                    rockPanel.gameObject.SetActive(false);
+            }
+            if (StaticValues.GetSkill(skill.unique_key))
+            {
+                GameObject darkPanel = skill.gameObject.transform.Find("DarkPanel").gameObject;
+                if (darkPanel != null)
+                    darkPanel.gameObject.SetActive(false);
+            }
+        }
     }
 }
