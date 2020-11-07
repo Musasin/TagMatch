@@ -5,7 +5,7 @@ using UnityEngine;
 public class StaticValues : MonoBehaviour
 {
     public static int score;
-    public static int coinCount;
+    public static int coinCount = 1000;
     public static float time;
     public static bool isPause;
 

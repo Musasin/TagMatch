@@ -11,7 +11,7 @@ public class SkillSelect : MonoBehaviour
     private char lf = (char)10;
     TextAsset csvFile;
     string nowKey;
-    Text skillNameText, skillDescriptionText;
+    Text skillNameText, skillDescriptionText, costText;
 
     private struct SkillTreeData
     {
@@ -19,6 +19,7 @@ public class SkillSelect : MonoBehaviour
         public string name;
         public string description;
         public int level;
+        public int cost;
         public string release_condition;
         public int pos_x;
         public int pos_y;
@@ -28,12 +29,13 @@ public class SkillSelect : MonoBehaviour
         public string d_key;
         public GameObject gameObject;
 
-        public SkillTreeData(string unique_key, string name, string description, string level, string release_condition, string pos_x, string pos_y, string r_key, string l_key, string u_key, string d_key)
+        public SkillTreeData(string unique_key, string name, string description, string level, string cost, string release_condition, string pos_x, string pos_y, string r_key, string l_key, string u_key, string d_key)
         {
             this.unique_key = unique_key;
             this.name = name;
             this.description = description;
             this.level = int.Parse(level);
+            this.cost = int.Parse(cost);
             this.release_condition = release_condition;
             this.pos_x = int.Parse(pos_x);
             this.pos_y = int.Parse(pos_y);
@@ -61,6 +63,7 @@ public class SkillSelect : MonoBehaviour
     {
         skillNameText = GameObject.Find("SkillNameText").GetComponent<Text>();
         skillDescriptionText = GameObject.Find("SkillDescriptionText").GetComponent<Text>();
+        costText = GameObject.Find("CostText").GetComponent<Text>();
 
         csvFile = Resources.Load("MasterData/skill_tree") as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
@@ -79,7 +82,7 @@ public class SkillSelect : MonoBehaviour
             {
                 nowKey = datas[0];
             }
-            var skillData = new SkillTreeData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9],datas[10]);
+            var skillData = new SkillTreeData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9],datas[10],datas[11]);
             skillTrees.Add(datas[0], skillData);
         }
         transform.localPosition = new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y);
@@ -109,13 +112,20 @@ public class SkillSelect : MonoBehaviour
         
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject effect = Instantiate(skillOpenEffect, transform);
-            StaticValues.AddSkill(skillTrees[nowKey].unique_key, true);
-            UpdateSkillIcons();
+            if (!StaticValues.GetSkill(skillTrees[nowKey].unique_key) && 
+                StaticValues.coinCount >= skillTrees[nowKey].cost &&
+                (StaticValues.GetSkill(skillTrees[nowKey].release_condition) || skillTrees[nowKey].release_condition == ""))
+            {
+                StaticValues.coinCount -= skillTrees[nowKey].cost;
+                Instantiate(skillOpenEffect, transform);
+                StaticValues.AddSkill(skillTrees[nowKey].unique_key, true);
+                UpdateSkillIcons();
+            }
         }
         
         skillNameText.text = skillTrees[nowKey].name;
         skillDescriptionText.text = skillTrees[nowKey].description.Replace("\\n", lf.ToString());
+        costText.text = "-" + skillTrees[nowKey].cost.ToString();
         
         AxisDownChecker.AxisDownUpdate();
     }
@@ -129,13 +139,13 @@ public class SkillSelect : MonoBehaviour
             {
                 GameObject rockPanel = skill.gameObject.transform.Find("RockPanel").gameObject;
                 if (rockPanel != null)
-                    rockPanel.gameObject.SetActive(false);
+                    rockPanel.transform.DOScale(new Vector2(0, 0), 0.5f);
             }
             if (StaticValues.GetSkill(skill.unique_key))
             {
                 GameObject darkPanel = skill.gameObject.transform.Find("DarkPanel").gameObject;
                 if (darkPanel != null)
-                    darkPanel.gameObject.SetActive(false);
+                    darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f);
             }
         }
     }
