@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class SkillSelect : MonoBehaviour
 {
+    public GameObject skillOpenEffect;
     private char lf = (char)10;
     TextAsset csvFile;
     string nowKey;
@@ -108,6 +109,7 @@ public class SkillSelect : MonoBehaviour
         
         if (Input.GetButtonDown("Fire1"))
         {
+            GameObject effect = Instantiate(skillOpenEffect, transform);
             StaticValues.AddSkill(skillTrees[nowKey].unique_key, true);
             UpdateSkillIcons();
         }
