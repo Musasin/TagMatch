@@ -12,6 +12,8 @@ public class SkillSelect : MonoBehaviour
     TextAsset csvFile;
     string nowKey;
     Text skillNameText, skillDescriptionText, costText;
+    bool isEnabled = true;
+    float intervalTime;
 
     private struct SkillTreeData
     {
@@ -86,11 +88,18 @@ public class SkillSelect : MonoBehaviour
             skillTrees.Add(datas[0], skillData);
         }
         transform.localPosition = new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y);
+        
+        // ポーズ中でも動かせるようにタイムスケールを無視する
+        GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isEnabled) 
+            return;
+
         if (AxisDownChecker.GetAxisDownHorizontal())
         {
             if (Input.GetAxisRaw("Horizontal") < 0)
@@ -98,7 +107,7 @@ public class SkillSelect : MonoBehaviour
             else if (Input.GetAxisRaw("Horizontal") > 0)
                 nowKey = skillTrees[nowKey].r_key;
 
-            transform.DOLocalMove(new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y), 0.1f).Play();
+            transform.DOLocalMove(new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y), 0.1f).SetUpdate(true);
         }
 
         if (AxisDownChecker.GetAxisDownVertical())
@@ -107,27 +116,27 @@ public class SkillSelect : MonoBehaviour
                 nowKey = skillTrees[nowKey].d_key;
             else if (Input.GetAxisRaw("Vertical") > 0)
                 nowKey = skillTrees[nowKey].u_key;
-            transform.DOLocalMove(new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y), 0.1f).Play();
+            transform.DOLocalMove(new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y), 0.1f).SetUpdate(true);
         }
         
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Jump"))
         {
             if (!StaticValues.GetSkill(skillTrees[nowKey].unique_key) && 
                 StaticValues.coinCount >= skillTrees[nowKey].cost &&
                 (StaticValues.GetSkill(skillTrees[nowKey].release_condition) || skillTrees[nowKey].release_condition == ""))
             {
                 StaticValues.coinCount -= skillTrees[nowKey].cost;
-                Instantiate(skillOpenEffect, transform);
+                GameObject effect = Instantiate(skillOpenEffect, transform);
+                effect.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
                 StaticValues.AddSkill(skillTrees[nowKey].unique_key, true);
                 UpdateSkillIcons();
             }
         }
+        AxisDownChecker.AxisDownUpdate();
         
         skillNameText.text = skillTrees[nowKey].name;
         skillDescriptionText.text = skillTrees[nowKey].description.Replace("\\n", lf.ToString());
         costText.text = "-" + skillTrees[nowKey].cost.ToString();
-        
-        AxisDownChecker.AxisDownUpdate();
     }
 
     void UpdateSkillIcons()
@@ -139,14 +148,19 @@ public class SkillSelect : MonoBehaviour
             {
                 GameObject rockPanel = skill.gameObject.transform.Find("RockPanel").gameObject;
                 if (rockPanel != null)
-                    rockPanel.transform.DOScale(new Vector2(0, 0), 0.5f);
+                    rockPanel.transform.DOScale(new Vector2(0, 0), 0.5f).SetUpdate(true);
             }
             if (StaticValues.GetSkill(skill.unique_key))
             {
                 GameObject darkPanel = skill.gameObject.transform.Find("DarkPanel").gameObject;
                 if (darkPanel != null)
-                    darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f);
+                    darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f).SetUpdate(true);
             }
         }
+    }
+
+    public void SetEnabled(bool flag)
+    {
+        isEnabled = flag;
     }
 }

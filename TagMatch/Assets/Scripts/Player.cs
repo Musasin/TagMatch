@@ -79,6 +79,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (StaticValues.isPause)
+            return;
+
         dashTime -= Time.deltaTime;
         backflipTime -= Time.deltaTime;
         downShotTime -= Time.deltaTime;
@@ -188,7 +191,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateShot()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Shot"))
         {
             float dy = Input.GetAxisRaw("Vertical");
             if (dy > 0)
