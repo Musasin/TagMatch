@@ -394,6 +394,10 @@ public class Player : MonoBehaviour
         {
             stopTime = STOP_TIME;
             invincibleTime = INVINCIBLE_TIME;
+
+            int dp = collision.gameObject.GetComponent<Damage>().damagePoint;
+            if (IsYukari()) StaticValues.yukariHP -= dp;
+            else if (IsMaki()) StaticValues.makiHP -= dp;
             
             bool isEnemyRight = transform.position.x < collision.gameObject.transform.position.x;
             velocityX = isEnemyRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X;
