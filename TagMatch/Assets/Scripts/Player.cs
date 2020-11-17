@@ -21,6 +21,14 @@ public class Player : MonoBehaviour
     const float DOWNSHOT_TIME = 0.4f;
     const float SHOT_POWER = 400.0f;
     
+    const int MP_COST_YUKARI_DASH = 5;
+    const int MP_COST_YUKARI_UP_SHOT = 5;
+    const int MP_COST_YUKARI_DOWN_SHOT = 10;
+
+    const int MP_COST_MAKI_JUMP = 5;
+    const int MP_COST_MAKI_BARRIER = 20;
+    const int MP_COST_MAKI_ELECTRIC_FIRE = 30;
+    
     const float STOP_TIME = 0.3f;
     const float SHOT_IMPOSSIBLE_TIME = 0.4f;
     const float INVINCIBLE_TIME = 0.6f;
@@ -171,15 +179,17 @@ public class Player : MonoBehaviour
             }
             else if (!isUsedDash)
             {
-                if (IsYukari())
+                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DASH)
                 {
+                    StaticValues.yukariMP -= MP_COST_YUKARI_DASH;
                     velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
                     velocityY = DASH_VELOCITY_Y;
                     dashTime = DASH_TIME;
                     isUsedDash = true;
                 }
-                else if (IsMaki())
+                else if (IsMaki() && StaticValues.makiMP >= MP_COST_MAKI_JUMP)
                 {
+                    StaticValues.makiMP -= MP_COST_MAKI_JUMP;
                     velocityY = JUMP_VELOCITY;
                     GameObject effect = Instantiate(jumpEffect);
                     effect.transform.position = new Vector2(transform.position.x + (isRight ? -0.3f : 0.3f), transform.position.y);
@@ -196,9 +206,10 @@ public class Player : MonoBehaviour
             float dy = Input.GetAxisRaw("Vertical");
             if (dy > 0)
             {
-                if (IsYukari())
+                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_UP_SHOT)
                 {
                     backflipTime = BACKFLIP_TIME;
+                    StaticValues.yukariMP -= MP_COST_YUKARI_UP_SHOT;
 
                     Sequence bulletSequence = DOTween.Sequence()
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 30 : 150); })
@@ -212,24 +223,33 @@ public class Player : MonoBehaviour
                         .Join(bulletSequence);
                     sequence.Play();
                 }
-                else if (IsMaki()) 
+                else if (IsMaki())
                 {
                     if (barrierBulletCount > 0)
                     {
-                        InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
-                        AddBulletCount(Bullet.BulletType.MAKI_ELECTRIC_FIRE, 1);
+                        if (StaticValues.makiMP >= MP_COST_MAKI_ELECTRIC_FIRE)
+                        {
+                            StaticValues.makiMP -= MP_COST_MAKI_ELECTRIC_FIRE;
+                            InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
+                            AddBulletCount(Bullet.BulletType.MAKI_ELECTRIC_FIRE, 1);
+                        }
                     } else
                     {
-                        invincibleTime = BARRIER_INVINCIBLE_TIME;
-                        InstantiateSpecialBullet(Bullet.BulletType.MAKI_BARRIER, electricBarrier, BARRIER_INVINCIBLE_TIME);
-                        AddBulletCount(Bullet.BulletType.MAKI_BARRIER, 1);
+                        if (StaticValues.makiMP >= MP_COST_MAKI_BARRIER)
+                        {
+                            StaticValues.makiMP -= MP_COST_MAKI_BARRIER;
+                            invincibleTime = BARRIER_INVINCIBLE_TIME;
+                            InstantiateSpecialBullet(Bullet.BulletType.MAKI_BARRIER, electricBarrier, BARRIER_INVINCIBLE_TIME);
+                            AddBulletCount(Bullet.BulletType.MAKI_BARRIER, 1);
+                        }
                     }
                 }
             } 
             else if (dy < 0 && !footJudgement.GetIsLanding()) // 空中下射撃
             {
-                if (IsYukari())
+                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DOWN_SHOT)
                 {
+                    StaticValues.yukariMP -= MP_COST_YUKARI_DOWN_SHOT;
                     downShotTime = DOWNSHOT_TIME;
 
                     Sequence sequence = DOTween.Sequence()
