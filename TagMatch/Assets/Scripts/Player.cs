@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
             {
                 if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DASH)
                 {
-                    StaticValues.yukariMP -= MP_COST_YUKARI_DASH;
+                    StaticValues.AddMP(true, -MP_COST_YUKARI_DASH);
                     velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
                     velocityY = DASH_VELOCITY_Y;
                     dashTime = DASH_TIME;
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki() && StaticValues.makiMP >= MP_COST_MAKI_JUMP)
                 {
-                    StaticValues.makiMP -= MP_COST_MAKI_JUMP;
+                    StaticValues.AddMP(false, -MP_COST_MAKI_JUMP);
                     velocityY = JUMP_VELOCITY;
                     GameObject effect = Instantiate(jumpEffect);
                     effect.transform.position = new Vector2(transform.position.x + (isRight ? -0.3f : 0.3f), transform.position.y);
@@ -209,7 +209,7 @@ public class Player : MonoBehaviour
                 if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_UP_SHOT)
                 {
                     backflipTime = BACKFLIP_TIME;
-                    StaticValues.yukariMP -= MP_COST_YUKARI_UP_SHOT;
+                    StaticValues.AddMP(true, -MP_COST_YUKARI_UP_SHOT);
 
                     Sequence bulletSequence = DOTween.Sequence()
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 30 : 150); })
@@ -229,7 +229,7 @@ public class Player : MonoBehaviour
                     {
                         if (StaticValues.makiMP >= MP_COST_MAKI_ELECTRIC_FIRE)
                         {
-                            StaticValues.makiMP -= MP_COST_MAKI_ELECTRIC_FIRE;
+                            StaticValues.AddMP(false, -MP_COST_MAKI_ELECTRIC_FIRE);
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
                             AddBulletCount(Bullet.BulletType.MAKI_ELECTRIC_FIRE, 1);
                         }
@@ -237,7 +237,7 @@ public class Player : MonoBehaviour
                     {
                         if (StaticValues.makiMP >= MP_COST_MAKI_BARRIER)
                         {
-                            StaticValues.makiMP -= MP_COST_MAKI_BARRIER;
+                            StaticValues.AddMP(false, -MP_COST_MAKI_BARRIER);
                             invincibleTime = BARRIER_INVINCIBLE_TIME;
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_BARRIER, electricBarrier, BARRIER_INVINCIBLE_TIME);
                             AddBulletCount(Bullet.BulletType.MAKI_BARRIER, 1);
@@ -249,7 +249,7 @@ public class Player : MonoBehaviour
             {
                 if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DOWN_SHOT)
                 {
-                    StaticValues.yukariMP -= MP_COST_YUKARI_DOWN_SHOT;
+                    StaticValues.AddMP(true, -MP_COST_YUKARI_DOWN_SHOT);
                     downShotTime = DOWNSHOT_TIME;
 
                     Sequence sequence = DOTween.Sequence()
@@ -404,6 +404,11 @@ public class Player : MonoBehaviour
             if (coin != null)
             {
                 coin.GetCoin();
+            }
+            Heart heart = collision.gameObject.GetComponent<Heart>();
+            if (heart != null)
+            {
+                heart.GetHeart();
             }
         }
         if (invincibleTime > 0 || squatInvincibleTime > 0)

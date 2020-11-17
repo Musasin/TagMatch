@@ -32,6 +32,37 @@ public class StaticValues : MonoBehaviour
         
     }
     
+    public static void AddMP(bool isYukari, int point)
+    { 
+        if (isYukari)
+        {
+            yukariMP += point;
+            yukariMP = Mathf.Min(yukariMaxMP, yukariMP);
+            yukariMP = Mathf.Max(0, yukariMP);
+        }
+        else
+        {
+            makiMP += point;
+            makiMP = Mathf.Min(makiMaxMP, makiMP);
+            makiMP = Mathf.Max(0, makiMP);
+        }
+    }
+    public static void AddHP(bool isYukari, int point)
+    {
+        if (isYukari)
+        {
+            yukariHP += point;
+            yukariHP = Mathf.Min(yukariMaxHP, yukariHP);
+            yukariHP = Mathf.Max(0, yukariHP);
+        }
+        else
+        {
+            makiHP += point;
+            makiHP = Mathf.Min(makiMaxHP, makiHP);
+            makiHP = Mathf.Max(0, makiHP);
+        }
+    }
+
     public static void AddSkill(string skillName, bool flag)
     {
         skills[skillName] = flag;
