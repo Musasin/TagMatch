@@ -12,6 +12,7 @@ public class GaugeUI : MonoBehaviour
     public enum GaugeType { YukariHP, YukariMP, MakiHP, MakiMP, BossHP }
     public GaugeType gaugeType;
     public bool isInstantly;
+    public bool isOutline;
 
     RectTransform rt;
 
@@ -46,13 +47,19 @@ public class GaugeUI : MonoBehaviour
             waitTime = WAIT_TIME;
         }
 
-        width = defaultWidth * gaugePoint / gaugePointMax;
+        width = defaultWidth * ((float)gaugePointMax / 100) * gaugePoint / gaugePointMax;
         if (isInstantly)
         {
             rt.sizeDelta = new Vector2(width, rt.sizeDelta.y);
         } else if (waitTime < 0)
         {
             rt.sizeDelta = Vector2.MoveTowards(rt.sizeDelta, new Vector2(width, rt.sizeDelta.y), step);
+        }
+        
+        if (isOutline)
+        {
+            rt.sizeDelta = new Vector2(defaultWidth * ((float)gaugePointMax / 100), rt.sizeDelta.y);
+            Debug.Log(rt.sizeDelta);
         }
     }
 

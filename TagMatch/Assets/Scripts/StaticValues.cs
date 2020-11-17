@@ -66,9 +66,72 @@ public class StaticValues : MonoBehaviour
     public static void AddSkill(string skillName, bool flag)
     {
         skills[skillName] = flag;
+        UpdateMaxHPMP();
     }
     public static bool GetSkill(string skillName)
     {
         return skills.ContainsKey(skillName) && skills[skillName];
+    }
+    static void UpdateMaxHPMP()
+    {
+        yukariMaxHP = 100;
+        yukariMaxMP = 100;
+        makiMaxHP = 100;
+        makiMaxMP = 100;
+        foreach (KeyValuePair<string, bool> kvp in skills)
+        {
+            string skillName = kvp.Key;
+            switch (skillName)
+            {
+                case "y_heart_1":
+                    yukariMaxHP += 25;
+                    break;
+                case "y_heart_2":
+                    yukariMaxHP += 25;
+                    break;
+                case "y_heart_3":
+                    yukariMaxHP += 25;
+                    break;
+                case "y_heart_4":
+                    yukariMaxHP += 25;
+                    break;
+                case "m_heart_4":
+                    makiMaxHP += 25;
+                    break;
+                case "m_heart_3":
+                    makiMaxHP += 25;
+                    break;
+                case "m_heart_2":
+                    makiMaxHP += 25;
+                    break;
+                case "m_heart_1":
+                    makiMaxHP += 25;
+                    break;
+                case "y_mp_1":
+                    yukariMaxMP += 25;
+                    break;
+                case "y_mp_2":
+                    yukariMaxMP += 25;
+                    break;
+                case "y_mp_3":
+                    yukariMaxMP += 25;
+                    break;
+                case "y_mp_4":
+                    yukariMaxMP += 25;
+                    break;
+                case "m_mp_4":
+                    makiMaxMP += 25;
+                    break;
+                case "m_mp_3":
+                    makiMaxMP += 25;
+                    break;
+                case "m_mp_2":
+                    makiMaxMP += 25;
+                    break;
+                case "m_mp_1":
+                    makiMaxMP += 25;
+                    break;
+            }
+        }
     }
 }
