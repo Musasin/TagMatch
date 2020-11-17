@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public bool isSuperArmor;
     public bool isRight;
     public GameObject damagePointEffect;
+    public GameObject dropItem1;
+    public GameObject dropItem2;
     
     const float INVINCIBLE_TIME = 0.2f;
     const float STOP_TIME = 0.2f;
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour
     SpriteRenderer sr;
     Vector2 defaultPosition;
     Vector2 defaultScale;
+    GameObject dropedItem1, dropedItem2;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +51,8 @@ public class Enemy : MonoBehaviour
         transform.rotation = new Quaternion(0, 0, 0, 0);
         transform.GetComponent<BoxCollider2D>().enabled = true;
         rb.velocity = Vector2.zero;
-        
+        if (dropedItem1 != null) Destroy(dropedItem1);
+        if (dropedItem2 != null) Destroy(dropedItem2);
     }
 
     // Update is called once per frame
@@ -57,6 +61,7 @@ public class Enemy : MonoBehaviour
         invincibleTime -= Time.deltaTime;
         UpdateColor();
 
+        // 初期化処理 仮でボタンで実行
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reset();
@@ -64,7 +69,6 @@ public class Enemy : MonoBehaviour
         
         if (isDead)
         {
-            //DestroyWhenOffScreen();
             return;
         }
         if (isKnockBack) // 被ダメージ硬直
@@ -79,16 +83,6 @@ public class Enemy : MonoBehaviour
     {
         float f = (invincibleTime > 0) ? 0.5f : 1.0f;
         sr.color = new Color(1.0f, f, f, f);
-    }
-    private void DestroyWhenOffScreen()
-    {
-        SpriteRenderer[] spriteList = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sprite in spriteList)
-        {
-            if (sprite.isVisible)
-                return;
-        }
-        Destroy(gameObject);
     }
 
     public void HitWall()
@@ -136,6 +130,10 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             isDead = true;
+            
+            dropedItem1 = InstantiateDropItem(dropItem1, new Vector2(transform.position.x - 0.1f, transform.position.y));
+            dropedItem2 = InstantiateDropItem(dropItem2, new Vector2(transform.position.x + 0.1f, transform.position.y));
+
             transform.GetComponent<BoxCollider2D>().enabled = false;
             bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0;
             rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
@@ -151,6 +149,16 @@ public class Enemy : MonoBehaviour
                 rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
             }
         }
+    }
+    private GameObject InstantiateDropItem(GameObject obj, Vector2 pos)
+    {
+        if (obj == null)
+            return null;
+
+        GameObject item = Instantiate(obj);
+        item.transform.position = pos;
+        item.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10.0f));
+        return item;
     }
     public bool IsInvincible()
     {

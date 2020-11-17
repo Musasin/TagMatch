@@ -421,8 +421,7 @@ public class Player : MonoBehaviour
             invincibleTime = INVINCIBLE_TIME;
 
             int dp = collision.gameObject.GetComponent<Damage>().damagePoint;
-            if (IsYukari()) StaticValues.yukariHP -= dp;
-            else if (IsMaki()) StaticValues.makiHP -= dp;
+            StaticValues.AddHP(IsYukari(), -dp);
             
             bool isEnemyRight = transform.position.x < collision.gameObject.transform.position.x;
             velocityX = isEnemyRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X;
