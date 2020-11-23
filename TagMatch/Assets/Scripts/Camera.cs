@@ -21,6 +21,7 @@ public class Camera : MonoBehaviour
     
     public bool isTitleSceneMode = false;
     public bool isEndingSceneMode = false;
+    Vector2 terminationPoint;
 
     void Start()
     {
@@ -28,6 +29,14 @@ public class Camera : MonoBehaviour
         targetPosX = 0.0f;
         targetPosY = 0.0f;
         fixPosMoving = false;
+        GameObject terminationPointObj = GameObject.Find("TerminationPoint");
+        if (terminationPointObj != null)
+        {
+            terminationPoint = new Vector2(terminationPointObj.transform.position.x - 8, terminationPointObj.transform.position.y - 6);
+        } else
+        {
+            terminationPoint = new Vector2(Mathf.Infinity, Mathf.Infinity);
+        }
 
         //transform.position = GetNewPositionWithSavedPos();
     }
@@ -95,8 +104,8 @@ public class Camera : MonoBehaviour
         }
 
         Vector3 newPosition = transform.position;
-        newPosition.x = Mathf.Max(targetPosX, MIN_POSITION_X);
-        newPosition.y = Mathf.Max(targetPosY, MIN_POSITION_Y);
+        newPosition.x = Mathf.Min(Mathf.Max(targetPosX, MIN_POSITION_X), terminationPoint.x);
+        newPosition.y = Mathf.Min(Mathf.Max(targetPosY, MIN_POSITION_Y), terminationPoint.y);
         newPosition.z = this.transform.position.z;
         return newPosition;
     }
