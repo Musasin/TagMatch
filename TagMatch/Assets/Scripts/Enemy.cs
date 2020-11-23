@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float velocityX;
     public float velocityY;
     public float attackInterval;
+    public float shotPower;
     public bool isFall;
     public bool isSuperArmor;
     public bool isRight;
@@ -238,8 +239,8 @@ public class Enemy : MonoBehaviour
     }
     private void InstantiateKinokoBullet(float angleZ)
     {
-        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * 200;
-        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * 200;
+        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * shotPower;
+        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * shotPower;
 
         GameObject instantiateBullet = Instantiate(bullet);
         instantiateBullet.transform.position = transform.position;

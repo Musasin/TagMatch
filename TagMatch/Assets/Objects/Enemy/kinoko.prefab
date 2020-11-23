@@ -96,11 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5848bcf7b840425785acefaccaefc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 50
+  hp: 30
   type: kinoko
   velocityX: 2
   velocityY: 0
   attackInterval: 3
+  shotPower: 200
   isFall: 0
   isSuperArmor: 0
   isRight: 0
