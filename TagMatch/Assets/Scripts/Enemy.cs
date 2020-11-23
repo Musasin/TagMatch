@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     public GameObject dropItem2;
     
     const float INVINCIBLE_TIME = 0.2f;
-    const float STOP_TIME = 0.2f;
+    const float STOP_TIME = 0.5f;
     const float DAMAGE_VELOCITY_X = 4.0f;
     const float DAMAGE_VELOCITY_Y = 8.0f;
     
