@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class Enemy : MonoBehaviour
     public string type;
     public float velocityX;
     public float velocityY;
+    public float attackInterval;
     public bool isFall;
     public bool isSuperArmor;
     public bool isRight;
+    public GameObject bullet;
     public GameObject damagePointEffect;
     public GameObject dropItem1;
     public GameObject dropItem2;
@@ -22,7 +25,9 @@ public class Enemy : MonoBehaviour
     
     int maxHp;
     float invincibleTime = 0;
+    float afterAttackTime = 0;
     bool isKnockBack;
+    bool isAttacking;
     bool isDead;
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -31,6 +36,7 @@ public class Enemy : MonoBehaviour
     Vector2 defaultPosition;
     Vector2 defaultScale;
     GameObject dropedItem1, dropedItem2;
+    Sequence attackSequence;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +54,7 @@ public class Enemy : MonoBehaviour
     {
         hp = maxHp;
         invincibleTime = 0;
+        afterAttackTime = 0;
         isKnockBack = false;
         isDead = false;
         transform.localPosition = defaultPosition;
@@ -82,8 +89,32 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), rb.velocity.y);
-        transform.localScale = new Vector2(defaultScale.x * (isRight ? -1 : 1), defaultScale.y); // デフォルトは左向き
+
+        if (isAttacking)
+        {
+            return;
+        }
+
+        afterAttackTime += Time.deltaTime;
+        if (attackInterval != 0 && afterAttackTime > attackInterval)
+        {
+            rb.velocity = Vector2.zero;
+            isAttacking = true;
+
+            if (type == "kinoko")
+            {
+                KinokoAttack();
+            }
+            else
+            {
+                isAttacking = false;
+                attackInterval = 0;
+            }
+        } else
+        {
+            rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), rb.velocity.y);
+            transform.localScale = new Vector2(defaultScale.x * (isRight ? -1 : 1), defaultScale.y); // デフォルトは左向き
+        }
     }
     
     private void UpdateColor()
@@ -154,6 +185,16 @@ public class Enemy : MonoBehaviour
                 isKnockBack = true;
                 bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0; // vecolicyがマイナスなら右から左に向かっている
                 rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
+
+                // 攻撃を中断する
+                isAttacking = false;
+                afterAttackTime = 0;
+                anim.SetBool("isCharge", false);
+                anim.SetBool("isAttack", false);
+                if (attackSequence != null)
+                {
+                    attackSequence.Kill();
+                }
             }
         }
     }
@@ -170,5 +211,38 @@ public class Enemy : MonoBehaviour
     public bool IsInvincible()
     {
         return (invincibleTime > 0);
+    }
+
+
+    private void KinokoAttack()
+    {
+        attackSequence = DOTween.Sequence()
+            .AppendCallback(() => {
+                anim.SetBool("isCharge", true);
+            })
+            .AppendInterval(1.0f)
+            .AppendCallback(() => { 
+                anim.SetBool("isAttack", true);
+                InstantiateKinokoBullet(60);
+                InstantiateKinokoBullet(75);
+                InstantiateKinokoBullet(105);
+                InstantiateKinokoBullet(120);
+            })
+            .AppendInterval(1.0f)
+            .AppendCallback(() => {
+                isAttacking = false;
+                afterAttackTime = 0;
+                anim.SetBool("isCharge", false); 
+                anim.SetBool("isAttack", false);
+            }).Play();
+    }
+    private void InstantiateKinokoBullet(float angleZ)
+    {
+        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * 200;
+        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * 200;
+
+        GameObject instantiateBullet = Instantiate(bullet);
+        instantiateBullet.transform.position = transform.position;
+        instantiateBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
     }
 }
