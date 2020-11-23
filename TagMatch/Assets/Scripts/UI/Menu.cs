@@ -38,21 +38,13 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (menuState == MenuState.CLOSED)
-        {
-            StaticValues.isPause = false;
-            Time.timeScale = 1.0f;
-        } else
-        {
-            StaticValues.isPause = true;
-            Time.timeScale = 0;
-        }
-
         switch (menuState)
         {
             case MenuState.CLOSED:
                 if (Input.GetButtonDown("Menu"))
                 {
+                    StaticValues.isPause = true;
+                    Time.timeScale = 0;
                     menuState = MenuState.MENU;
                     anim.SetInteger("menuState", (int)menuState);
                 }
@@ -81,17 +73,17 @@ public class Menu : MonoBehaviour
                             break;
                         case MenuList.TITLE:
                             // TODO 後で作る
-                            menuState = MenuState.CLOSED;
+                            CloseMenu();
                             break;
                         case MenuList.CLOSE:
-                            menuState = MenuState.CLOSED;
+                            CloseMenu();
                             break;
                     }
                     anim.SetInteger("menuState", (int)menuState);
                 }
                 if (Input.GetButtonDown("Shot") || Input.GetButtonDown("Menu"))
                 {
-                    menuState = MenuState.CLOSED;
+                    CloseMenu();
                     anim.SetInteger("menuState", (int)menuState);
                 }
                 break;
@@ -113,6 +105,13 @@ public class Menu : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void CloseMenu()
+    {
+        menuState = MenuState.CLOSED;
+        StaticValues.isPause = false;
+        Time.timeScale = 1.0f;
     }
 
     public void SetSkillPanelEnabled()
