@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     bool isDead;
     Rigidbody2D rb;
     SpriteRenderer sr;
+    Animator anim;
+    BoxCollider2D bc;
     Vector2 defaultPosition;
     Vector2 defaultScale;
     GameObject dropedItem1, dropedItem2;
@@ -35,7 +37,9 @@ public class Enemy : MonoBehaviour
     {
         maxHp = hp;
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        sr = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
+        bc = transform.GetComponent<BoxCollider2D>();
         defaultPosition = transform.localPosition;
         defaultScale = transform.localScale;
     }
@@ -49,7 +53,7 @@ public class Enemy : MonoBehaviour
         transform.localPosition = defaultPosition;
         transform.localScale = defaultScale;
         transform.rotation = new Quaternion(0, 0, 0, 0);
-        transform.GetComponent<BoxCollider2D>().enabled = true;
+        bc.enabled = true;
         rb.velocity = Vector2.zero;
         if (dropedItem1 != null) Destroy(dropedItem1);
         if (dropedItem2 != null) Destroy(dropedItem2);
@@ -69,8 +73,11 @@ public class Enemy : MonoBehaviour
         
         if (isDead)
         {
+            anim.SetBool("isKnockBack", true);
             return;
         }
+        
+        anim.SetBool("isKnockBack", isKnockBack);
         if (isKnockBack) // 被ダメージ硬直
         {
             return;
@@ -130,11 +137,11 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             isDead = true;
-            
+            isKnockBack = true;
             dropedItem1 = InstantiateDropItem(dropItem1, new Vector2(transform.position.x - 0.1f, transform.position.y));
             dropedItem2 = InstantiateDropItem(dropItem2, new Vector2(transform.position.x + 0.1f, transform.position.y));
 
-            transform.GetComponent<BoxCollider2D>().enabled = false;
+            bc.enabled = false;
             bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0;
             rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
             transform.Rotate(new Vector3(0, 0, 180.0f));
