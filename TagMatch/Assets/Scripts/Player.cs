@@ -304,8 +304,8 @@ public class Player : MonoBehaviour
     }
     private void InstantiateBullet(Bullet.BulletType bulletType, GameObject bulletObj, float angleZ, bool isSquat = false)
     {
-        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
-        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * SHOT_POWER;
+        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * SHOT_POWER * (bulletType == Bullet.BulletType.YUKARI ? 1.5f : 1.0f);
+        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * SHOT_POWER * (bulletType == Bullet.BulletType.YUKARI ? 1.5f : 1.0f);
 
         GameObject bullet = Instantiate(bulletObj);
         bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;

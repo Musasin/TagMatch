@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPositionX: 25.6
-  speed: 1
+  speed: 0.8
 --- !u!1 &847428572011994967
 GameObject:
   m_ObjectHideFlags: 0
