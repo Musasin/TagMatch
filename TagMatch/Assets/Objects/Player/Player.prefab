@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1125446380103258032}
   - component: {fileID: 1125446380103258045}
   - component: {fileID: 1125446380103258044}
+  - component: {fileID: 4257521843042841558}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -165,6 +166,22 @@ MonoBehaviour:
     type: 3}
   invincibleEffect: {fileID: 8094870835206760138, guid: bf7bef80b6bf74a099b2765b41e2151b,
     type: 3}
+--- !u!70 &4257521843042841558
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125446380103258047}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.05, y: -0.6}
+  m_Size: {x: 0.5, y: 0.05}
+  m_Direction: 1
 --- !u!1 &1125446380228976033
 GameObject:
   m_ObjectHideFlags: 0
