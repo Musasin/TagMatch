@@ -101,10 +101,14 @@ public class Enemy : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             isAttacking = true;
-
+            
             if (type == "kinoko")
             {
                 KinokoAttack();
+            }
+            else if (type == "slime")
+            {
+                SlimeAttack();
             }
             else
             {
@@ -113,7 +117,10 @@ public class Enemy : MonoBehaviour
             }
         } else
         {
-            rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), rb.velocity.y);
+            if (type == "kinoko")
+            {
+                rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), rb.velocity.y);
+            }
             transform.localScale = new Vector2(defaultScale.x * (isRight ? -1 : 1), defaultScale.y); // デフォルトは左向き
         }
     }
@@ -142,10 +149,24 @@ public class Enemy : MonoBehaviour
         {
             isKnockBack = false;
         }
+
+        // スライムは着地で攻撃終了
+        if (type == "slime")
+        {
+            rb.velocity = Vector2.zero;
+            isAttacking = false;
+            afterAttackTime = 0;
+            anim.SetBool("isCharge", false);
+            anim.SetBool("isAttack", false);
+        }
     }
     public void HitGroundEnd()
     {
         if (isKnockBack) // ダメージを受けて足が離れた時は判定しない
+        {
+            return;
+        }
+        if (type == "slime") // スライムは横からぶつかった時以外は反転しない
         {
             return;
         }
@@ -245,5 +266,18 @@ public class Enemy : MonoBehaviour
         GameObject instantiateBullet = Instantiate(bullet);
         instantiateBullet.transform.position = transform.position;
         instantiateBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+    }
+
+    private void SlimeAttack()
+    {
+        attackSequence = DOTween.Sequence()
+            .AppendCallback(() => {
+                anim.SetBool("isCharge", true);
+            })
+            .AppendInterval(0.5f)
+            .AppendCallback(() => { 
+                anim.SetBool("isAttack", true);
+                rb.AddForce(new Vector2(velocityX * (isRight ? 1 : -1), velocityY));
+            }).Play();
     }
 }
