@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     const float STOP_TIME = 0.3f;
     const float SHOT_IMPOSSIBLE_TIME = 0.4f;
     const float INVINCIBLE_TIME = 0.6f;
+    const float MP_RECOVER_TIME = 3.0f;
     const float BARRIER_INVINCIBLE_TIME = 3.0f;
     
     const int YUKARI_BULLET_EXIST_MAX = 5;
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
     float shotImpossibleTime = 0;
     float invincibleTime = 0;
     float squatInvincibleTime = 0;
+    float mpRecoverTime = 0;
     bool isUsedDash = false;
     bool isRight = true;
     
@@ -97,9 +99,22 @@ public class Player : MonoBehaviour
         shotImpossibleTime -= Time.deltaTime;
         invincibleTime -= Time.deltaTime;
         squatInvincibleTime -= Time.deltaTime;
+        mpRecoverTime += Time.deltaTime;
 
         velocityX = rb.velocity.x;
         velocityY = rb.velocity.y;
+
+        if (mpRecoverTime >= MP_RECOVER_TIME)
+        {
+            mpRecoverTime = 0;
+            if (IsYukari())
+            {
+                StaticValues.AddMP(false, 5);
+            } else if (IsMaki())
+            {
+                StaticValues.AddMP(true, 5);
+            }
+        }
 
         if (stopTime <= 0)
         {
@@ -299,6 +314,7 @@ public class Player : MonoBehaviour
                 default:
                     break;
             }
+            mpRecoverTime = 0;
             shotImpossibleTime = SHOT_IMPOSSIBLE_TIME;
         }
     }

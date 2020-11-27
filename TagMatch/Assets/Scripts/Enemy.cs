@@ -151,7 +151,7 @@ public class Enemy : MonoBehaviour
         }
 
         // スライムは着地で攻撃終了
-        if (type == "slime")
+        if (type == "slime" && !isDead)
         {
             rb.velocity = Vector2.zero;
             isAttacking = false;
