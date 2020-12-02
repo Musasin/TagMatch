@@ -76,19 +76,22 @@ TagManager:
   - name: Map4
     uniqueID: 50971829
     locked: 0
-  - name: Enemy1
-    uniqueID: 1454876581
-    locked: 0
-  - name: Enemy2
-    uniqueID: 2883478537
-    locked: 0
-  - name: Enemy3
-    uniqueID: 2159376667
-    locked: 0
   - name: Bullet1
-    uniqueID: 711491665
+    uniqueID: 15494351
     locked: 0
   - name: Bullet2
+    uniqueID: 1454876581
+    locked: 0
+  - name: Enemy1
+    uniqueID: 2883478537
+    locked: 0
+  - name: Enemy2
+    uniqueID: 2159376667
+    locked: 0
+  - name: Bullet3
+    uniqueID: 711491665
+    locked: 0
+  - name: Bullet4
     uniqueID: 4260846869
     locked: 0
   - name: Player

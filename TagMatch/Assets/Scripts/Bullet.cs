@@ -90,6 +90,19 @@ public class Bullet : MonoBehaviour
                     }
                 }
             }
+            Boss boss = collision.gameObject.GetComponent<Boss>();
+            if (boss != null)
+            {
+                if (!boss.IsInvincible())
+                {
+                    boss.HitBullet(damage, gameObject);
+                    PlayHitEffect(collision.gameObject.transform.position);
+                    if (!isTrample)
+                    {
+                        Dead();
+                    }
+                }
+            }
         } 
         else if (collision.gameObject.tag == "Item")
         {

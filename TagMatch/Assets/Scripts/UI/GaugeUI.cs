@@ -59,7 +59,6 @@ public class GaugeUI : MonoBehaviour
         if (isOutline)
         {
             rt.sizeDelta = new Vector2(defaultWidth * ((float)gaugePointMax / 100), rt.sizeDelta.y);
-            Debug.Log(rt.sizeDelta);
         }
     }
 
