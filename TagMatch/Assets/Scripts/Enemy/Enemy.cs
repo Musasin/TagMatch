@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Enemy : MonoBehaviour
+public class Enemy : EnemyBase
 {
-    public int hp;
     public string type;
     public float velocityX;
     public float velocityY;
@@ -15,7 +14,6 @@ public class Enemy : MonoBehaviour
     public bool isSuperArmor;
     public bool isRight;
     public GameObject bullet;
-    public GameObject damagePointEffect;
     public GameObject dropItem1;
     public GameObject dropItem2;
     
@@ -40,8 +38,9 @@ public class Enemy : MonoBehaviour
     Sequence attackSequence;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         maxHp = hp;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -68,10 +67,9 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        invincibleTime -= Time.deltaTime;
-        UpdateColor();
+        base.Update();
 
         // 初期化処理 仮でボタンで実行
         if (Input.GetKeyDown(KeyCode.R))
@@ -125,12 +123,6 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    private void UpdateColor()
-    {
-        float f = (invincibleTime > 0) ? 0.5f : 1.0f;
-        sr.color = new Color(1.0f, f, f, f);
-    }
-
     public void HitWall()
     {
         // 向いてる方向と進んでいる方向が一致している時のみ方向転換する (ノックバックで背中から当たる場合があるため)
@@ -175,20 +167,13 @@ public class Enemy : MonoBehaviour
             isRight = !isRight;
         }
     }
-    public void HitBullet(int damage, GameObject hitObject)
+    public override void HitBullet(int damage, GameObject hitObject) 
     {
-        if (invincibleTime > 0)
-        {
-            return;
-        }
-
-        hp -= damage;
-        GameObject dp = Instantiate(damagePointEffect);
-        dp.transform.position = transform.position;
-        dp.GetComponent<DamagePointEffect>().SetDamagePointAndPlay(damage);
+        base.HitBullet(damage, hitObject);
 
         if (hp <= 0)
         {
+            invincibleTime = 0;
             isDead = true;
             isKnockBack = true;
             dropedItem1 = InstantiateDropItem(dropItem1, new Vector2(transform.position.x - 0.1f, transform.position.y));
@@ -201,7 +186,6 @@ public class Enemy : MonoBehaviour
         } 
         else
         {
-            invincibleTime = INVINCIBLE_TIME;
             if (!isSuperArmor)
             {
                 isKnockBack = true;
@@ -229,10 +213,6 @@ public class Enemy : MonoBehaviour
         item.transform.position = pos;
         item.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10.0f));
         return item;
-    }
-    public bool IsInvincible()
-    {
-        return (invincibleTime > 0);
     }
 
 
