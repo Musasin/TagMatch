@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     float deadTime;
     const float MINIMUM_TIME = 0.1f;
     Player player;
+    bool isDead;
 
     public enum BulletType
     {
@@ -61,6 +62,9 @@ public class Bullet : MonoBehaviour
     
     private void Dead()
     {
+        if (isDead)
+            return;
+        isDead = true;
         player.AddBulletCount(bulletType, -1);
         Destroy(gameObject);
     }
@@ -77,25 +81,12 @@ public class Bullet : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
             if (enemy != null)
             {
                 if (!enemy.IsInvincible())
                 {
                     enemy.HitBullet(damage, gameObject);
-                    PlayHitEffect(collision.gameObject.transform.position);
-                    if (!isTrample)
-                    {
-                        Dead();
-                    }
-                }
-            }
-            Boss boss = collision.gameObject.GetComponent<Boss>();
-            if (boss != null)
-            {
-                if (!boss.IsInvincible())
-                {
-                    boss.HitBullet(damage, gameObject);
                     PlayHitEffect(collision.gameObject.transform.position);
                     if (!isTrample)
                     {

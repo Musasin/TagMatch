@@ -6,8 +6,10 @@ using DG.Tweening;
 public class Kiritan : MonoBehaviour
 {
     public GameObject kiritanhouBullet;
+    Animator anim;
     GameObject kiritanhouPos1, kiritanhouPos2;
-    Vector2 upperLeftPos, upperRightPos;
+    SpriteRenderer jetFlameSR1, jetFlameSR2;
+    Vector2 upperLeftPos, upperRightPos, lowerLeftPos, lowerRightPos;
     int stateIndex;
     bool isActive = true;
     bool isPlaying = false;
@@ -20,7 +22,10 @@ public class Kiritan : MonoBehaviour
     {
         IDLE,
         MOVE_TO_UPPER_LEFT,
-        MOVE_TO_UPPER_RIGHT
+        MOVE_TO_UPPER_RIGHT,
+        MOVE_TO_LOWER_LEFT,
+        MOVE_TO_LOWER_RIGHT,
+        STAND_SHOT
     }
     ActionState state;
     List<ActionState> actionStateQueue = new List<ActionState>();
@@ -29,12 +34,16 @@ public class Kiritan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         state = ActionState.IDLE;
         upperLeftPos = GameObject.Find("UpperLeftPos").transform.position;
         upperRightPos = GameObject.Find("UpperRightPos").transform.position;
+        lowerLeftPos = GameObject.Find("LowerLeftPos").transform.position;
+        lowerRightPos = GameObject.Find("LowerRightPos").transform.position;
+        jetFlameSR1 = GameObject.Find("JetFlame1").GetComponent<SpriteRenderer>();
+        jetFlameSR2 = GameObject.Find("JetFlame2").GetComponent<SpriteRenderer>();   
         kiritanhouPos1 = GameObject.Find("KiritanhouPos1");
-        kiritanhouPos2 = GameObject.Find("KiritanhouPos2");
-        
+        kiritanhouPos2 = GameObject.Find("KiritanhouPos2");   
     }
 
     // Update is called once per frame
@@ -46,24 +55,27 @@ public class Kiritan : MonoBehaviour
             return;
         }
 
-        bulletTime += Time.deltaTime;
-        if (bulletTime > BULLET_INTERVAL_TIME)
-        {
-            bulletTime = 0;
-            GameObject b1 = Instantiate(kiritanhouBullet);
-            b1.transform.position = kiritanhouPos1.transform.position;
-            if (isRight)
-            {
-                b1.transform.localScale = new Vector2(-1, 1);
-            }
+        //bulletTime += Time.deltaTime;
+        //if (bulletTime > BULLET_INTERVAL_TIME)
+        //{
+        //    bulletTime = 0;
+        //    GameObject b1 = Instantiate(kiritanhouBullet);
+        //    b1.transform.position = kiritanhouPos1.transform.position;
+        //    if (isRight)
+        //    {
+        //        b1.transform.localScale = new Vector2(-1, 1);
+        //    }
 
-            GameObject b2 = Instantiate(kiritanhouBullet);
-            b2.transform.position = kiritanhouPos2.transform.position;
-            if (isRight)
-            {
-                b2.transform.localScale = new Vector2(-1, 1);
-            }
-        }
+        //    GameObject b2 = Instantiate(kiritanhouBullet);
+        //    b2.transform.position = kiritanhouPos2.transform.position;
+        //    if (isRight)
+        //    {
+        //        b2.transform.localScale = new Vector2(-1, 1);
+        //    }
+        //}
+
+        
+        transform.localScale = new Vector2(isRight ? 1 : -1, 1);
         
         // アニメーション再生中は次のモードに遷移しない
         if (isPlaying)
@@ -77,27 +89,109 @@ public class Kiritan : MonoBehaviour
                 isPlaying = false;
                 stateIndex = 0;
                 actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
+                actionStateQueue.Add(ActionState.STAND_SHOT);
+                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
+                actionStateQueue.Add(ActionState.STAND_SHOT);
+                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
+                actionStateQueue.Add(ActionState.STAND_SHOT);
                 actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
-                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
-                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
-                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
-                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
+                actionStateQueue.Add(ActionState.STAND_SHOT);
                 actionStateQueue.Add(ActionState.IDLE);
                 break;
             case ActionState.MOVE_TO_UPPER_LEFT:
-                transform.DOLocalMove(upperLeftPos, 3.0f).OnComplete(() => { isPlaying = false; });
                 isRight = false;
-                transform.localScale = new Vector2(-1, 1);
                 isPlaying = true;
+                anim.SetBool("isFloat", true);
+                JetOn();
+                transform.DOLocalJump(upperLeftPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                    isPlaying = false;
+                    isRight = true;
+                    JetOff();
+                });
                 break;
             case ActionState.MOVE_TO_UPPER_RIGHT:
-                transform.DOLocalMove(upperRightPos, 3.0f).OnComplete(() => { isPlaying = false; });
                 isRight = true;
-                transform.localScale = new Vector2(1, 1);
                 isPlaying = true;
+                anim.SetBool("isFloat", true);
+                JetOn();
+                transform.DOLocalJump(upperRightPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                    isPlaying = false;
+                    isRight = false;
+                    JetOff();
+                });
                 break;
+            case ActionState.MOVE_TO_LOWER_LEFT:
+                isRight = false;
+                isPlaying = true;
+                anim.SetBool("isFloat", true);
+                JetOn();
+                transform.DOLocalJump(lowerLeftPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                    isPlaying = false;
+                    isRight = true;
+                    JetOff();
+                });
+                break;
+            case ActionState.MOVE_TO_LOWER_RIGHT:
+                isRight = true;
+                isPlaying = true;
+                anim.SetBool("isFloat", true);
+                JetOn();
+                transform.DOLocalJump(lowerRightPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                    isPlaying = false;
+                    isRight = false;
+                    JetOff();
+                });
+                break;
+            case ActionState.STAND_SHOT:
+                isPlaying = true;
+                anim.SetBool("isReady", true);
+                anim.SetBool("isFloat", false);
+
+                DOTween.Sequence()
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() =>
+                    {
+                        InstantiateTwinBullet();
+                    })
+                    .AppendInterval(2.0f)
+                    .OnComplete(() => { 
+                        anim.SetBool("isReady", false);
+                        isPlaying = false;
+                    })
+                    .Play();
+                break;
+
         }
         state = actionStateQueue[stateIndex];
         stateIndex++;
+    }
+
+    void JetOn()
+    {
+        DOTween.ToAlpha(() => jetFlameSR1.color, color => jetFlameSR1.color = color, 1.0f, 0.3f);
+        DOTween.ToAlpha(() => jetFlameSR2.color, color => jetFlameSR2.color = color, 1.0f, 0.3f);
+    }
+
+    void JetOff()
+    {
+        DOTween.ToAlpha(() => jetFlameSR1.color, color => jetFlameSR1.color = color, 0f, 0.3f);
+        DOTween.ToAlpha(() => jetFlameSR2.color, color => jetFlameSR2.color = color, 0f, 0.3f);
+    }
+
+    void InstantiateTwinBullet()
+    {
+        GameObject b1 = Instantiate(kiritanhouBullet);
+        b1.transform.position = kiritanhouPos1.transform.position;
+        if (isRight)
+        {
+            b1.transform.localScale = new Vector2(-1, 1);
+        }
+
+        GameObject b2 = Instantiate(kiritanhouBullet);
+        b2.transform.position = kiritanhouPos2.transform.position;
+        if (isRight)
+        {
+            b2.transform.localScale = new Vector2(-1, 1);
+        }
     }
 }

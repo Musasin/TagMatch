@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     const float MP_RECOVER_TIME = 3.0f;
     const float BARRIER_INVINCIBLE_TIME = 3.0f;
     
-    const int YUKARI_BULLET_EXIST_MAX = 5;
+    const int YUKARI_BULLET_EXIST_MAX = 4;
     const int MAKI_BULLET_EXIST_MAX = 2;
 
     Rigidbody2D rb;
