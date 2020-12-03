@@ -7,6 +7,7 @@ public class Kiritan : MonoBehaviour
 {
     public GameObject kiritanhouBullet;
     Animator anim;
+    Boss bossScript;
     GameObject kiritanhouPos1, kiritanhouPos2;
     SpriteRenderer jetFlameSR1, jetFlameSR2;
     Vector2 upperLeftPos, upperRightPos, lowerLeftPos, lowerRightPos;
@@ -14,9 +15,9 @@ public class Kiritan : MonoBehaviour
     bool isActive = true;
     bool isPlaying = false;
     bool isRight = false;
+    bool isDead;
 
-    const float BULLET_INTERVAL_TIME = 1.5f;
-    float bulletTime;
+    Sequence sequence;
 
     enum ActionState
     {
@@ -35,6 +36,7 @@ public class Kiritan : MonoBehaviour
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        bossScript = GetComponent<Boss>();
         state = ActionState.IDLE;
         upperLeftPos = GameObject.Find("UpperLeftPos").transform.position;
         upperRightPos = GameObject.Find("UpperRightPos").transform.position;
@@ -55,27 +57,24 @@ public class Kiritan : MonoBehaviour
             return;
         }
 
-        //bulletTime += Time.deltaTime;
-        //if (bulletTime > BULLET_INTERVAL_TIME)
-        //{
-        //    bulletTime = 0;
-        //    GameObject b1 = Instantiate(kiritanhouBullet);
-        //    b1.transform.position = kiritanhouPos1.transform.position;
-        //    if (isRight)
-        //    {
-        //        b1.transform.localScale = new Vector2(-1, 1);
-        //    }
-
-        //    GameObject b2 = Instantiate(kiritanhouBullet);
-        //    b2.transform.position = kiritanhouPos2.transform.position;
-        //    if (isRight)
-        //    {
-        //        b2.transform.localScale = new Vector2(-1, 1);
-        //    }
-        //}
-
-        
         transform.localScale = new Vector2(isRight ? 1 : -1, 1);
+        
+        if (isDead)
+        {
+            return;
+        }
+
+        if (bossScript.IsDead())
+        {
+            sequence.Kill();
+            isRight = false;
+            anim.SetBool("isFloat", false);
+            anim.SetBool("isReady", false);
+            isDead = true;
+            JetOff();
+            return;
+        }
+
         
         // アニメーション再生中は次のモードに遷移しない
         if (isPlaying)
@@ -103,7 +102,7 @@ public class Kiritan : MonoBehaviour
                 isPlaying = true;
                 anim.SetBool("isFloat", true);
                 JetOn();
-                transform.DOLocalJump(upperLeftPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                sequence = transform.DOLocalJump(upperLeftPos, 0.3f, 1, 3.0f).OnComplete(() => { 
                     isPlaying = false;
                     isRight = true;
                     JetOff();
@@ -114,7 +113,7 @@ public class Kiritan : MonoBehaviour
                 isPlaying = true;
                 anim.SetBool("isFloat", true);
                 JetOn();
-                transform.DOLocalJump(upperRightPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                sequence = transform.DOLocalJump(upperRightPos, 0.3f, 1, 3.0f).OnComplete(() => { 
                     isPlaying = false;
                     isRight = false;
                     JetOff();
@@ -125,7 +124,7 @@ public class Kiritan : MonoBehaviour
                 isPlaying = true;
                 anim.SetBool("isFloat", true);
                 JetOn();
-                transform.DOLocalJump(lowerLeftPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                sequence = transform.DOLocalJump(lowerLeftPos, 0.3f, 1, 3.0f).OnComplete(() => { 
                     isPlaying = false;
                     isRight = true;
                     JetOff();
@@ -136,7 +135,7 @@ public class Kiritan : MonoBehaviour
                 isPlaying = true;
                 anim.SetBool("isFloat", true);
                 JetOn();
-                transform.DOLocalJump(lowerRightPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                sequence = transform.DOLocalJump(lowerRightPos, 0.3f, 1, 3.0f).OnComplete(() => { 
                     isPlaying = false;
                     isRight = false;
                     JetOff();
@@ -147,7 +146,7 @@ public class Kiritan : MonoBehaviour
                 anim.SetBool("isReady", true);
                 anim.SetBool("isFloat", false);
 
-                DOTween.Sequence()
+                sequence = DOTween.Sequence()
                     .AppendInterval(0.2f)
                     .AppendCallback(() =>
                     {
