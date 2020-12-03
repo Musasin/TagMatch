@@ -12,7 +12,6 @@ public class Kiritan : MonoBehaviour
     SpriteRenderer jetFlameSR1, jetFlameSR2;
     Vector2 upperLeftPos, upperRightPos, lowerLeftPos, lowerRightPos;
     int stateIndex;
-    bool isActive = true;
     bool isPlaying = false;
     bool isRight = false;
     bool isDead;
@@ -51,8 +50,7 @@ public class Kiritan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(kiritanhouPos1.transform.position);
-        if (!isActive)
+        if (!bossScript.IsActive())
         {
             return;
         }

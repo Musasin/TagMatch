@@ -7,6 +7,7 @@ public class Boss : EnemyBase
 {
     Vector2 firstPos;
     bool isDead;
+    bool isActive = false;
 
     public override void Start()
     {
@@ -26,6 +27,16 @@ public class Boss : EnemyBase
         } 
     }
 
+    public void SetActive(bool flag)
+    {
+        isActive = flag;
+    }
+    public bool IsActive()
+    {
+        // 仮
+        return StaticValues.isFixedCamera;
+        //return isActive;
+    }
     public bool IsDead()
     {
         return isDead;

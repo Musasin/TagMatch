@@ -60,6 +60,7 @@ public class Camera : MonoBehaviour
         if (dis <= 1.0f && fixPosMoving)
         {
             StaticValues.isPause = false;
+            StaticValues.isFixedCamera = true;
             fixPosMoving = false;
         }
         transform.position = Vector3.MoveTowards(transform.position, fixedPos, CAMERA_MOVE_SPEED * Time.deltaTime);

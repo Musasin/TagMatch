@@ -23,11 +23,15 @@ public class BossStageEntrance : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (isTrigger)
+            return;
+
         switch (collision.gameObject.tag)
         {
             case "Player":
                 cameraScript.SetFixedPos(cameraMarker.position);
                 Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>(), true);
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 isTrigger = true;
                 break;
         }

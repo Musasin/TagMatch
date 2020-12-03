@@ -18,6 +18,8 @@ public class StaticValues : MonoBehaviour
     public static int makiMP = 100;
     public static int makiMaxMP = 100;
 
+    public static bool isFixedCamera;
+
     public static Dictionary<string, bool> skills = new Dictionary<string, bool>();
 
     // Start is called before the first frame update

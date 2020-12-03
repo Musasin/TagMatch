@@ -70,12 +70,6 @@ TagManager:
   - name: Map2
     uniqueID: 3977949303
     locked: 0
-  - name: Map3
-    uniqueID: 1612838143
-    locked: 0
-  - name: Map4
-    uniqueID: 50971829
-    locked: 0
   - name: Bullet1
     uniqueID: 15494351
     locked: 0
@@ -99,6 +93,12 @@ TagManager:
     locked: 0
   - name: Item
     uniqueID: 3769319575
+    locked: 0
+  - name: Map3
+    uniqueID: 1612838143
+    locked: 0
+  - name: Map4
+    uniqueID: 50971829
     locked: 0
   - name: Map5
     uniqueID: 4121127613
