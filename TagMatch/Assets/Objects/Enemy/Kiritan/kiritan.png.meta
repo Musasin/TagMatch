@@ -35,6 +35,51 @@ TextureImporter:
   - first:
       213: -453676706799375951
     second: kiritan_8
+  - first:
+      213: 7633138556113857798
+    second: kiritan_2
+  - first:
+      213: -5690950622341687128
+    second: kiritan_3
+  - first:
+      213: 8586464950675893068
+    second: kiritan_4
+  - first:
+      213: -2245785848815195070
+    second: kiritan_5
+  - first:
+      213: 6397679333419975375
+    second: kiritan_6
+  - first:
+      213: 399079701324229153
+    second: kiritan_7
+  - first:
+      213: -910583062130981146
+    second: kiritan_8
+  - first:
+      213: -5689659313856807148
+    second: kiritan_9
+  - first:
+      213: -8480949586229652859
+    second: kiritan_10
+  - first:
+      213: -8222219359533629028
+    second: kiritan_11
+  - first:
+      213: -1806057141582618183
+    second: kiritan_12
+  - first:
+      213: -2522948510849576711
+    second: kiritan_13
+  - first:
+      213: 7666198401718163300
+    second: kiritan_14
+  - first:
+      213: -2705988576906173998
+    second: kiritan_15
+  - first:
+      213: -20831091006621809
+    second: kiritan_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -202,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9facfddbf5059c5a0800000000000000
-      internalID: -6500576214994924807
+      spriteID: 60d218e131b5ee960800000000000000
+      internalID: 7633138556113857798
       vertices: []
       indices: 
       edges: []
@@ -223,8 +268,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05895e8da1e9ef890800000000000000
-      internalID: -7422321297714735024
+      spriteID: 8a819099f8ea501b0800000000000000
+      internalID: -5690950622341687128
       vertices: []
       indices: 
       edges: []
@@ -244,8 +289,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8143e8eba43f2ef0800000000000000
-      internalID: -130827951219195510
+      spriteID: c4be06d2160492770800000000000000
+      internalID: 8586464950675893068
       vertices: []
       indices: 
       edges: []
@@ -265,8 +310,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c45922729dacf420800000000000000
-      internalID: 2665195923988632768
+      spriteID: 24c65cf4bad55d0e0800000000000000
+      internalID: -2245785848815195070
       vertices: []
       indices: 
       edges: []
@@ -286,8 +331,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e5f69bbf203775d0800000000000000
-      internalID: -3064928039833504288
+      spriteID: fc20b57157f19c850800000000000000
+      internalID: 6397679333419975375
       vertices: []
       indices: 
       edges: []
@@ -307,8 +352,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 352009a576b9f3530800000000000000
-      internalID: 3836956275746275923
+      spriteID: 12aef7abfd0d98500800000000000000
+      internalID: 399079701324229153
       vertices: []
       indices: 
       edges: []
@@ -328,8 +373,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b9aa58507734b9f0800000000000000
-      internalID: -453676706799375951
+      spriteID: 6e6023b8785fc53f0800000000000000
+      internalID: -910583062130981146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kiritan_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41f7298cff44a01b0800000000000000
+      internalID: -5689659313856807148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kiritan_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58219ca094d9d4a80800000000000000
+      internalID: -8480949586229652859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kiritan_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9188a14e0fc4ed80800000000000000
+      internalID: -8222219359533629028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kiritan_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b129ef39989fe6e0800000000000000
+      internalID: -1806057141582618183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kiritan_13
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0d53052bfacfcd0800000000000000
+      internalID: -2522948510849576711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kiritan_14
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 467141044dec36a60800000000000000
+      internalID: 7666198401718163300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kiritan_15
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d12e3be9b5627ad0800000000000000
+      internalID: -2705988576906173998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kiritan_16
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f87344cab3ef5bff0800000000000000
+      internalID: -20831091006621809
       vertices: []
       indices: 
       edges: []
