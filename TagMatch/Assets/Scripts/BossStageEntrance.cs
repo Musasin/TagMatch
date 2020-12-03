@@ -31,7 +31,11 @@ public class BossStageEntrance : MonoBehaviour
             case "Player":
                 cameraScript.SetFixedPos(cameraMarker.position);
                 Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>(), true);
-                collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.velocity = Vector2.zero;
+                }
                 isTrigger = true;
                 break;
         }

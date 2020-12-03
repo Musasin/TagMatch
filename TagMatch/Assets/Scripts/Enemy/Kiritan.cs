@@ -85,6 +85,7 @@ public class Kiritan : MonoBehaviour
             case ActionState.IDLE:
                 isPlaying = false;
                 stateIndex = 0;
+                actionStateQueue.Add(ActionState.STAND_SHOT);
                 actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
                 actionStateQueue.Add(ActionState.STAND_SHOT);
                 actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
@@ -92,7 +93,6 @@ public class Kiritan : MonoBehaviour
                 actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
                 actionStateQueue.Add(ActionState.STAND_SHOT);
                 actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
-                actionStateQueue.Add(ActionState.STAND_SHOT);
                 actionStateQueue.Add(ActionState.IDLE);
                 break;
             case ActionState.MOVE_TO_UPPER_LEFT:
@@ -107,11 +107,11 @@ public class Kiritan : MonoBehaviour
                 });
                 break;
             case ActionState.MOVE_TO_UPPER_RIGHT:
-                isRight = true;
+                isRight = false;
                 isPlaying = true;
                 anim.SetBool("isFloat", true);
                 JetOn();
-                sequence = transform.DOLocalJump(upperRightPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                sequence = transform.DOLocalJump(upperRightPos, 0.3f, 1, 1.0f).OnComplete(() => { 
                     isPlaying = false;
                     isRight = false;
                     JetOff();
@@ -122,7 +122,7 @@ public class Kiritan : MonoBehaviour
                 isPlaying = true;
                 anim.SetBool("isFloat", true);
                 JetOn();
-                sequence = transform.DOLocalJump(lowerLeftPos, 0.3f, 1, 3.0f).OnComplete(() => { 
+                sequence = transform.DOLocalJump(lowerLeftPos, 0.3f, 1, 1.0f).OnComplete(() => { 
                     isPlaying = false;
                     isRight = true;
                     JetOff();
@@ -144,18 +144,52 @@ public class Kiritan : MonoBehaviour
                 anim.SetBool("isReady", true);
                 anim.SetBool("isFloat", false);
 
-                sequence = DOTween.Sequence()
-                    .AppendInterval(0.2f)
-                    .AppendCallback(() =>
-                    {
-                        InstantiateTwinBullet();
-                    })
-                    .AppendInterval(2.0f)
-                    .OnComplete(() => { 
-                        anim.SetBool("isReady", false);
-                        isPlaying = false;
-                    })
-                    .Play();
+                if (bossScript.hp <= 50)
+                {
+                    sequence = DOTween.Sequence()
+                        .AppendInterval(0.2f)
+                        .AppendCallback(() => { InstantiateTwinBullet(); })
+                        .AppendInterval(1.5f)
+                        .AppendCallback(() => { InstantiateTwinBullet(); })
+                        .AppendInterval(1.5f)
+                        .AppendCallback(() => { InstantiateTwinBullet(); })
+                        .AppendInterval(1.5f)
+                        .AppendCallback(() => { InstantiateTwinBullet(); })
+                        .AppendInterval(1.5f)
+                        .OnComplete(() =>
+                        {
+                            anim.SetBool("isReady", false);
+                            isPlaying = false;
+                        })
+                        .Play();
+                }
+                else if (bossScript.hp <= 100)
+                {
+                    sequence = DOTween.Sequence()
+                        .AppendInterval(0.2f)
+                        .AppendCallback(() => { InstantiateTwinBullet(); })
+                        .AppendInterval(1.7f)
+                        .AppendCallback(() => { InstantiateTwinBullet(); })
+                        .AppendInterval(1.7f)
+                        .OnComplete(() =>
+                        {
+                            anim.SetBool("isReady", false);
+                            isPlaying = false;
+                        })
+                        .Play();
+                }
+                else
+                {
+                    sequence = DOTween.Sequence()
+                        .AppendInterval(0.2f)
+                        .AppendCallback(() => { InstantiateTwinBullet(); })
+                        .AppendInterval(2.0f)
+                        .OnComplete(() => { 
+                            anim.SetBool("isReady", false);
+                            isPlaying = false;
+                        })
+                        .Play();
+                }
                 break;
 
         }
