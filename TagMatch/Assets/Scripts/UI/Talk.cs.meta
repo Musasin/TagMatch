@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: a52b977897eaa4e06bca62040df1b44c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - yukari: {fileID: 2463399057827028867, guid: 35f1fb21770024ba686eaa6d86b43a59,
+      type: 3}
+  - maki: {fileID: 6718408753193743036, guid: 6980f7ee7aa374278aa6152fbe884cb3, type: 3}
+  - kiritan: {fileID: 7916608249690912060, guid: f18090874b9754c7a85c05f0f68875ea,
+      type: 3}
+  - leftWindow: {fileID: 8393917665650480927, guid: 2b56c1a82139948c4a32a9bd63dfa444,
+      type: 3}
+  - rightWindow: {fileID: 1092675985158489586, guid: bfa3606c24e8040a89769544a2b105dc,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
