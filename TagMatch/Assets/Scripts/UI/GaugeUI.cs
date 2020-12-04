@@ -21,6 +21,7 @@ public class GaugeUI : MonoBehaviour
     float defaultWidth;
     int gaugePoint;
     int gaugePointMax;
+    bool isBossStage;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class GaugeUI : MonoBehaviour
         defaultWidth = rt.sizeDelta.x;
         width = rt.sizeDelta.x;
         UpdateGaugePoint();
+        isBossStage = (GameObject.Find("Enemies").GetComponentInChildren<Boss>() != null);
     }
 
     // Update is called once per frame
@@ -40,6 +42,11 @@ public class GaugeUI : MonoBehaviour
         int beforePoint = gaugePoint;
         UpdateGaugePoint();
 
+        if (!isBossStage && gaugeType == GaugeType.BossHP)
+        {
+            gameObject.SetActive(false);
+        }
+
         // 即時反映じゃない方のゲージは少し待ってから増減を行う
         // 増減の最中(= sizeDelta.xとwidthが不一致)の時は待機しない
         if (gaugePoint != beforePoint && !isInstantly && rt.sizeDelta.x == width)
@@ -47,7 +54,15 @@ public class GaugeUI : MonoBehaviour
             waitTime = WAIT_TIME;
         }
 
-        width = defaultWidth * ((float)gaugePointMax / 100) * gaugePoint / gaugePointMax;
+        if (gaugeType == GaugeType.BossHP)
+        {
+            width = defaultWidth * gaugePoint / gaugePointMax;
+        }
+        else
+        {
+            width = defaultWidth * ((float)gaugePointMax / 100) * gaugePoint / gaugePointMax;
+        }
+
         if (isInstantly)
         {
             rt.sizeDelta = new Vector2(width, rt.sizeDelta.y);
@@ -58,7 +73,14 @@ public class GaugeUI : MonoBehaviour
         
         if (isOutline)
         {
-            rt.sizeDelta = new Vector2(defaultWidth * ((float)gaugePointMax / 100), rt.sizeDelta.y);
+            if (gaugeType == GaugeType.BossHP)
+            {
+                rt.sizeDelta = new Vector2(defaultWidth, rt.sizeDelta.y);
+            }
+            else
+            {
+                rt.sizeDelta = new Vector2(defaultWidth * ((float)gaugePointMax / 100), rt.sizeDelta.y);
+            }
         }
     }
 
@@ -81,6 +103,10 @@ public class GaugeUI : MonoBehaviour
             case GaugeType.MakiMP:
                 gaugePoint = StaticValues.makiMP;
                 gaugePointMax = StaticValues.makiMaxMP;
+                break;
+            case GaugeType.BossHP:
+                gaugePoint = StaticValues.bossHP;
+                gaugePointMax = StaticValues.bossMaxHP;
                 break;
         }
     }

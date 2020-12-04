@@ -13,11 +13,14 @@ public class Boss : EnemyBase
     {
         base.Start();
         firstPos = transform.position;
+        StaticValues.bossMaxHP = hp;
+        StaticValues.bossHP = hp;
     }
 
     public override void HitBullet(int damage, GameObject hitObject) 
     {
         base.HitBullet(damage, hitObject);
+        StaticValues.bossHP = hp;
 
         if (hp <= 0)
         {

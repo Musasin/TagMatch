@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8236248092548561187}
   - component: {fileID: 1852084391723080960}
   - component: {fileID: 6869167814102070307}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kiritan
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 439994720348945210}
   - component: {fileID: 439994720348945211}
   - component: {fileID: 439994720348945204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KiritanImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2135590629
-  m_SortingLayer: 14
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: 6377260896690131350, guid: b46f9abbbf6e3474e9c2fb4e9f780a28,
     type: 3}
@@ -205,7 +205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5223207206967372792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KiritanhouPos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8836866732437736949}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KiritanhouPos2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,10 +318,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1699566819409417714, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699566819409417714, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Name
+      value: JetFlame2
+      objectReference: {fileID: 0}
     - target: {fileID: 4702824434594094752, guid: c14d609d2c345445ca96843cb0af6cb9,
         type: 3}
       propertyPath: m_Name
       value: KiritanhouR
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702824434594094752, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096453676503137813, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096453676503137813, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Name
+      value: KiritanhouImage2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c14d609d2c345445ca96843cb0af6cb9, type: 3}
@@ -393,10 +418,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 1699566819409417714, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699566819409417714, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Name
+      value: JetFlame1
+      objectReference: {fileID: 0}
     - target: {fileID: 4702824434594094752, guid: c14d609d2c345445ca96843cb0af6cb9,
         type: 3}
       propertyPath: m_Name
       value: KiritanhouL
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702824434594094752, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096453676503137813, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096453676503137813, guid: c14d609d2c345445ca96843cb0af6cb9,
+        type: 3}
+      propertyPath: m_Name
+      value: KiritanhouImage1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c14d609d2c345445ca96843cb0af6cb9, type: 3}
