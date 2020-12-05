@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using DG.Tweening;
 
 public class Talk: MonoBehaviour
 {
     public GameObject yukari, maki, kiritan;
     public GameObject leftWindow, rightWindow;
 
+    GameObject nowWindow, beforeWindow1, beforeWindow2;
     bool isCameraMoving;
     bool beforeIsPlaying;
     bool isPlaying;
@@ -94,6 +96,27 @@ public class Talk: MonoBehaviour
             case "right":
                 AddTalk(rightWindow, scenario[nowKey.ToString()].text);
                 break;
+            case "out":
+                switch (scenario[nowKey.ToString()].text)
+                {
+                    case "yukari":
+                        yukari.GetComponent<Animator>().SetBool("isOut", true);
+                        break;
+                    case "maki":
+                        maki.GetComponent<Animator>().SetBool("isOut", true);
+                        break;
+                    case "kiritan":
+                        kiritan.GetComponent<Animator>().SetBool("isOut", true);
+                        break;
+                }
+                break;
+            case "end":
+                beforeWindow2.GetComponent<Transform>().DOMove(new Vector2(beforeWindow2.GetComponent<Transform>().position.x, 800), 0.3f);
+                beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
+                nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
+                StaticValues.isTalkPause = false;
+                isPlaying = false;
+                break;
         }
         if (scenario[nowKey.ToString()].play_next)
         {
@@ -117,6 +140,24 @@ public class Talk: MonoBehaviour
     {
         GameObject obj = Instantiate(talkWindow, transform);
         obj.GetComponentInChildren<Text>().text = text;
+
+        Destroy(beforeWindow2);
+        beforeWindow2 = beforeWindow1;
+        beforeWindow1 = nowWindow;
+        nowWindow = obj;
+
+        if (beforeWindow1 != null)
+        {
+            Transform tr = beforeWindow1.GetComponent<Transform>();
+            tr.DOMove(new Vector2(tr.position.x, tr.position.y + 200), 0.3f);
+            beforeWindow1.GetComponent<Animator>().SetInteger("state", 1);
+        }
+        if (beforeWindow2 != null)
+        {
+            Transform tr = beforeWindow2.GetComponent<Transform>();
+            tr.DOMove(new Vector2(tr.position.x, tr.position.y + 200), 0.3f);
+            beforeWindow2.GetComponent<Animator>().SetInteger("state", 2);
+        }
     }
 
     public void SetScenario(string scenarioFileName, bool isMoveCamera)
