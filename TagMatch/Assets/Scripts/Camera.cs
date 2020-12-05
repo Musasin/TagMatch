@@ -59,7 +59,6 @@ public class Camera : MonoBehaviour
         float dis = Vector3.Distance(transform.position, fixedPos);
         if (dis <= 1.0f && fixPosMoving)
         {
-            StaticValues.isPause = false;
             StaticValues.isFixedCamera = true;
             fixPosMoving = false;
         }
@@ -148,7 +147,6 @@ public class Camera : MonoBehaviour
 
     public void SetFixedPos(Vector3 pos)
     {
-        StaticValues.isPause = true;
         isFixedPos = true;
         fixPosMoving = true;
         fixedPos = pos;

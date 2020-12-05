@@ -37,7 +37,7 @@ public class Boss : EnemyBase
     public bool IsActive()
     {
         // 仮
-        return StaticValues.isFixedCamera;
+        return StaticValues.isFixedCamera && !StaticValues.isPause && !StaticValues.isTalkPause;
         //return isActive;
     }
     public bool IsDead()

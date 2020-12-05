@@ -8,6 +8,7 @@ public class StaticValues : MonoBehaviour
     public static int coinCount = 1000;
     public static float time;
     public static bool isPause;
+    public static bool isTalkPause;
     
     public static int yukariHP = 100;
     public static int yukariMaxHP = 100;

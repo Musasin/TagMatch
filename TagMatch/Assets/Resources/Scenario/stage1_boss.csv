@@ -1,0 +1,8 @@
+id,type,text,play_next
+1,instantiate,kiritan,1
+2,right,あいや待たれい！,0
+3,instantiate,yukari,1
+4,instantiate,maki,1
+5,left,おや、きりたん,0
+6,switch,,1
+7,left,やっほー,0

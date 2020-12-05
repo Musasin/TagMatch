@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class BossStageEntrance : MonoBehaviour
 {
+    public string scenarioFileName;
     Camera cameraScript;
     Transform cameraMarker;
     bool isTrigger;
+    Talk talkScript;
 
     void Start()
     {
         isTrigger = false;
         cameraScript = GameObject.Find("Camera").GetComponent<Camera>();
         cameraMarker = transform.Find("CameraMarker");
+        talkScript = GameObject.Find("TalkUI").GetComponent<Talk>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class BossStageEntrance : MonoBehaviour
             case "Player":
                 cameraScript.SetFixedPos(cameraMarker.position);
                 Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>(), true);
+                talkScript.SetScenario(scenarioFileName, true);
                 Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {

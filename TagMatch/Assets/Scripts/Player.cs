@@ -90,7 +90,17 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (StaticValues.isPause)
+        {
             return;
+        }
+
+        if (StaticValues.isTalkPause)
+        {
+            animationState = AnimationState.STAND;
+            yukariAnimator.SetInteger("state", (int)animationState);
+            makiAnimator.SetInteger("state", (int)animationState);
+            return;
+        }
 
         dashTime -= Time.deltaTime;
         backflipTime -= Time.deltaTime;
