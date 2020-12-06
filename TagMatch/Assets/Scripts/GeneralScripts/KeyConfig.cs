@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class KeyConfig : MonoBehaviour
 {
-    public static KeyCode jumpKey;
-    public static KeyCode shotKey;
-    public static KeyCode switchKey;
-    public static KeyCode menuKey;
-
+    public static KeyCode jumpKey = KeyCode.C;
+    public static KeyCode shotKey = KeyCode.X;
+    public static KeyCode switchKey = KeyCode.Z;
+    public static KeyCode menuKey = KeyCode.Escape;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +19,7 @@ public class KeyConfig : MonoBehaviour
     {
     }
 
-    public static void LoadKeyConfig()
+    public static void Load()
     {
         LoadKey(ref jumpKey, "JumpKey", KeyCode.C);
         LoadKey(ref shotKey, "ShotKey", KeyCode.X);
@@ -40,7 +39,7 @@ public class KeyConfig : MonoBehaviour
         }
     }
 
-    public static void SaveKeyConfig()
+    public static void Save()
     {
         PlayerPrefs.SetInt("JumpKey", (int)jumpKey);
         PlayerPrefs.SetInt("ShotKey", (int)shotKey);
@@ -80,5 +79,16 @@ public class KeyConfig : MonoBehaviour
     public static bool GetMenuKeyDown()
     {
         return Input.GetKeyDown(menuKey);
+    }
+
+    public static string GetTextFromKeyCode(KeyCode kc)
+    {
+        string text = kc.ToString();
+        if (text.IndexOf("JoystickButton") >= 0)
+        {
+            text = text.Replace("JoystickButton", "(") + ")";
+        }
+        Debug.Log(text);
+        return text;
     }
 }

@@ -25,6 +25,11 @@ public class KeyConfigUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        KeyConfig.Load();
+        GameObject.Find("JumpKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(KeyConfig.jumpKey);
+        GameObject.Find("ShotKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(KeyConfig.shotKey);
+        GameObject.Find("SwitchKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(KeyConfig.switchKey);
+        GameObject.Find("MenuKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(KeyConfig.menuKey);
     }
 
     // Update is called once per frame
@@ -43,20 +48,21 @@ public class KeyConfigUI : MonoBehaviour
                     switch (keyConfigState)
                     {
                         case KeyConfigState.INPUT_JUMP:
-                            GameObject.Find("JumpKey").GetComponent<Text>().text = code.ToString();
+                            GameObject.Find("JumpKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(code);
                             jumpKey = code;
                             break;
                         case KeyConfigState.INPUT_SHOT:
-                            GameObject.Find("ShotKey").GetComponent<Text>().text = code.ToString();
+                            GameObject.Find("ShotKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(code);
                             shotKey = code;
                             break;
                         case KeyConfigState.INPUT_SWITCH:
-                            GameObject.Find("SwitchKey").GetComponent<Text>().text = code.ToString();
+                            GameObject.Find("SwitchKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(code);
                             switchKey = code;
                             break;
                         case KeyConfigState.INPUT_MENU:
-                            GameObject.Find("MenuKey").GetComponent<Text>().text = code.ToString();
+                            GameObject.Find("MenuKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(code);
                             menuKey = code;
+                            SaveConfig();
                             break;
                         default:
                             break;
@@ -79,5 +85,6 @@ public class KeyConfigUI : MonoBehaviour
         KeyConfig.SetShotKey(shotKey);
         KeyConfig.SetSwitchKey(switchKey);
         KeyConfig.SetMenuKey(menuKey);
+        KeyConfig.Save();
     }
 }
