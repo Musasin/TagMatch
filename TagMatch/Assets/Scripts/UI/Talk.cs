@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class Talk: MonoBehaviour
 {
-    public GameObject yukari, maki, kiritan;
+    public GameObject yukari, rightYukari, maki, rightMaki, kiritan;
     public GameObject leftWindow, rightWindow;
 
     GameObject nowWindow, beforeWindow1, beforeWindow2;
@@ -79,8 +79,14 @@ public class Talk: MonoBehaviour
                     case "yukari":
                         yukari = Instantiate(yukari, transform);
                         break;
+                    case "right_yukari":
+                        rightYukari = Instantiate(rightYukari, transform);
+                        break;
                     case "maki":
                         maki = Instantiate(maki, transform);
+                        break;
+                    case "right_maki":
+                        rightMaki = Instantiate(rightMaki, transform);
                         break;
                     case "kiritan":
                         kiritan = Instantiate(kiritan, transform);
@@ -102,8 +108,14 @@ public class Talk: MonoBehaviour
                     case "yukari":
                         yukari.GetComponent<Animator>().SetBool("isOut", true);
                         break;
+                    case "right_yukari":
+                        rightYukari.GetComponent<Animator>().SetBool("isOut", true);
+                        break;
                     case "maki":
                         maki.GetComponent<Animator>().SetBool("isOut", true);
+                        break;
+                    case "right_maki":
+                        rightMaki.GetComponent<Animator>().SetBool("isOut", true);
                         break;
                     case "kiritan":
                         kiritan.GetComponent<Animator>().SetBool("isOut", true);
