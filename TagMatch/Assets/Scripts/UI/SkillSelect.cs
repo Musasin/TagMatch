@@ -119,7 +119,7 @@ public class SkillSelect : MonoBehaviour
             transform.DOLocalMove(new Vector2(skillTrees[nowKey].pos_x, skillTrees[nowKey].pos_y), 0.1f).SetUpdate(true);
         }
         
-        if (Input.GetButtonDown("Jump"))
+        if (KeyConfig.GetJumpKeyDown())
         {
             if (!StaticValues.GetSkill(skillTrees[nowKey].unique_key) && 
                 StaticValues.coinCount >= skillTrees[nowKey].cost &&

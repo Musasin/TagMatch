@@ -41,7 +41,7 @@ public class Menu : MonoBehaviour
         switch (menuState)
         {
             case MenuState.CLOSED:
-                if (Input.GetButtonDown("Menu"))
+                if (KeyConfig.GetMenuKeyDown())
                 {
                     StaticValues.isPause = true;
                     Time.timeScale = 0;
@@ -61,7 +61,7 @@ public class Menu : MonoBehaviour
                 }
                 AxisDownChecker.AxisDownUpdate();
 
-                if (Input.GetButtonDown("Jump"))
+                if (KeyConfig.GetJumpKeyDown())
                 {
                     switch (nowSelection)
                     {
@@ -81,7 +81,7 @@ public class Menu : MonoBehaviour
                     }
                     anim.SetInteger("menuState", (int)menuState);
                 }
-                if (Input.GetButtonDown("Shot") || Input.GetButtonDown("Menu"))
+                if (KeyConfig.GetShotKeyDown() || KeyConfig.GetMenuKeyDown())
                 {
                     CloseMenu();
                     anim.SetInteger("menuState", (int)menuState);
@@ -89,7 +89,7 @@ public class Menu : MonoBehaviour
                 break;
                 
             case MenuState.STATUS:
-                if (Input.GetButtonDown("Jump") || Input.GetButtonDown("Shot") || Input.GetButtonDown("Menu"))
+                if (KeyConfig.GetJumpKeyDown() || KeyConfig.GetShotKeyDown() || KeyConfig.GetMenuKeyDown())
                 {
                     menuState = MenuState.MENU;
                     anim.SetInteger("menuState", (int)menuState);
@@ -97,7 +97,7 @@ public class Menu : MonoBehaviour
                 break;
                 
             case MenuState.SKILL:
-                if (Input.GetButtonDown("Shot") || Input.GetButtonDown("Menu"))
+                if (KeyConfig.GetShotKeyDown() || KeyConfig.GetMenuKeyDown())
                 {
                     skillSelectCursor.GetComponent<SkillSelect>().SetEnabled(false);
                     menuState = MenuState.MENU;

@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateJump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (KeyConfig.GetJumpKeyDown())
         {
             if (footJudgement.GetIsLanding())
             {
@@ -226,7 +226,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateShot()
     {
-        if (Input.GetButtonDown("Shot"))
+        if (KeyConfig.GetShotKeyDown())
         {
             float dy = Input.GetAxisRaw("Vertical");
             if (dy > 0)
@@ -309,7 +309,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateSwitch()
     {
-        if (Input.GetButtonDown("Switch"))
+        if (KeyConfig.GetSwitchKeyDown())
         {
             switch (switchState)
             {

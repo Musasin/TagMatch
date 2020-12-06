@@ -63,7 +63,7 @@ public class Talk: MonoBehaviour
             return;
         }
         
-        if (Input.GetButtonDown("Shot") || Input.GetButtonDown("Jump"))
+        if (KeyConfig.GetShotKeyDown() || KeyConfig.GetJumpKeyDown())
         {
             UpdateStep();
         }
