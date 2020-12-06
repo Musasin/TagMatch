@@ -47,6 +47,15 @@ public class KeyConfig : MonoBehaviour
         PlayerPrefs.SetInt("MenuKey", (int)menuKey);
     }
 
+    public static void Reset()
+    {
+        jumpKey = KeyCode.C;
+        shotKey = KeyCode.X;
+        switchKey = KeyCode.Z;
+        menuKey = KeyCode.Escape;
+        Save();
+    }
+
     public static void SetJumpKey(KeyCode code)
     {
         jumpKey = code;

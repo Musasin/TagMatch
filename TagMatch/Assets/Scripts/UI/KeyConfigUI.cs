@@ -87,4 +87,9 @@ public class KeyConfigUI : MonoBehaviour
         KeyConfig.SetMenuKey(menuKey);
         KeyConfig.Save();
     }
+
+    public void ResetConfig()
+    {
+        KeyConfig.Reset();
+    }
 }
