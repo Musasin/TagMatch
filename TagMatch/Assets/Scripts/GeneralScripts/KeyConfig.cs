@@ -86,7 +86,7 @@ public class KeyConfig : MonoBehaviour
         string text = kc.ToString();
         if (text.IndexOf("JoystickButton") >= 0)
         {
-            text = text.Replace("JoystickButton", "(") + ")";
+            text = text.Replace("JoystickButton", "(") + ")ボタン";
         }
         Debug.Log(text);
         return text;
