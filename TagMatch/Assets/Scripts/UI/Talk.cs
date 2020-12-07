@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using DG.Tweening;
+using TMPro;
 
 public class Talk: MonoBehaviour
 {
@@ -151,7 +152,7 @@ public class Talk: MonoBehaviour
     void AddTalk(GameObject talkWindow, string text)
     {
         GameObject obj = Instantiate(talkWindow, transform);
-        obj.GetComponentInChildren<Text>().text = text;
+        obj.GetComponentInChildren<TextMeshProUGUI>().text = text;
 
         Destroy(beforeWindow2);
         beforeWindow2 = beforeWindow1;
