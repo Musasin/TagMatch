@@ -97,7 +97,6 @@ public class KeyConfig : MonoBehaviour
         {
             text = text.Replace("JoystickButton", "(") + ")ボタン";
         }
-        Debug.Log(text);
         return text;
     }
 }

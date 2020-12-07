@@ -10,6 +10,7 @@ public class Title : MonoBehaviour
     GameObject optionCursor;
     Vector2 titleCursorDefaultPos;
     Vector2 optionCursorDefaultPos;
+    KeyConfigUI keyConfigUIScript;
 
     enum TitleState
     {
@@ -37,6 +38,7 @@ public class Title : MonoBehaviour
         optionCursor = GameObject.Find("OptionCursor");
         titleCursorDefaultPos = titleCursor.transform.localPosition;
         optionCursorDefaultPos = optionCursor.transform.localPosition;
+        keyConfigUIScript = GameObject.Find("KeyConfig").GetComponent<KeyConfigUI>();
     }
 
     // Update is called once per frame
@@ -51,7 +53,7 @@ public class Title : MonoBehaviour
                     else if (Input.GetAxisRaw("Vertical") > 0) nowSelection--;
                     if (nowSelection > TitleList.EXIT) nowSelection = TitleList.NEW_GAME;
                     if (nowSelection < TitleList.NEW_GAME) nowSelection = TitleList.EXIT;
-                    titleCursor.transform.localPosition = new Vector2(titleCursorDefaultPos.x, titleCursorDefaultPos.y - (78 * (int)nowSelection));
+                    titleCursor.transform.localPosition = new Vector2(titleCursorDefaultPos.x, titleCursorDefaultPos.y - (76 * (int)nowSelection));
                 }
                 AxisDownChecker.AxisDownUpdate();
 
@@ -96,16 +98,43 @@ public class Title : MonoBehaviour
                     if (optionSelection > OptionList.CLOSE) optionSelection = OptionList.WINDOW_SIZE;
                     if (optionSelection < OptionList.WINDOW_SIZE) optionSelection = OptionList.CLOSE;
                     float optionCusrsorPosY = optionCursorDefaultPos.y - (38 * (int)optionSelection);
-                    optionCusrsorPosY -= (optionSelection >= OptionList.BGM ? 38 : 0);
+                    optionCusrsorPosY -= (optionSelection >= OptionList.BGM ? 76 : 0);
                     optionCusrsorPosY -= (optionSelection >= OptionList.KEY_CONFIG ? 38 : 0);
                     optionCusrsorPosY -= (optionSelection >= OptionList.CLOSE ? 38 : 0);
                     optionCursor.transform.localPosition = new Vector2(optionCursorDefaultPos.x, optionCusrsorPosY);
                 }
                 AxisDownChecker.AxisDownUpdate();
+
+
+                if (KeyConfig.GetJumpKeyDown())
+                {
+                    switch (optionSelection)
+                    {
+                        case OptionList.WINDOW_SIZE:
+                            break;
+                        case OptionList.BGM:
+                        case OptionList.SE:
+                        case OptionList.VOICE:
+                            break;
+                        case OptionList.KEY_CONFIG:
+                            titleState = TitleState.KEY_CONFIG;
+                            keyConfigUIScript.StartConfig();
+                            break;
+                        case OptionList.CLOSE:
+                            titleState = TitleState.TITLE;
+                            break;
+                    }
+                }
                 break;
+
             case TitleState.KEY_CONFIG:
+                if (keyConfigUIScript.GetState() == KeyConfigUI.KeyConfigState.IDLE)
+                {
+                    titleState = TitleState.OPTION;
+                }
                 break;
         }
+        anim.SetInteger("TitleState", (int)titleState);
         
     }
 
