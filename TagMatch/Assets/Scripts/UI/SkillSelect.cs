@@ -144,17 +144,35 @@ public class SkillSelect : MonoBehaviour
         foreach (KeyValuePair<string, SkillTreeData> kvp in skillTrees)
         {
             SkillTreeData skill = kvp.Value;
+
+            // スキル解放条件を満たした際に鍵マークを消す
             if (StaticValues.GetSkill(skill.release_condition))
             {
                 GameObject rockPanel = skill.gameObject.transform.Find("RockPanel").gameObject;
                 if (rockPanel != null)
                     rockPanel.transform.DOScale(new Vector2(0, 0), 0.5f).SetUpdate(true);
             }
+            
+            // スキル習得済み
             if (StaticValues.GetSkill(skill.unique_key))
             {
                 GameObject darkPanel = skill.gameObject.transform.Find("DarkPanel").gameObject;
                 if (darkPanel != null)
                     darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f).SetUpdate(true);
+            }
+            
+            // スキル習得条件を満たしている & スキル未習得
+            if ((skill.release_condition == "" || StaticValues.GetSkill(skill.release_condition)) && 
+                !StaticValues.GetSkill(skill.unique_key))
+            {
+                GameObject darkPanel = skill.gameObject.transform.Find("DarkPanel").gameObject;
+                if (darkPanel != null)
+                {
+                    if (skill.cost <= StaticValues.coinCount)
+                        darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0.4f), 0.5f).SetUpdate(true);
+                    else 
+                        darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0.8f), 0.5f).SetUpdate(true);
+                }
             }
         }
     }
