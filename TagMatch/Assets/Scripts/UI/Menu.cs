@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
     Animator anim;
     enum MenuState
     {
-        CLOSED, MENU, STATUS, SKILL
+        CLOSED, MENU, STATUS, SKILL, CLOSING
     };
     MenuState menuState;
     enum MenuList
@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
     GameObject menuCursor;
     GameObject skillSelectCursor;
     Vector2 cussorDefaultPos;
+    float closeTime;
 
     // Start is called before the first frame update
     void Start()
@@ -104,14 +105,25 @@ public class Menu : MonoBehaviour
                     anim.SetInteger("menuState", (int)menuState);
                 }
                 break;
+
+            case MenuState.CLOSING:
+                closeTime -= Time.deltaTime;
+                anim.SetInteger("menuState", (int)MenuState.CLOSED);
+                if (closeTime <= 0)
+                {
+                    menuState = MenuState.CLOSED;
+                    StaticValues.isPause = false;
+                    Time.timeScale = 1.0f;
+                }
+                break;
         }
     }
 
     private void CloseMenu()
     {
-        menuState = MenuState.CLOSED;
-        StaticValues.isPause = false;
+        menuState = MenuState.CLOSING;
         Time.timeScale = 1.0f;
+        closeTime = 0.1f;
     }
 
     public void SetSkillPanelEnabled()

@@ -12,9 +12,10 @@ public class Talk: MonoBehaviour
     public GameObject leftWindow, rightWindow;
 
     GameObject nowWindow, beforeWindow1, beforeWindow2;
-    bool isCameraMoving;
+    bool isCameraMoving, isClosing;
     bool beforeIsPlaying;
     bool isPlaying;
+    float closeTime;
     int nowKey;
 
     private char lf = (char)10;
@@ -52,6 +53,16 @@ public class Talk: MonoBehaviour
                 isCameraMoving = false;
                 beforeIsPlaying = false;
                 isPlaying = true;
+            }
+        }
+        if (isClosing)
+        {
+            closeTime -= Time.deltaTime;
+            if (closeTime <= 0)
+            {
+                isClosing = false;
+                isPlaying = false;
+                StaticValues.isTalkPause = false;
             }
         }
 
@@ -138,8 +149,8 @@ public class Talk: MonoBehaviour
                     beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
                 if (nowWindow != null)
                     nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
-                StaticValues.isTalkPause = false;
-                isPlaying = false;
+                isClosing = true;
+                closeTime = 0.1f;
                 scenario.Clear();
                 return;
         }
