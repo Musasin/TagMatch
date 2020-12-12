@@ -204,7 +204,7 @@ public class Player : MonoBehaviour
             }
             else if (!isUsedDash)
             {
-                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DASH)
+                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DASH && StaticValues.GetSkill("y_dash_1"))
                 {
                     StaticValues.AddMP(true, -MP_COST_YUKARI_DASH);
                     velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
@@ -212,7 +212,7 @@ public class Player : MonoBehaviour
                     dashTime = DASH_TIME;
                     isUsedDash = true;
                 }
-                else if (IsMaki() && StaticValues.makiMP >= MP_COST_MAKI_JUMP)
+                else if (IsMaki() && StaticValues.makiMP >= MP_COST_MAKI_JUMP && StaticValues.GetSkill("m_jump_1"))
                 {
                     StaticValues.AddMP(false, -MP_COST_MAKI_JUMP);
                     velocityY = JUMP_VELOCITY;
@@ -231,7 +231,7 @@ public class Player : MonoBehaviour
             float dy = Input.GetAxisRaw("Vertical");
             if (dy > 0)
             {
-                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_UP_SHOT)
+                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_UP_SHOT && StaticValues.GetSkill("y_shot_1"))
                 {
                     backflipTime = BACKFLIP_TIME;
                     StaticValues.AddMP(true, -MP_COST_YUKARI_UP_SHOT);
@@ -252,7 +252,7 @@ public class Player : MonoBehaviour
                 {
                     if (barrierBulletCount > 0)
                     {
-                        if (StaticValues.makiMP >= MP_COST_MAKI_ELECTRIC_FIRE)
+                        if (StaticValues.makiMP >= MP_COST_MAKI_ELECTRIC_FIRE && StaticValues.GetSkill("m_shot_1"))
                         {
                             StaticValues.AddMP(false, -MP_COST_MAKI_ELECTRIC_FIRE);
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
@@ -260,7 +260,7 @@ public class Player : MonoBehaviour
                         }
                     } else
                     {
-                        if (StaticValues.makiMP >= MP_COST_MAKI_BARRIER)
+                        if (StaticValues.makiMP >= MP_COST_MAKI_BARRIER && StaticValues.GetSkill("m_shot_2"))
                         {
                             StaticValues.AddMP(false, -MP_COST_MAKI_BARRIER);
                             invincibleTime = BARRIER_INVINCIBLE_TIME;
@@ -272,7 +272,7 @@ public class Player : MonoBehaviour
             } 
             else if (dy < 0 && !footJudgement.GetIsLanding()) // 空中下射撃
             {
-                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DOWN_SHOT)
+                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DOWN_SHOT && StaticValues.GetSkill("y_shot_2"))
                 {
                     StaticValues.AddMP(true, -MP_COST_YUKARI_DOWN_SHOT);
                     downShotTime = DOWNSHOT_TIME;
@@ -290,7 +290,7 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki()) 
                 {
-                    // マキさんの空中下射撃は未実装
+                    // マキさんはしゃがみ攻撃不可
                 }
             }
             else
@@ -299,7 +299,7 @@ public class Player : MonoBehaviour
                 if (IsYukari() && yukariBulletCount < YUKARI_BULLET_EXIST_MAX)
                 {
                     InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 0 : 180, isSquat);
-                } 
+                }
                 else if (IsMaki() && makiBulletCount < MAKI_BULLET_EXIST_MAX)
                 {
                     InstantiateBullet(Bullet.BulletType.MAKI, mustangBullet, isRight ? 0 : 180, isSquat);
@@ -388,7 +388,7 @@ public class Player : MonoBehaviour
             if (IsMaki())
             {
                 // 他のステート -> しゃがみ でしゃがみ無敵
-                if (newAnimationState == AnimationState.SQUAT)
+                if (newAnimationState == AnimationState.SQUAT && StaticValues.GetSkill("m_down_2"))
                 {
                     squatInvincibleTime = 1.0f;
                     GameObject effect = Instantiate(invincibleEffect);

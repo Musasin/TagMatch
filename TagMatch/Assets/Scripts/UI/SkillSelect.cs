@@ -46,10 +46,6 @@ public class SkillSelect : MonoBehaviour
             this.u_key = u_key;
             this.d_key = d_key;
             gameObject = GameObject.Find(unique_key);
-            if (this.release_condition == "")
-            {
-                gameObject.transform.Find("RockPanel").gameObject.SetActive(false);
-            }
             Transform levelIcon1 = gameObject.transform.Find("LevelIcon1");
             if (levelIcon1 != null && this.level != 1) levelIcon1.gameObject.SetActive(false);
             Transform levelIcon2 = gameObject.transform.Find("LevelIcon2");
@@ -91,7 +87,7 @@ public class SkillSelect : MonoBehaviour
         
         // ポーズ中でも動かせるようにタイムスケールを無視する
         GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
-        
+        UpdateSkillIcons();
     }
 
     // Update is called once per frame
@@ -145,8 +141,10 @@ public class SkillSelect : MonoBehaviour
         {
             SkillTreeData skill = kvp.Value;
 
+            bool isLock = !StaticValues.GetSkill(skill.release_condition) && skill.release_condition != "";
+
             // スキル解放条件を満たした際に鍵マークを消す
-            if (StaticValues.GetSkill(skill.release_condition))
+            if (!isLock)
             {
                 GameObject rockPanel = skill.gameObject.transform.Find("RockPanel").gameObject;
                 if (rockPanel != null)
@@ -162,14 +160,13 @@ public class SkillSelect : MonoBehaviour
             }
             
             // スキル習得条件を満たしている & スキル未習得
-            if ((skill.release_condition == "" || StaticValues.GetSkill(skill.release_condition)) && 
-                !StaticValues.GetSkill(skill.unique_key))
+            if (!isLock && !StaticValues.GetSkill(skill.unique_key))
             {
                 GameObject darkPanel = skill.gameObject.transform.Find("DarkPanel").gameObject;
                 if (darkPanel != null)
                 {
                     if (skill.cost <= StaticValues.coinCount)
-                        darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0.4f), 0.5f).SetUpdate(true);
+                        darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0.6f), 0.5f).SetUpdate(true);
                     else 
                         darkPanel.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0.8f), 0.5f).SetUpdate(true);
                 }
@@ -180,5 +177,6 @@ public class SkillSelect : MonoBehaviour
     public void SetEnabled(bool flag)
     {
         isEnabled = flag;
+        UpdateSkillIcons();
     }
 }

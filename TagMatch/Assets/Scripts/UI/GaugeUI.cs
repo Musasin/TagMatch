@@ -76,6 +76,7 @@ public class GaugeUI : MonoBehaviour
             if (gaugeType == GaugeType.BossHP)
             {
                 rt.sizeDelta = new Vector2(defaultWidth, rt.sizeDelta.y);
+                rt.localScale = new Vector2(0.8f, 0.8f);
             }
             else
             {

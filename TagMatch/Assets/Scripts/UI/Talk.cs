@@ -17,6 +17,8 @@ public class Talk: MonoBehaviour
     bool isPlaying;
     int nowKey;
 
+    private char lf = (char)10;
+
     private struct ScenarioData
     {
         public int id;
@@ -98,10 +100,10 @@ public class Talk: MonoBehaviour
                 SwitchYukaMaki();
                 break;
             case "left":
-                AddTalk(leftWindow, scenario[nowKey.ToString()].text);
+                AddTalk(leftWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
                 break;
             case "right":
-                AddTalk(rightWindow, scenario[nowKey.ToString()].text);
+                AddTalk(rightWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
                 break;
             case "out":
                 switch (scenario[nowKey.ToString()].text)

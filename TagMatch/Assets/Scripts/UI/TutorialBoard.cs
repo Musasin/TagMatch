@@ -8,7 +8,7 @@ public class TutorialBoard : MonoBehaviour
     TextMeshProUGUI text;
     public enum KeyType
     {
-        JUMP, SHOT, DASH
+        JUMP, SHOT, DASH, MENU
     }
     public KeyType keyType;
     public string backText;
@@ -28,6 +28,9 @@ public class TutorialBoard : MonoBehaviour
                 break;
             case KeyType.DASH:
                 str = "[" + KeyConfig.GetTextFromKeyCode(KeyConfig.jumpKey) + "]→[" + KeyConfig.GetTextFromKeyCode(KeyConfig.jumpKey) + "]";
+                break;
+            case KeyType.MENU:
+                str = "[" + KeyConfig.GetTextFromKeyCode(KeyConfig.menuKey) + "]";
                 break;
         }
         text.text = str + "\n" + backText;
