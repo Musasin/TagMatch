@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6A2A\u5168\u89D2\u306711\u6587\u5B57\u3001\u534A\u89D2\u3060\u306822\u6587\u5B57\u3002\u7E26\u56DB\u884C\u3002\u82E5\u5E72\u305A\u308C\u308B\u5834\u5408\u3082\n\u3042\u308B\u3002"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 68eaf600a17ed427294b0e480a926700, type: 2}
-  m_sharedMaterial: {fileID: -9163568551117969088, guid: 68eaf600a17ed427294b0e480a926700,
+  m_fontAsset: {fileID: 11400000, guid: e84d0bd9fa11e4e11a41e61eed1728b5, type: 2}
+  m_sharedMaterial: {fileID: 1455810227791168467, guid: e84d0bd9fa11e4e11a41e61eed1728b5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -60
+  m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
