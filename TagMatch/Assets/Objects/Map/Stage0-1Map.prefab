@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258513958725595508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.38, y: 0, z: 0}
+  m_LocalPosition: {x: 65.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8871905358773185490}
@@ -11307,6 +11307,77 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 15}
   m_EdgeRadius: 0
+--- !u!1 &2495043308695420670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443898889401819321}
+  - component: {fileID: 7603985105202818410}
+  - component: {fileID: 4231520857770797962}
+  m_Layer: 0
+  m_Name: SkillTutorial (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1443898889401819321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2495043308695420670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.19, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8871905358773185490}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7603985105202818410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2495043308695420670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f1dd928c7e34a4aad5a1e71eae9db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenarioFileName: start_tutorial
+--- !u!61 &4231520857770797962
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2495043308695420670}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 15}
+  m_EdgeRadius: 0
 --- !u!1 &3769283414740208969
 GameObject:
   m_ObjectHideFlags: 0
@@ -11386,6 +11457,7 @@ Transform:
   m_Children:
   - {fileID: 2669406481017849712}
   - {fileID: 5122754123671289021}
+  - {fileID: 1443898889401819321}
   m_Father: {fileID: 1048454271948609671}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11860,6 +11932,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: kinoko
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: shotPower
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3604352289458570567, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
         type: 3}
@@ -12476,6 +12558,16 @@ PrefabInstance:
       propertyPath: attackInterval
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: shotPower
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 3604352289458570567, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12945,6 +13037,16 @@ PrefabInstance:
         type: 3}
       propertyPath: attackInterval
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: shotPower
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3604352289458570567, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
         type: 3}

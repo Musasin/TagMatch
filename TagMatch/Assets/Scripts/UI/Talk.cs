@@ -50,6 +50,7 @@ public class Talk: MonoBehaviour
             if (!StaticValues.isFixedCamera)
             {
                 isCameraMoving = false;
+                beforeIsPlaying = false;
                 isPlaying = true;
             }
         }
@@ -81,18 +82,23 @@ public class Talk: MonoBehaviour
                 {
                     case "yukari":
                         yukari = Instantiate(yukari, transform);
+                        yukari.GetComponent<Animator>().SetBool("isOut", false);
                         break;
                     case "right_yukari":
                         rightYukari = Instantiate(rightYukari, transform);
+                        rightYukari.GetComponent<Animator>().SetBool("isOut", false);
                         break;
                     case "maki":
                         maki = Instantiate(maki, transform);
+                        maki.GetComponent<Animator>().SetBool("isOut", false);
                         break;
                     case "right_maki":
                         rightMaki = Instantiate(rightMaki, transform);
+                        rightMaki.GetComponent<Animator>().SetBool("isOut", false);
                         break;
                     case "kiritan":
                         kiritan = Instantiate(kiritan, transform);
+                        kiritan.GetComponent<Animator>().SetBool("isOut", false);
                         break;
                 }
                 break;
@@ -126,12 +132,16 @@ public class Talk: MonoBehaviour
                 }
                 break;
             case "end":
-                beforeWindow2.GetComponent<Transform>().DOMove(new Vector2(beforeWindow2.GetComponent<Transform>().position.x, 800), 0.3f);
-                beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
-                nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
+                if (beforeWindow2 != null)
+                    beforeWindow2.GetComponent<Transform>().DOMove(new Vector2(beforeWindow2.GetComponent<Transform>().position.x, 800), 0.3f);
+                if (beforeWindow1 != null)
+                    beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
+                if (nowWindow != null)
+                    nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
                 StaticValues.isTalkPause = false;
                 isPlaying = false;
-                break;
+                scenario.Clear();
+                return;
         }
         if (scenario[nowKey.ToString()].play_next)
         {
@@ -204,6 +214,7 @@ public class Talk: MonoBehaviour
             isCameraMoving = true;
         } else
         {
+            beforeIsPlaying = false;
             isPlaying = true;
         }
     }

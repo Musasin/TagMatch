@@ -22,18 +22,18 @@ public class TalkFlag : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (isPlayed)
-            return;
-
         if (collision.tag == "Player")
         {
-            isPlayed = true;
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 rb.velocity = Vector2.zero;
             }
-            talkScript.SetScenario(scenarioFileName, false);
+            if (!isPlayed)
+            {
+                talkScript.SetScenario(scenarioFileName, false);
+            }
+            isPlayed = true;
             Destroy(gameObject);
         }
     }
