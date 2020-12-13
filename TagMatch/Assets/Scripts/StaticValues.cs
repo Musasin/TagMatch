@@ -24,6 +24,8 @@ public class StaticValues : MonoBehaviour
 
     public static bool isFixedCamera;
 
+    public static bool isReloadACB = true;
+
     public static Dictionary<string, bool> skills = new Dictionary<string, bool>();
 
     // Start is called before the first frame update

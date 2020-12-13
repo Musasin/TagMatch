@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6149150688584067639}
   - component: {fileID: 5000950612037190608}
   m_Layer: 0
-  m_Name: SeitchTutorial
+  m_Name: SwitchTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8871905358773185490}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6149150688584067639
 MonoBehaviour:
@@ -15506,7 +15506,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8871905358773185490}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3839111411885004057
 MonoBehaviour:
@@ -15559,7 +15559,7 @@ GameObject:
   - component: {fileID: 7603985105202818410}
   - component: {fileID: 4231520857770797962}
   m_Layer: 0
-  m_Name: SkillTutorial (1)
+  m_Name: StartTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15577,7 +15577,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8871905358773185490}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7603985105202818410
 MonoBehaviour:
@@ -15695,9 +15695,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1443898889401819321}
   - {fileID: 2669406481017849712}
   - {fileID: 5122754123671289021}
-  - {fileID: 1443898889401819321}
   m_Father: {fileID: 1048454271948609671}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

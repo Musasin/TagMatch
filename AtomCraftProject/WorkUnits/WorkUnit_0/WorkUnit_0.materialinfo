@@ -5,9 +5,9 @@
     <Orca OrcaName="WorkUnit_0_MaterialInfo" FormatVersion="Ver.1.02.00" MaterialRootPath="Materials" VersionInfoV3="Ver.3.40.17" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoMaterialInfoFile">
       <Orca OrcaName="MaterialRootFolder" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformFolder">
         <Orca OrcaName="BGM" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
-          <Orca OrcaName="boss1.wav" Channels="2" ReloopEnd="2777565" ResamplingRate="44100" SampleFrames="2777565" SamplingRate="44100" SourceFileSize="11110340" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
-          <Orca OrcaName="stage1.wav" Channels="2" ReloopEnd="3057601" ResamplingRate="44100" SampleFrames="3057601" SamplingRate="44100" SourceFileSize="12230484" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
-          <Orca OrcaName="stage2.wav" Channels="2" ReloopEnd="3268590" ResamplingRate="44100" SampleFrames="3268590" SamplingRate="44100" SourceFileSize="13074440" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="boss1.wav" Channels="2" EncodeFileSize="1850362" ReloopEnd="2777565" ResamplingRate="44100" SampleFrames="2777565" SamplingRate="44100" SourceFileSize="11110340" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="stage1.wav" Channels="2" EncodeFileSize="2037230" ReloopEnd="3057601" ResamplingRate="44100" SampleFrames="3057601" SamplingRate="44100" SourceFileSize="12230484" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="stage2.wav" Channels="2" EncodeFileSize="2177722" ReloopEnd="3268590" ResamplingRate="44100" SampleFrames="3268590" SamplingRate="44100" SourceFileSize="13074440" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="SE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="coin.wav" Channels="1" EncodeFileSize="7257" ReloopEnd="20611" ResamplingRate="44100" SampleFrames="20611" SamplingRate="44100" SourceFileSize="41446" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>

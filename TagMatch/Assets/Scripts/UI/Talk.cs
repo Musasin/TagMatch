@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Talk: MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class Talk: MonoBehaviour
     void Start()
     {
         isPlaying = false;
+        string sceneName = SceneManager.GetActiveScene().name;
+        string acbName = sceneName.Split('-')[0];
+        LoadACB(acbName, acbName + ".acb");
+        AudioManager.Instance.PlayBGM("stage");
     }
 
     // Update is called once per frame
@@ -142,6 +147,10 @@ public class Talk: MonoBehaviour
                         break;
                 }
                 break;
+            case "play_bgm":
+                AudioManager.Instance.StopBGM();
+                AudioManager.Instance.PlayBGM(scenario[nowKey.ToString()].text);
+                break;
             case "end":
                 if (beforeWindow2 != null)
                     beforeWindow2.GetComponent<Transform>().DOMove(new Vector2(beforeWindow2.GetComponent<Transform>().position.x, 800), 0.3f);
@@ -228,5 +237,12 @@ public class Talk: MonoBehaviour
             beforeIsPlaying = false;
             isPlaying = true;
         }
+    }
+        
+    private void LoadACB(string cueSheetName, string acbName, string awbName = "")
+    {
+        if (StaticValues.isReloadACB == false) { return; }
+        AudioManager.Instance.LoadACB(cueSheetName, acbName, awbName);
+        StaticValues.isReloadACB = false;
     }
 }
