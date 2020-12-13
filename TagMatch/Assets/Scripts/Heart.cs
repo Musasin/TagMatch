@@ -25,7 +25,14 @@ public class Heart : MonoBehaviour
     {
         if (isGot)
             return;
-
+        
+        if (hpPoint >= 50 || mpPoint >= 50)
+        {
+            AudioManager.Instance.PlaySE("heal_big");
+        } else
+        {
+            AudioManager.Instance.PlaySE("heal");
+        }
         isGot = true;
         anim.SetBool("isGot", isGot);
         StaticValues.AddHP(true, hpPoint);

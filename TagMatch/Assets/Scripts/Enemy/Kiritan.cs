@@ -211,6 +211,8 @@ public class Kiritan : MonoBehaviour
 
     void InstantiateTwinBullet()
     {
+        AudioManager.Instance.PlaySE("buon");
+
         GameObject b1 = Instantiate(kiritanhouBullet);
         b1.transform.position = kiritanhouPos1.transform.position;
         if (isRight)

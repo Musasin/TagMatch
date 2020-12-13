@@ -27,6 +27,14 @@ public class Coin : MonoBehaviour
         if (isGot)
             return;
 
+        if (point >= 10)
+        {
+            AudioManager.Instance.PlaySE("coin_big");
+        } else
+        {
+            AudioManager.Instance.PlaySE("coin");
+        }
+        
         isGot = true;
         anim.SetBool("isGot", isGot);
         StaticValues.score += score;

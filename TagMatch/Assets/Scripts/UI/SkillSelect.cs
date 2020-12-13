@@ -98,6 +98,7 @@ public class SkillSelect : MonoBehaviour
 
         if (AxisDownChecker.GetAxisDownHorizontal())
         {
+            AudioManager.Instance.PlaySE("select");
             if (Input.GetAxisRaw("Horizontal") < 0)
                 nowKey = skillTrees[nowKey].l_key;
             else if (Input.GetAxisRaw("Horizontal") > 0)
@@ -108,6 +109,7 @@ public class SkillSelect : MonoBehaviour
 
         if (AxisDownChecker.GetAxisDownVertical())
         {
+            AudioManager.Instance.PlaySE("select");
             if (Input.GetAxisRaw("Vertical") < 0)
                 nowKey = skillTrees[nowKey].d_key;
             else if (Input.GetAxisRaw("Vertical") > 0)
@@ -117,7 +119,7 @@ public class SkillSelect : MonoBehaviour
         
         if (KeyConfig.GetJumpKeyDown())
         {
-            if (!StaticValues.GetSkill(skillTrees[nowKey].unique_key) && 
+            if (!StaticValues.GetSkill(skillTrees[nowKey].unique_key) &&
                 StaticValues.coinCount >= skillTrees[nowKey].cost &&
                 (StaticValues.GetSkill(skillTrees[nowKey].release_condition) || skillTrees[nowKey].release_condition == ""))
             {
@@ -126,6 +128,11 @@ public class SkillSelect : MonoBehaviour
                 effect.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
                 StaticValues.AddSkill(skillTrees[nowKey].unique_key, true);
                 UpdateSkillIcons();
+                AudioManager.Instance.PlaySE("accept"); // 音ができたら差し替える
+            }
+            else
+            {
+                AudioManager.Instance.PlaySE("cancel");
             }
         }
         AxisDownChecker.AxisDownUpdate();

@@ -70,6 +70,7 @@ public class Kiritanhou : MonoBehaviour
 
     void AimForPlayerShot()
     {
+        AudioManager.Instance.PlaySE("shot_kiritanhou");
         rb.AddForce(GetAimForPlayerShotVector());
 
         isAimForPlayer = false;

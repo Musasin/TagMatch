@@ -340,6 +340,11 @@ public class Player : MonoBehaviour
         bullet.GetComponent<Bullet>().SetBulletType(bulletType);
         bullet.GetComponent<Bullet>().SetPlayerScript(this);
         AddBulletCount(bulletType, 1);
+
+        if (IsYukari())
+        {
+            AudioManager.Instance.PlaySE("shot_yukari");
+        }
     }
     private void InstantiateSpecialBullet(Bullet.BulletType bulletType, GameObject bulletObj, float deadTime)
     {

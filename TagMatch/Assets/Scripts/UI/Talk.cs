@@ -183,6 +183,7 @@ public class Talk: MonoBehaviour
 
     void AddTalk(GameObject talkWindow, string text)
     {
+        AudioManager.Instance.PlaySE("talk_step");
         GameObject obj = Instantiate(talkWindow, transform);
         obj.GetComponentInChildren<TextMeshProUGUI>().text = text;
 

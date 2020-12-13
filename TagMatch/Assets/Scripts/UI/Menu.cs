@@ -44,6 +44,7 @@ public class Menu : MonoBehaviour
             case MenuState.CLOSED:
                 if (KeyConfig.GetMenuKeyDown())
                 {
+                    AudioManager.Instance.PlaySE("open_menu");
                     StaticValues.isPause = true;
                     Time.timeScale = 0;
                     menuState = MenuState.MENU;
@@ -54,6 +55,7 @@ public class Menu : MonoBehaviour
             case MenuState.MENU:
                 if (AxisDownChecker.GetAxisDownVertical())
                 {
+                    AudioManager.Instance.PlaySE("select");
                     if (Input.GetAxisRaw("Vertical") < 0) nowSelection++;
                     else if (Input.GetAxisRaw("Vertical") > 0) nowSelection--;
                     if (nowSelection > MenuList.CLOSE) nowSelection = MenuList.STATUS;
@@ -64,6 +66,7 @@ public class Menu : MonoBehaviour
 
                 if (KeyConfig.GetJumpKeyDown())
                 {
+                    AudioManager.Instance.PlaySE("accept");
                     switch (nowSelection)
                     {
                         case MenuList.STATUS:
@@ -92,6 +95,7 @@ public class Menu : MonoBehaviour
             case MenuState.STATUS:
                 if (KeyConfig.GetJumpKeyDown() || KeyConfig.GetShotKeyDown() || KeyConfig.GetMenuKeyDown())
                 {
+                    AudioManager.Instance.PlaySE("cancel");
                     menuState = MenuState.MENU;
                     anim.SetInteger("menuState", (int)menuState);
                 }
@@ -100,6 +104,7 @@ public class Menu : MonoBehaviour
             case MenuState.SKILL:
                 if (KeyConfig.GetShotKeyDown() || KeyConfig.GetMenuKeyDown())
                 {
+                    AudioManager.Instance.PlaySE("cancel");
                     skillSelectCursor.GetComponent<SkillSelect>().SetEnabled(false);
                     menuState = MenuState.MENU;
                     anim.SetInteger("menuState", (int)menuState);
@@ -121,6 +126,7 @@ public class Menu : MonoBehaviour
 
     private void CloseMenu()
     {
+        AudioManager.Instance.PlaySE("close_menu");
         menuState = MenuState.CLOSING;
         Time.timeScale = 1.0f;
         closeTime = 0.1f;
