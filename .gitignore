@@ -57,6 +57,8 @@ sysinfo.txt
 
 /TagMatch/Assets/Plugins/
 /AtomCraftProject/Public/
+/AtomCraftProject/AtomCraftProject_Cache/
+/AtomCraftProject/*.atmcuser
 /AtomCraftProject/WorkUnits/WorkUnit_0/Materials/SE/DONT_PUSH/
 
 # Crashlytics generated file
