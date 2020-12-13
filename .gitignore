@@ -55,6 +55,11 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+/TagMatch/Assets/Plugins/
+/AtomCraftProject/TagMatch/Starby_Cache/
+/AtomCraftProject/TagMatch/Public/
+/AtomCraftProject/TagMatch/WorkUnits/WorkUnit_0/Materials/SE/DONT_PUSH/
+
 # Crashlytics generated file
 crashlytics-build.properties
 

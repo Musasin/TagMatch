@@ -62,7 +62,7 @@ public class Title : MonoBehaviour
                     switch (nowSelection)
                     {
                         case TitleList.NEW_GAME:
-                            SceneManager.LoadScene("Stage0-1");
+                            SceneManager.LoadScene("Stage1-0");
                             break;
                         case TitleList.CONTINUE:
                             // TODO
@@ -140,6 +140,6 @@ public class Title : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Stage0-1");
+        SceneManager.LoadScene("Stage1-0");
     }
 }
