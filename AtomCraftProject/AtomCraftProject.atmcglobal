@@ -20,7 +20,10 @@
       </Orca>
       <Orca OrcaName="Categories" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCategoryFolder">
         <Orca OrcaName="CategoryGroup_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCategoryGroup">
-          <Orca OrcaName="Category_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCategory"/>
+          <Orca OrcaName="BGM" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCategory"/>
+          <Orca OrcaName="SE" CategoryId="1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCategory"/>
+          <Orca OrcaName="VOICE" CategoryId="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCategory"/>
+          <Orca OrcaName="BATTLE_VOICE" CategoryId="3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCategory"/>
         </Orca>
       </Orca>
       <Orca OrcaName="REACT" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoReactFolder"/>

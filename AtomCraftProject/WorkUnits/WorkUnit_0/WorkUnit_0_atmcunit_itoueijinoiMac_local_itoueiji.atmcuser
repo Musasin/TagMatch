@@ -6,6 +6,8 @@
       <Orca OrcaName="WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="WorkUnit_0" orcaPath="CueSheetFolder/WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Common" orcaPath="CueSheetFolder/WorkUnit_0/Common" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="UI" orcaPath="CueSheetFolder/WorkUnit_0/Common/UI" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="accept" orcaPath="CueSheetFolder/WorkUnit_0/Common/UI/accept" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Stage1" orcaPath="CueSheetFolder/WorkUnit_0/Stage1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="stage" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/stage" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="stage" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/stage" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
