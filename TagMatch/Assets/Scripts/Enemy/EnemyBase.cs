@@ -43,6 +43,7 @@ public class EnemyBase : MonoBehaviour
         dp.transform.position = transform.position;
         dp.GetComponent<DamagePointEffect>().SetDamagePointAndPlay(damage);
         invincibleTime = INVINCIBLE_TIME;
+        AudioManager.Instance.PlaySE("hit_enemy");
     }
     public bool IsInvincible()
     {

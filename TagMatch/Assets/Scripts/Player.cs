@@ -201,6 +201,7 @@ public class Player : MonoBehaviour
                 GameObject effect = Instantiate(jumpEffect);
                 effect.transform.position = new Vector2(transform.position.x + (isRight ? -0.3f : 0.3f), transform.position.y);
                 effect.transform.localScale = new Vector2(effect.transform.localScale.x * (isRight ? 1 : -1), effect.transform.localScale.y);
+                AudioManager.Instance.PlaySE("jump");
             }
             else if (!isUsedDash)
             {
@@ -211,6 +212,7 @@ public class Player : MonoBehaviour
                     velocityY = DASH_VELOCITY_Y;
                     dashTime = DASH_TIME;
                     isUsedDash = true;
+                    AudioManager.Instance.PlaySE("dash");
                 }
                 else if (IsMaki() && StaticValues.makiMP >= MP_COST_MAKI_JUMP && StaticValues.GetSkill("m_jump_1"))
                 {
@@ -220,6 +222,7 @@ public class Player : MonoBehaviour
                     effect.transform.position = new Vector2(transform.position.x + (isRight ? -0.3f : 0.3f), transform.position.y);
                     effect.transform.localScale = new Vector2(effect.transform.localScale.x * (isRight ? 1 : -1), effect.transform.localScale.y);
                     isUsedDash = true;
+                    AudioManager.Instance.PlaySE("jump");
                 }
             }
         }
@@ -326,6 +329,7 @@ public class Player : MonoBehaviour
             }
             mpRecoverTime = 0;
             shotImpossibleTime = SHOT_IMPOSSIBLE_TIME;
+            AudioManager.Instance.PlaySE("switch");
         }
     }
     private void InstantiateBullet(Bullet.BulletType bulletType, GameObject bulletObj, float angleZ, bool isSquat = false)
@@ -344,6 +348,9 @@ public class Player : MonoBehaviour
         if (IsYukari())
         {
             AudioManager.Instance.PlaySE("shot_yukari");
+        } else if (IsMaki())
+        {
+            AudioManager.Instance.PlaySE("buon"); // 仮
         }
     }
     private void InstantiateSpecialBullet(Bullet.BulletType bulletType, GameObject bulletObj, float deadTime)
@@ -457,6 +464,7 @@ public class Player : MonoBehaviour
             bool isEnemyRight = transform.position.x < collision.gameObject.transform.position.x;
             velocityX = isEnemyRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X;
             rb.velocity = new Vector2(velocityX, DAMAGE_VELOCITY_Y);
+            AudioManager.Instance.PlaySE("hit_player");
         }
     }
     

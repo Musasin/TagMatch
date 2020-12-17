@@ -128,7 +128,7 @@ public class SkillSelect : MonoBehaviour
                 effect.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
                 StaticValues.AddSkill(skillTrees[nowKey].unique_key, true);
                 UpdateSkillIcons();
-                AudioManager.Instance.PlaySE("accept"); // 音ができたら差し替える
+                AudioManager.Instance.PlaySE("skill_open");
             }
             else
             {
