@@ -42,9 +42,12 @@ public class Talk: MonoBehaviour
     void Start()
     {
         // 仮。
-        AudioManager.Instance.ChangeBGMVolume(0.4f);
-        AudioManager.Instance.ChangeSEVolume(0.4f);
-        AudioManager.Instance.ChangeVoiceVolume(0.4f);
+        //AudioManager.Instance.ChangeBGMVolume(0.4f);
+        //AudioManager.Instance.ChangeSEVolume(0.4f);
+        //AudioManager.Instance.ChangeVoiceVolume(0.4f);
+        AudioManager.Instance.ChangeBGMVolume(0);
+        AudioManager.Instance.ChangeSEVolume(0);
+        AudioManager.Instance.ChangeVoiceVolume(0);
 
         isPlaying = false;
         string sceneName = SceneManager.GetActiveScene().name;
