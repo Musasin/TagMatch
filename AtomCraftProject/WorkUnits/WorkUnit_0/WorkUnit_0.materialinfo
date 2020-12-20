@@ -25,7 +25,7 @@
             <Orca OrcaName="talk_step.wav" Channels="1" EncodeFileSize="1119" ReloopEnd="2296" ResamplingRate="44100" SampleFrames="2296" SamplingRate="44100" SourceFileSize="4720" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="skill_open.wav" Channels="2" EncodeFileSize="42380" ReloopEnd="63360" ResamplingRate="44100" SampleFrames="63360" SamplingRate="44100" SourceFileSize="253484" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           </Orca>
-          <Orca OrcaName="shot_yukari.wav" Channels="2" EncodeFileSize="54656" ReloopEnd="81792" ResamplingRate="44100" SampleFrames="81792" SamplingRate="44100" SourceFileSize="327212" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="shot_yukari.wav" Channels="2" EncodeFileSize="71024" ReloopEnd="81792" ResamplingRate="44100" SampleFrames="106236" SamplingRate="44100" SourceFileSize="425072" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="buon.wav" Channels="2" EncodeFileSize="28058" ReloopEnd="41472" ResamplingRate="44100" SampleFrames="41472" SamplingRate="44100" SourceFileSize="165932" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="hit_enemy.wav" Channels="2" EncodeFileSize="13054" ReloopEnd="18432" ResamplingRate="44100" SampleFrames="18432" SamplingRate="44100" SourceFileSize="73772" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="hit_player.wav" Channels="2" EncodeFileSize="13736" ReloopEnd="19584" ResamplingRate="44100" SampleFrames="19584" SamplingRate="44100" SourceFileSize="78380" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
