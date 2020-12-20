@@ -212,6 +212,10 @@ public class Player : MonoBehaviour
                     velocityX = isRight ? DASH_VELOCITY_X : -DASH_VELOCITY_X;
                     velocityY = DASH_VELOCITY_Y;
                     dashTime = DASH_TIME;
+                    if (StaticValues.GetSkill("y_dash_2"))
+                    {
+                        invincibleTime = DASH_TIME;
+                    }
                     isUsedDash = true;
                     AudioManager.Instance.PlaySE("dash");
                 }
