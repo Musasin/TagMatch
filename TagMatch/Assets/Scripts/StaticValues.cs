@@ -5,7 +5,7 @@ using UnityEngine;
 public class StaticValues : MonoBehaviour
 {
     public static int score;
-    public static int coinCount = 0;
+    public static int coinCount = 1000;
     public static float time;
     public static bool isPause;
     public static bool isTalkPause;
@@ -18,6 +18,8 @@ public class StaticValues : MonoBehaviour
     public static int makiMaxHP = 100;
     public static int makiMP = 100;
     public static int makiMaxMP = 100;
+    public static float yukariAttackRatio = 1.0f;
+    public static float makiAttackRatio = 1.0f;
 
     public static int bossHP;
     public static int bossMaxHP;
@@ -75,6 +77,7 @@ public class StaticValues : MonoBehaviour
     {
         skills[skillName] = flag;
         UpdateMaxHPMP();
+        UpdateAttackRatio();
     }
     public static bool GetSkill(string skillName)
     {
@@ -138,6 +141,43 @@ public class StaticValues : MonoBehaviour
                     break;
                 case "m_mp_1":
                     makiMaxMP += 25;
+                    break;
+            }
+        }
+    }
+
+    static void UpdateAttackRatio()
+    {
+        yukariAttackRatio = 1.0f;
+        makiAttackRatio = 1.0f;
+        foreach (KeyValuePair<string, bool> kvp in skills)
+        {
+            string skillName = kvp.Key;
+            switch (skillName)
+            {
+                case "y_damage_1":
+                    yukariAttackRatio += 0.25f;
+                    break;
+                case "y_damage_2":
+                    yukariAttackRatio += 0.25f;
+                    break;
+                case "y_damage_3":
+                    yukariAttackRatio += 0.25f;
+                    break;
+                case "y_damage_4":
+                    yukariAttackRatio += 0.25f;
+                    break;
+                case "m_damage_4":
+                    makiAttackRatio += 0.25f;
+                    break;
+                case "m_damage_3":
+                    makiAttackRatio += 0.25f;
+                    break;
+                case "m_damage_2":
+                    makiAttackRatio += 0.25f;
+                    break;
+                case "m_damage_1":
+                    makiAttackRatio += 0.25f;
                     break;
             }
         }

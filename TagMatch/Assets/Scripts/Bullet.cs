@@ -90,7 +90,16 @@ public class Bullet : MonoBehaviour
             {
                 if (!enemy.IsInvincible())
                 {
-                    enemy.HitBullet(damage, gameObject);
+                    int dmg = damage;
+                    if (bulletType == BulletType.YUKARI)
+                    {
+                        dmg = (int)(dmg * StaticValues.yukariAttackRatio);
+                    }
+                    else if (bulletType == BulletType.MAKI)
+                    {
+                        dmg = (int)(dmg * StaticValues.makiAttackRatio);
+                    }
+                    enemy.HitBullet(dmg, gameObject);
                     PlayHitEffect(collision.gameObject.transform.position);
                     if (!isTrample)
                     {
