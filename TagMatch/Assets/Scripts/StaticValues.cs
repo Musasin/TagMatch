@@ -8,7 +8,7 @@ public class StaticValues : MonoBehaviour
     public static SwitchState switchState = SwitchState.YUKARI;
 
     public static int score;
-    public static int coinCount = 1000;
+    public static int coinCount = 0;
     public static float time;
     public static bool isPause;
     public static bool isTalkPause;
