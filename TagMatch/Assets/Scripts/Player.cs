@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     const float DOWNSHOT_VELOCITY_Y = 7.0f;
     const float DAMAGE_VELOCITY_X = 4.0f;
     const float DAMAGE_VELOCITY_Y = 8.0f;
+    const float DEAD_VELOCITY_X = 10.0f;
+    const float DEAD_VELOCITY_Y = 20.0f;
     const float DASH_TIME = 0.13f;
     const float BACKFLIP_TIME = 0.4f;
     const float DOWNSHOT_TIME = 0.4f;
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
     AnimationState animationState, newAnimationState;
-    Vector2 lastStandPos1, lastStandPos2;
+    Vector2 firstPos, lastStandPos1, lastStandPos2;
 
     float velocityX = 0;
     float velocityY = 0;
@@ -62,6 +64,7 @@ public class Player : MonoBehaviour
     float checkLastStandPosTime = 0;
     bool isUsedDash = false;
     bool isRight = true;
+    bool isDead = false;
     
     int yukariBulletCount = 0;
     int makiBulletCount = 0;
@@ -83,6 +86,7 @@ public class Player : MonoBehaviour
         yukariAnimator = yukariImage.GetComponent<Animator>();
         makiAnimator = makiImage.GetComponent<Animator>();
 
+        firstPos = transform.position;
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
         Switch(StaticValues.switchState, false);
@@ -92,6 +96,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (StaticValues.isPause)
+        {
+            return;
+        }
+
+        if (isDead)
         {
             return;
         }
@@ -545,7 +554,11 @@ public class Player : MonoBehaviour
                 {
                     if (StaticValues.makiHP <= 0)
                     {
-                        // ゲームオーバー処理
+                        isDead = true;
+                        velocityX = isEnemyRight ? -DEAD_VELOCITY_X : DEAD_VELOCITY_X;
+                        rb.velocity = new Vector2(velocityX, DEAD_VELOCITY_Y);
+                        DOTween.Sequence()
+                            .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, 3600), 1.0f, RotateMode.FastBeyond360)).Play();
                     }
                     else
                     {
@@ -558,7 +571,11 @@ public class Player : MonoBehaviour
                 {
                     if (StaticValues.yukariHP <= 0)
                     {
-                        // ゲームオーバー処理
+                        isDead = true;
+                        velocityX = isEnemyRight ? -DEAD_VELOCITY_X : DEAD_VELOCITY_X;
+                        rb.velocity = new Vector2(velocityX, DEAD_VELOCITY_Y);
+                        DOTween.Sequence()
+                            .Append(makiImage.transform.DOLocalRotate(new Vector3(0, 0, 3600), 1.0f, RotateMode.FastBeyond360)).Play();
                     }
                     else
                     {
@@ -598,5 +615,33 @@ public class Player : MonoBehaviour
         {
             electricFireCount += count;
         }
+    }
+
+    public void Reset()
+    {
+        transform.position = firstPos;
+        rb.velocity = Vector2.zero;
+        StaticValues.yukariHP = StaticValues.yukariMaxHP;
+        StaticValues.yukariMP = StaticValues.yukariMaxMP;
+        StaticValues.makiHP = StaticValues.makiMaxHP;
+        StaticValues.makiMP = StaticValues.makiMaxMP;
+        yukariBulletCount = 0;
+        makiBulletCount = 0;
+        barrierBulletCount = 0;
+        electricFireCount = 0;
+        velocityX = 0;
+        velocityY = 0;
+        dashTime = 0;
+        backflipTime = 0;
+        downShotTime = 0;
+        stopTime = 0;
+        shotImpossibleTime = 0;
+        invincibleTime = 0;
+        squatInvincibleTime = 0;
+        mpRecoverTime = 0;
+        checkLastStandPosTime = 0;
+        isUsedDash = false;
+        isRight = true;
+        isDead = false;
     }
 }

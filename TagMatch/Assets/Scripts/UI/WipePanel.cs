@@ -44,4 +44,15 @@ public class WipePanel : MonoBehaviour
             anim.SetBool("WipeOut", true);
         }
     }
+
+    public void WipeOut()
+    {
+        anim.SetBool("WipeIn", false);
+        anim.SetBool("WipeOut", true);
+    }
+    public void WipeIn()
+    {
+        anim.SetBool("WipeIn", true);
+        anim.SetBool("WipeOut", false);
+    }
 }

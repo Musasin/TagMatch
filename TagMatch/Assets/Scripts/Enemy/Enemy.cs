@@ -22,14 +22,12 @@ public class Enemy : EnemyBase
     const float DAMAGE_VELOCITY_X = 4.0f;
     const float DAMAGE_VELOCITY_Y = 8.0f;
     
-    int maxHp;
     float invincibleTime = 0;
     float afterAttackTime = 0;
     bool isKnockBack;
     bool isAttacking;
     bool isDead;
     Rigidbody2D rb;
-    SpriteRenderer sr;
     Animator anim;
     BoxCollider2D bc;
     Vector2 defaultPosition;
@@ -41,29 +39,21 @@ public class Enemy : EnemyBase
     public override void Start()
     {
         base.Start();
-        maxHp = hp;
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         bc = transform.GetComponent<BoxCollider2D>();
         defaultPosition = transform.localPosition;
         defaultScale = transform.localScale;
     }
 
-    public void Reset()
+    public override void Reset()
     {
-        hp = maxHp;
-        invincibleTime = 0;
+        base.Reset();
         afterAttackTime = 0;
-        isKnockBack = false;
-        isDead = false;
-        transform.localPosition = defaultPosition;
-        transform.localScale = defaultScale;
-        transform.rotation = new Quaternion(0, 0, 0, 0);
-        bc.enabled = true;
-        rb.velocity = Vector2.zero;
         if (dropedItem1 != null) Destroy(dropedItem1);
         if (dropedItem2 != null) Destroy(dropedItem2);
+        bc.enabled = true;
+        rb.velocity = Vector2.zero;
     }
 
     // Update is called once per frame

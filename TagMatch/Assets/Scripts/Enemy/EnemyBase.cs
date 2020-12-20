@@ -7,15 +7,30 @@ public class EnemyBase : MonoBehaviour
     public int hp;
     public GameObject damagePointEffect;
 
-    SpriteRenderer sr;
     const float INVINCIBLE_TIME = 0.2f;
-
+    
+    int maxHp;
     float invincibleTime = 0;
+    SpriteRenderer sr;
+    Vector2 defaultPosition;
+    Vector2 defaultScale;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        maxHp = hp;
         sr = GetComponentInChildren<SpriteRenderer>();
+        defaultPosition = transform.localPosition;
+        defaultScale = transform.localScale;
+    }
+
+    public virtual void Reset()
+    {
+        hp = maxHp;
+        invincibleTime = 0;
+        transform.localPosition = defaultPosition;
+        transform.localScale = defaultScale;
+        transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     // Update is called once per frame
