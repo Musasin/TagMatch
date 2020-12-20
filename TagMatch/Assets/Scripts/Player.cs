@@ -308,17 +308,37 @@ public class Player : MonoBehaviour
             else
             {
                 bool isSquat = Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding();
-                if (IsYukari() && yukariBulletCount < YUKARI_BULLET_EXIST_MAX)
+                if (isSquat)
                 {
-                    InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 0 : 180, isSquat);
+                    // 低姿勢射撃
+                    if (IsYukari() && StaticValues.GetSkill("y_down_1") && yukariBulletCount < YUKARI_BULLET_EXIST_MAX)
+                    {
+                        InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 0 : 180, isSquat);
+                    }
+                    // ヒール
+                    else if (IsMaki() && StaticValues.GetSkill("m_down_1") && StaticValues.makiMP >= MP_COST_MAKI_HEAL) 
+                    {
+                        StaticValues.AddMP(false, -MP_COST_MAKI_HEAL);
+                        StaticValues.AddHP(true, 50);
+                        StaticValues.AddHP(false, 50);
+                        GameObject effect = Instantiate(healEffect);
+                        effect.transform.position = new Vector2(transform.position.x, transform.position.y + 1.0f);
+                        AudioManager.Instance.PlaySE("jump"); // 仮
+                    }
                 }
-                else if (IsMaki() && StaticValues.GetSkill("m_down_1")) 
+                else
                 {
-                    StaticValues.AddMP(false, -MP_COST_MAKI_HEAL);
-                    GameObject effect = Instantiate(healEffect);
-                    effect.transform.position = new Vector2(transform.position.x, transform.position.y + 1.0f);
-                    AudioManager.Instance.PlaySE("jump");
+                    if (IsYukari() && yukariBulletCount < YUKARI_BULLET_EXIST_MAX)
+                    {
+                        InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 0 : 180, isSquat);
+                    } 
+                    else if (IsMaki() && makiBulletCount < MAKI_BULLET_EXIST_MAX)
+                    {
+                        InstantiateBullet(Bullet.BulletType.MAKI, mustangBullet, isRight ? 0 : 180, isSquat);
+                    }
+                    
                 }
+                
             }
         }
     }
@@ -350,6 +370,11 @@ public class Player : MonoBehaviour
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * SHOT_POWER * (bulletType == Bullet.BulletType.YUKARI ? 1.5f : 1.0f);
 
         GameObject bullet = Instantiate(bulletObj);
+        // 精密射撃
+        if (isSquat && IsYukari() && StaticValues.GetSkill("y_down_2"))
+        {
+            bullet.GetComponent<Bullet>().damage = (int)(bullet.GetComponent<Bullet>().damage * 1.5f);
+        }
         bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
         bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
         bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
