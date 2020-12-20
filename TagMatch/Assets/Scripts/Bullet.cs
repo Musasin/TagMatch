@@ -96,7 +96,7 @@ public class Bullet : MonoBehaviour
                     {
                         dmg = (int)(dmg * StaticValues.yukariAttackRatio);
                     }
-                    else if (bulletType == BulletType.MAKI)
+                    else if (bulletType == BulletType.MAKI || bulletType == BulletType.MAKI_BARRIER || bulletType == BulletType.MAKI_ELECTRIC_FIRE || bulletType == BulletType.MAKI_JUMP_ATTACK)
                     {
                         dmg = (int)(dmg * StaticValues.makiAttackRatio);
                     }

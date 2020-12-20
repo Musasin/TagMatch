@@ -28,7 +28,6 @@ public class Enemy : EnemyBase
     Rigidbody2D rb;
     Animator anim;
     BoxCollider2D bc;
-    Vector2 defaultPosition;
     Vector2 defaultScale;
     GameObject dropedItem1, dropedItem2;
     Sequence attackSequence;
@@ -40,7 +39,6 @@ public class Enemy : EnemyBase
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         bc = transform.GetComponent<BoxCollider2D>();
-        defaultPosition = transform.localPosition;
         defaultScale = transform.localScale;
     }
 
@@ -55,6 +53,7 @@ public class Enemy : EnemyBase
         if (dropedItem2 != null) Destroy(dropedItem2);
         bc.enabled = true;
         rb.velocity = Vector2.zero;
+        transform.localScale = defaultScale;
     }
 
     // Update is called once per frame

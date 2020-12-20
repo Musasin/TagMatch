@@ -13,7 +13,6 @@ public class EnemyBase : MonoBehaviour
     float invincibleTime = 0;
     SpriteRenderer sr;
     Vector2 defaultPosition;
-    Vector2 defaultScale;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -21,7 +20,6 @@ public class EnemyBase : MonoBehaviour
         maxHp = hp;
         sr = GetComponentInChildren<SpriteRenderer>();
         defaultPosition = transform.localPosition;
-        defaultScale = transform.localScale;
     }
 
     public virtual void Reset()
@@ -29,7 +27,6 @@ public class EnemyBase : MonoBehaviour
         hp = maxHp;
         invincibleTime = 0;
         transform.localPosition = defaultPosition;
-        transform.localScale = defaultScale;
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
