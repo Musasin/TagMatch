@@ -354,20 +354,33 @@ public class Player : MonoBehaviour
             switch (switchState)
             {
                 case SwitchState.YUKARI:
-                    switchState = SwitchState.MAKI;
-                    playerImageAnimator.SetInteger("switchState", (int)switchState);
+                    if (StaticValues.makiHP <= 0)
+                    {
+                        AudioManager.Instance.PlaySE("cancel"); // 仮？
+                        return;
+                    }
+                    Switch(SwitchState.MAKI);
                     break;
                 case SwitchState.MAKI:
-                    switchState = SwitchState.YUKARI;
-                    playerImageAnimator.SetInteger("switchState", (int)switchState);
+                    if (StaticValues.yukariHP <= 0)
+                    {
+                        AudioManager.Instance.PlaySE("cancel"); // 仮？
+                        return;
+                    }
+                    Switch(SwitchState.YUKARI);
                     break;
                 default:
                     break;
             }
-            mpRecoverTime = 0;
-            shotImpossibleTime = SHOT_IMPOSSIBLE_TIME;
-            AudioManager.Instance.PlaySE("switch");
         }
+    }
+    private void Switch(SwitchState nextState)
+    {
+        switchState = nextState;
+        mpRecoverTime = 0;
+        playerImageAnimator.SetInteger("switchState", (int)switchState);
+        shotImpossibleTime = SHOT_IMPOSSIBLE_TIME;
+        AudioManager.Instance.PlaySE("switch");
     }
     private void InstantiateBullet(Bullet.BulletType bulletType, GameObject bulletObj, float angleZ, bool isSquat = false)
     {
@@ -509,6 +522,35 @@ public class Player : MonoBehaviour
             velocityX = isEnemyRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X;
             rb.velocity = new Vector2(velocityX, DAMAGE_VELOCITY_Y);
             AudioManager.Instance.PlaySE("hit_player");
+
+            // 操作キャラが死亡した時
+            if ((IsYukari() && StaticValues.yukariHP <= 0) || (!IsYukari() && StaticValues.makiHP <= 0))
+            {
+                if (IsYukari())
+                {
+                    if (StaticValues.makiHP <= 0)
+                    {
+                        // ゲームオーバー処理
+                    }
+                    else
+                    {
+                        transform.position = lastStandPos;
+                        Switch(SwitchState.MAKI);
+                    }
+                }
+                else if (IsMaki())
+                {
+                    if (StaticValues.yukariHP <= 0)
+                    {
+                        // ゲームオーバー処理
+                    }
+                    else
+                    {
+                        transform.position = lastStandPos;
+                        Switch(SwitchState.YUKARI);
+                    }
+                }
+            }
         }
     }
     
