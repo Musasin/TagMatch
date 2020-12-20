@@ -33,6 +33,7 @@ public class ResetScript : MonoBehaviour
                 player.Reset();
                 EnemiesReset();
                 cameraObject.transform.position = defaultCameraPos;
+                // TODO: ボス戦で死んだ時のリスタート処理でカメラが右側固定のままになってるので直す / あとボスAIの初期化もやる
                 isResetPlaying = false;
             }
         }
