@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    public GameObject starBullet, mustangBullet, electricBarrier, greatElectricFire;
+    public GameObject starBullet, mustangBullet, electricBarrier, greatElectricFire, jumpAttack;
     public GameObject jumpEffect, invincibleEffect;
 
     const float MOVE_VELOCITY = 6.0f;
@@ -216,6 +216,14 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki() && StaticValues.makiMP >= MP_COST_MAKI_JUMP && StaticValues.GetSkill("m_jump_1"))
                 {
+                    // くるりんジャンプ
+                    if (StaticValues.GetSkill("m_jump_2"))
+                    {
+                        DOTween.Sequence()
+                            .Append(makiImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360)).Play();
+                        InstantiateSpecialBullet(Bullet.BulletType.MAKI_JUMP_ATTACK, jumpAttack, BACKFLIP_TIME);
+                        AudioManager.Instance.PlaySE("dash");
+                    }
                     StaticValues.AddMP(false, -MP_COST_MAKI_JUMP);
                     velocityY = JUMP_VELOCITY;
                     GameObject effect = Instantiate(jumpEffect);

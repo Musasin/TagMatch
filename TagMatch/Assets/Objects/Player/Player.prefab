@@ -162,6 +162,8 @@ MonoBehaviour:
     type: 3}
   greatElectricFire: {fileID: 3450889109033658646, guid: 0baa8241897f34c2fbf665363cc1c3b8,
     type: 3}
+  jumpAttack: {fileID: 2232852547091252447, guid: 43643e4e70d574092bf5cba004f650c1,
+    type: 3}
   jumpEffect: {fileID: 6879508804347818747, guid: b6d79ebe498a94f808417e890b3220e3,
     type: 3}
   invincibleEffect: {fileID: 8094870835206760138, guid: bf7bef80b6bf74a099b2765b41e2151b,
@@ -252,7 +254,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1528146579
-  m_SortingLayer: 14
+  m_SortingLayer: 15
   m_SortingOrder: 3
   m_Sprite: {fileID: -8925091146876875158, guid: d5d1ffda5ef5c40e1b66b9aa8a7adf01,
     type: 3}
@@ -425,7 +427,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1528146579
-  m_SortingLayer: 14
+  m_SortingLayer: 15
   m_SortingOrder: 1
   m_Sprite: {fileID: 1258312837374309563, guid: 47bcbfc32184347ddbd12a3d25973cf2,
     type: 3}
@@ -613,7 +615,7 @@ PrefabInstance:
     - target: {fileID: 212903779799699256, guid: 84bb8dcedcb75424b95f53e6809df043,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 212903779799699256, guid: 84bb8dcedcb75424b95f53e6809df043,
         type: 3}

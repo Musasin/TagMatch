@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
         MAKI,
         MAKI_BARRIER,
         MAKI_ELECTRIC_FIRE,
+        MAKI_JUMP_ATTACK,
     }
     BulletType bulletType;
 
