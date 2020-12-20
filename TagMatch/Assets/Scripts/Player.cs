@@ -47,8 +47,6 @@ public class Player : MonoBehaviour
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
     AnimationState animationState, newAnimationState;
-    public enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
-    SwitchState switchState;
     Vector2 lastStandPos;
 
     float velocityX = 0;
@@ -86,6 +84,7 @@ public class Player : MonoBehaviour
 
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
+        Switch(StaticValues.switchState, false);
     }
 
     // Update is called once per frame
@@ -351,36 +350,39 @@ public class Player : MonoBehaviour
     {
         if (KeyConfig.GetSwitchKeyDown())
         {
-            switch (switchState)
+            switch (StaticValues.switchState)
             {
-                case SwitchState.YUKARI:
+                case StaticValues.SwitchState.YUKARI:
                     if (StaticValues.makiHP <= 0)
                     {
                         AudioManager.Instance.PlaySE("cancel"); // 仮？
                         return;
                     }
-                    Switch(SwitchState.MAKI);
+                    Switch(StaticValues.SwitchState.MAKI);
                     break;
-                case SwitchState.MAKI:
+                case StaticValues.SwitchState.MAKI:
                     if (StaticValues.yukariHP <= 0)
                     {
                         AudioManager.Instance.PlaySE("cancel"); // 仮？
                         return;
                     }
-                    Switch(SwitchState.YUKARI);
+                    Switch(StaticValues.SwitchState.YUKARI);
                     break;
                 default:
                     break;
             }
         }
     }
-    private void Switch(SwitchState nextState)
+    private void Switch(StaticValues.SwitchState nextState, bool isPlaySE = true)
     {
-        switchState = nextState;
+        StaticValues.switchState = nextState;
         mpRecoverTime = 0;
-        playerImageAnimator.SetInteger("switchState", (int)switchState);
+        playerImageAnimator.SetInteger("switchState", (int)StaticValues.switchState);
         shotImpossibleTime = SHOT_IMPOSSIBLE_TIME;
-        AudioManager.Instance.PlaySE("switch");
+        if (isPlaySE)
+        {
+            AudioManager.Instance.PlaySE("switch");
+        }
     }
     private void InstantiateBullet(Bullet.BulletType bulletType, GameObject bulletObj, float angleZ, bool isSquat = false)
     {
@@ -534,8 +536,9 @@ public class Player : MonoBehaviour
                     }
                     else
                     {
+                        rb.velocity = Vector2.zero;
                         transform.position = lastStandPos;
-                        Switch(SwitchState.MAKI);
+                        Switch(StaticValues.SwitchState.MAKI);
                     }
                 }
                 else if (IsMaki())
@@ -546,8 +549,9 @@ public class Player : MonoBehaviour
                     }
                     else
                     {
+                        rb.velocity = Vector2.zero;
                         transform.position = lastStandPos;
-                        Switch(SwitchState.YUKARI);
+                        Switch(StaticValues.SwitchState.YUKARI);
                     }
                 }
             }
@@ -556,11 +560,11 @@ public class Player : MonoBehaviour
     
     private bool IsYukari()
     {
-        return switchState == SwitchState.YUKARI || switchState == SwitchState.YUKARI_ONLY;
+        return StaticValues.switchState == StaticValues.SwitchState.YUKARI || StaticValues.switchState == StaticValues.SwitchState.YUKARI_ONLY;
     }
     private bool IsMaki()
     {
-        return switchState == SwitchState.MAKI || switchState == SwitchState.MAKI_ONLY;
+        return StaticValues.switchState == StaticValues.SwitchState.MAKI || StaticValues.switchState == StaticValues.SwitchState.MAKI_ONLY;
     }
 
     public void AddBulletCount(Bullet.BulletType bulletType, int count)
@@ -581,10 +585,5 @@ public class Player : MonoBehaviour
         {
             electricFireCount += count;
         }
-    }
-
-    public SwitchState GetSwitchState()
-    {
-        return switchState;
     }
 }

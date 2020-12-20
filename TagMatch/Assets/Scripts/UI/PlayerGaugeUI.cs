@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerGaugeUI : MonoBehaviour
 {
     Player player;
-    Player.SwitchState switchState;
+    StaticValues.SwitchState switchState;
     Animator anim;
 
     // Start is called before the first frame update
@@ -18,6 +18,6 @@ public class PlayerGaugeUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetInteger("switchState", (int)player.GetSwitchState());
+        anim.SetInteger("switchState", (int)StaticValues.switchState);
     }
 }

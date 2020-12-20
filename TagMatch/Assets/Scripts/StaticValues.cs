@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StaticValues : MonoBehaviour
 {
+    public enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
+    public static SwitchState switchState = SwitchState.YUKARI;
+
     public static int score;
     public static int coinCount = 1000;
     public static float time;
