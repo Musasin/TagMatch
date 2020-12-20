@@ -64,4 +64,9 @@ public class EnemyBase : MonoBehaviour
     {
         return (invincibleTime > 0);
     }
+
+    public void SetInvincible(float time)
+    {
+        invincibleTime = time;
+    }
 }

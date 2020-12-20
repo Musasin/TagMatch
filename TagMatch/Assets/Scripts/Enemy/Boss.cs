@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class Boss : EnemyBase
 {
+
+    const float BOSS_INVINCIBLE_TIME = 0.5f;
+
     Vector2 firstPos;
     bool isDead;
     bool isActive = false;
@@ -27,7 +30,8 @@ public class Boss : EnemyBase
             isDead = true;
             transform.DOLocalJump(firstPos, 3, 1, 1.0f);
             transform.DOLocalRotate(new Vector3(0, 0, 720), 1.0f, RotateMode.FastBeyond360);
-        } 
+        }
+        base.SetInvincible(BOSS_INVINCIBLE_TIME);
     }
 
     public void SetActive(bool flag)

@@ -15616,13 +15616,13 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 8736467350565527605}
     m_ColliderPaths:
-    - - X: 1420000041
-        Y: -9999900
-      - X: 1279999959
-        Y: -9999900
-      - X: 1279999900
-        Y: -9999959
-      - X: 1279999900
+    - - X: 1170000000
+        Y: -100000000
+      - X: 1170000000
+        Y: -60000000
+      - X: 1420000000
+        Y: -60000000
+      - X: 1420000000
         Y: -10000000
       - X: 830000000
         Y: -10000000
@@ -15660,22 +15660,12 @@ CompositeCollider2D:
         Y: 170000000
       - X: -140000000
         Y: -100000000
-      - X: 1170000000
-        Y: -100000000
-      - X: 1170000000
-        Y: -60000100
-      - X: 1420000041
-        Y: -60000100
-      - X: 1420000100
-        Y: -60000041
-      - X: 1420000100
-        Y: -9999959
   m_CompositePaths:
     m_Paths:
     - - {x: 116.99998, y: -10}
-      - {x: 117.00003, y: -6.00001}
-      - {x: 142.00002, y: -5.9999747}
-      - {x: 141.99997, y: -0.99999}
+      - {x: 117.00003, y: -6}
+      - {x: 142, y: -5.999971}
+      - {x: 141.99997, y: -1}
       - {x: 83, y: -0.9999706}
       - {x: 82.99997, y: 5}
       - {x: 76, y: 4.999971}
@@ -16033,6 +16023,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocityX
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399884638771743188, guid: 0e7351cb6acb24641ad382c910b83866,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1399884638771743191, guid: 0e7351cb6acb24641ad382c910b83866,
         type: 3}
@@ -16979,6 +16974,12 @@ PrefabInstance:
       propertyPath: velocityX
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1399884638771743188, guid: 0e7351cb6acb24641ad382c910b83866,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 1342373273856134583, guid: 77d02968db4ea42d3894391c39c5dc46,
+        type: 3}
     - target: {fileID: 1399884638771743191, guid: 0e7351cb6acb24641ad382c910b83866,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17459,6 +17460,11 @@ PrefabInstance:
       propertyPath: attackInterval
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1399884638771743188, guid: 0e7351cb6acb24641ad382c910b83866,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1399884638771743191, guid: 0e7351cb6acb24641ad382c910b83866,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17538,6 +17544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackInterval
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399884638771743188, guid: 0e7351cb6acb24641ad382c910b83866,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1399884638771743191, guid: 0e7351cb6acb24641ad382c910b83866,
         type: 3}
@@ -18379,6 +18390,12 @@ PrefabInstance:
       propertyPath: velocityY
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 1399884638771743188, guid: 0e7351cb6acb24641ad382c910b83866,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 1342373273856134583, guid: 77d02968db4ea42d3894391c39c5dc46,
+        type: 3}
     - target: {fileID: 1399884638771743191, guid: 0e7351cb6acb24641ad382c910b83866,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19828,6 +19845,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackInterval
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399884638771743188, guid: 0e7351cb6acb24641ad382c910b83866,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1399884638771743191, guid: 0e7351cb6acb24641ad382c910b83866,
         type: 3}

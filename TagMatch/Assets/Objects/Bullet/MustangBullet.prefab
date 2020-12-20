@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d347fdec7e816477e8190906051fcb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 15
   hitEffect: {fileID: 1288359779778476, guid: 1d4b5b94f11394b71a6b98fb2c72ff32, type: 3}
   isTrample: 1
 --- !u!61 &371683277016192917
@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 212380685003641774, guid: 00f294276b751c141ae6feb2f54c49c1,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f294276b751c141ae6feb2f54c49c1, type: 3}
@@ -278,7 +278,7 @@ PrefabInstance:
     - target: {fileID: 212380685003641774, guid: 00f294276b751c141ae6feb2f54c49c1,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f294276b751c141ae6feb2f54c49c1, type: 3}
@@ -359,7 +359,7 @@ PrefabInstance:
     - target: {fileID: 212380685003641774, guid: 00f294276b751c141ae6feb2f54c49c1,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f294276b751c141ae6feb2f54c49c1, type: 3}

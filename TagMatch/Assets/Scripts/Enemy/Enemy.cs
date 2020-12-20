@@ -17,12 +17,10 @@ public class Enemy : EnemyBase
     public GameObject dropItem1;
     public GameObject dropItem2;
     
-    const float INVINCIBLE_TIME = 0.2f;
     const float STOP_TIME = 0.5f;
     const float DAMAGE_VELOCITY_X = 4.0f;
     const float DAMAGE_VELOCITY_Y = 8.0f;
     
-    float invincibleTime = 0;
     float afterAttackTime = 0;
     bool isKnockBack;
     bool isAttacking;
@@ -160,7 +158,7 @@ public class Enemy : EnemyBase
 
         if (hp <= 0)
         {
-            invincibleTime = 0;
+            base.SetInvincible(0);
             isDead = true;
             isKnockBack = true;
             dropedItem1 = InstantiateDropItem(dropItem1, new Vector2(transform.position.x - 0.1f, transform.position.y));
