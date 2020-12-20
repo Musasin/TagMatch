@@ -6,6 +6,8 @@ public class ResetScript : MonoBehaviour
 {
     Player player;
     WipePanel wipePanel;
+    GameObject cameraObject;
+    Vector3 defaultCameraPos;
 
     bool isResetPlaying;
     float time;
@@ -15,6 +17,8 @@ public class ResetScript : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         wipePanel = GameObject.Find("WipePanel").GetComponent<WipePanel>();
+        cameraObject = GameObject.Find("Camera");
+        defaultCameraPos = cameraObject.transform.position;
     }
 
     // Update is called once per frame
@@ -27,9 +31,19 @@ public class ResetScript : MonoBehaviour
             {
                 wipePanel.WipeIn();
                 player.Reset();
-                // enemies reset
+                EnemiesReset();
+                cameraObject.transform.position = defaultCameraPos;
                 isResetPlaying = false;
             }
+        }
+    }
+
+    void EnemiesReset()
+    {
+        EnemyBase[] enemyList = GameObject.Find("Enemies").GetComponentsInChildren<EnemyBase>();
+        foreach (EnemyBase enemy in enemyList)
+        {
+            enemy.Reset();
         }
     }
 

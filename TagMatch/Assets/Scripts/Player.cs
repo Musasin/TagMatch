@@ -104,6 +104,12 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        
+        // 初期化処理 仮でボタンで実行
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameObject.Find("ResetScript").GetComponent<ResetScript>().Reset();
+        }
 
         if (StaticValues.isTalkPause)
         {

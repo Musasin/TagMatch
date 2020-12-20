@@ -49,6 +49,9 @@ public class Enemy : EnemyBase
     public override void Reset()
     {
         base.Reset();
+        isKnockBack = false;
+        isAttacking = false;
+        isDead = false;
         afterAttackTime = 0;
         if (dropedItem1 != null) Destroy(dropedItem1);
         if (dropedItem2 != null) Destroy(dropedItem2);
@@ -60,12 +63,6 @@ public class Enemy : EnemyBase
     public override void Update()
     {
         base.Update();
-
-        // 初期化処理 仮でボタンで実行
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reset();
-        }
         
         if (isDead)
         {
