@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
 
     const int MP_COST_MAKI_JUMP = 5;
     const int MP_COST_MAKI_BARRIER = 20;
-    const int MP_COST_MAKI_ELECTRIC_FIRE = 30;
-    const int MP_COST_MAKI_HEAL = 20;
+    const int MP_COST_MAKI_ELECTRIC_FIRE = 40;
+    const int MP_COST_MAKI_HEAL = 40;
     
     const float STOP_TIME = 0.3f;
     const float SHOT_IMPOSSIBLE_TIME = 0.4f;
