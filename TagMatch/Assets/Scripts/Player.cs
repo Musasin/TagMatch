@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     AnimationState animationState, newAnimationState;
     public enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
     SwitchState switchState;
+    Vector2 lastStandPos;
 
     float velocityX = 0;
     float velocityY = 0;
@@ -421,11 +422,13 @@ public class Player : MonoBehaviour
         } 
         else if (Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding()) // しゃがみ判定
         {
+            lastStandPos = transform.position;
             newAnimationState = AnimationState.SQUAT;
         } 
         else 
         {
             isUsedDash = false;
+            lastStandPos = transform.position;
             if (Mathf.Abs(velocityX) < 0.2)
             {
                 newAnimationState = AnimationState.STAND;
