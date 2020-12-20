@@ -32,6 +32,8 @@
           <Orca OrcaName="dash.wav" Channels="2" EncodeFileSize="7598" ReloopEnd="29312" ResamplingRate="44100" SampleFrames="11045" SamplingRate="44100" SourceFileSize="44308" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="jump.wav" Channels="2" Comment="前作から加工した仮素材。このままでも有り" EncodeFileSize="15100" ReloopEnd="22270" ResamplingRate="44100" SampleFrames="22270" SamplingRate="44100" SourceFileSize="89124" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="shot_yukari_bomb.wav" Channels="2" Comment="魔王魂" EncodeFileSize="8962" ReloopEnd="12965" ResamplingRate="44100" SampleFrames="12965" SamplingRate="44100" SourceFileSize="52060" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="shot_maki_D.wav" Channels="2" EncodeFileSize="176734" ReloopEnd="264600" ResamplingRate="44100" SampleFrames="264600" SamplingRate="44100" SourceFileSize="1058480" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="shot_maki_G.wav" Channels="2" EncodeFileSize="176734" ReloopEnd="264600" ResamplingRate="44100" SampleFrames="264600" SamplingRate="44100" SourceFileSize="1058480" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
       </Orca>
     </Orca>
