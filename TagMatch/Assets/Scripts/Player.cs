@@ -514,6 +514,24 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 突き抜けを防ぐためアイテムはEnter2Dでも判定を取る
+        if (collision.gameObject.tag == "Item")
+        {
+            Coin coin = collision.gameObject.GetComponent<Coin>();
+            if (coin != null)
+            {
+                coin.GetCoin();
+            }
+            Heart heart = collision.gameObject.GetComponent<Heart>();
+            if (heart != null)
+            {
+                heart.GetHeart();
+            }
+        }
+    }
     
     private void OnTriggerStay2D(Collider2D collision)
     {
