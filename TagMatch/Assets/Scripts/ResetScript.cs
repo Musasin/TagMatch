@@ -49,6 +49,7 @@ public class ResetScript : MonoBehaviour
 
     public void Reset()
     {
+        time = 0;
         isResetPlaying = true;
         wipePanel.WipeOut();
     }

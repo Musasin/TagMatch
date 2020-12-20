@@ -104,12 +104,6 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        
-        // 初期化処理 仮でボタンで実行
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            GameObject.Find("ResetScript").GetComponent<ResetScript>().Reset();
-        }
 
         if (StaticValues.isTalkPause)
         {
@@ -424,7 +418,7 @@ public class Player : MonoBehaviour
             AudioManager.Instance.PlaySE("shot_yukari");
         } else if (IsMaki())
         {
-            AudioManager.Instance.PlaySE("buon"); // 仮
+            AudioManager.Instance.PlaySE("shot_maki");
         }
     }
     private void InstantiateSpecialBullet(Bullet.BulletType bulletType, GameObject bulletObj, float deadTime)
@@ -565,6 +559,7 @@ public class Player : MonoBehaviour
                         rb.velocity = new Vector2(velocityX, DEAD_VELOCITY_Y);
                         DOTween.Sequence()
                             .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, 3600), 1.0f, RotateMode.FastBeyond360)).Play();
+                        GameObject.Find("ResetScript").GetComponent<ResetScript>().Reset();
                     }
                     else
                     {
@@ -582,6 +577,7 @@ public class Player : MonoBehaviour
                         rb.velocity = new Vector2(velocityX, DEAD_VELOCITY_Y);
                         DOTween.Sequence()
                             .Append(makiImage.transform.DOLocalRotate(new Vector3(0, 0, 3600), 1.0f, RotateMode.FastBeyond360)).Play();
+                        GameObject.Find("ResetScript").GetComponent<ResetScript>().Reset();
                     }
                     else
                     {
