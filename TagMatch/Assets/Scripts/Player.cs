@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Player : MonoBehaviour
 {
     public GameObject starBullet, mustangBullet, electricBarrier, greatElectricFire, jumpAttack;
-    public GameObject jumpEffect, invincibleEffect;
+    public GameObject jumpEffect, invincibleEffect, healEffect;
 
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     const int MP_COST_MAKI_JUMP = 5;
     const int MP_COST_MAKI_BARRIER = 20;
     const int MP_COST_MAKI_ELECTRIC_FIRE = 30;
+    const int MP_COST_MAKI_HEAL = 20;
     
     const float STOP_TIME = 0.3f;
     const float SHOT_IMPOSSIBLE_TIME = 0.4f;
@@ -301,7 +302,7 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki()) 
                 {
-                    // マキさんはしゃがみ攻撃不可
+                    // マキさんは空中下攻撃不可
                 }
             }
             else
@@ -311,9 +312,12 @@ public class Player : MonoBehaviour
                 {
                     InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 0 : 180, isSquat);
                 }
-                else if (IsMaki() && makiBulletCount < MAKI_BULLET_EXIST_MAX)
+                else if (IsMaki() && StaticValues.GetSkill("m_down_1")) 
                 {
-                    InstantiateBullet(Bullet.BulletType.MAKI, mustangBullet, isRight ? 0 : 180, isSquat);
+                    StaticValues.AddMP(false, -MP_COST_MAKI_HEAL);
+                    GameObject effect = Instantiate(healEffect);
+                    effect.transform.position = new Vector2(transform.position.x, transform.position.y + 1.0f);
+                    AudioManager.Instance.PlaySE("jump");
                 }
             }
         }

@@ -168,6 +168,8 @@ MonoBehaviour:
     type: 3}
   invincibleEffect: {fileID: 8094870835206760138, guid: bf7bef80b6bf74a099b2765b41e2151b,
     type: 3}
+  healEffect: {fileID: 4038885400652790906, guid: 99374737d312547f0b71db68139465ae,
+    type: 3}
 --- !u!70 &4257521843042841558
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
