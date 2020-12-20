@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
     AnimationState animationState, newAnimationState;
-    Vector2 lastStandPos;
+    Vector2 lastStandPos1, lastStandPos2;
 
     float velocityX = 0;
     float velocityY = 0;
@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     float invincibleTime = 0;
     float squatInvincibleTime = 0;
     float mpRecoverTime = 0;
+    float checkLastStandPosTime = 0;
     bool isUsedDash = false;
     bool isRight = true;
     
@@ -111,6 +112,7 @@ public class Player : MonoBehaviour
         invincibleTime -= Time.deltaTime;
         squatInvincibleTime -= Time.deltaTime;
         mpRecoverTime += Time.deltaTime;
+        checkLastStandPosTime -= Time.deltaTime;
 
         velocityX = rb.velocity.x;
         velocityY = rb.velocity.y;
@@ -437,13 +439,13 @@ public class Player : MonoBehaviour
         } 
         else if (Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding()) // しゃがみ判定
         {
-            lastStandPos = transform.position;
+            UpdateLastStandPos();
             newAnimationState = AnimationState.SQUAT;
         } 
         else 
         {
             isUsedDash = false;
-            lastStandPos = transform.position;
+            UpdateLastStandPos();
             if (Mathf.Abs(velocityX) < 0.2)
             {
                 newAnimationState = AnimationState.STAND;
@@ -475,6 +477,17 @@ public class Player : MonoBehaviour
             animationState = newAnimationState;
             yukariAnimator.SetInteger("state", (int)animationState);
             makiAnimator.SetInteger("state", (int)animationState);
+        }
+    }
+    private void UpdateLastStandPos()
+    {
+        // 0.1秒おきに立っている位置を記録して、死亡した際に２つ前に記録した位置からスタートする。
+        // 一つ前のにしないのは、崖から落ちる直前に記録されるとそのまま落ちてしまいやすいため。
+        if (checkLastStandPosTime <= 0)
+        {
+            lastStandPos2 = lastStandPos1;
+            lastStandPos1 = transform.position;
+            checkLastStandPosTime = 0.1f;
         }
     }
     private void UpdateColor()
@@ -537,7 +550,7 @@ public class Player : MonoBehaviour
                     else
                     {
                         rb.velocity = Vector2.zero;
-                        transform.position = lastStandPos;
+                        transform.position = lastStandPos2;
                         Switch(StaticValues.SwitchState.MAKI);
                     }
                 }
@@ -550,7 +563,7 @@ public class Player : MonoBehaviour
                     else
                     {
                         rb.velocity = Vector2.zero;
-                        transform.position = lastStandPos;
+                        transform.position = lastStandPos2;
                         Switch(StaticValues.SwitchState.YUKARI);
                     }
                 }
