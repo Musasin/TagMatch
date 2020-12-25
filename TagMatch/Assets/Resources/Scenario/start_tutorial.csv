@@ -4,7 +4,7 @@ id,type,text,eye_brows,eye,mouse,option1,option2,option3,play_next
 3,face,yukari,anger,normal,laugh,,,,1
 4,face,maki,normal,normal,omega,,,,1
 5,left,ようし！\nそれでは行きましょう！,,,,,,,0
-6,switch,,,,,,,,1
+6,switch,maki,,,,,,,1
 7,face,maki,normal,smile,laugh,,,,1
 8,left,おー！,,,,,,,0
 9,out,yukari,,,,,,,1

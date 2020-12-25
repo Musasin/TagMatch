@@ -123,31 +123,41 @@ public class Talk: MonoBehaviour
                 {
                     case "yukari":
                     case "right_yukari":
-                        if (scenario[nowKey.ToString()].text == "right_yukari")
-                            yukari = Instantiate(rightYukariPrefab, transform);
-                        else
-                            yukari = Instantiate(yukariPrefab, transform);
+                        if (yukari == null)
+                        { 
+                            if (scenario[nowKey.ToString()].text == "right_yukari")
+                                yukari = Instantiate(rightYukariPrefab, transform);
+                            else
+                                yukari = Instantiate(yukariPrefab, transform);
+                            charaPicture.Add(scenario[nowKey.ToString()].text, new CharaPicture(yukari));
+                        }
                         yukari.GetComponent<Animator>().SetBool("isOut", false);
-                        charaPicture.Add("yukari", new CharaPicture(yukari));
                         break;
                     case "maki":
                     case "right_maki":
-                        if (scenario[nowKey.ToString()].text == "right_maki")
-                            maki = Instantiate(rightMakiPrefab, transform);
-                        else
-                            maki = Instantiate(makiPrefab, transform);
+                        if (maki == null)
+                        {
+                            if (scenario[nowKey.ToString()].text == "right_maki")
+                                maki = Instantiate(rightMakiPrefab, transform);
+                            else
+                                maki = Instantiate(makiPrefab, transform);
+                            charaPicture.Add(scenario[nowKey.ToString()].text, new CharaPicture(maki));
+                        }
                         maki.GetComponent<Animator>().SetBool("isOut", false);
-                        charaPicture.Add("maki", new CharaPicture(maki));
                         break;
                     case "kiritan":
-                        kiritan = Instantiate(kiritanPrefab, transform);
+                        if (kiritan == null)
+                        {
+                            kiritan = Instantiate(kiritanPrefab, transform);
+                            charaPicture.Add("kiritan", new CharaPicture(kiritan));
+                        }
                         kiritan.GetComponent<Animator>().SetBool("isOut", false);
-                        charaPicture.Add("kiritan", new CharaPicture(kiritan));
                         break;
                 }
                 break;
             case "switch":
-                SwitchYukaMaki();
+                bool isMainYukari = scenario[nowKey.ToString()].text == "yukari";
+                SwitchYukaMaki(isMainYukari);
                 break;
             case "face":
                 if (charaPicture[scenario[nowKey.ToString()].text] != null)
@@ -203,12 +213,12 @@ public class Talk: MonoBehaviour
         }
     }
 
-    void SwitchYukaMaki()
+    void SwitchYukaMaki(bool isMainYukari)
     {
         Animator makiAnim = maki.GetComponent<Animator>();
-        makiAnim.SetBool("isUp", !makiAnim.GetBool("isUp"));
+        makiAnim.SetBool("isUp", isMainYukari);
         Animator yukariAnim = yukari.GetComponent<Animator>();
-        yukariAnim.SetBool("isUp", !yukariAnim.GetBool("isUp"));
+        yukariAnim.SetBool("isUp", !isMainYukari);
     }
 
     void AddTalk(GameObject talkWindow, string text)

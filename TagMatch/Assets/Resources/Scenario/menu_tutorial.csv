@@ -1,14 +1,20 @@
 n,type,text,eye_brows,eye,mouse,option1,option2,option3,play_next
 1,instantiate,yukari,,,,,,,1
 2,instantiate,maki,,,,,,,1
-3,left,むむ。向こう岸が遠いですね,,,,,,,0
-4,switch,,,,,,,,1
-5,left,ジャンプしても届かなさそうだね。\nどうしようか,,,,,,,0
-6,switch,,,,,,,,1
-7,left,周辺のコインを集めて、\nスキルを習得してみましょう,,,,,,,0
-8,left,20枚もあれば私の\n「空中ダッシュ」が使えるようになるはずです,,,,,,,0
-9,switch,,,,,,,,1
-10,left,そうだね！ メニューから\nスキルツリーを開いて、\nゆかりんの空中ダッシュを\n習得しよう！,,,,,,,0
-11,out,yukari,,,,,,,1
-12,out,maki,,,,,,,1
-13,end,,,,,,,,0
+3,switch,yukari,,,,,,,1
+4,face,yukari,anger,half_open,mu,,,,1
+5,left,むむ。向こう岸が遠いですね,,,,,,,0
+6,switch,maki,,,,,,,1
+7,face,maki,sad,normal,omega,,,,1
+8,left,ジャンプしても届かなさそうだね。\nどうしようか,,,,,,,0
+9,switch,yukari,,,,,,,1
+10,face,yukari,normal,close,omega,,,,1
+11,left,周辺のコインを集めて、\nスキルを習得してみましょう,,,,,,,0
+12,face,yukari,normal,close,laugh,,,,1
+13,left,20枚もあれば私の\n「空中ダッシュ」が使えるようになるはずです,,,,,,,0
+14,face,maki,normal,smile,laugh,,,,1
+15,switch,maki,,,,,,,1
+16,left,そうだね！ メニューから\nスキルツリーを開いて、\nゆかりんの空中ダッシュを\n習得しよう！,,,,,,,0
+17,out,yukari,,,,,,,1
+18,out,maki,,,,,,,1
+19,end,,,,,,,,0
