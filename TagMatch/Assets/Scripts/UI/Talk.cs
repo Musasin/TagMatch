@@ -32,6 +32,7 @@ public class Talk: MonoBehaviour
         public string chara;
         public string position;
         public string text;
+        public string main;
         public string eye_brows;
         public string eye;
         public string mouse;
@@ -40,13 +41,14 @@ public class Talk: MonoBehaviour
         public string option3;
         public bool play_next;
         
-        public ScenarioData(string id, string type, string chara, string position, string text, string eye_brows, string eye, string mouse, string option1, string option2, string option3, string play_next)
+        public ScenarioData(string id, string type, string chara, string position, string text, string main, string eye_brows, string eye, string mouse, string option1, string option2, string option3, string play_next)
         {
             this.id = int.Parse(id);
             this.type = type;
             this.chara = chara;
             this.position = position;
             this.text = text;
+            this.main= main;
             this.eye_brows = eye_brows;
             this.eye = eye;
             this.mouse = mouse;
@@ -179,6 +181,7 @@ public class Talk: MonoBehaviour
                 if (charaPicture.ContainsKey(chara))
                 {
                     charaPicture[chara].SetSprite(
+                        scenario[nowKey.ToString()].main,
                         scenario[nowKey.ToString()].eye_brows, scenario[nowKey.ToString()].eye, scenario[nowKey.ToString()].mouse, 
                         scenario[nowKey.ToString()].option1, scenario[nowKey.ToString()].option2, scenario[nowKey.ToString()].option3);
                 }
@@ -218,6 +221,7 @@ public class Talk: MonoBehaviour
                 if (charaPicture.ContainsKey(chara))
                 {
                     charaPicture[chara].SetSprite(
+                        scenario[nowKey.ToString()].main,
                         scenario[nowKey.ToString()].eye_brows, scenario[nowKey.ToString()].eye, scenario[nowKey.ToString()].mouse, 
                         scenario[nowKey.ToString()].option1, scenario[nowKey.ToString()].option2, scenario[nowKey.ToString()].option3);
                 }
@@ -301,7 +305,7 @@ public class Talk: MonoBehaviour
             {
                 nowKey = int.Parse(datas[0]);
             }
-            var scenarioData = new ScenarioData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9],datas[10],datas[11]);
+            var scenarioData = new ScenarioData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9],datas[10],datas[11],datas[12]);
             scenario.Add(datas[0], scenarioData);
         }
         if (isMoveCamera)

@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 5820930717165415464}
   - component: {fileID: 1654048065691820718}
   - component: {fileID: 5554983081974952585}
+  - component: {fileID: 365302611391205915}
   m_Layer: 5
   m_Name: Yukari
   m_TagString: Untagged
@@ -368,6 +369,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &365302611391205915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463399057827028867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bf45ef6122e4f7d9a11ab668f47781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folderPass: Picture/Yukari
 --- !u!1 &4976819635628104241
 GameObject:
   m_ObjectHideFlags: 0

@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 1198116420399754106}
   - component: {fileID: 6417334761674405226}
   - component: {fileID: 2767418937321677121}
+  - component: {fileID: 8638062729033302626}
   m_Layer: 5
   m_Name: Maki
   m_TagString: Untagged
@@ -368,6 +369,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8638062729033302626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718408753193743036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bf45ef6122e4f7d9a11ab668f47781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folderPass: Picture/Maki
 --- !u!1 &7173833195725658390
 GameObject:
   m_ObjectHideFlags: 0
