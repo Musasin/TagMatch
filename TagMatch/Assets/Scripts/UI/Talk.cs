@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class Talk: MonoBehaviour
 {
-    public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab;
+    public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, aoiPrefab;
     public GameObject leftWindow, rightWindow;
 
     GameObject nowWindow, beforeWindow1, beforeWindow2;
@@ -75,6 +75,12 @@ public class Talk: MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         string acbName = sceneName.Split('-')[0];
         LoadACB(acbName, acbName + ".acb");
+        
+        charaObject.Add("yukari", Instantiate(yukariPrefab, transform));
+        charaObject.Add("maki", Instantiate(makiPrefab, transform));
+        charaObject.Add("kiritan", Instantiate(kiritanPrefab, transform));
+        charaObject.Add("aoi", Instantiate(akanePrefab, transform));
+        charaObject.Add("akane", Instantiate(aoiPrefab, transform));
 
         if (AudioManager.Instance.lastPlayedBGM != "stage")
             AudioManager.Instance.PlayBGM("stage");
@@ -130,21 +136,8 @@ public class Talk: MonoBehaviour
             case "instantiate":
                 if (position == "right")
                 {
-                    if (!charaObject.ContainsKey(chara))
+                    if (!rightCharaAnimator.ContainsKey(chara))
                     {
-                        switch (chara)
-                        {
-                            case "yukari":
-                                charaObject.Add(chara, Instantiate(rightYukariPrefab, transform));
-                                break;
-                            case "maki":
-                                charaObject.Add(chara, Instantiate(rightMakiPrefab, transform));
-                                break;
-                            case "kiritan":
-                                charaObject.Add(chara, Instantiate(kiritanPrefab, transform));
-                                break;
-                        }
-
                         Animator anim = charaObject[chara].GetComponent<Animator>();
                         rightCharaAnimator.Add(chara, anim);
                     }
@@ -152,20 +145,8 @@ public class Talk: MonoBehaviour
                 }
                 else if (position == "left")
                 {
-                    if (!charaObject.ContainsKey(chara))
+                    if (!leftCharaAnimator.ContainsKey(chara))
                     {
-                        switch (chara)
-                        {
-                            case "yukari":
-                                charaObject.Add(chara, Instantiate(yukariPrefab, transform));
-                                break;
-                            case "maki":
-                                charaObject.Add(chara, Instantiate(makiPrefab, transform));
-                                break;
-                            case "kiritan":
-                                charaObject.Add(chara, Instantiate(kiritanPrefab, transform));
-                                break;
-                        }
                         Animator anim = charaObject[chara].GetComponent<Animator>();
                         leftCharaAnimator.Add(chara, anim);
                     }
