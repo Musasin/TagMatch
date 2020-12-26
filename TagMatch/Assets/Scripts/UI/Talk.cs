@@ -12,10 +12,11 @@ public class Talk: MonoBehaviour
     public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab;
     public GameObject leftWindow, rightWindow;
 
-    GameObject yukari, maki, kiritan;
-
     GameObject nowWindow, beforeWindow1, beforeWindow2;
+    Dictionary<string, GameObject> charaObject = new Dictionary<string, GameObject>();
     Dictionary<string, CharaPicture> charaPicture = new Dictionary<string, CharaPicture>();
+    Dictionary<string, Animator> leftCharaAnimator = new Dictionary<string, Animator>();
+    Dictionary<string, Animator> rightCharaAnimator = new Dictionary<string, Animator>();
     bool isCameraMoving, isClosing;
     bool beforeIsPlaying;
     bool isPlaying;
@@ -28,6 +29,8 @@ public class Talk: MonoBehaviour
     {
         public int id;
         public string type;
+        public string chara;
+        public string position;
         public string text;
         public string eye_brows;
         public string eye;
@@ -37,10 +40,12 @@ public class Talk: MonoBehaviour
         public string option3;
         public bool play_next;
         
-        public ScenarioData(string id, string type, string text, string eye_brows, string eye, string mouse, string option1, string option2, string option3, string play_next)
+        public ScenarioData(string id, string type, string chara, string position, string text, string eye_brows, string eye, string mouse, string option1, string option2, string option3, string play_next)
         {
             this.id = int.Parse(id);
             this.type = type;
+            this.chara = chara;
+            this.position = position;
             this.text = text;
             this.eye_brows = eye_brows;
             this.eye = eye;
@@ -116,76 +121,113 @@ public class Talk: MonoBehaviour
 
     void UpdateStep()
     {
+        string chara = scenario[nowKey.ToString()].chara;
+        string position = scenario[nowKey.ToString()].position;
         switch (scenario[nowKey.ToString()].type)
         {
             case "instantiate":
-                switch (scenario[nowKey.ToString()].text)
+                if (position == "right")
                 {
-                    case "yukari":
-                    case "right_yukari":
-                        if (yukari == null)
-                        { 
-                            if (scenario[nowKey.ToString()].text == "right_yukari")
-                                yukari = Instantiate(rightYukariPrefab, transform);
-                            else
-                                yukari = Instantiate(yukariPrefab, transform);
-                            charaPicture.Add(scenario[nowKey.ToString()].text, new CharaPicture(yukari));
-                        }
-                        yukari.GetComponent<Animator>().SetBool("isOut", false);
-                        break;
-                    case "maki":
-                    case "right_maki":
-                        if (maki == null)
+                    if (!charaObject.ContainsKey(chara))
+                    {
+                        switch (chara)
                         {
-                            if (scenario[nowKey.ToString()].text == "right_maki")
-                                maki = Instantiate(rightMakiPrefab, transform);
-                            else
-                                maki = Instantiate(makiPrefab, transform);
-                            charaPicture.Add(scenario[nowKey.ToString()].text, new CharaPicture(maki));
+                            case "yukari":
+                                charaObject.Add(chara, Instantiate(rightYukariPrefab, transform));
+                                break;
+                            case "maki":
+                                charaObject.Add(chara, Instantiate(rightMakiPrefab, transform));
+                                break;
+                            case "kiritan":
+                                charaObject.Add(chara, Instantiate(kiritanPrefab, transform));
+                                break;
                         }
-                        maki.GetComponent<Animator>().SetBool("isOut", false);
-                        break;
-                    case "kiritan":
-                        if (kiritan == null)
-                        {
-                            kiritan = Instantiate(kiritanPrefab, transform);
-                            charaPicture.Add("kiritan", new CharaPicture(kiritan));
-                        }
-                        kiritan.GetComponent<Animator>().SetBool("isOut", false);
-                        break;
+
+                        Animator anim = charaObject[chara].GetComponent<Animator>();
+                        rightCharaAnimator.Add(chara, anim);
+                    }
+                    rightCharaAnimator[chara].SetBool("isOut", false);
                 }
-                break;
-            case "switch":
-                bool isMainYukari = scenario[nowKey.ToString()].text == "yukari";
-                SwitchYukaMaki(isMainYukari);
-                break;
-            case "face":
-                if (charaPicture[scenario[nowKey.ToString()].text] != null)
+                else if (position == "left")
                 {
-                    charaPicture[scenario[nowKey.ToString()].text].SetSprite(
+                    if (!charaObject.ContainsKey(chara))
+                    {
+                        switch (chara)
+                        {
+                            case "yukari":
+                                charaObject.Add(chara, Instantiate(yukariPrefab, transform));
+                                break;
+                            case "maki":
+                                charaObject.Add(chara, Instantiate(makiPrefab, transform));
+                                break;
+                            case "kiritan":
+                                charaObject.Add(chara, Instantiate(kiritanPrefab, transform));
+                                break;
+                        }
+                        Animator anim = charaObject[chara].GetComponent<Animator>();
+                        leftCharaAnimator.Add(chara, anim);
+                    }
+                    leftCharaAnimator[chara].SetBool("isOut", false);
+                }
+
+                if (!charaPicture.ContainsKey(chara))
+                {
+                    charaPicture.Add(chara, new CharaPicture(charaObject[chara]));
+                }
+
+                // 表情差分
+                if (charaPicture.ContainsKey(chara))
+                {
+                    charaPicture[chara].SetSprite(
                         scenario[nowKey.ToString()].eye_brows, scenario[nowKey.ToString()].eye, scenario[nowKey.ToString()].mouse, 
                         scenario[nowKey.ToString()].option1, scenario[nowKey.ToString()].option2, scenario[nowKey.ToString()].option3);
                 }
                 break;
-            case "left":
-                AddTalk(leftWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
-                break;
-            case "right":
-                AddTalk(rightWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
-                break;
-            case "out":
-                switch (scenario[nowKey.ToString()].text)
+
+            case "talk":
+                if (position == "left")
                 {
-                    case "yukari":
-                        yukari.GetComponent<Animator>().SetBool("isOut", true);
-                        break;
-                    case "maki":
-                        maki.GetComponent<Animator>().SetBool("isOut", true);
-                        break;
-                    case "kiritan":
-                        kiritan.GetComponent<Animator>().SetBool("isOut", true);
-                        break;
+                    AddTalk(leftWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
+                    foreach (KeyValuePair<string, Animator> kvp in leftCharaAnimator)
+                    {
+                        if (kvp.Key == chara)
+                        {
+                            kvp.Value.SetBool("isSub", false);
+                        } else
+                        {
+                            kvp.Value.SetBool("isSub", true);
+                        }
+                    }
+                } 
+                if (position == "right")
+                {
+                    AddTalk(rightWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
+                    foreach (KeyValuePair<string, Animator> kvp in rightCharaAnimator)
+                    {
+                        if (kvp.Key == chara)
+                        {
+                            kvp.Value.SetBool("isSub", false);
+                        } else
+                        {
+                            kvp.Value.SetBool("isSub", true);
+                        }
+                    }
                 }
+
+                // 表情差分
+                if (charaPicture.ContainsKey(chara))
+                {
+                    charaPicture[chara].SetSprite(
+                        scenario[nowKey.ToString()].eye_brows, scenario[nowKey.ToString()].eye, scenario[nowKey.ToString()].mouse, 
+                        scenario[nowKey.ToString()].option1, scenario[nowKey.ToString()].option2, scenario[nowKey.ToString()].option3);
+                }
+                break;
+
+            case "out":
+                if (position == "right" && rightCharaAnimator.ContainsKey(chara))
+                    rightCharaAnimator[chara].SetBool("isOut", true);
+                if (position == "left" && leftCharaAnimator.ContainsKey(chara))
+                    leftCharaAnimator[chara].SetBool("isOut", true);
                 break;
             case "play_bgm":
                 AudioManager.Instance.StopBGM();
@@ -211,14 +253,6 @@ public class Talk: MonoBehaviour
         {
             nowKey++;
         }
-    }
-
-    void SwitchYukaMaki(bool isMainYukari)
-    {
-        Animator makiAnim = maki.GetComponent<Animator>();
-        makiAnim.SetBool("isUp", isMainYukari);
-        Animator yukariAnim = yukari.GetComponent<Animator>();
-        yukariAnim.SetBool("isUp", !isMainYukari);
     }
 
     void AddTalk(GameObject talkWindow, string text)
@@ -267,7 +301,7 @@ public class Talk: MonoBehaviour
             {
                 nowKey = int.Parse(datas[0]);
             }
-            var scenarioData = new ScenarioData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9]);
+            var scenarioData = new ScenarioData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9],datas[10],datas[11]);
             scenario.Add(datas[0], scenarioData);
         }
         if (isMoveCamera)

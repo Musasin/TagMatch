@@ -1,20 +1,11 @@
-n,type,text,eye_brows,eye,mouse,option1,option2,option3,play_next
-1,instantiate,yukari,,,,,,,1
-2,instantiate,maki,,,,,,,1
-3,switch,yukari,,,,,,,1
-4,face,yukari,anger,half_open,mu,,,,1
-5,left,むむ。向こう岸が遠いですね,,,,,,,0
-6,switch,maki,,,,,,,1
-7,face,maki,sad,normal,omega,,,,1
-8,left,ジャンプしても届かなさそうだね。\nどうしようか,,,,,,,0
-9,switch,yukari,,,,,,,1
-10,face,yukari,normal,close,omega,,,,1
-11,left,周辺のコインを集めて、\nスキルを習得してみましょう,,,,,,,0
-12,face,yukari,normal,close,laugh,,,,1
-13,left,20枚もあれば私の\n「空中ダッシュ」が使えるようになるはずです,,,,,,,0
-14,face,maki,normal,smile,laugh,,,,1
-15,switch,maki,,,,,,,1
-16,left,そうだね！ メニューから\nスキルツリーを開いて、\nゆかりんの空中ダッシュを\n習得しよう！,,,,,,,0
-17,out,yukari,,,,,,,1
-18,out,maki,,,,,,,1
-19,end,,,,,,,,0
+id,type,chara,position,text,eye_brows,eye,mouse,option1,option2,option3,play_next
+1,instantiate,yukari,left,yukari,,,,,,,1
+2,instantiate,maki,left,maki,,,,,,,1
+3,talk,yukari,left,むむ。向こう岸が遠いですね,anger,half_open,mu,,,,0
+4,talk,maki,left,ジャンプしても届かなさそうだね。\nどうしようか,sad,normal,omega,,,,0
+5,talk,yukari,left,周辺のコインを集めて、\nスキルを習得してみましょう,normal,close,omega,,,,0
+6,talk,yukari,left,20枚もあれば私の\n「空中ダッシュ」が使えるようになるはずです,normal,close,laugh,,,,0
+7,talk,maki,left,そうだね！ メニューから\nスキルツリーを開いて、\nゆかりんの空中ダッシュを\n習得しよう！,normal,smile,laugh,,,,0
+8,out,yukari,left,yukari,,,,,,,1
+9,out,maki,left,maki,,,,,,,1
+10,end,,,,,,,,,,0
