@@ -199,6 +199,8 @@ public class Talk: MonoBehaviour
                     }
                 }
 
+                charaObject[chara].transform.SetAsLastSibling();
+
                 // 表情差分
                 if (charaPicture.ContainsKey(chara))
                 {

@@ -126,7 +126,7 @@
               </Orca>
             </Orca>
           </Orca>
-          <Orca OrcaName="Stage1" AwbHash="44721" LastOutputCueSheetSize="3895200" OoUniqId="07584783-5d18-4893-a323-347c4464145a" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
+          <Orca OrcaName="Stage1" AwbHash="44721" LastOutputCueSheetSize="3896960" OoUniqId="07584783-5d18-4893-a323-347c4464145a" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
             <Orca OrcaName="boss" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="0" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_boss1" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="boss1.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/boss1.wav" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
@@ -142,6 +142,11 @@
             <Orca OrcaName="stage" CueID="0" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_stage2" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="stage2.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/stage2.wav" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
+            <Orca OrcaName="boss" CueID="1" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_boss2" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="boss2.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/boss2.wav" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
             </Orca>
           </Orca>
