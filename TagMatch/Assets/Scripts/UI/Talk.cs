@@ -79,8 +79,8 @@ public class Talk: MonoBehaviour
         charaObject.Add("yukari", Instantiate(yukariPrefab, transform));
         charaObject.Add("maki", Instantiate(makiPrefab, transform));
         charaObject.Add("kiritan", Instantiate(kiritanPrefab, transform));
-        charaObject.Add("aoi", Instantiate(akanePrefab, transform));
-        charaObject.Add("akane", Instantiate(aoiPrefab, transform));
+        charaObject.Add("akane", Instantiate(akanePrefab, transform));
+        charaObject.Add("aoi", Instantiate(aoiPrefab, transform));
 
         if (AudioManager.Instance.lastPlayedBGM != "stage")
             AudioManager.Instance.PlayBGM("stage");
