@@ -12,8 +12,8 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 11,talk,yukari,left,年季の入った\nコンビネーションを見せて差し上げましょう,,normal,close,laugh,,,,0
 12,talk,akane,right,琴葉姉妹にタッグで勝負を\n仕掛けるとは、いい度胸やな,,anger,normal,nisisi,,,,0
 13,play_bgm,,,boss,,,,,,,,1
-14,talk,akane,right,いっちょ見せたろうやないか！ \n行くで葵ちゃん！,,anger,normal,wa,,,,0
-15,talk,aoi,right,うん！お姉ちゃん！,,normal,smile,wa,,,,0
+14,talk,akane,right,いっちょ見せたろうやないか！ \n行くで葵ちゃん！,,anger,normal,laugh,,,,0
+15,talk,aoi,right,うん！お姉ちゃん！,,normal,smile,laugh,,,,0
 16,out,yukari,left,,,,,,,,,1
 17,out,maki,left,,,,,,,,,1
 18,out,akane,right,,,,,,,,,1
