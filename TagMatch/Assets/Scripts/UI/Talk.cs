@@ -131,6 +131,7 @@ public class Talk: MonoBehaviour
     {
         string chara = scenario[nowKey.ToString()].chara;
         string position = scenario[nowKey.ToString()].position;
+
         switch (scenario[nowKey.ToString()].type)
         {
             case "instantiate":
