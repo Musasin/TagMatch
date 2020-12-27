@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     float squatInvincibleTime = 0;
     float mpRecoverTime = 0;
     float checkLastStandPosTime = 0;
+    float getOffTime = 0;
     bool isUsedDash = false;
     bool isRight = true;
     bool isDead = false;
@@ -122,6 +123,7 @@ public class Player : MonoBehaviour
         squatInvincibleTime -= Time.deltaTime;
         mpRecoverTime += Time.deltaTime;
         checkLastStandPosTime -= Time.deltaTime;
+        getOffTime -= Time.deltaTime;
 
         velocityX = rb.velocity.x;
         velocityY = rb.velocity.y;
@@ -209,11 +211,17 @@ public class Player : MonoBehaviour
         {
             if (footJudgement.GetIsLanding())
             {
-                velocityY = JUMP_VELOCITY;
-                GameObject effect = Instantiate(jumpEffect);
-                effect.transform.position = new Vector2(transform.position.x + (isRight ? -0.3f : 0.3f), transform.position.y);
-                effect.transform.localScale = new Vector2(effect.transform.localScale.x * (isRight ? 1 : -1), effect.transform.localScale.y);
-                AudioManager.Instance.PlaySE("jump");
+                if (Input.GetAxisRaw("Vertical") < 0) // しゃがみ判定
+                {
+                    getOffTime = 0.2f;
+                } else
+                {
+                    velocityY = JUMP_VELOCITY;
+                    GameObject effect = Instantiate(jumpEffect);
+                    effect.transform.position = new Vector2(transform.position.x + (isRight ? -0.3f : 0.3f), transform.position.y);
+                    effect.transform.localScale = new Vector2(effect.transform.localScale.x * (isRight ? 1 : -1), effect.transform.localScale.y);
+                    AudioManager.Instance.PlaySE("jump");
+                }
             }
             else if (!isUsedDash)
             {
@@ -615,6 +623,11 @@ public class Player : MonoBehaviour
     private bool IsMaki()
     {
         return StaticValues.switchState == StaticValues.SwitchState.MAKI || StaticValues.switchState == StaticValues.SwitchState.MAKI_ONLY;
+    }
+
+    public bool IsGetOff()
+    {
+        return getOffTime > 0;
     }
 
     public void AddBulletCount(Bullet.BulletType bulletType, int count)
