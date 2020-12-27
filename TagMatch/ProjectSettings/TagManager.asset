@@ -88,6 +88,9 @@ TagManager:
   - name: Map4
     uniqueID: 50971829
     locked: 0
+  - name: Enemy3
+    uniqueID: 1698609445
+    locked: 0
   - name: Player
     uniqueID: 1528146579
     locked: 0
