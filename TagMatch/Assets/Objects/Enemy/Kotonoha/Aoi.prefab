@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   akaneFlame: {fileID: 5259792486883780861, guid: c2348beb74c914eaa8ad678dd608517e,
     type: 3}
+  aoiShot: {fileID: 4525157025755260037, guid: 1b1dc5841cc8944daaa1804a9e0bdd10, type: 3}
 --- !u!1001 &7998683406703251282
 PrefabInstance:
   m_ObjectHideFlags: 0

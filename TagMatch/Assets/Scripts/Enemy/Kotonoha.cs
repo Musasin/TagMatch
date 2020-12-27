@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Kotonoha : MonoBehaviour
 {
-    public GameObject akaneFlame;
+    public GameObject akaneFlame, aoiShot;
     BoxCollider2D bc;
     Animator anim;
     Boss bossScript;
@@ -30,7 +30,9 @@ public class Kotonoha : MonoBehaviour
         MOVE_TO_RIGHT_3,
         MOVE_TO_LEFT_4,
         MOVE_TO_RIGHT_4,
-        AKANE_FLAME
+        AKANE_FLAME,
+        AOI_SHOT,
+        WAIT,
     }
     protected ActionState state;
     protected List<ActionState> actionStateQueue = new List<ActionState>();
@@ -130,8 +132,29 @@ public class Kotonoha : MonoBehaviour
                     .AppendCallback(() => { 
                         GameObject bullet = Instantiate(akaneFlame, transform);
                     })
-                    .AppendInterval(3.0f)
+                    .AppendInterval(2.0f)
                     .AppendCallback(() => { anim.SetBool("isReady", false); })
+                    .OnComplete(() => { isPlaying = false; })
+                    .Play();
+                break;
+            case ActionState.AOI_SHOT:
+                isPlaying = true;
+                sequence = DOTween.Sequence()
+                    .AppendCallback(() => { anim.SetBool("isReady", true); })
+                    .AppendInterval(1.0f)
+                    .AppendCallback(() => { 
+                        InstantiateAoiShot();
+                    })
+                    .AppendInterval(2.0f)
+                    .AppendCallback(() => { anim.SetBool("isReady", false); })
+                    .OnComplete(() => { isPlaying = false; })
+                    .Play();
+                break;
+
+            case ActionState.WAIT:
+                isPlaying = true;
+                sequence = DOTween.Sequence()
+                    .AppendInterval(3.0f)
                     .OnComplete(() => { isPlaying = false; })
                     .Play();
                 break;
@@ -166,4 +189,13 @@ public class Kotonoha : MonoBehaviour
             .OnComplete(() => { isPlaying = false; })
             .Play();
     }
+
+    public virtual void InstantiateAoiShot()
+    {
+        AudioManager.Instance.PlaySE("buon");
+
+        GameObject b1 = Instantiate(aoiShot);
+        b1.transform.position = new Vector2(transform.position.x, transform.position.y + 2);
+    }
+
 }

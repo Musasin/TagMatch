@@ -30,13 +30,13 @@ public class Aoi : Kotonoha
     public override void  SetSequence()
     {
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_1);
-        actionStateQueue.Add(ActionState.AKANE_FLAME);
+        actionStateQueue.Add(ActionState.AOI_SHOT);
         actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_2);
-        actionStateQueue.Add(ActionState.AKANE_FLAME);
+        actionStateQueue.Add(ActionState.AOI_SHOT);
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_3);
-        actionStateQueue.Add(ActionState.AKANE_FLAME);
+        actionStateQueue.Add(ActionState.AOI_SHOT);
         actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_4);
-        actionStateQueue.Add(ActionState.AKANE_FLAME);
+        actionStateQueue.Add(ActionState.AOI_SHOT);
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_2);
         actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_3);
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_4);
