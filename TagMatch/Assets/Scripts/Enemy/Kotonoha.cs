@@ -134,16 +134,12 @@ public class Kotonoha : MonoBehaviour
                     .AppendInterval(1.0f)
                     .AppendCallback(() =>
                     {
-                        GameObject bullet = Instantiate(akaneFlame);
-                        bullet.transform.localPosition = transform.localPosition;
-                        bullet.transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
+                        InstantiateAlaneFlame();
                     })
                     .AppendInterval(1.0f)
                     .AppendCallback(() =>
                     {
-                        GameObject bullet = Instantiate(akaneFlame);
-                        bullet.transform.localPosition = transform.localPosition;
-                        bullet.transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
+                        InstantiateAlaneFlame();
                     })
                     .AppendInterval(1.0f)
                     .AppendCallback(() => { anim.SetBool("isReady", false); })
@@ -157,9 +153,7 @@ public class Kotonoha : MonoBehaviour
                     .AppendInterval(1.0f)
                     .AppendCallback(() =>
                     {
-                        GameObject bullet = Instantiate(akaneFlame);
-                        bullet.transform.localPosition = transform.localPosition;
-                        bullet.transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
+                        InstantiateAlaneFlame();
                     })
                     .AppendInterval(2.0f)
                     .AppendCallback(() => { anim.SetBool("isReady", false); })
@@ -225,6 +219,7 @@ public class Kotonoha : MonoBehaviour
     {
         sequence = DOTween.Sequence()
             .AppendCallback(() => { 
+                AudioManager.Instance.PlaySE("enemy_switch");
                 anim.SetBool("isDisappear", true);
                 bc.enabled = false;
             })
@@ -234,6 +229,7 @@ public class Kotonoha : MonoBehaviour
                 isRight = movedIsRight;
             })
             .AppendCallback(() => { 
+                AudioManager.Instance.PlaySE("enemy_switch");
                 anim.SetBool("isDisappear", false);
                 bc.enabled = true;
             })
@@ -242,6 +238,15 @@ public class Kotonoha : MonoBehaviour
             .Play();
     }
 
+    public virtual void InstantiateAlaneFlame()
+    {
+        AudioManager.Instance.PlaySE("akane_flame");
+
+        GameObject bullet = Instantiate(akaneFlame);
+        bullet.transform.localPosition = transform.localPosition;
+        bullet.transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
+    }
+    
     public virtual void InstantiateAoiShot()
     {
         AudioManager.Instance.PlaySE("buon");
