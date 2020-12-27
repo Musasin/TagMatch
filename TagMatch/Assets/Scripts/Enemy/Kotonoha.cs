@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
 
 public class Kotonoha : MonoBehaviour
 {
@@ -126,29 +127,80 @@ public class Kotonoha : MonoBehaviour
                 break;
             case ActionState.AKANE_FLAME:
                 isPlaying = true;
-                sequence = DOTween.Sequence()
+                if (IsLifeHalf())
+                {
+                    sequence = DOTween.Sequence()
                     .AppendCallback(() => { anim.SetBool("isReady", true); })
                     .AppendInterval(1.0f)
-                    .AppendCallback(() => { 
-                        GameObject bullet = Instantiate(akaneFlame, transform);
+                    .AppendCallback(() =>
+                    {
+                        GameObject bullet = Instantiate(akaneFlame);
+                        bullet.transform.localPosition = transform.localPosition;
+                        bullet.transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
+                    })
+                    .AppendInterval(1.0f)
+                    .AppendCallback(() =>
+                    {
+                        GameObject bullet = Instantiate(akaneFlame);
+                        bullet.transform.localPosition = transform.localPosition;
+                        bullet.transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
+                    })
+                    .AppendInterval(1.0f)
+                    .AppendCallback(() => { anim.SetBool("isReady", false); })
+                    .OnComplete(() => { isPlaying = false; })
+                    .Play();
+                }
+                else
+                {
+                    sequence = DOTween.Sequence()
+                    .AppendCallback(() => { anim.SetBool("isReady", true); })
+                    .AppendInterval(1.0f)
+                    .AppendCallback(() =>
+                    {
+                        GameObject bullet = Instantiate(akaneFlame);
+                        bullet.transform.localPosition = transform.localPosition;
+                        bullet.transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
                     })
                     .AppendInterval(2.0f)
                     .AppendCallback(() => { anim.SetBool("isReady", false); })
                     .OnComplete(() => { isPlaying = false; })
                     .Play();
+                }
+                
                 break;
             case ActionState.AOI_SHOT:
                 isPlaying = true;
-                sequence = DOTween.Sequence()
-                    .AppendCallback(() => { anim.SetBool("isReady", true); })
-                    .AppendInterval(1.0f)
-                    .AppendCallback(() => { 
-                        InstantiateAoiShot();
-                    })
-                    .AppendInterval(2.0f)
-                    .AppendCallback(() => { anim.SetBool("isReady", false); })
-                    .OnComplete(() => { isPlaying = false; })
-                    .Play();
+                if (IsLifeHalf())
+                {
+                    sequence = DOTween.Sequence()
+                        .AppendCallback(() => { anim.SetBool("isReady", true); })
+                        .AppendInterval(1.0f)
+                        .AppendCallback(() =>
+                        {
+                            InstantiateAoiShot();
+                        })
+                        .AppendInterval(1.0f)
+                        .AppendCallback(() =>
+                        {
+                            InstantiateAoiShot();
+                        })
+                        .AppendInterval(1.0f)
+                        .AppendCallback(() => { anim.SetBool("isReady", false); })
+                        .OnComplete(() => { isPlaying = false; })
+                        .Play();
+                } else
+                {
+                    sequence = DOTween.Sequence()
+                        .AppendCallback(() => { anim.SetBool("isReady", true); })
+                        .AppendInterval(1.0f)
+                        .AppendCallback(() => { 
+                            InstantiateAoiShot();
+                        })
+                        .AppendInterval(2.0f)
+                        .AppendCallback(() => { anim.SetBool("isReady", false); })
+                        .OnComplete(() => { isPlaying = false; })
+                        .Play();
+                }
                 break;
 
             case ActionState.WAIT:
@@ -176,7 +228,7 @@ public class Kotonoha : MonoBehaviour
                 anim.SetBool("isDisappear", true);
                 bc.enabled = false;
             })
-            .AppendInterval(1.0f)
+            .AppendInterval(IsLifeHalf() ? 0.8f : 1.6f)
             .AppendCallback(() => { 
                 transform.position = targetPos;
                 isRight = movedIsRight;
@@ -185,7 +237,7 @@ public class Kotonoha : MonoBehaviour
                 anim.SetBool("isDisappear", false);
                 bc.enabled = true;
             })
-            .AppendInterval(1.0f)
+            .AppendInterval(IsLifeHalf() ? 0.8f : 1.6f)
             .OnComplete(() => { isPlaying = false; })
             .Play();
     }
@@ -197,5 +249,9 @@ public class Kotonoha : MonoBehaviour
         GameObject b1 = Instantiate(aoiShot);
         b1.transform.position = new Vector2(transform.position.x, transform.position.y + 2);
     }
-
+    
+    bool IsLifeHalf()
+    {
+        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
+    }
 }

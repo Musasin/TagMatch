@@ -19,18 +19,57 @@ public class Akane : Kotonoha
 
     public override void SetSequence()
     {
-        actionStateQueue.Add(ActionState.MOVE_TO_LEFT_1);
-        actionStateQueue.Add(ActionState.AKANE_FLAME);
-        actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_2);
-        actionStateQueue.Add(ActionState.AKANE_FLAME);
-        actionStateQueue.Add(ActionState.MOVE_TO_LEFT_3);
-        actionStateQueue.Add(ActionState.AKANE_FLAME);
-        actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_4);
         actionStateQueue.Add(ActionState.AKANE_FLAME);
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_2);
+        actionStateQueue.Add(ActionState.WAIT);
         actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_3);
+        actionStateQueue.Add(ActionState.AKANE_FLAME);
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_4);
-        actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_1);
+        actionStateQueue.Add(ActionState.AKANE_FLAME);
+
+        if (Random.Range(0, 1) < 0.5f)
+        {
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_4);
+            actionStateQueue.Add(ActionState.MOVE_TO_LEFT_3);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_3);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+            actionStateQueue.Add(ActionState.MOVE_TO_LEFT_1);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+        } else
+        {
+            actionStateQueue.Add(ActionState.MOVE_TO_LEFT_4);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_3);
+            actionStateQueue.Add(ActionState.MOVE_TO_LEFT_3);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_1);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+        }
+        
+        actionStateQueue.Add(ActionState.MOVE_TO_LEFT_4);
+        actionStateQueue.Add(ActionState.MOVE_TO_LEFT_1);
+
+        if (Random.Range(0, 1) < 0.5f)
+        {
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_1);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_2);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_3);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_4);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+        }
+        {
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_4);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_3);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_2);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+            actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_1);
+            actionStateQueue.Add(ActionState.AKANE_FLAME);
+        }
+
         actionStateQueue.Add(ActionState.IDLE);
     }
 }
