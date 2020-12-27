@@ -148,9 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91efe32cf3fe4d8cb3b5c86ed7e2bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 200
+  hp: 20
   damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
     type: 3}
+  isMultiBoss: 1
+  bossNumber: 1
 --- !u!61 &4949316349881404671
 BoxCollider2D:
   m_ObjectHideFlags: 0

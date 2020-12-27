@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
+using System.Linq;
 
 public class GaugeUI : MonoBehaviour
 {
@@ -106,8 +107,8 @@ public class GaugeUI : MonoBehaviour
                 gaugePointMax = StaticValues.makiMaxMP;
                 break;
             case GaugeType.BossHP:
-                gaugePoint = StaticValues.bossHP;
-                gaugePointMax = StaticValues.bossMaxHP;
+                gaugePoint = StaticValues.bossHP.Sum();
+                gaugePointMax = StaticValues.bossMaxHP.Sum();
                 break;
         }
     }

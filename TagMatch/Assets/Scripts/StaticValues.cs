@@ -23,9 +23,11 @@ public class StaticValues : MonoBehaviour
     public static int makiMaxMP = 100;
     public static float yukariAttackRatio = 1.0f;
     public static float makiAttackRatio = 1.0f;
-
-    public static int bossHP;
-    public static int bossMaxHP;
+    
+    //public static int bossHP;
+    //public static int bossMaxHP;
+    public static int[] bossHP = { 0, 0, 0 };
+    public static int[] bossMaxHP = { 0, 0, 0 };
 
     public static bool isFixedCamera;
 
