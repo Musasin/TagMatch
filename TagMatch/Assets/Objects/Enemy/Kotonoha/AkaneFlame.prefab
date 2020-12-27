@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1370420245688011240}
   - component: {fileID: 1370420245688011243}
   m_Layer: 0
-  m_Name: flame_side
+  m_Name: AkaneFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

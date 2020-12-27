@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Akane : MonoBehaviour
 {
+    public GameObject akaneFlame;
     Animator anim;
     Boss bossScript;
 
@@ -28,7 +29,7 @@ public class Akane : MonoBehaviour
         MOVE_TO_RIGHT_3,
         MOVE_TO_LEFT_4,
         MOVE_TO_RIGHT_4,
-        STAND_SHOT
+        AKANE_FLAME
     }
     ActionState state;
     List<ActionState> actionStateQueue = new List<ActionState>();
@@ -58,7 +59,7 @@ public class Akane : MonoBehaviour
             return;
         }
 
-        transform.localScale = new Vector2(isRight ? 1 : -1, 1);
+        transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
         
         if (isDead)
         {
@@ -88,9 +89,13 @@ public class Akane : MonoBehaviour
                 isPlaying = false;
                 stateIndex = 0;
                 actionStateQueue.Add(ActionState.MOVE_TO_LEFT_1);
+                actionStateQueue.Add(ActionState.AKANE_FLAME);
                 actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_2);
+                actionStateQueue.Add(ActionState.AKANE_FLAME);
                 actionStateQueue.Add(ActionState.MOVE_TO_LEFT_3);
+                actionStateQueue.Add(ActionState.AKANE_FLAME);
                 actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_4);
+                actionStateQueue.Add(ActionState.AKANE_FLAME);
                 actionStateQueue.Add(ActionState.MOVE_TO_LEFT_2);
                 actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_3);
                 actionStateQueue.Add(ActionState.MOVE_TO_LEFT_4);
@@ -128,6 +133,19 @@ public class Akane : MonoBehaviour
             case ActionState.MOVE_TO_RIGHT_4:
                 isPlaying = true;
                 PlayWarpSequence(rightPos4, false);
+                break;
+            case ActionState.AKANE_FLAME:
+                isPlaying = true;
+                sequence = DOTween.Sequence()
+                    .AppendCallback(() => { anim.SetBool("isReady", true); })
+                    .AppendInterval(1.0f)
+                    .AppendCallback(() => { 
+                        GameObject bullet = Instantiate(akaneFlame, transform);
+                    })
+                    .AppendInterval(3.0f)
+                    .AppendCallback(() => { anim.SetBool("isReady", false); })
+                    .OnComplete(() => { isPlaying = false; })
+                    .Play();
                 break;
         }
         

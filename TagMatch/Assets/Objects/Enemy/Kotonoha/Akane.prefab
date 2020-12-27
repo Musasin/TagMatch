@@ -88,6 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bacd018b26274fdf984bc8a1b96d6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  akaneFlame: {fileID: 5259792486883780861, guid: c2348beb74c914eaa8ad678dd608517e,
+    type: 3}
 --- !u!1 &2291160340788016402
 GameObject:
   m_ObjectHideFlags: 0
