@@ -60,7 +60,7 @@ public class Enemy : EnemyBase
     public override void Update()
     {
         base.Update();
-        
+
         if (isDead)
         {
             anim.SetBool("isKnockBack", true);
@@ -76,6 +76,13 @@ public class Enemy : EnemyBase
         if (isAttacking)
         {
             return;
+        } else
+        {
+            // スライムは攻撃中以外静止
+            if (type == "slime")
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
 
         afterAttackTime += Time.deltaTime;
@@ -113,6 +120,11 @@ public class Enemy : EnemyBase
         if (rb.velocity.x > 0 && isRight || rb.velocity.x < 0 && !isRight)
         {
             isRight = !isRight;
+            // スライムは壁接触で加速度を反転
+            if (type == "slyme")
+            {
+                rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+            }
         }
         if (isKnockBack) // 壁にぶつかってもノックバック状態を解除
         {
@@ -129,6 +141,7 @@ public class Enemy : EnemyBase
         // スライムは着地で攻撃終了
         if (type == "slime" && !isDead)
         {
+            Debug.Log(gameObject.name + "着地");
             rb.velocity = Vector2.zero;
             isAttacking = false;
             afterAttackTime = 0;
