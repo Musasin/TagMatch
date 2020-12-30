@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
 
         // しゃがみ判定
         float dy = Input.GetAxisRaw("Vertical");
-        if (dy < 0 && footJudgement.GetIsLanding())
+        if (dy < 0 && GetIsLanding())
         {
             velocityX = 0;
             return;
@@ -209,7 +209,7 @@ public class Player : MonoBehaviour
     {
         if (KeyConfig.GetJumpKeyDown())
         {
-            if (footJudgement.GetIsLanding())
+            if (GetIsLanding())
             {
                 if (Input.GetAxisRaw("Vertical") < 0) // しゃがみ判定
                 {
@@ -305,7 +305,7 @@ public class Player : MonoBehaviour
                     }
                 }
             } 
-            else if (dy < 0 && !footJudgement.GetIsLanding()) // 空中下射撃
+            else if (dy < 0 && !GetIsLanding()) // 空中下射撃
             {
                 if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DOWN_SHOT && StaticValues.GetSkill("y_shot_2"))
                 {
@@ -330,7 +330,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                bool isSquat = Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding();
+                bool isSquat = Input.GetAxisRaw("Vertical") < 0 && GetIsLanding();
                 if (isSquat)
                 {
                     // 低姿勢射撃
@@ -450,11 +450,11 @@ public class Player : MonoBehaviour
     }
     private void UpdateState()
     {
-        if (footJudgement.GetIsLanding() == false || backflipTime > 0)
+        if (GetIsLanding() == false || backflipTime > 0)
         {
             newAnimationState = AnimationState.JUMP;
         } 
-        else if (Input.GetAxisRaw("Vertical") < 0 && footJudgement.GetIsLanding()) // しゃがみ判定
+        else if (Input.GetAxisRaw("Vertical") < 0 && GetIsLanding()) // しゃがみ判定
         {
             UpdateLastStandPos();
             newAnimationState = AnimationState.SQUAT;
@@ -521,7 +521,11 @@ public class Player : MonoBehaviour
             makiImage.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, alpha);
         }
     }
-
+    private bool GetIsLanding()
+    {
+        // 突き抜け床を登っている最中に着地判定を取られてしまわないよう、上昇中は着地扱いにしない
+        return (footJudgement.GetIsLanding() && velocityY <= 0.01f);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

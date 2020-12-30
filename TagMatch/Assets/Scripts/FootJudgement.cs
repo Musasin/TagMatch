@@ -10,7 +10,7 @@ public class FootJudgement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = transform.parent.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
