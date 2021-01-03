@@ -13,6 +13,7 @@ public class Talk: MonoBehaviour
     public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, aoiPrefab;
     public GameObject leftWindow, rightWindow;
 
+    WipePanel wipePanel;
     GameObject nowWindow, beforeWindow1, beforeWindow2;
     Dictionary<string, GameObject> charaObject = new Dictionary<string, GameObject>();
     Dictionary<string, CharaPicture> charaPicture = new Dictionary<string, CharaPicture>();
@@ -73,6 +74,8 @@ public class Talk: MonoBehaviour
         //AudioManager.Instance.ChangeBGMVolume(0);
         //AudioManager.Instance.ChangeSEVolume(0);
         //AudioManager.Instance.ChangeVoiceVolume(0);
+        
+        wipePanel = GameObject.Find("WipePanel").GetComponent<WipePanel>();
 
         isPlaying = false;
         string sceneName = SceneManager.GetActiveScene().name;
@@ -230,6 +233,18 @@ public class Talk: MonoBehaviour
                 AudioManager.Instance.StopBGM();
                 AudioManager.Instance.PlayBGM(scenario[nowKey.ToString()].text);
                 break;
+            case "animation_flag":
+                GameObject obj = GameObject.Find(scenario[nowKey.ToString()].chara);
+                if (obj != null)
+                {
+                    Animator anim = obj.GetComponent<Animator>();
+                    if (anim != null)
+                    {
+                        bool beforeFlag = anim.GetBool(scenario[nowKey.ToString()].text);
+                        anim.SetBool(scenario[nowKey.ToString()].text, !beforeFlag);
+                    }
+                }
+                break;
             case "start_boss_battle":
                 stackScenarioFileName = scenario[nowKey.ToString()].text;
                 isBossBattleWaiting = true;
@@ -240,6 +255,12 @@ public class Talk: MonoBehaviour
                 CloseWindow();
                 scenario.Clear();
                 return;
+            case "scene_change":
+                StaticValues.isReloadACB = true;
+                wipePanel.ChangeScene(scenario[nowKey.ToString()].text);
+                CloseWindow();
+                scenario.Clear();
+                break;
         }
         if (scenario[nowKey.ToString()].play_next)
         {
