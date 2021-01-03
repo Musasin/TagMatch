@@ -7,6 +7,7 @@ public class ResetScript : MonoBehaviour
     Player player;
     WipePanel wipePanel;
     GameObject cameraObject;
+    GameObject enemiesObject;
     Vector3 defaultCameraPos;
 
     bool isResetPlaying;
@@ -18,6 +19,7 @@ public class ResetScript : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
         wipePanel = GameObject.Find("WipePanel").GetComponent<WipePanel>();
         cameraObject = GameObject.Find("Camera");
+        enemiesObject = GameObject.Find("Enemies");
         defaultCameraPos = cameraObject.transform.position;
     }
 
@@ -33,7 +35,9 @@ public class ResetScript : MonoBehaviour
                 player.Reset();
                 EnemiesReset();
                 cameraObject.transform.position = defaultCameraPos;
-                // TODO: ボス戦で死んだ時のリスタート処理でカメラが右側固定のままになってるので直す / あとボスAIの初期化もやる
+                GameObject bossStageEntrance = GameObject.Find("BossStageEntrance");
+                if (bossStageEntrance != null)
+                    bossStageEntrance.GetComponent<BossStageEntrance>().Reset();
                 isResetPlaying = false;
             }
         }
@@ -41,10 +45,26 @@ public class ResetScript : MonoBehaviour
 
     void EnemiesReset()
     {
-        EnemyBase[] enemyList = GameObject.Find("Enemies").GetComponentsInChildren<EnemyBase>();
+        StaticValues.ResetBossHP();
+        EnemyBase[] enemyList = enemiesObject.GetComponentsInChildren<EnemyBase>();
         foreach (EnemyBase enemy in enemyList)
         {
             enemy.Reset();
+        }
+        BossAIBase[] bossList = enemiesObject.GetComponentsInChildren<BossAIBase>();
+        foreach (BossAIBase boss in bossList)
+        {
+            boss.Reset();
+        }
+        AimForPlayerBullet[] aimForPlayerBulletList = enemiesObject.GetComponentsInChildren<AimForPlayerBullet>();
+        foreach (AimForPlayerBullet aimForPlayerBullet in aimForPlayerBulletList)
+        {
+            Destroy(aimForPlayerBullet.gameObject);
+        }
+        EffectAutoRelease[] effectList = enemiesObject.GetComponentsInChildren<EffectAutoRelease>();
+        foreach (EffectAutoRelease effect in effectList)
+        {
+            Destroy(effect.gameObject);
         }
     }
 

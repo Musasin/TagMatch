@@ -45,6 +45,9 @@ public class Enemy : EnemyBase
     public override void Reset()
     {
         base.Reset();
+        attackSequence.Kill();
+        anim.SetBool("isCharge", false);
+        anim.SetBool("isAttack", false);
         isKnockBack = false;
         isAttacking = false;
         isDead = false;
@@ -240,7 +243,7 @@ public class Enemy : EnemyBase
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * shotPower;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * shotPower;
 
-        GameObject instantiateBullet = Instantiate(bullet);
+        GameObject instantiateBullet = Instantiate(bullet, transform.parent);
         instantiateBullet.transform.position = transform.position;
         instantiateBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
     }

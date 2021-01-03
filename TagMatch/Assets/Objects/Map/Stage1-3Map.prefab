@@ -363,6 +363,7 @@ Transform:
   - {fileID: 2536455173475435647}
   - {fileID: 1251825935366110230}
   - {fileID: 1306557576}
+  - {fileID: 4978166990547042512}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6526,7 +6527,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -173839683
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -8075,6 +8076,86 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6725236186417150600, guid: 1a3bed21ea68142b2b234a81ca221a39,
     type: 3}
   m_PrefabInstance: {fileID: 4460204690215902604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5377969376194044713
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8613581125094074506}
+    m_Modifications:
+    - target: {fileID: 1131637329389708280, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_Name
+      value: BossStageEntrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708283, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: scenarioFileName
+      value: stage1_boss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ac69a41530ef44f2ad12624e7687ff0, type: 3}
+--- !u!4 &4978166990547042512 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1131637329389708281, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5377969376194044713}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5924813958053445437
 PrefabInstance:

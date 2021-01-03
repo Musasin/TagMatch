@@ -13,11 +13,11 @@ public class StaticValues : MonoBehaviour
     public static bool isPause;
     public static bool isTalkPause;
     
-    public static int yukariHP = 100;
+    public static int yukariHP = 10;
     public static int yukariMaxHP = 100;
     public static int yukariMP = 100;
     public static int yukariMaxMP = 100;
-    public static int makiHP = 100;
+    public static int makiHP = 10;
     public static int makiMaxHP = 100;
     public static int makiMP = 100;
     public static int makiMaxMP = 100;
@@ -75,6 +75,14 @@ public class StaticValues : MonoBehaviour
             makiHP += point;
             makiHP = Mathf.Min(makiMaxHP, makiHP);
             makiHP = Mathf.Max(0, makiHP);
+        }
+    }
+    public static void ResetBossHP()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            bossHP[i] = 0;
+            bossMaxHP[i] = 0;
         }
     }
 

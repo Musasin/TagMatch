@@ -12,4 +12,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 11,out,yukari,left,,,,,,,,,1
 12,out,maki,left,,,,,,,,,1
 13,out,kiritan,right,,,,,,,,,1
-14,end,,,,,,,,,,,0
+14,start_boss_battle,,,stage1_boss_result,,,,,,,,0
