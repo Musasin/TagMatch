@@ -29,6 +29,7 @@ public class Camera : MonoBehaviour
         targetPosX = 0.0f;
         targetPosY = 0.0f;
         fixPosMoving = false;
+        StaticValues.isFixedCamera = false;
         GameObject terminationPointObj = GameObject.Find("TerminationPoint");
         if (terminationPointObj != null)
         {
@@ -154,6 +155,7 @@ public class Camera : MonoBehaviour
     public void CancelFixedPos()
     {
         isFixedPos = false;
+        StaticValues.isFixedCamera = false;
     }
 
     public bool IsFixPosMoving()

@@ -59,7 +59,6 @@ public class BossStageEntrance : MonoBehaviour
     public void Reset()
     {
         cameraScript.CancelFixedPos();
-        StaticValues.isFixedCamera = false;
         bc.enabled = true;
         isTrigger = false;
     }
