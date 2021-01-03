@@ -6,6 +6,7 @@ using System.IO;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class Talk: MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Talk: MonoBehaviour
     bool isCameraMoving, isClosing;
     bool beforeIsPlaying;
     bool isPlaying;
+    bool isBossBattleWaiting;
+    string stackScenarioFileName;
     float closeTime;
     int nowKey;
 
@@ -107,6 +110,12 @@ public class Talk: MonoBehaviour
                 isPlaying = false;
                 StaticValues.isTalkPause = false;
             }
+        }
+
+        if (isBossBattleWaiting && StaticValues.bossHP.Sum() <= 0)
+        {
+            Debug.Log(stackScenarioFileName);
+            SetScenario(stackScenarioFileName, false);
         }
 
         if (!isPlaying)
@@ -221,15 +230,14 @@ public class Talk: MonoBehaviour
                 AudioManager.Instance.StopBGM();
                 AudioManager.Instance.PlayBGM(scenario[nowKey.ToString()].text);
                 break;
+            case "start_boss_battle":
+                stackScenarioFileName = scenario[nowKey.ToString()].text;
+                isBossBattleWaiting = true;
+                CloseWindow();
+                scenario.Clear();
+                break;
             case "end":
-                if (beforeWindow2 != null)
-                    beforeWindow2.GetComponent<Transform>().DOMove(new Vector2(beforeWindow2.GetComponent<Transform>().position.x, 800), 0.3f);
-                if (beforeWindow1 != null)
-                    beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
-                if (nowWindow != null)
-                    nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
-                isClosing = true;
-                closeTime = 0.1f;
+                CloseWindow();
                 scenario.Clear();
                 return;
         }
@@ -241,6 +249,18 @@ public class Talk: MonoBehaviour
         {
             nowKey++;
         }
+    }
+
+    void CloseWindow()
+    {
+        if (beforeWindow2 != null)
+            beforeWindow2.GetComponent<Transform>().DOMove(new Vector2(beforeWindow2.GetComponent<Transform>().position.x, 800), 0.3f);
+        if (beforeWindow1 != null)
+            beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
+        if (nowWindow != null)
+            nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
+        isClosing = true;
+        closeTime = 0.1f;
     }
 
     void AddTalk(GameObject talkWindow, string text)
@@ -270,7 +290,9 @@ public class Talk: MonoBehaviour
 
     public void SetScenario(string scenarioFileName, bool isMoveCamera)
     {
+        nowKey = 0;
         StaticValues.isTalkPause = true;
+        isBossBattleWaiting = false;
 
         TextAsset csvFile = Resources.Load("Scenario/" + scenarioFileName) as TextAsset;
         StringReader reader = new StringReader(csvFile.text);

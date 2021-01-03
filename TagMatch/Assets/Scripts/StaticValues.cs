@@ -77,6 +77,14 @@ public class StaticValues : MonoBehaviour
             makiHP = Mathf.Max(0, makiHP);
         }
     }
+    public static void ResetBossHP()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            bossHP[i] = 0;
+            bossMaxHP[i] = 0;
+        }
+    }
 
     public static void AddSkill(string skillName, bool flag)
     {

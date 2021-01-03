@@ -53,6 +53,7 @@ public class Kotonoha : BossAIBase
         anim.SetBool("isDisappear", false);
         anim.SetBool("isReady", false);
         state = ActionState.IDLE;
+        bc.enabled = true;
     }
 
     // Update is called once per frame

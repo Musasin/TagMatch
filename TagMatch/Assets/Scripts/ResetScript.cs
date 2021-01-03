@@ -45,6 +45,7 @@ public class ResetScript : MonoBehaviour
 
     void EnemiesReset()
     {
+        StaticValues.ResetBossHP();
         EnemyBase[] enemyList = enemiesObject.GetComponentsInChildren<EnemyBase>();
         foreach (EnemyBase enemy in enemyList)
         {

@@ -1,0 +1,9 @@
+id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,play_next
+1,instantiate,kiritan,right,,,,,,,,,1
+2,instantiate,yukari,left,,,,,,,,,1
+3,instantiate,maki,left,,,,,,,,,1
+4,talk,kiritan,right,ぐわー！,kiritan,anger,half_open,omega,,,,0
+5,out,yukari,left,,,,,,,,,1
+6,out,maki,left,,,,,,,,,1
+7,out,kiritan,right,,,,,,,,,1
+8,end,,,,,,,,,,,0

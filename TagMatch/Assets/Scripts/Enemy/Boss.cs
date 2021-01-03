@@ -27,6 +27,8 @@ public class Boss : EnemyBase
         base.Reset();
         isDead = false;
         transform.position = firstPos;
+        StaticValues.bossMaxHP[bossNumber] = hp;
+        StaticValues.bossHP[bossNumber] = hp;
     }
 
     public override void Update()
@@ -42,6 +44,10 @@ public class Boss : EnemyBase
 
     public override void HitBullet(int damage, GameObject hitObject) 
     {
+        if (!IsActive())
+        {
+            return;
+        }
         base.HitBullet(damage, hitObject);
         StaticValues.bossHP[bossNumber] = hp;
         base.SetInvincible(BOSS_INVINCIBLE_TIME);

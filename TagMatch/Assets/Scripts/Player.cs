@@ -547,6 +547,11 @@ public class Player : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (StaticValues.isPause || StaticValues.isTalkPause)
+        {
+            return;
+        }
+
         if (collision.gameObject.tag == "Item")
         {
             Coin coin = collision.gameObject.GetComponent<Coin>();
