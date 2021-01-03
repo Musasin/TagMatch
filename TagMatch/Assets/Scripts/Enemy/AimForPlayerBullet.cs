@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kiritanhou : MonoBehaviour
+public class AimForPlayerBullet : MonoBehaviour
 {
     Rigidbody2D rb;
     GameObject player;

@@ -241,7 +241,7 @@ public class Kotonoha : BossAIBase
     {
         AudioManager.Instance.PlaySE("akane_flame");
 
-        GameObject bullet = Instantiate(akaneFlame);
+        GameObject bullet = Instantiate(akaneFlame, transform.parent);
         bullet.transform.localPosition = transform.localPosition;
         bullet.transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
     }
@@ -250,7 +250,7 @@ public class Kotonoha : BossAIBase
     {
         AudioManager.Instance.PlaySE("buon");
 
-        GameObject b1 = Instantiate(aoiShot);
+        GameObject b1 = Instantiate(aoiShot, transform.parent);
         b1.transform.position = new Vector2(transform.position.x, transform.position.y + 2);
     }
     

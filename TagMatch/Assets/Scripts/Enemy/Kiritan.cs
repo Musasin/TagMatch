@@ -213,14 +213,14 @@ public class Kiritan : BossAIBase
     {
         AudioManager.Instance.PlaySE("buon");
 
-        GameObject b1 = Instantiate(kiritanhouBullet);
+        GameObject b1 = Instantiate(kiritanhouBullet, transform.parent);
         b1.transform.position = kiritanhouPos1.transform.position;
         if (isRight)
         {
             b1.transform.localScale = new Vector2(-1, 1);
         }
 
-        GameObject b2 = Instantiate(kiritanhouBullet);
+        GameObject b2 = Instantiate(kiritanhouBullet, transform.parent);
         b2.transform.position = kiritanhouPos2.transform.position;
         if (isRight)
         {
