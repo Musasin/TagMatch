@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Kiritan : MonoBehaviour
+public class Kiritan : BossAIBase
 {
     public GameObject kiritanhouBullet;
-    Animator anim;
-    Boss bossScript;
     GameObject kiritanhouPos1, kiritanhouPos2;
     SpriteRenderer jetFlameSR1, jetFlameSR2;
     Vector2 upperLeftPos, upperRightPos, lowerLeftPos, lowerRightPos;
-    int stateIndex;
-    bool isPlaying = false;
-    bool isRight = false;
-    bool isDead;
-
-    Sequence sequence;
 
     enum ActionState
     {
@@ -45,6 +37,14 @@ public class Kiritan : MonoBehaviour
         jetFlameSR2 = GameObject.Find("JetFlame2").GetComponent<SpriteRenderer>();   
         kiritanhouPos1 = GameObject.Find("KiritanhouPos1");
         kiritanhouPos2 = GameObject.Find("KiritanhouPos2");   
+    }
+    
+    public override void Reset()
+    {
+        base.Reset();
+        anim.SetBool("isFloat", false);
+        anim.SetBool("isReady", false);
+        state = ActionState.IDLE;
     }
 
     // Update is called once per frame

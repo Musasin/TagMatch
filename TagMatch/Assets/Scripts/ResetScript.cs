@@ -33,7 +33,9 @@ public class ResetScript : MonoBehaviour
                 player.Reset();
                 EnemiesReset();
                 cameraObject.transform.position = defaultCameraPos;
-                // TODO: ボス戦で死んだ時のリスタート処理でカメラが右側固定のままになってるので直す / あとボスAIの初期化もやる
+                GameObject bossStageEntrance = GameObject.Find("BossStageEntrance");
+                if (bossStageEntrance != null)
+                    bossStageEntrance.GetComponent<BossStageEntrance>().Reset();
                 isResetPlaying = false;
             }
         }
@@ -45,6 +47,11 @@ public class ResetScript : MonoBehaviour
         foreach (EnemyBase enemy in enemyList)
         {
             enemy.Reset();
+        }
+        BossAIBase[] bossList = GameObject.Find("Enemies").GetComponentsInChildren<BossAIBase>();
+        foreach (BossAIBase boss in bossList)
+        {
+            boss.Reset();
         }
     }
 

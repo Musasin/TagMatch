@@ -1,25 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using System.Linq;
+using DG.Tweening;
 
-public class Kotonoha : MonoBehaviour
+public class Kotonoha : BossAIBase
 {
     public GameObject akaneFlame, aoiShot;
     BoxCollider2D bc;
-    Animator anim;
-    Boss bossScript;
     
     protected Vector2 leftPos1, leftPos2, leftPos3, leftPos4;
     protected Vector2 rightPos1, rightPos2, rightPos3, rightPos4;
-    int stateIndex;
-    bool isPlaying = false;
-    bool isRight = false;
-    bool isDead;
     
-    Sequence sequence;
-
     public enum ActionState
     {
         IDLE,
@@ -55,6 +47,14 @@ public class Kotonoha : MonoBehaviour
         rightPos4 = GameObject.Find("RightPos4").transform.position;
     }
 
+    public override void Reset()
+    {
+        base.Reset();
+        anim.SetBool("isDisappear", false);
+        anim.SetBool("isReady", false);
+        state = ActionState.IDLE;
+    }
+
     // Update is called once per frame
     public virtual void Update()
     {
@@ -72,11 +72,10 @@ public class Kotonoha : MonoBehaviour
 
         if (bossScript.IsDead())
         {
-            sequence.Kill();
             isRight = false;
+            isDead = true;
             anim.SetBool("isDisappear", false);
             anim.SetBool("isReady", false);
-            isDead = true;
             return;
         }
 

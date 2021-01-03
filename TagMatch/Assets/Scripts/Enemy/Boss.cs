@@ -11,7 +11,6 @@ public class Boss : EnemyBase
 
     Vector2 firstPos;
     bool isDead;
-    bool isActive = false;
 
     public override void Start()
     {
@@ -21,6 +20,13 @@ public class Boss : EnemyBase
         // TODO 今のままだと、複数ボスのステージをクリア後、ボス1体のステージに行くと2体目のMaxHPがそのまま残ってしまうので、シーン読み込み時等に初期化する処理を入れる
         StaticValues.bossMaxHP[bossNumber] = hp;
         StaticValues.bossHP[bossNumber] = hp;
+    }
+    
+    public override void Reset()
+    {
+        base.Reset();
+        isDead = false;
+        transform.position = firstPos;
     }
 
     public override void Update()
@@ -41,15 +47,9 @@ public class Boss : EnemyBase
         base.SetInvincible(BOSS_INVINCIBLE_TIME);
     }
 
-    public void SetActive(bool flag)
-    {
-        isActive = flag;
-    }
     public bool IsActive()
     {
-        // 仮
         return StaticValues.isFixedCamera && !StaticValues.isPause && !StaticValues.isTalkPause;
-        //return isActive;
     }
     public bool IsDead()
     {
