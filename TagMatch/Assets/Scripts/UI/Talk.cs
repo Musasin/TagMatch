@@ -233,6 +233,18 @@ public class Talk: MonoBehaviour
                 AudioManager.Instance.StopBGM();
                 AudioManager.Instance.PlayBGM(scenario[nowKey.ToString()].text);
                 break;
+            case "animation_flag":
+                GameObject obj = GameObject.Find(scenario[nowKey.ToString()].chara);
+                if (obj != null)
+                {
+                    Animator anim = obj.GetComponent<Animator>();
+                    if (anim != null)
+                    {
+                        bool beforeFlag = anim.GetBool(scenario[nowKey.ToString()].text);
+                        anim.SetBool(scenario[nowKey.ToString()].text, !beforeFlag);
+                    }
+                }
+                break;
             case "start_boss_battle":
                 stackScenarioFileName = scenario[nowKey.ToString()].text;
                 isBossBattleWaiting = true;
