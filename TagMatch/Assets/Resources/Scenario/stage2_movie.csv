@@ -12,10 +12,9 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 11,animation_flag,Stage2MovieMap,,isFall,,,,,,,,1
 12,talk,yukari,left,おわーっ!!!,,anger,white,axtu,,,,0
 13,out,yukari,left,,,,,,,,,1
-14,talk,aoi,right,お姉ちゃーーーん！！,,anger,normal,gaa,,,,0
-15,out,aoi,right,,,,,,,,,1
-16,talk,akane,right,あ、あおいーーーー！！,,anger,white,gaa,,,,0
-17,talk,maki,left,ゆかりーーーーん！！,,anger,normal,gaa,,,,0
-18,out,maki,left,,,,,,,,,1
-19,out,akane,right,,,,,,,,,1
-20,scene_change,,,stage3-1,,,,,,,,0
+14,out,aoi,right,,,,,,,,,1
+15,talk,akane,right,あ、あおいーーーー！！,,anger,white,gaa,,,,0
+16,talk,maki,left,ゆかりーーーーん！！,,anger,normal,gaa,,,,0
+17,out,maki,left,,,,,,,,,1
+18,out,akane,right,,,,,,,,,1
+19,scene_change,,,stage3-1,,,,,,,,0
