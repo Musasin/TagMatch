@@ -346,7 +346,7 @@ public class Player : MonoBehaviour
                         StaticValues.AddHP(false, 50);
                         GameObject effect = Instantiate(healEffect);
                         effect.transform.position = new Vector2(transform.position.x, transform.position.y + 1.0f);
-                        AudioManager.Instance.PlaySE("jump"); // 仮
+                        AudioManager.Instance.PlaySE("restore");
                     }
                 }
                 else
@@ -483,6 +483,7 @@ public class Player : MonoBehaviour
                     squatInvincibleTime = 1.0f;
                     GameObject effect = Instantiate(invincibleEffect);
                     effect.transform.position = new Vector2(transform.position.x, transform.position.y - 0.3f);
+                    AudioManager.Instance.PlaySE("avoidance");
                 } 
                 // しゃがみ -> 他のステート でしゃがみ無敵解除
                 else if (animationState == AnimationState.SQUAT)
