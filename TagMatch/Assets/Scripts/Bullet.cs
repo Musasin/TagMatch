@@ -74,7 +74,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Map")
         {
-            if (!isTrample)
+            if (!isTrample && !collision.isTrigger)
             {
                 if (bulletType == BulletType.YUKARI)
                 {
