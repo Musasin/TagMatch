@@ -48,7 +48,6 @@ public class OneWayObject : MonoBehaviour
         {
             case "Player":
             case "PlayerBullet":
-                Debug.Log(collision.gameObject + "enter");
                 isIgnore = true;
                 Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>(), isIgnore);
                 break;
@@ -61,7 +60,6 @@ public class OneWayObject : MonoBehaviour
         {
             case "Player":
             case "PlayerBullet":
-                Debug.Log(collision.gameObject + "exit");
                 isIgnore = false;
                 Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>(), isIgnore);
                 break;

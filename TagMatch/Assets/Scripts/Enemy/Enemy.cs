@@ -144,7 +144,6 @@ public class Enemy : EnemyBase
         // スライムは着地で攻撃終了
         if (type == "slime" && !isDead)
         {
-            Debug.Log(gameObject.name + "着地");
             rb.velocity = Vector2.zero;
             isAttacking = false;
             afterAttackTime = 0;

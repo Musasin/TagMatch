@@ -13,19 +13,17 @@ public class StaticValues : MonoBehaviour
     public static bool isPause;
     public static bool isTalkPause;
     
-    public static int yukariHP = 10;
+    public static int yukariHP = 100;
     public static int yukariMaxHP = 100;
     public static int yukariMP = 100;
     public static int yukariMaxMP = 100;
-    public static int makiHP = 10;
+    public static int makiHP = 100;
     public static int makiMaxHP = 100;
     public static int makiMP = 100;
     public static int makiMaxMP = 100;
     public static float yukariAttackRatio = 1.0f;
     public static float makiAttackRatio = 1.0f;
     
-    //public static int bossHP;
-    //public static int bossMaxHP;
     public static int[] bossHP = { 0, 0, 0 };
     public static int[] bossMaxHP = { 0, 0, 0 };
 

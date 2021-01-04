@@ -26,6 +26,7 @@ public class Talk: MonoBehaviour
     string stackScenarioFileName;
     float closeTime;
     int nowKey;
+    float time;
 
     private char lf = (char)10;
 
@@ -95,6 +96,8 @@ public class Talk: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+
         if (isCameraMoving)
         {
             if (!StaticValues.isFixedCamera)
@@ -117,7 +120,6 @@ public class Talk: MonoBehaviour
 
         if (isBossBattleWaiting && StaticValues.bossHP.Sum() <= 0)
         {
-            Debug.Log(stackScenarioFileName);
             SetScenario(stackScenarioFileName, false);
         }
 
@@ -130,6 +132,12 @@ public class Talk: MonoBehaviour
         {
             beforeIsPlaying = isPlaying;
             UpdateStep(); // 最初一回自動再生
+            return;
+        }
+
+        // ボス撃破後に連打でページ送りしてしまうのを防止するため1秒入力を受け付けない
+        if (time <= 1.0f)
+        {
             return;
         }
         
@@ -311,6 +319,7 @@ public class Talk: MonoBehaviour
 
     public void SetScenario(string scenarioFileName, bool isMoveCamera)
     {
+        time = 0;
         nowKey = 0;
         StaticValues.isTalkPause = true;
         isBossBattleWaiting = false;
