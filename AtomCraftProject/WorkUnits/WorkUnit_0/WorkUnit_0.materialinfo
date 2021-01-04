@@ -36,6 +36,7 @@
           <Orca OrcaName="shot_maki_D.wav" Channels="2" EncodeFileSize="176734" ReloopEnd="264600" ResamplingRate="44100" SampleFrames="264600" SamplingRate="44100" SourceFileSize="1058480" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="shot_maki_G.wav" Channels="2" EncodeFileSize="176734" ReloopEnd="264600" ResamplingRate="44100" SampleFrames="264600" SamplingRate="44100" SourceFileSize="1058480" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="fire.wav" Channels="1" EncodeFileSize="13395" ReloopEnd="86759" ResamplingRate="44100" SampleFrames="38848" SamplingRate="44100" SourceFileSize="77824" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="avoidance.wav" Channels="2" EncodeFileSize="91484" ReloopEnd="136762" ResamplingRate="48000" SampleFrames="136762" SamplingRate="48000" SourceFileSize="547128" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
       </Orca>
     </Orca>
