@@ -162,17 +162,19 @@
               </Orca>
             </Orca>
             <Orca OrcaName="E_Bal" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/SE" CueID="31" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="1.24" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
-              <Orca OrcaName="Track_EB_start" BusSendExUseFlag1="True" BusSendExUseFlag2="True" ObjectColor="200, 40, 120, 200" Volume="2.09" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+              <Orca OrcaName="Track_EB_start" BusSendExUseFlag1="True" BusSendExUseFlag2="True" ObjectColor="200, 40, 120, 200" Volume="0.61" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="EB_loop.wav" AutoRepeatInterval="1e+03" AutoRepeatNum="1" DelayTimeMS="100" EgAttackCurveType="RapidStartSlowEnd" EgAttackTimeMs="30" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/EB_loop.wav" StopAtLoopEnd="True" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
                 <Orca OrcaName="Automation" AisacType="Automation" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisac">
                   <Orca OrcaName="Volume" ControlDestinationType="Volume" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacGraph">
+                    <Orca OrcaName="Point_1" ControlValue="0" DestinationValue="0.2703" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacPoint"/>
+                    <Orca OrcaName="Point" ControlValue="435" DestinationValue="1.0541" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacPoint"/>
                     <Orca OrcaName="Point_0" ControlValue="1.34e+03" DestinationValue="1.0811" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacPoint"/>
                     <Orca OrcaName="Point_3" ControlValue="1.48e+03" DestinationValue="0.3784" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacPoint"/>
                     <Orca OrcaName="Point_2" ControlValue="1.7e+03" DestinationValue="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacPoint"/>
                   </Orca>
                 </Orca>
               </Orca>
-              <Orca OrcaName="Track" BusSendEx2="0.09090909" BusSendExUseFlag1="True" BusSendExUseFlag2="True" ObjectColor="200, 40, 120, 200" Volume="1.74" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+              <Orca OrcaName="Track" BusSendEx2="0.09090909" BusSendExUseFlag1="True" BusSendExUseFlag2="True" ObjectColor="200, 40, 120, 200" Volume="2.02" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="EB_start.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/EB_start.wav" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
                 <Orca OrcaName="Automation" AisacType="Automation" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisac">
                   <Orca OrcaName="Volume" ControlDestinationType="Volume" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacGraph">
