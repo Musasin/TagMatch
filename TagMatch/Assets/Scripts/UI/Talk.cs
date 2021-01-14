@@ -45,8 +45,9 @@ public class Talk: MonoBehaviour
         public string option2;
         public string option3;
         public bool play_next;
+        public string voice;
         
-        public ScenarioData(string id, string type, string chara, string position, string text, string main, string eye_brows, string eye, string mouse, string option1, string option2, string option3, string play_next)
+        public ScenarioData(string id, string type, string chara, string position, string text, string main, string eye_brows, string eye, string mouse, string option1, string option2, string option3, string play_next, string voice)
         {
             this.id = int.Parse(id);
             this.type = type;
@@ -61,6 +62,7 @@ public class Talk: MonoBehaviour
             this.option2 = option2;
             this.option3 = option3;
             this.play_next = (play_next == "1" ? true : false);
+            this.voice = voice;
         }
     }
     private Dictionary<string, ScenarioData> scenario = new Dictionary<string, ScenarioData>();
@@ -135,8 +137,8 @@ public class Talk: MonoBehaviour
             return;
         }
 
-        // ボス撃破後に連打でページ送りしてしまうのを防止するため1秒入力を受け付けない
-        if (time <= 1.0f)
+        // ボス撃破後に連打でページ送りしてしまうのを防止するため少しの間入力を受け付けない
+        if (time <= 0.7f)
         {
             return;
         }
@@ -341,7 +343,7 @@ public class Talk: MonoBehaviour
             {
                 nowKey = int.Parse(datas[0]);
             }
-            var scenarioData = new ScenarioData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9],datas[10],datas[11],datas[12]);
+            var scenarioData = new ScenarioData(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5],datas[6],datas[7],datas[8],datas[9],datas[10],datas[11],datas[12],datas[13]);
             scenario.Add(datas[0], scenarioData);
         }
         if (isMoveCamera)
