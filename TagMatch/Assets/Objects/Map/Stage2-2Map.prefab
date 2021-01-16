@@ -4169,7 +4169,7 @@ GameObject:
   - component: {fileID: 4955776139053285101}
   - component: {fileID: 4955776139053285090}
   m_Layer: 0
-  m_Name: Stage2-1Map
+  m_Name: Stage2-2Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15644,7 +15644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba452bb20b19a4c55b4094bd25770a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Stage2-2
+  nextScene: Stage2-3
 --- !u!1 &6519608340937759878
 GameObject:
   m_ObjectHideFlags: 0
