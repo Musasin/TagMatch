@@ -17,10 +17,11 @@ public class Enemy : EnemyBase
     public GameObject dropItem1;
     public GameObject dropItem2;
     
-    const float STOP_TIME = 0.5f;
+    const float STOP_TIME = 0.8f;
     const float DAMAGE_VELOCITY_X = 4.0f;
     const float DAMAGE_VELOCITY_Y = 8.0f;
-    
+
+    float stopTime = 0;
     float afterAttackTime = 0;
     bool isKnockBack;
     bool isAttacking;
@@ -28,9 +29,11 @@ public class Enemy : EnemyBase
     Rigidbody2D rb;
     Animator anim;
     BoxCollider2D bc;
+    BoxCollider2D damageCollider;
     Vector2 defaultScale;
     GameObject dropedItem1, dropedItem2;
     Sequence attackSequence;
+    GameObject playerObject;
 
     // Start is called before the first frame update
     public override void Start()
@@ -39,7 +42,9 @@ public class Enemy : EnemyBase
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         bc = transform.GetComponent<BoxCollider2D>();
+        damageCollider = transform.Find("Damage").gameObject.GetComponent<BoxCollider2D>();
         defaultScale = transform.localScale;
+        playerObject = GameObject.Find("Player");
     }
 
     public override void Reset()
@@ -55,6 +60,7 @@ public class Enemy : EnemyBase
         if (dropedItem1 != null) Destroy(dropedItem1);
         if (dropedItem2 != null) Destroy(dropedItem2);
         bc.enabled = true;
+        damageCollider.enabled = true;
         rb.velocity = Vector2.zero;
         transform.localScale = defaultScale;
     }
@@ -69,52 +75,75 @@ public class Enemy : EnemyBase
             anim.SetBool("isKnockBack", true);
             return;
         }
-        
+
         anim.SetBool("isKnockBack", isKnockBack);
         if (isKnockBack) // 被ダメージ硬直
         {
-            return;
+            if (type != "bat")
+            {
+                return;
+            }
+
+            stopTime -= Time.deltaTime;
+            if (stopTime >= 0)
+            {
+                return;
+            }
+            isKnockBack = false;
+            anim.SetBool("isKnockBack", isKnockBack);
         }
 
         if (isAttacking)
         {
             return;
-        } else
-        {
-            // スライムは攻撃中以外静止
-            if (type == "slime")
-            {
-                rb.velocity = Vector2.zero;
-            }
         }
-
+        
         afterAttackTime += Time.deltaTime;
-        if (attackInterval != 0 && afterAttackTime > attackInterval)
+        switch (type)
         {
-            rb.velocity = Vector2.zero;
-            isAttacking = true;
-            
-            if (type == "kinoko")
-            {
-                KinokoAttack();
-            }
-            else if (type == "slime")
-            {
-                SlimeAttack();
-            }
-            else
-            {
-                isAttacking = false;
-                attackInterval = 0;
-            }
-        } else
-        {
-            if (type == "kinoko")
-            {
-                rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), rb.velocity.y);
-            }
-            transform.localScale = new Vector2(defaultScale.x * (isRight ? -1 : 1), defaultScale.y); // デフォルトは左向き
+            case "kinoko":
+                if (attackInterval != 0 && afterAttackTime > attackInterval)
+                {
+                    rb.velocity = Vector2.zero;
+                    isAttacking = true;
+                    KinokoAttack();
+                } else
+                {
+                    rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), rb.velocity.y);
+                }
+                break;
+            case "slime":
+                // スライムは攻撃中以外静止
+                rb.velocity = Vector2.zero;
+                if (attackInterval != 0 && afterAttackTime > attackInterval)
+                {
+                    isAttacking = true;
+                    SlimeAttack();
+                }
+                break;
+            case "bat":
+                Vector2 playerPos = playerObject.transform.position;
+                float playerDistance = Vector2.Distance(playerPos, transform.position);
+                float defaultPosDistance = Vector2.Distance(base.defaultPosition, transform.position);
+                if (playerDistance < attackInterval)
+                {
+                    MoveToPos(playerPos);
+                    anim.SetBool("isAttack", true);
+                }
+                else if (defaultPosDistance > 0.2f) // 初期位置からある程度離れていたら戻る
+                {
+                    MoveToPos(base.defaultPosition);
+                    anim.SetBool("isAttack", true);
+                } else
+                {
+                    rb.velocity = Vector2.zero;
+                    anim.SetBool("isAttack", false);
+                }
+                break;
         }
+        
+        // 向きの更新 デフォルトは左向き
+        transform.localScale = new Vector2(defaultScale.x * (isRight ? -1 : 1), defaultScale.y);
     }
     
     public void HitWall()
@@ -179,6 +208,7 @@ public class Enemy : EnemyBase
             dropedItem2 = InstantiateDropItem(dropItem2, new Vector2(transform.position.x + 0.1f, transform.position.y));
 
             bc.enabled = false;
+            damageCollider.enabled = false;
             bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0;
             rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
             transform.Rotate(new Vector3(0, 0, 180.0f));
@@ -190,7 +220,6 @@ public class Enemy : EnemyBase
                 isKnockBack = true;
                 bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0; // vecolicyがマイナスなら右から左に向かっている
                 rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
-
                 // 攻撃を中断する
                 isAttacking = false;
                 afterAttackTime = 0;
@@ -200,6 +229,18 @@ public class Enemy : EnemyBase
                 {
                     attackSequence.Kill();
                 }
+            }
+        }
+
+        // コウモリだけ着地が存在しないため、ノックバックを時間管理する
+        if (type == "bat")
+        {
+            stopTime = STOP_TIME;
+            if (isDead)
+            {
+                rb.velocity = new Vector2(0, -8);
+            } else { 
+                rb.velocity = Vector2.zero;
             }
         }
     }
@@ -258,5 +299,32 @@ public class Enemy : EnemyBase
                 anim.SetBool("isAttack", true);
                 rb.AddForce(new Vector2(velocityX * (isRight ? 1 : -1), velocityY));
             }).Play();
+    }
+
+    private void MoveToPos(Vector2 targetPos)
+    {
+        float x, y;
+        if (Mathf.Abs(targetPos.x - transform.position.x) < 0.1f)
+        {
+            x = 0;
+        }
+        else if (targetPos.x < transform.position.x)
+        {
+            x = -velocityX;
+            isRight = false;
+        }
+        else
+        {
+            x = velocityX;
+            isRight = true;
+        }
+        if (Mathf.Abs(targetPos.y - transform.position.y) < 0.05f)
+            y = 0;
+        else if (targetPos.y < transform.position.y)
+            y = -velocityY;
+        else
+            y = velocityY;
+
+        rb.velocity = new Vector2(x, y);
     }
 }

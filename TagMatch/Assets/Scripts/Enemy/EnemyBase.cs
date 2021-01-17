@@ -6,13 +6,13 @@ public class EnemyBase : MonoBehaviour
 {
     public int hp;
     public GameObject damagePointEffect;
+    public Vector2 defaultPosition;
 
     const float INVINCIBLE_TIME = 0.2f;
     
     int maxHp;
     float invincibleTime = 0;
     SpriteRenderer sr;
-    Vector2 defaultPosition;
 
     // Start is called before the first frame update
     public virtual void Start()
