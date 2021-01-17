@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     const int MP_COST_MAKI_ELECTRIC_FIRE = 40;
     const int MP_COST_MAKI_HEAL = 40;
     
-    const float STOP_TIME = 0.3f;
+    const float STOP_TIME = 0.25f;
     const float SHOT_IMPOSSIBLE_TIME = 0.4f;
     const float INVINCIBLE_TIME = 0.6f;
     const float MP_RECOVER_TIME = 3.0f;

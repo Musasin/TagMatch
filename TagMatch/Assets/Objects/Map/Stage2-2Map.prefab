@@ -21233,6 +21233,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: kinoko (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 7955159235511567285, guid: 84f6b7819d8714bb6b5a68601c1f8f44,
+        type: 3}
     - target: {fileID: 3604352289458570567, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22613,6 +22619,12 @@ PrefabInstance:
       propertyPath: isSuperArmor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 7955159235511567285, guid: 84f6b7819d8714bb6b5a68601c1f8f44,
+        type: 3}
     - target: {fileID: 3604352289458570567, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
         type: 3}
       propertyPath: m_LocalPosition.x

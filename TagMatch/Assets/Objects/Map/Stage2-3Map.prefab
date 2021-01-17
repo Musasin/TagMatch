@@ -25898,6 +25898,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: kinoko (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 7955159235511567285, guid: 84f6b7819d8714bb6b5a68601c1f8f44,
+        type: 3}
     - target: {fileID: 3604352289458570567, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25973,6 +25979,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: kinoko (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 7955159235511567285, guid: 84f6b7819d8714bb6b5a68601c1f8f44,
+        type: 3}
     - target: {fileID: 3604352289458570567, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27503,6 +27515,12 @@ PrefabInstance:
       propertyPath: attackInterval
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1399884638771743188, guid: 0e7351cb6acb24641ad382c910b83866,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 1342373273856134583, guid: 77d02968db4ea42d3894391c39c5dc46,
+        type: 3}
     - target: {fileID: 1399884638771743191, guid: 0e7351cb6acb24641ad382c910b83866,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29193,6 +29211,12 @@ PrefabInstance:
       propertyPath: attackInterval
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1399884638771743188, guid: 0e7351cb6acb24641ad382c910b83866,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 1342373273856134583, guid: 77d02968db4ea42d3894391c39c5dc46,
+        type: 3}
     - target: {fileID: 1399884638771743191, guid: 0e7351cb6acb24641ad382c910b83866,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31983,6 +32007,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: kinoko (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3604352289458570564, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
+        type: 3}
+      propertyPath: dropItem1
+      value: 
+      objectReference: {fileID: 1342373273856134583, guid: 77d02968db4ea42d3894391c39c5dc46,
+        type: 3}
     - target: {fileID: 3604352289458570567, guid: ef08d6ebdde6d4e9a811c2c64ab8d0c3,
         type: 3}
       propertyPath: m_LocalPosition.x
