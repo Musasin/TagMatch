@@ -151,6 +151,11 @@ public class Talk: MonoBehaviour
 
     void UpdateStep()
     {
+        if (!scenario.ContainsKey(nowKey.ToString()))
+        {
+            return;
+        }
+
         string chara = scenario[nowKey.ToString()].chara;
         string position = scenario[nowKey.ToString()].position;
 
@@ -260,7 +265,7 @@ public class Talk: MonoBehaviour
                 isBossBattleWaiting = true;
                 CloseWindow();
                 scenario.Clear();
-                break;
+                return;
             case "end":
                 CloseWindow();
                 scenario.Clear();
@@ -270,7 +275,7 @@ public class Talk: MonoBehaviour
                 wipePanel.ChangeScene(scenario[nowKey.ToString()].text);
                 CloseWindow();
                 scenario.Clear();
-                break;
+                return;
         }
         if (scenario[nowKey.ToString()].play_next)
         {
