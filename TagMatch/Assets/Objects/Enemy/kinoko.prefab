@@ -108,8 +108,7 @@ MonoBehaviour:
   isSuperArmor: 0
   isRight: 0
   bullet: {fileID: 511471703815891128, guid: a7d2b4f267c4846e3b25587564786dcb, type: 3}
-  dropItem1: {fileID: 7955159235511567285, guid: 84f6b7819d8714bb6b5a68601c1f8f44,
-    type: 3}
+  dropItem1: {fileID: 0}
   dropItem2: {fileID: 0}
 --- !u!1 &3604352289797459594
 GameObject:
@@ -238,7 +237,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 0.5}
+  m_Size: {x: 0.03, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &3604352289950880073
 MonoBehaviour:
