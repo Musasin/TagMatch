@@ -65,6 +65,8 @@ MonoBehaviour:
   hp: 200
   damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
     type: 3}
+  defaultPosition: {x: 0, y: 0}
+  bossNumber: 0
 --- !u!61 &6869167814102070307
 BoxCollider2D:
   m_ObjectHideFlags: 0
