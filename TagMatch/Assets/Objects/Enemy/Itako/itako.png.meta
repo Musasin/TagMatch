@@ -26,6 +26,666 @@ TextureImporter:
   - first:
       213: -424961845506517950
     second: itako_7
+  - first:
+      213: -3388338671648378567
+    second: itako_0
+  - first:
+      213: 4097482105630764728
+    second: itako_1
+  - first:
+      213: -4807244861482725865
+    second: itako_2
+  - first:
+      213: 4691174410086474297
+    second: itako_3
+  - first:
+      213: -6225860066267254960
+    second: itako_4
+  - first:
+      213: -8559260998855384609
+    second: itako_5
+  - first:
+      213: 3026711277551538523
+    second: itako_6
+  - first:
+      213: -1015757646771862022
+    second: itako_7
+  - first:
+      213: 8195500476061859660
+    second: itako_8
+  - first:
+      213: -7533633031972808298
+    second: itako_9
+  - first:
+      213: 7498135666101518158
+    second: itako_10
+  - first:
+      213: 189906522945789743
+    second: itako_11
+  - first:
+      213: 4823301938239532099
+    second: itako_12
+  - first:
+      213: 1940481305761960940
+    second: itako_13
+  - first:
+      213: 5079271678657127006
+    second: itako_14
+  - first:
+      213: 4794447434958789753
+    second: itako_15
+  - first:
+      213: -8223577132791065067
+    second: itako_16
+  - first:
+      213: 6345962797319896454
+    second: itako_17
+  - first:
+      213: 3732841315497150123
+    second: itako_18
+  - first:
+      213: 6372230135503899132
+    second: itako_19
+  - first:
+      213: -7583297450067998422
+    second: itako_20
+  - first:
+      213: 8572293665674241395
+    second: itako_21
+  - first:
+      213: 6062750452078769618
+    second: itako_22
+  - first:
+      213: -2246977154247000796
+    second: itako_23
+  - first:
+      213: -9030439145735479965
+    second: itako_24
+  - first:
+      213: 1789533648140589554
+    second: itako_25
+  - first:
+      213: 2913635307039070810
+    second: itako_26
+  - first:
+      213: -2265180173307418387
+    second: itako_27
+  - first:
+      213: -3680663993053107265
+    second: itako_28
+  - first:
+      213: 6832526932508694660
+    second: itako_29
+  - first:
+      213: -3213721505805281424
+    second: itako_30
+  - first:
+      213: 5862877583961366993
+    second: itako_31
+  - first:
+      213: 8256216062076069181
+    second: itako_32
+  - first:
+      213: -4318431893469271198
+    second: itako_33
+  - first:
+      213: 8771214455809228226
+    second: itako_34
+  - first:
+      213: 2507981136337039618
+    second: itako_35
+  - first:
+      213: -4722890986771128828
+    second: itako_36
+  - first:
+      213: 483700402531518860
+    second: itako_37
+  - first:
+      213: 2495916534041881365
+    second: itako_38
+  - first:
+      213: -1386433509604806799
+    second: itako_39
+  - first:
+      213: -1722723486563525663
+    second: itako_40
+  - first:
+      213: 8112623834706293682
+    second: itako_41
+  - first:
+      213: 3518768055155762914
+    second: itako_42
+  - first:
+      213: 8102312797179469522
+    second: itako_43
+  - first:
+      213: 6051300597567191023
+    second: itako_44
+  - first:
+      213: -862268928925200452
+    second: itako_45
+  - first:
+      213: 1821801169153498519
+    second: itako_46
+  - first:
+      213: 6834254816434865690
+    second: itako_47
+  - first:
+      213: 7937349545807304502
+    second: itako_48
+  - first:
+      213: -6150296639275174897
+    second: itako_49
+  - first:
+      213: -4298875001936651827
+    second: itako_50
+  - first:
+      213: 3643885225784432389
+    second: itako_51
+  - first:
+      213: -5829320278511533262
+    second: itako_52
+  - first:
+      213: 8459163624771366669
+    second: itako_53
+  - first:
+      213: 1271338260588902157
+    second: itako_54
+  - first:
+      213: -8386386680480128732
+    second: itako_55
+  - first:
+      213: -4877152781206519449
+    second: itako_56
+  - first:
+      213: 5738743693150621289
+    second: itako_57
+  - first:
+      213: 4348468701002329211
+    second: itako_58
+  - first:
+      213: -3127939096668476238
+    second: itako_59
+  - first:
+      213: 7103199808267553251
+    second: itako_60
+  - first:
+      213: -5577929359086778741
+    second: itako_61
+  - first:
+      213: -6105946858391477685
+    second: itako_62
+  - first:
+      213: -2400365046394896330
+    second: itako_63
+  - first:
+      213: 8119047152935076467
+    second: itako_64
+  - first:
+      213: 2089849576749311171
+    second: itako_65
+  - first:
+      213: -2064267504126499087
+    second: itako_66
+  - first:
+      213: -923651789842997360
+    second: itako_67
+  - first:
+      213: -1416218277198694468
+    second: itako_68
+  - first:
+      213: -1775955040802331175
+    second: itako_69
+  - first:
+      213: 530875642035107573
+    second: itako_70
+  - first:
+      213: -1048216306230580435
+    second: itako_71
+  - first:
+      213: 2547197069407041984
+    second: itako_72
+  - first:
+      213: -5108325546051215273
+    second: itako_73
+  - first:
+      213: 7293016405283880491
+    second: itako_74
+  - first:
+      213: -7915828364689330556
+    second: itako_75
+  - first:
+      213: 6730769286584987621
+    second: itako_76
+  - first:
+      213: -7929960785282382675
+    second: itako_77
+  - first:
+      213: 838642427066701845
+    second: itako_78
+  - first:
+      213: 537407449158167984
+    second: itako_79
+  - first:
+      213: 3149823637939653436
+    second: itako_80
+  - first:
+      213: -8524843247013376449
+    second: itako_81
+  - first:
+      213: -4791025052626241713
+    second: itako_82
+  - first:
+      213: 3165285074609544208
+    second: itako_83
+  - first:
+      213: 7777421094983890250
+    second: itako_84
+  - first:
+      213: 5968133653874163117
+    second: itako_85
+  - first:
+      213: 4279161676559908519
+    second: itako_86
+  - first:
+      213: 5136400343840069778
+    second: itako_87
+  - first:
+      213: 3513311478019259738
+    second: itako_88
+  - first:
+      213: 510716050725398990
+    second: itako_89
+  - first:
+      213: 8080464486001904495
+    second: itako_90
+  - first:
+      213: -2145722110691036940
+    second: itako_91
+  - first:
+      213: -3775108779127859379
+    second: itako_92
+  - first:
+      213: -1214880717768554316
+    second: itako_93
+  - first:
+      213: 647816456145283334
+    second: itako_94
+  - first:
+      213: -344750037217075548
+    second: itako_95
+  - first:
+      213: -6937917102676321806
+    second: itako_96
+  - first:
+      213: 7989401561147301066
+    second: itako_97
+  - first:
+      213: 5124615987806718673
+    second: itako_98
+  - first:
+      213: -1199174605607074190
+    second: itako_99
+  - first:
+      213: -7904477523997450094
+    second: itako_100
+  - first:
+      213: -2802986874758800609
+    second: itako_101
+  - first:
+      213: 8478111025628993307
+    second: itako_102
+  - first:
+      213: -5830368556312038890
+    second: itako_103
+  - first:
+      213: 1468313674874902338
+    second: itako_104
+  - first:
+      213: -5658557847163874194
+    second: itako_105
+  - first:
+      213: 1579713157168783409
+    second: itako_106
+  - first:
+      213: -7215648827468832094
+    second: itako_107
+  - first:
+      213: 5693476240624551623
+    second: itako_108
+  - first:
+      213: -4101206762212382820
+    second: itako_109
+  - first:
+      213: 1369259291839668252
+    second: itako_110
+  - first:
+      213: -5532513378875491222
+    second: itako_111
+  - first:
+      213: -7796984997676133668
+    second: itako_112
+  - first:
+      213: -3470439084436740784
+    second: itako_113
+  - first:
+      213: 3204729346915800977
+    second: itako_114
+  - first:
+      213: 6241324001918912168
+    second: itako_115
+  - first:
+      213: 1806709061757608281
+    second: itako_116
+  - first:
+      213: 3756718612824023512
+    second: itako_117
+  - first:
+      213: 3718109953106425357
+    second: itako_118
+  - first:
+      213: -7047346403406943037
+    second: itako_119
+  - first:
+      213: -4458303945673084735
+    second: itako_120
+  - first:
+      213: -4171360156951266791
+    second: itako_121
+  - first:
+      213: 6032986969015733726
+    second: itako_122
+  - first:
+      213: 3420262910161265238
+    second: itako_123
+  - first:
+      213: 342525401451442563
+    second: itako_124
+  - first:
+      213: -9035627422219443307
+    second: itako_125
+  - first:
+      213: -6875870929320951870
+    second: itako_126
+  - first:
+      213: 1360192937803474611
+    second: itako_127
+  - first:
+      213: -326580503162832131
+    second: itako_128
+  - first:
+      213: 4017742468810525587
+    second: itako_129
+  - first:
+      213: -2944648145097374461
+    second: itako_130
+  - first:
+      213: 4312357637540805742
+    second: itako_131
+  - first:
+      213: -4586565562526352608
+    second: itako_132
+  - first:
+      213: -1426714829336849370
+    second: itako_133
+  - first:
+      213: 1585151791458661482
+    second: itako_134
+  - first:
+      213: -1795147882902821531
+    second: itako_135
+  - first:
+      213: -3684441248041943552
+    second: itako_136
+  - first:
+      213: 302729073568991217
+    second: itako_137
+  - first:
+      213: -9046595997023354711
+    second: itako_138
+  - first:
+      213: -4780551617464726055
+    second: itako_139
+  - first:
+      213: 1817387573971420327
+    second: itako_140
+  - first:
+      213: -3786476793771863692
+    second: itako_141
+  - first:
+      213: 6141427307975187902
+    second: itako_142
+  - first:
+      213: -8746691486838332541
+    second: itako_143
+  - first:
+      213: 148939644217109705
+    second: itako_144
+  - first:
+      213: -7739599148857750943
+    second: itako_145
+  - first:
+      213: 1772302583602015498
+    second: itako_146
+  - first:
+      213: 2132765250061589191
+    second: itako_147
+  - first:
+      213: -5562282290174576703
+    second: itako_148
+  - first:
+      213: 3812106950672508888
+    second: itako_149
+  - first:
+      213: 2380267674346351294
+    second: itako_150
+  - first:
+      213: 4482658487626106994
+    second: itako_151
+  - first:
+      213: 4043744755195360580
+    second: itako_152
+  - first:
+      213: -5756522567652634163
+    second: itako_153
+  - first:
+      213: -4817766861722550846
+    second: itako_154
+  - first:
+      213: -306096244826846746
+    second: itako_155
+  - first:
+      213: -9190047843308628061
+    second: itako_156
+  - first:
+      213: 8900918020295744895
+    second: itako_157
+  - first:
+      213: -3032560134514996719
+    second: itako_158
+  - first:
+      213: -6311778714106677526
+    second: itako_159
+  - first:
+      213: 1985724951333663109
+    second: itako_160
+  - first:
+      213: -9219306009559658390
+    second: itako_161
+  - first:
+      213: 7568094389438194344
+    second: itako_162
+  - first:
+      213: -1388783807242323186
+    second: itako_163
+  - first:
+      213: 6732234527246273932
+    second: itako_164
+  - first:
+      213: 1333561678016429492
+    second: itako_165
+  - first:
+      213: 3877129187577615674
+    second: itako_166
+  - first:
+      213: 3531860807413300643
+    second: itako_167
+  - first:
+      213: 3231794481744232622
+    second: itako_168
+  - first:
+      213: -7562261297674835636
+    second: itako_169
+  - first:
+      213: 5523412526234006800
+    second: itako_170
+  - first:
+      213: -4901381245512252158
+    second: itako_171
+  - first:
+      213: 1504508354115149229
+    second: itako_172
+  - first:
+      213: -6440827914425412274
+    second: itako_173
+  - first:
+      213: -740110261943353552
+    second: itako_174
+  - first:
+      213: -1953987418597919851
+    second: itako_175
+  - first:
+      213: -2619310349667826377
+    second: itako_176
+  - first:
+      213: -6702535488801669520
+    second: itako_177
+  - first:
+      213: 5317134083593960206
+    second: itako_178
+  - first:
+      213: -8058044527100698046
+    second: itako_179
+  - first:
+      213: -266745004649837878
+    second: itako_180
+  - first:
+      213: -3129132942398883848
+    second: itako_181
+  - first:
+      213: -3455639203611487370
+    second: itako_182
+  - first:
+      213: 6750498811213078927
+    second: itako_183
+  - first:
+      213: 2409153462984457552
+    second: itako_184
+  - first:
+      213: -5988234546750380858
+    second: itako_185
+  - first:
+      213: 2484343426346415817
+    second: itako_186
+  - first:
+      213: -1183631399706877204
+    second: itako_187
+  - first:
+      213: -9137749120031643662
+    second: itako_188
+  - first:
+      213: 2264712224428310121
+    second: itako_189
+  - first:
+      213: 1928269178305079420
+    second: itako_190
+  - first:
+      213: 1450474794501525039
+    second: itako_191
+  - first:
+      213: -2731470161023998238
+    second: itako_192
+  - first:
+      213: -400883323293831115
+    second: itako_193
+  - first:
+      213: -1913043819242126313
+    second: itako_194
+  - first:
+      213: -7127028496024380406
+    second: itako_195
+  - first:
+      213: 5218835882662491621
+    second: itako_196
+  - first:
+      213: 5649241422302863859
+    second: itako_197
+  - first:
+      213: -6937893594502905472
+    second: itako_198
+  - first:
+      213: -1129176079409152451
+    second: itako_199
+  - first:
+      213: 7504900967625163722
+    second: itako_200
+  - first:
+      213: -8665126544814990519
+    second: itako_201
+  - first:
+      213: 4137667735816616038
+    second: itako_202
+  - first:
+      213: -622857390889102660
+    second: itako_203
+  - first:
+      213: -6737363157168987656
+    second: itako_204
+  - first:
+      213: -7219149504301339665
+    second: itako_205
+  - first:
+      213: 7401315835891641274
+    second: itako_206
+  - first:
+      213: 6309474645235800294
+    second: itako_207
+  - first:
+      213: 1852634109739022137
+    second: itako_208
+  - first:
+      213: -216895789221714339
+    second: itako_209
+  - first:
+      213: 5270038329202547734
+    second: itako_210
+  - first:
+      213: -6845675838793079139
+    second: itako_211
+  - first:
+      213: 3207828985581441079
+    second: itako_212
+  - first:
+      213: -763323723370249645
+    second: itako_213
+  - first:
+      213: 1407905728867146765
+    second: itako_214
+  - first:
+      213: -406929551842053519
+    second: itako_215
+  - first:
+      213: -991890154467451813
+    second: itako_216
+  - first:
+      213: -5952208033883098237
+    second: itako_217
+  - first:
+      213: -4705491167956453856
+    second: itako_218
+  - first:
+      213: -335229337548455698
+    second: itako_219
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -151,8 +811,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 249920f47e3312370800000000000000
-      internalID: 8295969057149196610
+      spriteID: 931fda92ee33af0d0800000000000000
+      internalID: -3388338671648378567
       vertices: []
       indices: 
       edges: []
@@ -172,8 +832,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fffd5d8c32e17f560800000000000000
-      internalID: 7347374456120401919
+      spriteID: 8be24a3044e2dd830800000000000000
+      internalID: 4097482105630764728
       vertices: []
       indices: 
       edges: []
@@ -193,8 +853,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d1b3a2cea9f0d6a0800000000000000
-      internalID: -6426362139272564266
+      spriteID: 71e0003b44c394db0800000000000000
+      internalID: -4807244861482725865
       vertices: []
       indices: 
       edges: []
@@ -214,8 +874,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ce8cb73b2e71b8e0800000000000000
-      internalID: -1679422461948686650
+      spriteID: 9326b9465466a1140800000000000000
+      internalID: 4691174410086474297
       vertices: []
       indices: 
       edges: []
@@ -235,8 +895,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ebe0f6c5b58088a0800000000000000
-      internalID: -6304892462545441820
+      spriteID: 05fa9d8714d4999a0800000000000000
+      internalID: -6225860066267254960
       vertices: []
       indices: 
       edges: []
@@ -256,8 +916,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1603bd22e7cbefa80800000000000000
-      internalID: -8431094202454298527
+      spriteID: fd1ae5f6875673980800000000000000
+      internalID: -8559260998855384609
       vertices: []
       indices: 
       edges: []
@@ -277,8 +937,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e77559b6fdfcbee0800000000000000
-      internalID: -1243840160947931163
+      spriteID: b51d028eed9010a20800000000000000
+      internalID: 3026711277551538523
       vertices: []
       indices: 
       edges: []
@@ -298,8 +958,365 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2445d7bf37b3a1af0800000000000000
-      internalID: -424961845506517950
+      spriteID: af5c64e4dcd47e1f0800000000000000
+      internalID: -1015757646771862022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f3638e2444cb170800000000000000
+      internalID: 8195500476061859660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6999c1d1ca8237790800000000000000
+      internalID: -7533633031972808298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ffaa759aabe0860800000000000000
+      internalID: 7498135666101518158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2f96b8f9fea2a200800000000000000
+      internalID: 189906522945789743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_12
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c6831de8fcfe240800000000000000
+      internalID: 4823301938239532099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce35a3b6779fdea10800000000000000
+      internalID: 1940481305761960940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e526f0c3ea23d7640800000000000000
+      internalID: 5079271678657127006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_15
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c500f3a8c498240800000000000000
+      internalID: 4794447434958789753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51696f80b2cffdd80800000000000000
+      internalID: -8223577132791065067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68db814ba83611850800000000000000
+      internalID: 6345962797319896454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba60c152667bdc330800000000000000
+      internalID: 3732841315497150123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9cfb5fb85be6850800000000000000
+      internalID: 6372230135503899132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_20
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29429ea527b2c690800000000000000
+      internalID: -7583297450067998422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_21
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37528d4cba7e6f670800000000000000
+      internalID: 8572293665674241395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_22
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d57ef11a67332450800000000000000
+      internalID: 6062750452078769618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_23
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d70b6ee2221d0e0800000000000000
+      internalID: -2246977154247000796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itako_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36d97a8317f6da280800000000000000
+      internalID: -9030439145735479965
       vertices: []
       indices: 
       edges: []
