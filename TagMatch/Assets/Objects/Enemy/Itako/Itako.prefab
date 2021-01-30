@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 8075830558317027181}
   - component: {fileID: 8051271984531170958}
   - component: {fileID: 2980290575173046189}
+  - component: {fileID: 863133429268286494}
   m_Layer: 9
   m_Name: Itako
   m_TagString: Enemy
@@ -179,3 +180,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &863133429268286494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8075830558317027186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e5583072b1c4f3599f835509b3ba9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kiritanhouBullet: {fileID: 0}
