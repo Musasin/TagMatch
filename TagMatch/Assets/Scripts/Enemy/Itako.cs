@@ -19,6 +19,7 @@ public class Itako : BossAIBase
         MOVE_TO_LOWER_LEFT,
         MOVE_TO_LOWER_RIGHT,
         MOVE_TO_LOWER_CENTER,
+        CHANGE_IS_RIGHT,
         CHARGE,
         FLAME_SHOT,
         FLAME_TWIN_SHOT,
@@ -70,8 +71,8 @@ public class Itako : BossAIBase
         {
             sequence.Kill();
             isRight = false;
-            anim.SetBool("isFloat", false);
             anim.SetBool("isReady", false);
+            anim.SetBool("isAttack", false);
             isDead = true;
             return;
         }
@@ -88,25 +89,83 @@ public class Itako : BossAIBase
             case ActionState.IDLE:
                 isPlaying = false;
                 stateIndex = 0;
+
+                // 開幕に幽霊攻撃
+                actionStateQueue.Add(ActionState.CHARGE);
+                actionStateQueue.Add(ActionState.GHOST_SHOT);
+
+                // 左側で炎→幽霊
                 actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
                 actionStateQueue.Add(ActionState.FLAME_SHOT);
                 actionStateQueue.Add(ActionState.CHARGE);
                 actionStateQueue.Add(ActionState.GHOST_SHOT);
-                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
-                actionStateQueue.Add(ActionState.FLAME_SHOT);
-                actionStateQueue.Add(ActionState.CHARGE);
-                actionStateQueue.Add(ActionState.GHOST_SHOT);
+
+                // 下段どっちかで炎攻撃
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
+                } 
+                else
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
+                }
+                actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
+                
+                // 中央で幽霊攻撃
                 actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
                 actionStateQueue.Add(ActionState.GHOST_SHOT);
+
+                // 下段中央で両方に炎攻撃
+                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_CENTER);
+                actionStateQueue.Add(ActionState.FLAME_SHOT);
+                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
                 actionStateQueue.Add(ActionState.CHARGE);
                 actionStateQueue.Add(ActionState.FLAME_SHOT);
-                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
+
+                
+                // 上段どっちかで幽霊→炎攻撃
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
+                } 
+                else
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
+                }
+                actionStateQueue.Add(ActionState.GHOST_SHOT);
+                actionStateQueue.Add(ActionState.CHARGE);
+                actionStateQueue.Add(ActionState.FLAME_SHOT);
+
+                
+                // 下段どっちかで幽霊攻撃
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
+                } 
+                else
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
+                }
+                actionStateQueue.Add(ActionState.GHOST_SHOT);
+
+                // 中央で炎攻撃2回
+                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
                 actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
-                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
+                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+                actionStateQueue.Add(ActionState.CHARGE);
                 actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
+                
+                // 下段中央で幽霊攻撃2回
                 actionStateQueue.Add(ActionState.MOVE_TO_LOWER_CENTER);
                 actionStateQueue.Add(ActionState.GHOST_SHOT);
+                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+                actionStateQueue.Add(ActionState.CHARGE);
+                actionStateQueue.Add(ActionState.GHOST_SHOT);
+                
+                // 右上に戻って最初から
+                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
                 actionStateQueue.Add(ActionState.IDLE);
+
                 break;
             case ActionState.MOVE_TO_UPPER_LEFT:
                 isPlaying = true;
@@ -131,6 +190,9 @@ public class Itako : BossAIBase
             case ActionState.MOVE_TO_LOWER_CENTER:
                 isPlaying = true;
                 PlayWarpSequence(lowerCenterPos, true);
+                break;
+            case ActionState.CHANGE_IS_RIGHT:
+                isRight = !isRight;
                 break;
             case ActionState.CHARGE:
                 isPlaying = true;
@@ -231,6 +293,14 @@ public class Itako : BossAIBase
         GameObject bullet = Instantiate(ghostRotationBullet, transform.parent);
         bullet.transform.position = transform.position;
         bullet.transform.localScale = new Vector2(isRight ? -1.0f : 1.0f, 1.0f);
+
+        // HP半分以下だと2個出す
+        if (IsLifeHalf())
+        {
+            GameObject bullet2 = Instantiate(ghostRotationBullet, transform.parent);
+            bullet2.transform.position = transform.position;
+            bullet2.transform.localScale = new Vector2(isRight ? 1.0f : -1.0f, 1.0f);
+        }
     }
 
     bool IsLifeHalf()
