@@ -85,6 +85,12 @@
             <Orca OrcaName="start1.wav" Channels="2" ReloopEnd="44391" ResamplingRate="44100" SampleFrames="44391" SamplingRate="44100" SourceFileSize="178544" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="start2.wav" Channels="2" ReloopEnd="78203" ResamplingRate="44100" SampleFrames="78203" SamplingRate="44100" SourceFileSize="313792" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="start3.wav" Channels="2" ReloopEnd="76123" ResamplingRate="44100" SampleFrames="76123" SamplingRate="44100" SourceFileSize="305472" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="attack5.wav" Channels="2" EncodeFileSize="53292" ReloopEnd="79054" ResamplingRate="44100" SampleFrames="79054" SamplingRate="44100" SourceFileSize="317196" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="attack6.wav" Channels="2" EncodeFileSize="14418" ReloopEnd="20856" ResamplingRate="44100" SampleFrames="20856" SamplingRate="44100" SourceFileSize="84404" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="attack7.wav" Channels="2" EncodeFileSize="17828" ReloopEnd="26351" ResamplingRate="44100" SampleFrames="26351" SamplingRate="44100" SourceFileSize="106384" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="attack8.wav" Channels="2" EncodeFileSize="76480" ReloopEnd="114310" ResamplingRate="44100" SampleFrames="114310" SamplingRate="44100" SourceFileSize="458220" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="attack9.wav" Channels="2" EncodeFileSize="80572" ReloopEnd="120655" ResamplingRate="44100" SampleFrames="120655" SamplingRate="44100" SourceFileSize="483600" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="attack10.wav" Channels="2" EncodeFileSize="64204" ReloopEnd="95988" ResamplingRate="44100" SampleFrames="95988" SamplingRate="44100" SourceFileSize="384932" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           </Orca>
         </Orca>
       </Orca>

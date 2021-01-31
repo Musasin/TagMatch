@@ -10,8 +10,6 @@ public class Kiritan : BossAIBase
     SpriteRenderer jetFlameSR1, jetFlameSR2;
     Vector2 upperLeftPos, upperRightPos, lowerLeftPos, lowerRightPos;
 
-    bool playedStartVoice = false;
-
     enum ActionState
     {
         IDLE,
@@ -19,7 +17,8 @@ public class Kiritan : BossAIBase
         MOVE_TO_UPPER_RIGHT,
         MOVE_TO_LOWER_LEFT,
         MOVE_TO_LOWER_RIGHT,
-        STAND_SHOT
+        STAND_SHOT,
+        LOOP
     }
     ActionState state;
     List<ActionState> actionStateQueue = new List<ActionState>();
@@ -80,14 +79,17 @@ public class Kiritan : BossAIBase
         switch (state)
         {
             case ActionState.IDLE:
-                if (!playedStartVoice)
-                {
-                    AudioManager.Instance.PlayExVoice("kiritan_start");
-                    playedStartVoice = true;
-                }
+                AudioManager.Instance.PlayExVoice("kiritan_start");
+                
+                isPlaying = true;
+                sequence = DOTween.Sequence()
+                        .AppendInterval(1.0f)
+                        .OnComplete(() =>
+                        {
+                            isPlaying = false;
+                        })
+                        .Play();
 
-                isPlaying = false;
-                stateIndex = 0;
                 actionStateQueue.Add(ActionState.STAND_SHOT);
                 actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
                 actionStateQueue.Add(ActionState.STAND_SHOT);
@@ -96,7 +98,11 @@ public class Kiritan : BossAIBase
                 actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
                 actionStateQueue.Add(ActionState.STAND_SHOT);
                 actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
-                actionStateQueue.Add(ActionState.IDLE);
+                actionStateQueue.Add(ActionState.LOOP);
+                break;
+            case ActionState.LOOP:
+                isPlaying = false;
+                stateIndex = 0;
                 break;
             case ActionState.MOVE_TO_UPPER_LEFT:
                 isRight = false;
@@ -146,9 +152,10 @@ public class Kiritan : BossAIBase
                 isPlaying = true;
                 anim.SetBool("isReady", true);
                 anim.SetBool("isFloat", false);
-
+                
                 if (bossScript.hp <= 50)
                 {
+                    AudioManager.Instance.PlayExVoice("kiritan_attack3");
                     sequence = DOTween.Sequence()
                         .AppendInterval(0.2f)
                         .AppendCallback(() => { InstantiateTwinBullet(); })
@@ -168,6 +175,7 @@ public class Kiritan : BossAIBase
                 }
                 else if (bossScript.hp <= 100)
                 {
+                    AudioManager.Instance.PlayExVoice("kiritan_attack2");
                     sequence = DOTween.Sequence()
                         .AppendInterval(0.2f)
                         .AppendCallback(() => { InstantiateTwinBullet(); })
@@ -183,6 +191,7 @@ public class Kiritan : BossAIBase
                 }
                 else
                 {
+                    AudioManager.Instance.PlayExVoice("kiritan_attack1");
                     sequence = DOTween.Sequence()
                         .AppendInterval(0.2f)
                         .AppendCallback(() => { InstantiateTwinBullet(); })
@@ -215,7 +224,6 @@ public class Kiritan : BossAIBase
     void InstantiateTwinBullet()
     {
         AudioManager.Instance.PlaySE("buon");
-        AudioManager.Instance.PlayExVoice("kiritan_attack");
 
         GameObject b1 = Instantiate(kiritanhouBullet, transform.parent);
         b1.transform.position = kiritanhouPos1.transform.position;
