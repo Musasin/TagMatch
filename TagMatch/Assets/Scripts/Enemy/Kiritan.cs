@@ -10,6 +10,8 @@ public class Kiritan : BossAIBase
     SpriteRenderer jetFlameSR1, jetFlameSR2;
     Vector2 upperLeftPos, upperRightPos, lowerLeftPos, lowerRightPos;
 
+    bool playedStartVoice = false;
+
     enum ActionState
     {
         IDLE,
@@ -54,6 +56,7 @@ public class Kiritan : BossAIBase
         
         if (!isDead && bossScript.IsDead())
         {
+            AudioManager.Instance.PlayExVoice("kiritan_dead");
             sequence.Kill();
             isRight = false;
             anim.SetBool("isFloat", false);
@@ -77,6 +80,12 @@ public class Kiritan : BossAIBase
         switch (state)
         {
             case ActionState.IDLE:
+                if (!playedStartVoice)
+                {
+                    AudioManager.Instance.PlayExVoice("kiritan_start");
+                    playedStartVoice = true;
+                }
+
                 isPlaying = false;
                 stateIndex = 0;
                 actionStateQueue.Add(ActionState.STAND_SHOT);
@@ -206,6 +215,7 @@ public class Kiritan : BossAIBase
     void InstantiateTwinBullet()
     {
         AudioManager.Instance.PlaySE("buon");
+        AudioManager.Instance.PlayExVoice("kiritan_attack");
 
         GameObject b1 = Instantiate(kiritanhouBullet, transform.parent);
         b1.transform.position = kiritanhouPos1.transform.position;
