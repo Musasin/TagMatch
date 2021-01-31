@@ -289,6 +289,7 @@ public class Itako : BossAIBase
     void InstantiateGhostRotation()
     {
         AudioManager.Instance.PlaySE("buon");
+        AudioManager.Instance.PlaySE("ghost_sound");
 
         GameObject bullet = Instantiate(ghostRotationBullet, transform.parent);
         bullet.transform.position = transform.position;

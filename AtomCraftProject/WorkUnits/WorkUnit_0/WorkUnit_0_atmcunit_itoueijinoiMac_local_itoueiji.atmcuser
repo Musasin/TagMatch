@@ -6,15 +6,18 @@
       <Orca OrcaName="WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="WorkUnit_0" orcaPath="CueSheetFolder/WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Common" orcaPath="CueSheetFolder/WorkUnit_0/Common" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="UI" orcaPath="CueSheetFolder/WorkUnit_0/Common/UI" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="accept" orcaPath="CueSheetFolder/WorkUnit_0/Common/UI/accept" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="akane_flame" orcaPath="CueSheetFolder/WorkUnit_0/Common/akane_flame" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="enemy_switch" orcaPath="CueSheetFolder/WorkUnit_0/Common/enemy_switch" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="ghost_sound" orcaPath="CueSheetFolder/WorkUnit_0/Common/ghost_sound" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Stage1" orcaPath="CueSheetFolder/WorkUnit_0/Stage1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="boss" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/boss" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_boss1" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/boss/Track_boss1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="stage" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/stage" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_stage1" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/stage/Track_stage1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Stage2" orcaPath="CueSheetFolder/WorkUnit_0/Stage2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="stage" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/stage" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Stage3" orcaPath="CueSheetFolder/WorkUnit_0/Stage3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
     </Orca>
   </OrcaTree>
 </OrcaTrees>
