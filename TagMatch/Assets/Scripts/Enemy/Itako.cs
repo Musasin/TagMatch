@@ -9,12 +9,10 @@ public class Itako : BossAIBase
     public GameObject flameBullet, ghostRotationBullet;
     BoxCollider2D bc;
     Vector2 upperLeftPos, upperRightPos, upperCenterPos, lowerLeftPos, lowerRightPos, lowerCenterPos;
-    
-    bool playedStartVoice = false;
 
     enum ActionState
     {
-        IDLE,
+        START,
         MOVE_TO_UPPER_LEFT,
         MOVE_TO_UPPER_RIGHT,
         MOVE_TO_UPPER_CENTER,
@@ -26,6 +24,7 @@ public class Itako : BossAIBase
         FLAME_SHOT,
         FLAME_TWIN_SHOT,
         GHOST_SHOT,
+        LOOP,
     }
     ActionState state;
     List<ActionState> actionStateQueue = new List<ActionState>();
@@ -37,7 +36,7 @@ public class Itako : BossAIBase
         bc = GetComponent<BoxCollider2D>();
         anim = GetComponentInChildren<Animator>();
         bossScript = GetComponent<Boss>();
-        state = ActionState.IDLE;
+        state = ActionState.START;
         upperLeftPos = GameObject.Find("UpperLeftPos").transform.position;
         upperRightPos = GameObject.Find("UpperRightPos").transform.position;
         upperCenterPos = GameObject.Find("UpperCenterPos").transform.position;
@@ -51,8 +50,7 @@ public class Itako : BossAIBase
         base.Reset();
         anim.SetBool("isReady", false);
         anim.SetBool("isAttack", false);
-        playedStartVoice = false;
-        state = ActionState.IDLE;
+        state = ActionState.START;
     }
 
     // Update is called once per frame
@@ -85,15 +83,8 @@ public class Itako : BossAIBase
 
         switch (state)
         {
-            case ActionState.IDLE:
-                if (!playedStartVoice)
-                {
-                    AudioManager.Instance.PlayExVoice("itako_start");
-                    playedStartVoice = true;
-                }
-
-                isPlaying = false;
-                stateIndex = 0;
+            case ActionState.START:
+                AudioManager.Instance.PlayExVoice("itako_start");
 
                 // 開幕に幽霊攻撃
                 actionStateQueue.Add(ActionState.CHARGE);
@@ -169,8 +160,12 @@ public class Itako : BossAIBase
                 
                 // 右上に戻って最初から
                 actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
-                actionStateQueue.Add(ActionState.IDLE);
+                actionStateQueue.Add(ActionState.LOOP);
 
+                break;
+            case ActionState.LOOP:
+                isPlaying = false;
+                stateIndex = 0;
                 break;
             case ActionState.MOVE_TO_UPPER_LEFT:
                 isPlaying = true;

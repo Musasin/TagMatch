@@ -12,7 +12,7 @@ public class Kiritan : BossAIBase
 
     enum ActionState
     {
-        IDLE,
+        START,
         MOVE_TO_UPPER_LEFT,
         MOVE_TO_UPPER_RIGHT,
         MOVE_TO_LOWER_LEFT,
@@ -29,7 +29,7 @@ public class Kiritan : BossAIBase
     {
         anim = GetComponentInChildren<Animator>();
         bossScript = GetComponent<Boss>();
-        state = ActionState.IDLE;
+        state = ActionState.START;
         upperLeftPos = GameObject.Find("UpperLeftPos").transform.position;
         upperRightPos = GameObject.Find("UpperRightPos").transform.position;
         lowerLeftPos = GameObject.Find("LowerLeftPos").transform.position;
@@ -45,7 +45,7 @@ public class Kiritan : BossAIBase
         base.Reset();
         anim.SetBool("isFloat", false);
         anim.SetBool("isReady", false);
-        state = ActionState.IDLE;
+        state = ActionState.START;
     }
 
     // Update is called once per frame
@@ -78,7 +78,7 @@ public class Kiritan : BossAIBase
 
         switch (state)
         {
-            case ActionState.IDLE:
+            case ActionState.START:
                 AudioManager.Instance.PlayExVoice("kiritan_start");
                 
                 isPlaying = true;
