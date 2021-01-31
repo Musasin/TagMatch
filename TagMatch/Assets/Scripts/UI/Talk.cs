@@ -74,9 +74,6 @@ public class Talk: MonoBehaviour
         AudioManager.Instance.ChangeBGMVolume(0.4f);
         AudioManager.Instance.ChangeSEVolume(0.4f);
         AudioManager.Instance.ChangeVoiceVolume(0.4f);
-        //AudioManager.Instance.ChangeBGMVolume(0);
-        //AudioManager.Instance.ChangeSEVolume(0);
-        //AudioManager.Instance.ChangeVoiceVolume(0);
         
         wipePanel = GameObject.Find("WipePanel").GetComponent<WipePanel>();
 
@@ -91,7 +88,7 @@ public class Talk: MonoBehaviour
         charaObject.Add("akane", Instantiate(akanePrefab, transform));
         charaObject.Add("aoi", Instantiate(aoiPrefab, transform));
 
-        if (AudioManager.Instance.lastPlayedBGM != "stage")
+        if (AudioManager.Instance.lastPlayedBGM != "stage" || sceneName.Split('-')[1] == "1") // 各ステージ1面では再生し直す
             AudioManager.Instance.PlayBGM("stage");
     }
 
