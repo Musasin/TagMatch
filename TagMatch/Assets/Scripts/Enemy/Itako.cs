@@ -9,6 +9,8 @@ public class Itako : BossAIBase
     public GameObject flameBullet, ghostRotationBullet;
     BoxCollider2D bc;
     Vector2 upperLeftPos, upperRightPos, upperCenterPos, lowerLeftPos, lowerRightPos, lowerCenterPos;
+    
+    bool playedStartVoice = false;
 
     enum ActionState
     {
@@ -49,31 +51,28 @@ public class Itako : BossAIBase
         base.Reset();
         anim.SetBool("isReady", false);
         anim.SetBool("isAttack", false);
+        playedStartVoice = false;
         state = ActionState.IDLE;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!bossScript.IsActive())
-        {
-            return;
-        }
-
         transform.localScale = new Vector2(isRight ? 1 : -1, 1);
-        
-        if (isDead)
-        {
-            return;
-        }
 
-        if (bossScript.IsDead())
+        if (!isDead && bossScript.IsDead())
         {
+            AudioManager.Instance.PlayExVoice("itako_dead");
             sequence.Kill();
             isRight = false;
             anim.SetBool("isReady", false);
             anim.SetBool("isAttack", false);
             isDead = true;
+            return;
+        }
+
+        if (isDead || !bossScript.IsActive())
+        {
             return;
         }
 
@@ -87,6 +86,12 @@ public class Itako : BossAIBase
         switch (state)
         {
             case ActionState.IDLE:
+                if (!playedStartVoice)
+                {
+                    AudioManager.Instance.PlayExVoice("itako_start");
+                    playedStartVoice = true;
+                }
+
                 isPlaying = false;
                 stateIndex = 0;
 
@@ -207,9 +212,10 @@ public class Itako : BossAIBase
                 break;
             case ActionState.FLAME_SHOT:
                 isPlaying = true;
+                AudioManager.Instance.PlayExVoice("itako_fire");
                 anim.SetBool("isAttack", true);
                 sequence = DOTween.Sequence()
-                    .AppendInterval(0.2f)
+                    .AppendInterval(0.5f)
                     .AppendCallback(() => { InstantiateFlame(isRight ? 1.5f : -1.5f); })
                     .AppendInterval(1.5f)
                     .OnComplete(() =>
@@ -221,9 +227,10 @@ public class Itako : BossAIBase
                 break;
             case ActionState.FLAME_TWIN_SHOT:
                 isPlaying = true;
+                AudioManager.Instance.PlayExVoice("itako_fire");
                 anim.SetBool("isAttack", true);
                 sequence = DOTween.Sequence()
-                    .AppendInterval(0.2f)
+                    .AppendInterval(0.5f)
                     .AppendCallback(() => { InstantiateFlame(isRight ? 1.5f : -1.5f); })
                     .AppendInterval(0.2f)
                     .AppendCallback(() => { InstantiateFlame(isRight ? 3.0f : -3.0f); })
@@ -237,6 +244,7 @@ public class Itako : BossAIBase
                 break;
             case ActionState.GHOST_SHOT:
                 isPlaying = true;
+                AudioManager.Instance.PlayExVoice("itako_ghost");
                 anim.SetBool("isAttack", true);
                 sequence = DOTween.Sequence()
                     .AppendInterval(0.2f)

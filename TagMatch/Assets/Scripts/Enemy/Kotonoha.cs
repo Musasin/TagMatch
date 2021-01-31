@@ -59,24 +59,19 @@ public class Kotonoha : BossAIBase
     // Update is called once per frame
     public virtual void Update()
     {
-        if (!bossScript.IsActive())
-        {
-            return;
-        }
-
         transform.localScale = new Vector3(isRight ? 1 : -1, 1, 1);
         
-        if (isDead)
-        {
-            return;
-        }
-
-        if (bossScript.IsDead())
+        if (!isDead && bossScript.IsDead())
         {
             isRight = false;
             isDead = true;
             anim.SetBool("isDisappear", false);
             anim.SetBool("isReady", false);
+            return;
+        }
+
+        if (isDead || !bossScript.IsActive())
+        {
             return;
         }
 
@@ -240,6 +235,7 @@ public class Kotonoha : BossAIBase
 
     public virtual void InstantiateAlaneFlame()
     {
+        AudioManager.Instance.PlayExVoice("kotonoha_attack");
         AudioManager.Instance.PlaySE("akane_flame");
 
         GameObject bullet = Instantiate(akaneFlame, transform.parent);
@@ -249,6 +245,7 @@ public class Kotonoha : BossAIBase
     
     public virtual void InstantiateAoiShot()
     {
+        AudioManager.Instance.PlayExVoice("kotonoha_attack");
         AudioManager.Instance.PlaySE("buon");
 
         GameObject b1 = Instantiate(aoiShot, transform.parent);

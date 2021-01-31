@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class Akane : Kotonoha
 {
+    bool playedStartVoice = false;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -17,8 +19,21 @@ public class Akane : Kotonoha
         base.Update();
     }
 
+    public override void Reset()
+    {
+        base.Reset();
+        playedStartVoice = false;
+    }
+
     public override void SetSequence()
     {
+        // 開幕に一回だけ呼ばれるように茜の方でだけ再生
+        if (!playedStartVoice)
+        {
+            AudioManager.Instance.PlayExVoice("kotonoha_start");
+            playedStartVoice = true;
+        }
+
         actionStateQueue.Add(ActionState.AKANE_FLAME);
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_2);
         actionStateQueue.Add(ActionState.WAIT);

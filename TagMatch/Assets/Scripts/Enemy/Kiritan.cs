@@ -50,19 +50,9 @@ public class Kiritan : BossAIBase
     // Update is called once per frame
     void Update()
     {
-        if (!bossScript.IsActive())
-        {
-            return;
-        }
-
         transform.localScale = new Vector2(isRight ? 1 : -1, 1);
         
-        if (isDead)
-        {
-            return;
-        }
-
-        if (bossScript.IsDead())
+        if (!isDead && bossScript.IsDead())
         {
             sequence.Kill();
             isRight = false;
@@ -73,7 +63,11 @@ public class Kiritan : BossAIBase
             return;
         }
 
-        
+        if (isDead || !bossScript.IsActive())
+        {
+            return;
+        }
+
         // アニメーション再生中は次のモードに遷移しない
         if (isPlaying)
         {
