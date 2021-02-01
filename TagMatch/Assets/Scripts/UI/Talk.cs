@@ -88,7 +88,7 @@ public class Talk: MonoBehaviour
         charaObject.Add("akane", Instantiate(akanePrefab, transform));
         charaObject.Add("aoi", Instantiate(aoiPrefab, transform));
 
-        if (AudioManager.Instance.lastPlayedBGM != "stage" || sceneName.Split('-')[1] == "1") // 各ステージ1面では再生し直す
+        if (AudioManager.Instance.lastPlayedBGM != "stage")
             AudioManager.Instance.PlayBGM("stage");
     }
 
@@ -269,7 +269,7 @@ public class Talk: MonoBehaviour
                 return;
             case "scene_change":
                 StaticValues.isReloadACB = true;
-                wipePanel.ChangeScene(scenario[nowKey.ToString()].text);
+                wipePanel.ChangeScene(scenario[nowKey.ToString()].text, true);
                 CloseWindow();
                 scenario.Clear();
                 return;

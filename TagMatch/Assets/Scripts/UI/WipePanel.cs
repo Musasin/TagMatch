@@ -9,6 +9,7 @@ public class WipePanel : MonoBehaviour
     bool isWipeOutPlaying;
     float wipeTime;
     string nextScene;
+    bool isStopBGM;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +27,15 @@ public class WipePanel : MonoBehaviour
             wipeTime += Time.deltaTime;
             if (wipeTime > 1)
             {
+                if (isStopBGM)
+                    AudioManager.Instance.StopBGM();
                 StaticValues.isPause = false;
                 SceneManager.LoadScene(nextScene);
             }
         }
     }
 
-    public void ChangeScene(string sceneName)
+    public void ChangeScene(string sceneName, bool isStopBGM = false)
     {
         if (!isWipeOutPlaying)
         {
@@ -40,6 +43,7 @@ public class WipePanel : MonoBehaviour
             isWipeOutPlaying = true;
             wipeTime = 0;
             nextScene = sceneName;
+            this.isStopBGM = isStopBGM;
             anim.SetBool("WipeIn", false);
             anim.SetBool("WipeOut", true);
         }
