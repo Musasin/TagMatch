@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -90,6 +91,18 @@ public class Player : MonoBehaviour
         firstPos = transform.position;
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
+
+        string sceneName = SceneManager.GetActiveScene().name;
+        string stageName = sceneName.Split('-')[0];
+        if (stageName == "Stage3")
+        {
+            StaticValues.switchState = StaticValues.SwitchState.YUKARI_ONLY;
+        }
+        if (stageName == "Stage4")
+        {
+            StaticValues.switchState = StaticValues.SwitchState.MAKI_ONLY;
+        }
+
         Switch(StaticValues.switchState, false);
     }
 
@@ -388,6 +401,7 @@ public class Player : MonoBehaviour
                     Switch(StaticValues.SwitchState.YUKARI);
                     break;
                 default:
+                    AudioManager.Instance.PlaySE("cancel"); // 仮？
                     break;
             }
         }
@@ -588,7 +602,7 @@ public class Player : MonoBehaviour
             {
                 if (IsYukari())
                 {
-                    if (StaticValues.makiHP <= 0)
+                    if (StaticValues.makiHP <= 0 || StaticValues.switchState == StaticValues.SwitchState.YUKARI_ONLY)
                     {
                         isDead = true;
                         velocityX = isEnemyRight ? -DEAD_VELOCITY_X : DEAD_VELOCITY_X;
@@ -606,7 +620,7 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki())
                 {
-                    if (StaticValues.yukariHP <= 0)
+                    if (StaticValues.yukariHP <= 0 || StaticValues.switchState == StaticValues.SwitchState.MAKI_ONLY)
                     {
                         isDead = true;
                         velocityX = isEnemyRight ? -DEAD_VELOCITY_X : DEAD_VELOCITY_X;

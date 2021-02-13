@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class PlayerGaugeUI : MonoBehaviour
 {
-    Player player;
-    StaticValues.SwitchState switchState;
     Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
         anim = GetComponent<Animator>();
     }
 
