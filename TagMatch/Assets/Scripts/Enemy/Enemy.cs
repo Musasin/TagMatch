@@ -13,6 +13,7 @@ public class Enemy : EnemyBase
     public bool isFall;
     public bool isSuperArmor;
     public bool isRight;
+    public bool isUp;
     public GameObject bullet;
     public GameObject dropItem1;
     public GameObject dropItem2;
@@ -79,7 +80,7 @@ public class Enemy : EnemyBase
         anim.SetBool("isKnockBack", isKnockBack);
         if (isKnockBack) // 被ダメージ硬直
         {
-            if (type != "bat")
+            if (type != "bat" && type != "move_bat")
             {
                 return;
             }
@@ -140,6 +141,11 @@ public class Enemy : EnemyBase
                     anim.SetBool("isAttack", false);
                 }
                 break;
+            case "move_bat":
+                anim.SetBool("isAttack", true);
+                rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), velocityY * (isUp ? 1 : -1));
+                break;
+
         }
         
         // 向きの更新 デフォルトは左向き
@@ -157,6 +163,10 @@ public class Enemy : EnemyBase
             {
                 rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
             }
+        }
+        if (rb.velocity.y > 0 && isUp || rb.velocity.y < 0 && !isUp)
+        {
+            isUp = !isUp;
         }
         if (isKnockBack) // 壁にぶつかってもノックバック状態を解除
         {
@@ -233,7 +243,7 @@ public class Enemy : EnemyBase
         }
 
         // コウモリだけ着地が存在しないため、ノックバックを時間管理する
-        if (type == "bat")
+        if (type == "bat" || type == "move_bat")
         {
             stopTime = STOP_TIME;
             if (isDead)
