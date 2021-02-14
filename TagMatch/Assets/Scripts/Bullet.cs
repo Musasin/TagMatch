@@ -115,11 +115,13 @@ public class Bullet : MonoBehaviour
         } 
         else if (collision.gameObject.tag == "Item")
         {
-            Coin coin = collision.gameObject.GetComponent<Coin>();
-            if (coin != null)
-            {
-                coin.GetCoin();
-            }
+            // バレットでコインを取れるようにする場合は以下
+
+            //Coin coin = collision.gameObject.GetComponent<Coin>();
+            //if (coin != null)
+            //{
+            //    coin.GetCoin();
+            //}
         }
     }
 
