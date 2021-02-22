@@ -50,7 +50,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: -0.16322516}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -61,7 +61,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1}
+  m_Size: {x: 0.8, y: 0.8735497}
   m_EdgeRadius: 0
 --- !u!50 &3604352289458570565
 Rigidbody2D:
@@ -99,6 +99,7 @@ MonoBehaviour:
   hp: 35
   damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
     type: 3}
+  defaultPosition: {x: 0, y: 0}
   type: kinoko
   velocityX: 2
   velocityY: 0
@@ -107,6 +108,7 @@ MonoBehaviour:
   isFall: 0
   isSuperArmor: 0
   isRight: 0
+  isUp: 0
   bullet: {fileID: 511471703815891128, guid: a7d2b4f267c4846e3b25587564786dcb, type: 3}
   dropItem1: {fileID: 0}
   dropItem2: {fileID: 0}
@@ -296,7 +298,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -307,7 +309,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.85, y: 0.15675092}
+  m_Size: {x: 0.85, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &3604352290391202060
 MonoBehaviour:
