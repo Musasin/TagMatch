@@ -17,10 +17,12 @@
       <Orca OrcaName="kiritan_dead" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/kiritan_dead" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="kiritan_attack2" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/kiritan_attack2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="kiritan_attack3" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/kiritan_attack3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Stage2" orcaPath="CueSheetFolder/WorkUnit_0/Stage2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="kotonoha_attack" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_attack" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="kotonoha_start" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_start" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Stage4" orcaPath="CueSheetFolder/WorkUnit_0/Stage4" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_stage1" orcaPath="CueSheetFolder/WorkUnit_0/Stage4/stage/Track_stage1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_boss1" orcaPath="CueSheetFolder/WorkUnit_0/Stage4/boss/Track_boss1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
     </Orca>
   </OrcaTree>
 </OrcaTrees>
