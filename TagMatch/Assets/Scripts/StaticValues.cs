@@ -96,6 +96,10 @@ public class StaticValues : MonoBehaviour
     }
     static void UpdateMaxHPMP()
     {
+        int beforeYukariMaxHP = yukariMaxHP;
+        int beforeMakiMaxHP = makiMaxHP;
+        int beforeYukariMaxMP = yukariMaxMP;
+        int beforeMakiMaxMP = makiMaxMP;
         yukariMaxHP = 100;
         yukariMaxMP = 100;
         makiMaxHP = 100;
@@ -154,6 +158,24 @@ public class StaticValues : MonoBehaviour
                     makiMaxMP += 25;
                     break;
             }
+        }
+        
+        // 最大HP/MPが増えたときに現在HP/MPも増やす
+        if (yukariMaxHP > beforeYukariMaxHP)
+        {
+            yukariHP += (yukariMaxHP - beforeYukariMaxHP);
+        }
+        if (makiMaxHP > beforeMakiMaxHP)
+        {
+            makiHP += (makiMaxHP - beforeMakiMaxHP);
+        }
+        if (yukariMaxMP > beforeYukariMaxMP)
+        {
+            yukariMP += (yukariMaxMP - beforeYukariMaxMP);
+        }
+        if (makiMaxMP > beforeMakiMaxMP)
+        {
+            makiMP += (makiMaxMP - beforeMakiMaxMP);
         }
     }
 
