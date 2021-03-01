@@ -25,6 +25,7 @@ public class Zunko : BossAIBase
         ARROW_SHOT_1_1,
         ARROW_SHOT_1_2,
         ARROW_SHOT_1_3,
+        ARROW_SHOT_1_4,
         ARROW_SHOT_2_1,
         ARROW_SHOT_2_2,
         ARROW_SHOT_2_3,
@@ -34,7 +35,6 @@ public class Zunko : BossAIBase
         ARROW_SHOT_4_1,
         ARROW_SHOT_4_2,
         WAIT,
-        LOOP,
     }
     ActionState state;
     List<ActionState> actionStateQueue = new List<ActionState>();
@@ -55,7 +55,13 @@ public class Zunko : BossAIBase
         base.Reset();
         anim.SetBool("isReady", false);
         anim.SetBool("isAttack", false);
+        actionStateQueue.Clear();
+        stateIndex = 0;
         state = ActionState.START;
+        holdingArrow1 = null;
+        holdingArrow2 = null;
+        holdingArrow3 = null;
+        holdingArrow4 = null;
     }
 
     // Update is called once per frame
@@ -90,39 +96,136 @@ public class Zunko : BossAIBase
         {
             case ActionState.START:
                 actionStateQueue.Add(ActionState.WAIT);
+                
+                // HP半分以下で節々に二本撃ちを入れる
 
+                // 正面に一発
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
-                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
-                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
-                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
                 actionStateQueue.Add(ActionState.READY);
                 actionStateQueue.Add(ActionState.ARROW_SHOT_1_1);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_2_1);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_3_1);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_4_1);
                 actionStateQueue.Add(ActionState.ATTACK);
                 
-                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                // 中段一発
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
-                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
-                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
                 actionStateQueue.Add(ActionState.READY);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_1_2);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_2_2);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_3_2);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_4_2);
-                actionStateQueue.Add(ActionState.ATTACK);
-                
-                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
-                actionStateQueue.Add(ActionState.READY);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_1_3);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_2_1);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_4_1);
                 actionStateQueue.Add(ActionState.ATTACK);
 
-                actionStateQueue.Add(ActionState.LOOP);
-                break;
-            case ActionState.LOOP:
-                isPlaying = false;
-                stateIndex = 0;
+                // 上段一発
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                actionStateQueue.Add(ActionState.READY);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_3_1);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_1_2);
+                actionStateQueue.Add(ActionState.ATTACK);
+
+                // 乱数で発射速度が異なるのを2発
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    // 中速度二発
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                    if (IsLifeHalf()) actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
+                    actionStateQueue.Add(ActionState.READY);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_1_2);
+                    if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_4_2);
+                    actionStateQueue.Add(ActionState.ATTACK);
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                    if (IsLifeHalf()) actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
+                    actionStateQueue.Add(ActionState.READY);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_1_2);
+                    if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_3_2);
+                    actionStateQueue.Add(ActionState.ATTACK);
+                } else {
+                    // 高速低速
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                    actionStateQueue.Add(ActionState.READY);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_1_1);
+                    actionStateQueue.Add(ActionState.ATTACK);
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                    actionStateQueue.Add(ActionState.READY);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_1_3);
+                    actionStateQueue.Add(ActionState.ATTACK);
+                }
+                
+                // 最高速一発
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
+                actionStateQueue.Add(ActionState.READY);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_1_4);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_2_2);
+                actionStateQueue.Add(ActionState.ATTACK);
+
+                // 二本撃ち HP半分以下の時は加速
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
+                actionStateQueue.Add(ActionState.READY);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_1_3); else actionStateQueue.Add(ActionState.ARROW_SHOT_1_1);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_4_2); else actionStateQueue.Add(ActionState.ARROW_SHOT_4_1);
+                actionStateQueue.Add(ActionState.ATTACK);
+                
+                // 乱数で正面一発を追加
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                    actionStateQueue.Add(ActionState.READY);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_1_3);
+                    actionStateQueue.Add(ActionState.ATTACK);
+                }
+
+                // 二本撃ち HP半分以下の時は加速
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
+                actionStateQueue.Add(ActionState.READY);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_2_2); else actionStateQueue.Add(ActionState.ARROW_SHOT_2_1);
+                if (IsLifeHalf()) actionStateQueue.Add(ActionState.ARROW_SHOT_3_2); else actionStateQueue.Add(ActionState.ARROW_SHOT_3_1);
+                actionStateQueue.Add(ActionState.ATTACK);
+
+                // HP半分以下の時だけ四本撃ち
+                if (IsLifeHalf())
+                {
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
+                    actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
+                    actionStateQueue.Add(ActionState.READY);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_1_1);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_2_1);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_3_1);
+                    actionStateQueue.Add(ActionState.ARROW_SHOT_4_1);
+                    actionStateQueue.Add(ActionState.ATTACK);
+                }
+
+
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
+                //actionStateQueue.Add(ActionState.READY);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_1_1);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_2_1);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_3_1);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_4_1);
+                //actionStateQueue.Add(ActionState.ATTACK);
+                
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
+                //actionStateQueue.Add(ActionState.READY);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_1_2);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_2_2);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_3_2);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_4_2);
+                //actionStateQueue.Add(ActionState.ATTACK);
+                
+                //actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                //actionStateQueue.Add(ActionState.READY);
+                //actionStateQueue.Add(ActionState.ARROW_SHOT_1_3);
+                //actionStateQueue.Add(ActionState.ATTACK);
+
+                actionStateQueue.Add(ActionState.START);
                 break;
             case ActionState.READY:
                 PlayReadySequence();
@@ -134,10 +237,10 @@ public class Zunko : BossAIBase
                 holdingArrow1 = InstantiateArrow(0);
                 break;
             case ActionState.INSTANTIATE_ARROW_2:
-                holdingArrow2 = InstantiateArrow(15);
+                holdingArrow2 = InstantiateArrow(10);
                 break;
             case ActionState.INSTANTIATE_ARROW_3:
-                holdingArrow3 = InstantiateArrow(30);
+                holdingArrow3 = InstantiateArrow(20);
                 break;
             case ActionState.INSTANTIATE_ARROW_4:
                 holdingArrow4 = InstantiateArrow(45);
@@ -150,6 +253,9 @@ public class Zunko : BossAIBase
                 break;
             case ActionState.ARROW_SHOT_1_3:
                 ShotArrow(holdingArrow1, new Vector2(-900, 0));
+                break;
+            case ActionState.ARROW_SHOT_1_4:
+                ShotArrow(holdingArrow1, new Vector2(-1000, 0));
                 break;
             case ActionState.ARROW_SHOT_2_1:
                 ShotArrow(holdingArrow2, new Vector2(-600, 60));
@@ -186,7 +292,7 @@ public class Zunko : BossAIBase
         isPlaying = true;
         anim.SetBool("isReady", true);
         sequence = DOTween.Sequence()
-            .AppendInterval(1.5f)
+            .AppendInterval(IsLifeHalf() ? 1.0f : 1.5f)
             .OnComplete(() =>
             {
                 isPlaying = false;
@@ -198,7 +304,7 @@ public class Zunko : BossAIBase
         isPlaying = true;
         anim.SetBool("isAttack", true);
         sequence = DOTween.Sequence()
-            .AppendInterval(1.5f)
+            .AppendInterval(IsLifeHalf() ? 1.0f : 1.5f)
             .OnComplete(() =>
             {
                 anim.SetBool("isAttack", false);
@@ -219,6 +325,7 @@ public class Zunko : BossAIBase
     void ShotArrow(GameObject arrow, Vector2 force)
     {
         arrow.GetComponent<RotateWithDirection>().SetIsActive(true);
+        arrow.GetComponent<DestroyWhenOffScreen>().isValid = true;
         arrow.transform.SetParent(transform.parent);
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.None;

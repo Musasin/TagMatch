@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7141784227788273887}
   - component: {fileID: 8451322463341613820}
   - component: {fileID: 3704252541949575707}
+  - component: {fileID: 6513752360177983362}
+  - component: {fileID: 8394529141720533681}
   m_Layer: 0
   m_Name: ZundaArrow
   m_TagString: Untagged
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -6729532023063047057, guid: f720c35f32649445dac688ffd092218c,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,6 +122,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctionDeg: 180
+--- !u!95 &6513752360177983362
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6610863175686141763}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aca3e761ef224487eb38acc73179e449, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8394529141720533681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6610863175686141763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ca62c01066c4a1ab01ed6394bbdbd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumTime: 2
+  isValid: 1
 --- !u!1 &8783254359971459275
 GameObject:
   m_ObjectHideFlags: 0

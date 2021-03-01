@@ -45,6 +45,8 @@ public class Kiritan : BossAIBase
         base.Reset();
         anim.SetBool("isFloat", false);
         anim.SetBool("isReady", false);
+        actionStateQueue.Clear();
+        stateIndex = 0;
         state = ActionState.START;
     }
 
