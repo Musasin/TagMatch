@@ -506,7 +506,7 @@ public class Player : MonoBehaviour
                 // 他のステート -> しゃがみ でしゃがみ無敵
                 if (newAnimationState == AnimationState.SQUAT && StaticValues.GetSkill("m_down_2"))
                 {
-                    squatInvincibleTime = 1.0f;
+                    squatInvincibleTime = 0.5f;
                     GameObject effect = Instantiate(invincibleEffect);
                     effect.transform.position = new Vector2(transform.position.x, transform.position.y - 0.3f);
                     AudioManager.Instance.PlaySE("avoidance");
