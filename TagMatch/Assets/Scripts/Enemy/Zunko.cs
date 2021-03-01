@@ -33,6 +33,7 @@ public class Zunko : BossAIBase
         ARROW_SHOT_3_3,
         ARROW_SHOT_4_1,
         ARROW_SHOT_4_2,
+        WAIT,
         LOOP,
     }
     ActionState state;
@@ -88,6 +89,8 @@ public class Zunko : BossAIBase
         switch (state)
         {
             case ActionState.START:
+                actionStateQueue.Add(ActionState.WAIT);
+
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
@@ -165,6 +168,13 @@ public class Zunko : BossAIBase
                 break;
             case ActionState.ARROW_SHOT_4_2:
                 ShotArrow(holdingArrow4, new Vector2(-220, 220));
+                break;
+            case ActionState.WAIT:
+                isPlaying = true;
+                sequence = DOTween.Sequence()
+                    .AppendInterval(1.0f)
+                    .OnComplete(() => { isPlaying = false; })
+                    .Play();
                 break;
         }
         state = actionStateQueue[stateIndex];

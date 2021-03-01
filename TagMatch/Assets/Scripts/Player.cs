@@ -47,6 +47,9 @@ public class Player : MonoBehaviour
     GameObject bulletPivot, squatBulletPivot;
     GameObject playerImage, yukariImage, makiImage;
     Animator playerImageAnimator, yukariAnimator, makiAnimator;
+    
+    BoxCollider2D boxCollider;
+    Vector2 boxColliderDefaultSize, boxColliderDefaultOffset;
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
     AnimationState animationState, newAnimationState;
@@ -87,6 +90,10 @@ public class Player : MonoBehaviour
         playerImageAnimator = playerImage.GetComponent<Animator>();
         yukariAnimator = yukariImage.GetComponent<Animator>();
         makiAnimator = makiImage.GetComponent<Animator>();
+        
+        boxCollider = GetComponent<BoxCollider2D>();
+        boxColliderDefaultSize = boxCollider.size;
+        boxColliderDefaultOffset = boxCollider.offset;
 
         firstPos = transform.position;
         animationState = AnimationState.STAND;
@@ -101,6 +108,10 @@ public class Player : MonoBehaviour
         if (stageName == "Stage4")
         {
             StaticValues.switchState = StaticValues.SwitchState.MAKI_ONLY;
+        }
+        if (stageName == "Stage5") // 元に戻す
+        {
+            StaticValues.switchState = StaticValues.SwitchState.MAKI;
         }
 
         Switch(StaticValues.switchState, false);
@@ -167,6 +178,7 @@ public class Player : MonoBehaviour
             }
         }
         UpdateState();
+        UpdateColliderSize();
         UpdateColor();
         rb.velocity = new Vector2(velocityX, velocityY);
     }
@@ -509,6 +521,19 @@ public class Player : MonoBehaviour
             animationState = newAnimationState;
             yukariAnimator.SetInteger("state", (int)animationState);
             makiAnimator.SetInteger("state", (int)animationState);
+        }
+    }
+    private void UpdateColliderSize()
+    {
+        if (animationState == AnimationState.SQUAT)
+        {
+            boxCollider.size = new Vector2(boxColliderDefaultSize.x, boxColliderDefaultSize.y / 3);
+            boxCollider.offset = new Vector2(boxColliderDefaultOffset.x, boxColliderDefaultOffset.y - boxColliderDefaultSize.y / 3);
+        }
+        else
+        {
+            boxCollider.size = boxColliderDefaultSize;
+            boxCollider.offset = boxColliderDefaultOffset;
         }
     }
     private void UpdateLastStandPos()
