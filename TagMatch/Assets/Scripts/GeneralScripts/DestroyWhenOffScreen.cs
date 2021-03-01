@@ -6,7 +6,6 @@ public class DestroyWhenOffScreen : MonoBehaviour
 {
     float time = 0;
     public float minimumTime = 0.1f;
-    public bool isValid = true;
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +16,6 @@ public class DestroyWhenOffScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isValid)
-            return;
-
         time += Time.deltaTime;
         if (time < minimumTime)
             return;
