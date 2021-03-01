@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumTime: 2
-  isValid: 1
 --- !u!1 &8783254359971459275
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d6806bef5114cb698a8e039afcfa7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePoint: 30
+  damagePoint: 35
 --- !u!61 &8729182929731963881
 BoxCollider2D:
   m_ObjectHideFlags: 0

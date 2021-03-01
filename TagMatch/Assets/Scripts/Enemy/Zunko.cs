@@ -197,6 +197,18 @@ public class Zunko : BossAIBase
                 break;
 
             case ActionState.LIFE_HALF_INIT:
+                
+                // 開幕四本撃ち
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
+                actionStateQueue.Add(ActionState.READY);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_1_1);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_2_1);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_3_1);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_4_1);
+                actionStateQueue.Add(ActionState.ATTACK);
 
                 // 中段二発
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
@@ -287,16 +299,16 @@ public class Zunko : BossAIBase
                 actionStateQueue.Add(ActionState.ARROW_SHOT_3_2);
                 actionStateQueue.Add(ActionState.ATTACK);
 
-                // 四本撃ち
+                // 高速四本撃ち
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_3);
                 actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_4);
                 actionStateQueue.Add(ActionState.READY);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_1_1);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_2_1);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_3_1);
-                actionStateQueue.Add(ActionState.ARROW_SHOT_4_1);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_1_4);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_2_2);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_3_2);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_4_2);
                 actionStateQueue.Add(ActionState.ATTACK);
 
                 // 乱数で三本撃ちか二本撃ちを追加
@@ -320,6 +332,14 @@ public class Zunko : BossAIBase
                     actionStateQueue.Add(ActionState.ARROW_SHOT_4_1);
                     actionStateQueue.Add(ActionState.ATTACK);
                 }
+                
+                // 最高速二発
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
+                actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);
+                actionStateQueue.Add(ActionState.READY);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_1_4);
+                actionStateQueue.Add(ActionState.ARROW_SHOT_2_2);
+                actionStateQueue.Add(ActionState.ATTACK);
 
                 actionStateQueue.Add(ActionState.LIFE_HALF_INIT);
                 break;
