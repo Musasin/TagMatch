@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 8075830558317027181}
   - component: {fileID: 8051271984531170958}
   - component: {fileID: 2980290575173046189}
+  - component: {fileID: 328967214642249703}
   m_Layer: 9
   m_Name: Zunko
   m_TagString: Enemy
@@ -211,6 +212,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.71772003, y: 1.5462463}
   m_EdgeRadius: 0
+--- !u!114 &328967214642249703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8075830558317027186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15330c68ccee64131aa842a6b9e8c41e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zundaArrowBullet: {fileID: 6610863175686141763, guid: c3aef6c8287134270b710097555e6c5a,
+    type: 3}
 --- !u!1001 &4854995094141730319
 PrefabInstance:
   m_ObjectHideFlags: 0
