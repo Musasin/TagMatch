@@ -312,7 +312,7 @@ public class Player : MonoBehaviour
                 {
                     if (barrierBulletCount > 0)
                     {
-                        if (StaticValues.makiMP >= MP_COST_MAKI_ELECTRIC_FIRE && StaticValues.GetSkill("m_shot_1"))
+                        if (StaticValues.makiMP >= MP_COST_MAKI_ELECTRIC_FIRE && StaticValues.GetSkill("m_shot_2"))
                         {
                             StaticValues.AddMP(false, -MP_COST_MAKI_ELECTRIC_FIRE);
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
@@ -320,7 +320,7 @@ public class Player : MonoBehaviour
                         }
                     } else
                     {
-                        if (StaticValues.makiMP >= MP_COST_MAKI_BARRIER && StaticValues.GetSkill("m_shot_2"))
+                        if (StaticValues.makiMP >= MP_COST_MAKI_BARRIER && StaticValues.GetSkill("m_shot_1"))
                         {
                             StaticValues.AddMP(false, -MP_COST_MAKI_BARRIER);
                             invincibleTime = BARRIER_INVINCIBLE_TIME;
