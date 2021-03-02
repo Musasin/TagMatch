@@ -1,0 +1,1768 @@
+fileFormatVersion: 2
+guid: f720c35f32649445dac688ffd092218c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4319370086644558112
+    second: zunko_0
+  - first:
+      213: 8649916818443118708
+    second: zunko_1
+  - first:
+      213: 1467421126666003662
+    second: zunko_2
+  - first:
+      213: 5446481847522268584
+    second: zunko_3
+  - first:
+      213: 7733378359297767635
+    second: zunko_4
+  - first:
+      213: 1953582545496031017
+    second: zunko_5
+  - first:
+      213: 6856934606473147413
+    second: zunko_6
+  - first:
+      213: -3024799168289189130
+    second: zunko_7
+  - first:
+      213: 2396209113901090371
+    second: zunko_8
+  - first:
+      213: -4076705822003204012
+    second: zunko_9
+  - first:
+      213: -51890366692002798
+    second: zunko_10
+  - first:
+      213: -5520434946228373907
+    second: zunko_11
+  - first:
+      213: -2064715116823042822
+    second: zunko_12
+  - first:
+      213: 8470391404471841235
+    second: zunko_13
+  - first:
+      213: 5240951339810070335
+    second: zunko_14
+  - first:
+      213: -1135983341942640408
+    second: zunko_15
+  - first:
+      213: -8301734815128235474
+    second: zunko_16
+  - first:
+      213: 3118819525248810240
+    second: zunko_17
+  - first:
+      213: 1312478382267722890
+    second: zunko_18
+  - first:
+      213: -6548811548527796711
+    second: zunko_19
+  - first:
+      213: 23251478563507115
+    second: zunko_20
+  - first:
+      213: -7696842209608019499
+    second: zunko_21
+  - first:
+      213: 9189372736793292864
+    second: zunko_22
+  - first:
+      213: -5278351352521346113
+    second: zunko_23
+  - first:
+      213: 7912334596438176865
+    second: zunko_24
+  - first:
+      213: -3152585860974966849
+    second: zunko_25
+  - first:
+      213: -3248672208443321983
+    second: zunko_26
+  - first:
+      213: -4303301565486370589
+    second: zunko_27
+  - first:
+      213: -7944153165955008821
+    second: zunko_28
+  - first:
+      213: -2627319027115855437
+    second: zunko_29
+  - first:
+      213: -2322321943744614704
+    second: zunko_30
+  - first:
+      213: 3720705640297258364
+    second: zunko_31
+  - first:
+      213: -5085060727167063601
+    second: zunko_0
+  - first:
+      213: 743708951655920365
+    second: zunko_1
+  - first:
+      213: -4077051736131038659
+    second: zunko_2
+  - first:
+      213: 430157888986742085
+    second: zunko_3
+  - first:
+      213: -40292955840357744
+    second: zunko_4
+  - first:
+      213: -1583347426538823684
+    second: zunko_5
+  - first:
+      213: 3726902794509060411
+    second: zunko_6
+  - first:
+      213: -6568067974478277824
+    second: zunko_7
+  - first:
+      213: -1149943630432751378
+    second: zunko_8
+  - first:
+      213: -3103979854665478779
+    second: zunko_9
+  - first:
+      213: 4964009588378904657
+    second: zunko_10
+  - first:
+      213: -8942720696131259952
+    second: zunko_11
+  - first:
+      213: -8275790527597845889
+    second: zunko_12
+  - first:
+      213: 8173090816400035807
+    second: zunko_13
+  - first:
+      213: -9018044792009024593
+    second: zunko_14
+  - first:
+      213: -7874522817194729132
+    second: zunko_15
+  - first:
+      213: -8043767889878084791
+    second: zunko_16
+  - first:
+      213: -6640556739050862312
+    second: zunko_17
+  - first:
+      213: 3602969755156209838
+    second: zunko_18
+  - first:
+      213: -2786829439744220889
+    second: zunko_19
+  - first:
+      213: 7737309515956911775
+    second: zunko_20
+  - first:
+      213: -1849086662229334497
+    second: zunko_21
+  - first:
+      213: -5074810641055665269
+    second: zunko_22
+  - first:
+      213: -4682014113886626260
+    second: zunko_23
+  - first:
+      213: -3822008373609270984
+    second: zunko_24
+  - first:
+      213: 5108764720993995424
+    second: zunko_25
+  - first:
+      213: 8527248831103604018
+    second: zunko_26
+  - first:
+      213: -3199730445110383904
+    second: zunko_27
+  - first:
+      213: -3472725001723609244
+    second: zunko_28
+  - first:
+      213: 3759352833778247318
+    second: zunko_29
+  - first:
+      213: -2351213462314004927
+    second: zunko_30
+  - first:
+      213: -1053178142487855857
+    second: zunko_31
+  - first:
+      213: -6729532023063047057
+    second: zunko_32
+  - first:
+      213: -6232549128763233496
+    second: zunko_33
+  - first:
+      213: -1773492011622486271
+    second: zunko_34
+  - first:
+      213: -4072119382547007030
+    second: zunko_35
+  - first:
+      213: 2751208480031709833
+    second: zunko_36
+  - first:
+      213: -7059247858976860142
+    second: zunko_37
+  - first:
+      213: 6529697150905065979
+    second: zunko_38
+  - first:
+      213: 329860512226824012
+    second: zunko_39
+  - first:
+      213: -7852243153041709361
+    second: zunko_40
+  - first:
+      213: 343595010058013964
+    second: zunko_41
+  - first:
+      213: 7997411745341536844
+    second: zunko_42
+  - first:
+      213: -6024451644278156607
+    second: zunko_43
+  - first:
+      213: -97395591998795583
+    second: zunko_44
+  - first:
+      213: 8737154398115743834
+    second: zunko_45
+  - first:
+      213: -5155843671332116061
+    second: zunko_46
+  - first:
+      213: -8878475084127864470
+    second: zunko_47
+  - first:
+      213: -8923718839367023084
+    second: zunko_48
+  - first:
+      213: 3230110335719854724
+    second: zunko_49
+  - first:
+      213: -8119597682636000525
+    second: zunko_50
+  - first:
+      213: 4192565501111697593
+    second: zunko_51
+  - first:
+      213: 2778142472301466683
+    second: zunko_52
+  - first:
+      213: -8951958242020740754
+    second: zunko_53
+  - first:
+      213: 8194283656626440946
+    second: zunko_54
+  - first:
+      213: 5255209251675066266
+    second: zunko_55
+  - first:
+      213: 8832415879477876719
+    second: zunko_56
+  - first:
+      213: 6270316969061490709
+    second: zunko_57
+  - first:
+      213: 1692667502705176980
+    second: zunko_58
+  - first:
+      213: -4428011094481688075
+    second: zunko_59
+  - first:
+      213: 2282560635224030883
+    second: zunko_60
+  - first:
+      213: 7069706618140815424
+    second: zunko_61
+  - first:
+      213: -1035865431542589064
+    second: zunko_62
+  - first:
+      213: 5502034499886040726
+    second: zunko_63
+  - first:
+      213: -3311858583632774967
+    second: zunko_64
+  - first:
+      213: -3552064560362937659
+    second: zunko_65
+  - first:
+      213: -5408261102535825328
+    second: zunko_66
+  - first:
+      213: 2414515367508884556
+    second: zunko_67
+  - first:
+      213: 7153407443582468476
+    second: zunko_68
+  - first:
+      213: -931351469299621510
+    second: zunko_69
+  - first:
+      213: 4875558892930627634
+    second: zunko_70
+  - first:
+      213: -1498951636316158890
+    second: zunko_71
+  - first:
+      213: -6441754480133950021
+    second: zunko_72
+  - first:
+      213: -5497364370514466335
+    second: zunko_73
+  - first:
+      213: 990520878527364107
+    second: zunko_74
+  - first:
+      213: 3824209158520674520
+    second: zunko_75
+  - first:
+      213: 9107564669022211341
+    second: zunko_76
+  - first:
+      213: 2871094137961927298
+    second: zunko_77
+  - first:
+      213: -5950742818871426324
+    second: zunko_78
+  - first:
+      213: -477118234876273528
+    second: zunko_79
+  - first:
+      213: 7403772299948746738
+    second: zunko_80
+  - first:
+      213: -4781847579576445662
+    second: zunko_81
+  - first:
+      213: -7580604125826059350
+    second: zunko_82
+  - first:
+      213: -2086439541775373119
+    second: zunko_83
+  - first:
+      213: 1309978102241005440
+    second: zunko_84
+  - first:
+      213: -8976015783152775977
+    second: zunko_85
+  - first:
+      213: -902222188663896925
+    second: zunko_86
+  - first:
+      213: 4405996000785027540
+    second: zunko_87
+  - first:
+      213: 9059888643901493492
+    second: zunko_88
+  - first:
+      213: -8027192025191937459
+    second: zunko_89
+  - first:
+      213: -5498841020030218834
+    second: zunko_90
+  - first:
+      213: -7134376717910785317
+    second: zunko_91
+  - first:
+      213: 4671749759201286868
+    second: zunko_92
+  - first:
+      213: -7035262671523336996
+    second: zunko_93
+  - first:
+      213: 8266998368816921898
+    second: zunko_94
+  - first:
+      213: -8436296003697331297
+    second: zunko_95
+  - first:
+      213: -7571248140790670463
+    second: zunko_96
+  - first:
+      213: -1414711171810547787
+    second: zunko_97
+  - first:
+      213: 4064423527044416556
+    second: zunko_98
+  - first:
+      213: -8064760038433774367
+    second: zunko_99
+  - first:
+      213: 396963437425795846
+    second: zunko_100
+  - first:
+      213: -3733730423870529738
+    second: zunko_101
+  - first:
+      213: -6510213644281862062
+    second: zunko_102
+  - first:
+      213: -5689818761308547405
+    second: zunko_103
+  - first:
+      213: -1569801767618900159
+    second: zunko_104
+  - first:
+      213: -5989874283294425840
+    second: zunko_105
+  - first:
+      213: 2233541570133601033
+    second: zunko_106
+  - first:
+      213: -5503183851508815531
+    second: zunko_107
+  - first:
+      213: -3141636079603784934
+    second: zunko_108
+  - first:
+      213: -7498482953109187125
+    second: zunko_109
+  - first:
+      213: 6939988061533209155
+    second: zunko_110
+  - first:
+      213: 4535229170893363462
+    second: zunko_111
+  - first:
+      213: -2372069409015630795
+    second: zunko_112
+  - first:
+      213: 5651899488082736999
+    second: zunko_113
+  - first:
+      213: -543401513268508923
+    second: zunko_114
+  - first:
+      213: -5398492012899892241
+    second: zunko_115
+  - first:
+      213: 1431313574301021218
+    second: zunko_116
+  - first:
+      213: 8569892096672820107
+    second: zunko_117
+  - first:
+      213: -379496380208535132
+    second: zunko_118
+  - first:
+      213: -7249593210741314124
+    second: zunko_119
+  - first:
+      213: -5484465885053467674
+    second: zunko_120
+  - first:
+      213: -6767726882726434887
+    second: zunko_121
+  - first:
+      213: -9184032028155922628
+    second: zunko_122
+  - first:
+      213: 6707393770234890893
+    second: zunko_123
+  - first:
+      213: 6952293675762385850
+    second: zunko_124
+  - first:
+      213: -6887365872971221172
+    second: zunko_125
+  - first:
+      213: 7619123729584671443
+    second: zunko_126
+  - first:
+      213: -703940055523770483
+    second: zunko_127
+  - first:
+      213: 8897549391146268388
+    second: zunko_128
+  - first:
+      213: -6083803135699034786
+    second: zunko_129
+  - first:
+      213: 4355607479067608421
+    second: zunko_130
+  - first:
+      213: -1894727934768769967
+    second: zunko_131
+  - first:
+      213: -3158358465523152643
+    second: zunko_132
+  - first:
+      213: -362713700768643103
+    second: zunko_133
+  - first:
+      213: -53683081968390426
+    second: zunko_134
+  - first:
+      213: 1785380897420113488
+    second: zunko_135
+  - first:
+      213: -7099890443982496675
+    second: zunko_136
+  - first:
+      213: 7738645800048203995
+    second: zunko_137
+  - first:
+      213: -896006863375994746
+    second: zunko_138
+  - first:
+      213: 1627506784637580870
+    second: zunko_139
+  - first:
+      213: 3841544517087508837
+    second: zunko_140
+  - first:
+      213: 2119243657739281984
+    second: zunko_141
+  - first:
+      213: -4463051854421086495
+    second: zunko_142
+  - first:
+      213: 2815332829483310025
+    second: zunko_143
+  - first:
+      213: -4566944931575051799
+    second: zunko_144
+  - first:
+      213: 4744173613007317116
+    second: zunko_145
+  - first:
+      213: 517599966384677601
+    second: zunko_146
+  - first:
+      213: -3733402892112337057
+    second: zunko_147
+  - first:
+      213: -1833609143064800335
+    second: zunko_148
+  - first:
+      213: 5950501066202627325
+    second: zunko_149
+  - first:
+      213: 3403151036694662880
+    second: zunko_150
+  - first:
+      213: -7949691925311382956
+    second: zunko_151
+  - first:
+      213: 4729624321479812509
+    second: zunko_152
+  - first:
+      213: -6471753981230776840
+    second: zunko_153
+  - first:
+      213: 4967697219804212548
+    second: zunko_154
+  - first:
+      213: 4933213105044723854
+    second: zunko_155
+  - first:
+      213: -7364047922226773466
+    second: zunko_156
+  - first:
+      213: -5697413064804905891
+    second: zunko_157
+  - first:
+      213: -7737001897900515346
+    second: zunko_158
+  - first:
+      213: -7076199869600922444
+    second: zunko_159
+  - first:
+      213: -1528399335108727514
+    second: zunko_160
+  - first:
+      213: 8568495453226048726
+    second: zunko_161
+  - first:
+      213: 6160211324221459572
+    second: zunko_162
+  - first:
+      213: -6452681212312274742
+    second: zunko_163
+  - first:
+      213: -4589881557649784605
+    second: zunko_164
+  - first:
+      213: 6998820815169660902
+    second: zunko_165
+  - first:
+      213: 461145786466894822
+    second: zunko_166
+  - first:
+      213: 1188270061741684589
+    second: zunko_167
+  - first:
+      213: 1740089896289303858
+    second: zunko_168
+  - first:
+      213: -227208006511632267
+    second: zunko_169
+  - first:
+      213: -8093680230138494973
+    second: zunko_170
+  - first:
+      213: 8523240625943650820
+    second: zunko_171
+  - first:
+      213: -790279090395128505
+    second: zunko_172
+  - first:
+      213: 2435342356348736889
+    second: zunko_173
+  - first:
+      213: -4031213038693304122
+    second: zunko_174
+  - first:
+      213: 8717572969154869789
+    second: zunko_175
+  - first:
+      213: 1461285328720951034
+    second: zunko_176
+  - first:
+      213: -4024778068708307560
+    second: zunko_177
+  - first:
+      213: 1100691364832561226
+    second: zunko_178
+  - first:
+      213: 2618903047367769506
+    second: zunko_179
+  - first:
+      213: -2175014031808245803
+    second: zunko_180
+  - first:
+      213: -2517370469803246263
+    second: zunko_181
+  - first:
+      213: 4146174583269604233
+    second: zunko_182
+  - first:
+      213: -860163975809661474
+    second: zunko_183
+  - first:
+      213: -2012731415129105672
+    second: zunko_184
+  - first:
+      213: -7162852619881407096
+    second: zunko_185
+  - first:
+      213: 8594168109137473501
+    second: zunko_186
+  - first:
+      213: 1545454015203771916
+    second: zunko_187
+  - first:
+      213: -4705825763373404297
+    second: zunko_188
+  - first:
+      213: -1942573689140330872
+    second: zunko_189
+  - first:
+      213: 4505707092175115590
+    second: zunko_190
+  - first:
+      213: 2510136135416862764
+    second: zunko_191
+  - first:
+      213: -7429598206716090862
+    second: zunko_192
+  - first:
+      213: -4985566398999144004
+    second: zunko_193
+  - first:
+      213: 3871052542164717717
+    second: zunko_194
+  - first:
+      213: -6694969535164976919
+    second: zunko_195
+  - first:
+      213: -4900423545269456120
+    second: zunko_196
+  - first:
+      213: -3504096280151670980
+    second: zunko_197
+  - first:
+      213: 7049857217660584709
+    second: zunko_198
+  - first:
+      213: -3087504662975424415
+    second: zunko_199
+  - first:
+      213: 3789167869629937170
+    second: zunko_200
+  - first:
+      213: 4357463195773987410
+    second: zunko_201
+  - first:
+      213: -5770789485340851189
+    second: zunko_202
+  - first:
+      213: 7259212477332601950
+    second: zunko_203
+  - first:
+      213: -3319974158970794265
+    second: zunko_204
+  - first:
+      213: 7818167088536121283
+    second: zunko_205
+  - first:
+      213: 2864082336215612512
+    second: zunko_206
+  - first:
+      213: -9166735534072156676
+    second: zunko_207
+  - first:
+      213: -7799197469022011931
+    second: zunko_208
+  - first:
+      213: -3611553052944123337
+    second: zunko_209
+  - first:
+      213: -7849068199516373550
+    second: zunko_210
+  - first:
+      213: -7343179145665780711
+    second: zunko_211
+  - first:
+      213: -6846428796549538981
+    second: zunko_212
+  - first:
+      213: 3152877284174759200
+    second: zunko_213
+  - first:
+      213: -5059013657992287146
+    second: zunko_214
+  - first:
+      213: 344714869540381113
+    second: zunko_215
+  - first:
+      213: 7383673235818599255
+    second: zunko_216
+  - first:
+      213: 1415720666511661473
+    second: zunko_217
+  - first:
+      213: 7067882890632383164
+    second: zunko_218
+  - first:
+      213: 3396731280558457330
+    second: zunko_219
+  - first:
+      213: 2255921205734303315
+    second: zunko_220
+  - first:
+      213: -2275998295155915401
+    second: zunko_221
+  - first:
+      213: -765952190876415462
+    second: zunko_222
+  - first:
+      213: 3907125457524567518
+    second: zunko_223
+  - first:
+      213: -7692059052660364551
+    second: zunko_224
+  - first:
+      213: -6421190251808127242
+    second: zunko_225
+  - first:
+      213: -7125423761652881987
+    second: zunko_226
+  - first:
+      213: 3698466797150106381
+    second: zunko_227
+  - first:
+      213: 6391699109158159971
+    second: zunko_228
+  - first:
+      213: -9106284768203556834
+    second: zunko_229
+  - first:
+      213: -4458564463017745983
+    second: zunko_230
+  - first:
+      213: 1912004499054967423
+    second: zunko_231
+  - first:
+      213: 2948381659531347510
+    second: zunko_232
+  - first:
+      213: 4602012574133044448
+    second: zunko_233
+  - first:
+      213: -1033491518927679515
+    second: zunko_234
+  - first:
+      213: -1330156073545943915
+    second: zunko_235
+  - first:
+      213: -4924492373691880626
+    second: zunko_236
+  - first:
+      213: -5126412658883302971
+    second: zunko_237
+  - first:
+      213: -5072229177413567208
+    second: zunko_238
+  - first:
+      213: 3070435448814035087
+    second: zunko_239
+  - first:
+      213: -8255747663803085594
+    second: zunko_240
+  - first:
+      213: 1030045401260609268
+    second: zunko_241
+  - first:
+      213: -8509196095935559942
+    second: zunko_242
+  - first:
+      213: 2906630986033175071
+    second: zunko_243
+  - first:
+      213: 3850885371315947666
+    second: zunko_244
+  - first:
+      213: -8545319002139673865
+    second: zunko_245
+  - first:
+      213: -7086111976936561889
+    second: zunko_246
+  - first:
+      213: 8751648275520171623
+    second: zunko_247
+  - first:
+      213: 1866030853367474744
+    second: zunko_248
+  - first:
+      213: -3689952975703770426
+    second: zunko_249
+  - first:
+      213: -9078822026666583714
+    second: zunko_250
+  - first:
+      213: 6219087987991774595
+    second: zunko_251
+  - first:
+      213: 1256704559323856340
+    second: zunko_252
+  - first:
+      213: -3173912460687989876
+    second: zunko_253
+  - first:
+      213: 4834493288319523321
+    second: zunko_254
+  - first:
+      213: 5737597740060141867
+    second: zunko_255
+  - first:
+      213: 7446545127619387005
+    second: zunko_256
+  - first:
+      213: 7406267484903484762
+    second: zunko_257
+  - first:
+      213: -7580538965532456504
+    second: zunko_258
+  - first:
+      213: 6448749875833891944
+    second: zunko_259
+  - first:
+      213: 4032188462391232561
+    second: zunko_260
+  - first:
+      213: 6099968983339599114
+    second: zunko_261
+  - first:
+      213: 4250451066157746035
+    second: zunko_262
+  - first:
+      213: -5185101607897710021
+    second: zunko_263
+  - first:
+      213: 5912335527111054383
+    second: zunko_264
+  - first:
+      213: 5028261198137473366
+    second: zunko_265
+  - first:
+      213: 7392127204078626610
+    second: zunko_266
+  - first:
+      213: -5445162911614327241
+    second: zunko_267
+  - first:
+      213: -2812781935863490091
+    second: zunko_268
+  - first:
+      213: -967470649483543084
+    second: zunko_269
+  - first:
+      213: 2718635674129855349
+    second: zunko_270
+  - first:
+      213: -1265652536628753609
+    second: zunko_271
+  - first:
+      213: 9088407786055735470
+    second: zunko_272
+  - first:
+      213: 3911314569444530229
+    second: zunko_273
+  - first:
+      213: 6442056558291884806
+    second: zunko_274
+  - first:
+      213: 607470994342548853
+    second: zunko_275
+  - first:
+      213: 4634803649234411555
+    second: zunko_276
+  - first:
+      213: 682111482884138653
+    second: zunko_277
+  - first:
+      213: -8144511031832635085
+    second: zunko_278
+  - first:
+      213: 5687920689451441492
+    second: zunko_279
+  - first:
+      213: -8637281755445783908
+    second: zunko_280
+  - first:
+      213: 6098452240329272670
+    second: zunko_281
+  - first:
+      213: -5537936612679607361
+    second: zunko_282
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: zunko_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9eaefd53c3e69b0800000000000000
+      internalID: -5085060727167063601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de2bab7e95f225a00800000000000000
+      internalID: 743708951655920365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3215011c076b67c0800000000000000
+      internalID: -4077051736131038659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54df26a225a38f500800000000000000
+      internalID: 430157888986742085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a5f2825c9d07ff0800000000000000
+      internalID: -40292955840357744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cffdf1d87e1d60ae0800000000000000
+      internalID: -1583347426538823684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b398f1b785e98b330800000000000000
+      internalID: 3726902794509060411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0435a90f9f889d4a0800000000000000
+      internalID: -6568067974478277824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0355c5c549a00f0800000000000000
+      internalID: -1149943630432751378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d02bc84c27ce4d0800000000000000
+      internalID: -3103979854665478779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15825f09b64b3e440800000000000000
+      internalID: 4964009588378904657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1ff8d48e215e380800000000000000
+      internalID: -8942720696131259952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_12
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72ecf6bc5c762d80800000000000000
+      internalID: -8275790527597845889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf088c6bc6ac6170800000000000000
+      internalID: 8173090816400035807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab9db39a0879d280800000000000000
+      internalID: -9018044792009024593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_15
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4516661083318b290800000000000000
+      internalID: -7874522817194729132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9439f1cc8bbce5090800000000000000
+      internalID: -8043767889878084791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8190c0a34d008d3a0800000000000000
+      internalID: -6640556739050862312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea0ef8827e1500230800000000000000
+      internalID: 3602969755156209838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 721e17ac3613359d0800000000000000
+      internalID: -2786829439744220889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_20
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e7cdfb202706b60800000000000000
+      internalID: 7737309515956911775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_21
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1668e24a79b656e0800000000000000
+      internalID: -1849086662229334497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_22
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8331850c96a299b0800000000000000
+      internalID: -5074810641055665269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_23
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e1c6448f4260fb0800000000000000
+      internalID: -4682014113886626260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831737252af75fac0800000000000000
+      internalID: -3822008373609270984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa05e3427af5e640800000000000000
+      internalID: 5108764720993995424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2359b41f1afd65670800000000000000
+      internalID: 8527248831103604018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ea6132fc164893d0800000000000000
+      internalID: -3199730445110383904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f75ad92076ecfc0800000000000000
+      internalID: -3472725001723609244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 696e5b20c77eb2430800000000000000
+      internalID: 3759352833778247318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_30
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14e48a330dfce5fd0800000000000000
+      internalID: -2351213462314004927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_31
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0d3ec33f0c5261f0800000000000000
+      internalID: -1053178142487855857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zunko_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6416b49746eb92a0800000000000000
+      internalID: -6729532023063047057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

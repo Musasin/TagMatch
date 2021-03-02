@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class Player : MonoBehaviour
     GameObject bulletPivot, squatBulletPivot;
     GameObject playerImage, yukariImage, makiImage;
     Animator playerImageAnimator, yukariAnimator, makiAnimator;
+    
+    BoxCollider2D boxCollider;
+    Vector2 boxColliderDefaultSize, boxColliderDefaultOffset;
 
     enum AnimationState { STAND = 0, RUN = 1, JUMP = 2, SQUAT = 3};
     AnimationState animationState, newAnimationState;
@@ -86,10 +90,30 @@ public class Player : MonoBehaviour
         playerImageAnimator = playerImage.GetComponent<Animator>();
         yukariAnimator = yukariImage.GetComponent<Animator>();
         makiAnimator = makiImage.GetComponent<Animator>();
+        
+        boxCollider = GetComponent<BoxCollider2D>();
+        boxColliderDefaultSize = boxCollider.size;
+        boxColliderDefaultOffset = boxCollider.offset;
 
         firstPos = transform.position;
         animationState = AnimationState.STAND;
         newAnimationState = AnimationState.STAND;
+
+        string sceneName = SceneManager.GetActiveScene().name;
+        string stageName = sceneName.Split('-')[0];
+        if (stageName == "Stage3")
+        {
+            StaticValues.switchState = StaticValues.SwitchState.YUKARI_ONLY;
+        }
+        if (stageName == "Stage4")
+        {
+            StaticValues.switchState = StaticValues.SwitchState.MAKI_ONLY;
+        }
+        if (stageName == "Stage5") // 元に戻す
+        {
+            StaticValues.switchState = StaticValues.SwitchState.MAKI;
+        }
+
         Switch(StaticValues.switchState, false);
     }
 
@@ -154,6 +178,7 @@ public class Player : MonoBehaviour
             }
         }
         UpdateState();
+        UpdateColliderSize();
         UpdateColor();
         rb.velocity = new Vector2(velocityX, velocityY);
     }
@@ -287,7 +312,7 @@ public class Player : MonoBehaviour
                 {
                     if (barrierBulletCount > 0)
                     {
-                        if (StaticValues.makiMP >= MP_COST_MAKI_ELECTRIC_FIRE && StaticValues.GetSkill("m_shot_1"))
+                        if (StaticValues.makiMP >= MP_COST_MAKI_ELECTRIC_FIRE && StaticValues.GetSkill("m_shot_2"))
                         {
                             StaticValues.AddMP(false, -MP_COST_MAKI_ELECTRIC_FIRE);
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
@@ -295,7 +320,7 @@ public class Player : MonoBehaviour
                         }
                     } else
                     {
-                        if (StaticValues.makiMP >= MP_COST_MAKI_BARRIER && StaticValues.GetSkill("m_shot_2"))
+                        if (StaticValues.makiMP >= MP_COST_MAKI_BARRIER && StaticValues.GetSkill("m_shot_1"))
                         {
                             StaticValues.AddMP(false, -MP_COST_MAKI_BARRIER);
                             invincibleTime = BARRIER_INVINCIBLE_TIME;
@@ -388,6 +413,7 @@ public class Player : MonoBehaviour
                     Switch(StaticValues.SwitchState.YUKARI);
                     break;
                 default:
+                    AudioManager.Instance.PlaySE("cancel"); // 仮？
                     break;
             }
         }
@@ -480,7 +506,7 @@ public class Player : MonoBehaviour
                 // 他のステート -> しゃがみ でしゃがみ無敵
                 if (newAnimationState == AnimationState.SQUAT && StaticValues.GetSkill("m_down_2"))
                 {
-                    squatInvincibleTime = 1.0f;
+                    squatInvincibleTime = 0.5f;
                     GameObject effect = Instantiate(invincibleEffect);
                     effect.transform.position = new Vector2(transform.position.x, transform.position.y - 0.3f);
                     AudioManager.Instance.PlaySE("avoidance");
@@ -495,6 +521,19 @@ public class Player : MonoBehaviour
             animationState = newAnimationState;
             yukariAnimator.SetInteger("state", (int)animationState);
             makiAnimator.SetInteger("state", (int)animationState);
+        }
+    }
+    private void UpdateColliderSize()
+    {
+        if (animationState == AnimationState.SQUAT)
+        {
+            boxCollider.size = new Vector2(boxColliderDefaultSize.x, boxColliderDefaultSize.y / 3);
+            boxCollider.offset = new Vector2(boxColliderDefaultOffset.x, boxColliderDefaultOffset.y - boxColliderDefaultSize.y / 3);
+        }
+        else
+        {
+            boxCollider.size = boxColliderDefaultSize;
+            boxCollider.offset = boxColliderDefaultOffset;
         }
     }
     private void UpdateLastStandPos()
@@ -588,7 +627,7 @@ public class Player : MonoBehaviour
             {
                 if (IsYukari())
                 {
-                    if (StaticValues.makiHP <= 0)
+                    if (StaticValues.makiHP <= 0 || StaticValues.switchState == StaticValues.SwitchState.YUKARI_ONLY)
                     {
                         isDead = true;
                         velocityX = isEnemyRight ? -DEAD_VELOCITY_X : DEAD_VELOCITY_X;
@@ -606,7 +645,7 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki())
                 {
-                    if (StaticValues.yukariHP <= 0)
+                    if (StaticValues.yukariHP <= 0 || StaticValues.switchState == StaticValues.SwitchState.MAKI_ONLY)
                     {
                         isDead = true;
                         velocityX = isEnemyRight ? -DEAD_VELOCITY_X : DEAD_VELOCITY_X;

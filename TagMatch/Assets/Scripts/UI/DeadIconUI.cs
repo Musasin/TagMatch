@@ -21,7 +21,7 @@ public class DeadIconUI : MonoBehaviour
     {
         if (isYukari)
         {
-            if (StaticValues.yukariHP <= 0)
+            if (StaticValues.yukariHP <= 0 || StaticValues.switchState == StaticValues.SwitchState.MAKI_ONLY)
             {
                 image.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             } 
@@ -32,7 +32,7 @@ public class DeadIconUI : MonoBehaviour
         }
         else if (isMaki)
         {
-            if (StaticValues.makiHP <= 0)
+            if (StaticValues.makiHP <= 0 || StaticValues.switchState == StaticValues.SwitchState.YUKARI_ONLY)
             {
                 image.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             } 

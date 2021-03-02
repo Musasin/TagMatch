@@ -52,6 +52,8 @@ public class Kotonoha : BossAIBase
         base.Reset();
         anim.SetBool("isDisappear", false);
         anim.SetBool("isReady", false);
+        actionStateQueue.Clear();
+        stateIndex = 0;
         state = ActionState.IDLE;
         bc.enabled = true;
     }

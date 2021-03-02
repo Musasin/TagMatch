@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyWhenOffScreen : MonoBehaviour
 {
     float time = 0;
-    const float MINIMUM_TIME = 0.1f;
+    public float minimumTime = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class DestroyWhenOffScreen : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (time < MINIMUM_TIME)
+        if (time < minimumTime)
             return;
 
         SpriteRenderer[] spriteList = GetComponentsInChildren<SpriteRenderer>();
