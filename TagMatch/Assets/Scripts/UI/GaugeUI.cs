@@ -61,7 +61,10 @@ public class GaugeUI : MonoBehaviour
         }
         else
         {
-            width = defaultWidth * ((float)gaugePointMax / 100) * gaugePoint / gaugePointMax;
+            // プレイヤーのゲージは拡大されうる & 内側のゲージ部分はアウトラインの端の分の幅を削る必要があるため、それを加味した計算を行う
+            float outlineDefaultWidth = defaultWidth + 20;
+            float outlineMaxWidth = outlineDefaultWidth * (float)gaugePointMax / 100 - 20;
+            width = outlineMaxWidth * gaugePoint / gaugePointMax;
         }
 
         if (isInstantly)
