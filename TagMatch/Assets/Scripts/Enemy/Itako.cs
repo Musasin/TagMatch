@@ -25,6 +25,7 @@ public class Itako : BossAIBase
         FLAME_TWIN_SHOT,
         GHOST_SHOT,
         LOOP,
+        WAIT,
     }
     ActionState state;
     List<ActionState> actionStateQueue = new List<ActionState>();
@@ -88,6 +89,8 @@ public class Itako : BossAIBase
         {
             case ActionState.START:
                 AudioManager.Instance.PlayExVoice("itako_start");
+
+                actionStateQueue.Add(ActionState.WAIT);
 
                 // 開幕に幽霊攻撃
                 actionStateQueue.Add(ActionState.CHARGE);
@@ -253,6 +256,13 @@ public class Itako : BossAIBase
                         anim.SetBool("isAttack", false);
                         isPlaying = false;
                     })
+                    .Play();
+                break;
+            case ActionState.WAIT:
+                isPlaying = true;
+                sequence = DOTween.Sequence()
+                    .AppendInterval(1.0f)
+                    .OnComplete(() => { isPlaying = false; })
                     .Play();
                 break;
 

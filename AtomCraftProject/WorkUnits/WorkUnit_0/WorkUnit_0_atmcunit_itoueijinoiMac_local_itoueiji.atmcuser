@@ -20,7 +20,9 @@
       <Orca OrcaName="kotonoha_start" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_start" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Stage3" orcaPath="CueSheetFolder/WorkUnit_0/Stage3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_fire-0" orcaPath="CueSheetFolder/WorkUnit_0/Stage3/itako_fire/Track_fire-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="itako_ghost" orcaPath="CueSheetFolder/WorkUnit_0/Stage3/itako_ghost" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_ghost-0" orcaPath="CueSheetFolder/WorkUnit_0/Stage3/itako_ghost/Track_ghost-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_ghost-3" orcaPath="CueSheetFolder/WorkUnit_0/Stage3/itako_ghost/Track_ghost-3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="itako_dead" orcaPath="CueSheetFolder/WorkUnit_0/Stage3/itako_dead" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Stage4" orcaPath="CueSheetFolder/WorkUnit_0/Stage4" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_stage1" orcaPath="CueSheetFolder/WorkUnit_0/Stage4/stage/Track_stage1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
