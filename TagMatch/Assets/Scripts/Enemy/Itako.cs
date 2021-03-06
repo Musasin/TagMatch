@@ -52,6 +52,7 @@ public class Itako : BossAIBase
         anim.SetBool("isReady", false);
         anim.SetBool("isAttack", false);
         anim.SetBool("isDisappear", false);
+        bc.enabled = true;
         actionStateQueue.Clear();
         stateIndex = 0;
         state = ActionState.START;
