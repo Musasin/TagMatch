@@ -17,6 +17,7 @@ public class Zunko : BossAIBase
 
     enum ActionState
     {
+        AWAKE,
         START,
         LIFE_HALF_INIT,
         READY,
@@ -48,7 +49,7 @@ public class Zunko : BossAIBase
     {
         anim = GetComponentInChildren<Animator>();
         bossScript = GetComponent<Boss>();
-        state = ActionState.START;
+        state = ActionState.AWAKE;
         arrowPosTransform = transform.Find("ArrowPos");
         arrowPosTransform = GameObject.Find("ArrowPos").transform;
         isLifeHalf = false;
@@ -62,7 +63,7 @@ public class Zunko : BossAIBase
         anim.SetBool("isAttack", false);
         actionStateQueue.Clear();
         stateIndex = 0;
-        state = ActionState.START;
+        state = ActionState.AWAKE;
         isLifeHalf = false;
         isHoldingArrow = false;
     }
@@ -74,7 +75,7 @@ public class Zunko : BossAIBase
 
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("Zunko_dead");
+            AudioManager.Instance.PlayExVoice("zunko_dead");
             sequence.Kill();
             isRight = false;
             anim.SetBool("isReady", false);
@@ -107,6 +108,12 @@ public class Zunko : BossAIBase
 
         switch (state)
         {
+            case ActionState.AWAKE:
+                AudioManager.Instance.PlayExVoice("zunko_start");
+                actionStateQueue.Add(ActionState.WAIT);
+                actionStateQueue.Add(ActionState.START);
+                break;
+
             case ActionState.START:
 
                 // 下段一発
@@ -405,7 +412,7 @@ public class Zunko : BossAIBase
     
     void PlayReadySequence()
     {
-        Debug.Log("READY");
+        AudioManager.Instance.PlayExVoice("zunko_set");
         isHoldingArrow = true;
         isPlaying = true;
         anim.SetBool("isReady", true);
@@ -420,7 +427,7 @@ public class Zunko : BossAIBase
     }
     void PlayAttackSequence()
     {
-        Debug.Log("ATTACK");
+        AudioManager.Instance.PlayExVoice("zunko_attack");
         isHoldingArrow = false;
         isPlaying = true;
         anim.SetBool("isAttack", true);
@@ -436,7 +443,6 @@ public class Zunko : BossAIBase
     
     GameObject InstantiateArrow(float rotateZ)
     {
-        Debug.Log("INSTANT");
         GameObject holdingArrow = Instantiate(zundaArrowBullet, arrowPosTransform);
         holdingArrow.transform.localPosition = Vector2.zero;
         holdingArrow.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, rotateZ));
@@ -446,7 +452,6 @@ public class Zunko : BossAIBase
 
     void ShotArrow(GameObject arrow, Vector2 force)
     {
-        Debug.Log("SHOT");
         arrow.GetComponent<RotateWithDirection>().SetIsActive(true);
         arrow.transform.SetParent(transform.parent);
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
