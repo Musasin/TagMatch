@@ -131,12 +131,12 @@ public class Kotonoha : BossAIBase
                     .AppendInterval(1.0f)
                     .AppendCallback(() =>
                     {
-                        InstantiateAlaneFlame();
+                        InstantiateAkaneFlame();
                     })
                     .AppendInterval(1.0f)
                     .AppendCallback(() =>
                     {
-                        InstantiateAlaneFlame();
+                        InstantiateAkaneFlame();
                     })
                     .AppendInterval(1.0f)
                     .AppendCallback(() => { anim.SetBool("isReady", false); })
@@ -150,7 +150,7 @@ public class Kotonoha : BossAIBase
                     .AppendInterval(1.0f)
                     .AppendCallback(() =>
                     {
-                        InstantiateAlaneFlame();
+                        InstantiateAkaneFlame();
                     })
                     .AppendInterval(2.0f)
                     .AppendCallback(() => { anim.SetBool("isReady", false); })
@@ -235,9 +235,9 @@ public class Kotonoha : BossAIBase
             .Play();
     }
 
-    public virtual void InstantiateAlaneFlame()
+    public virtual void InstantiateAkaneFlame()
     {
-        AudioManager.Instance.PlayExVoice("kotonoha_attack");
+        AudioManager.Instance.PlayExVoice("akane_attack");
         AudioManager.Instance.PlaySE("akane_flame");
 
         GameObject bullet = Instantiate(akaneFlame, transform.parent);
@@ -247,7 +247,7 @@ public class Kotonoha : BossAIBase
     
     public virtual void InstantiateAoiShot()
     {
-        AudioManager.Instance.PlayExVoice("kotonoha_attack");
+        AudioManager.Instance.PlayExVoice("aoi_attack");
         AudioManager.Instance.PlaySE("buon");
 
         GameObject b1 = Instantiate(aoiShot, transform.parent);

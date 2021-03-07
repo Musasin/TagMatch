@@ -16,8 +16,12 @@
       <Orca OrcaName="kiritan_dead" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/kiritan_dead" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="kiritan_attack2" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/kiritan_attack2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="kiritan_attack3" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/kiritan_attack3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="kotonoha_attack" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_attack" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="kotonoha_start" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_start" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Stage2" orcaPath="CueSheetFolder/WorkUnit_0/Stage2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_start-0" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_start/Track_start-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_start-1" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_start/Track_start-1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_attack-0" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/aoi_attack/Track_attack-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_dead-0" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_dead/Track_dead-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_dead-0_0" orcaPath="CueSheetFolder/WorkUnit_0/Stage2/kotonoha_dead/Track_dead-0_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Stage3" orcaPath="CueSheetFolder/WorkUnit_0/Stage3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_fire-0" orcaPath="CueSheetFolder/WorkUnit_0/Stage3/itako_fire/Track_fire-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="itako_ghost" orcaPath="CueSheetFolder/WorkUnit_0/Stage3/itako_ghost" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>

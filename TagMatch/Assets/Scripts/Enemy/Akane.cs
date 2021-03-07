@@ -16,6 +16,11 @@ public class Akane : Kotonoha
     // Update is called once per frame
     public override void Update()
     {
+        // 一回だけ呼ばれるように茜の方でだけ再生
+        if (!isDead && bossScript.IsDead())
+        {
+            AudioManager.Instance.PlayExVoice("kotonoha_dead");
+        }
         base.Update();
     }
 
