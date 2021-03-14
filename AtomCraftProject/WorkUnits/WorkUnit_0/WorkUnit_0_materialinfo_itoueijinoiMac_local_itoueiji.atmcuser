@@ -4,11 +4,9 @@
   <OrcaTree OrcaName="(no name)">
     <Orca OrcaName="atmcUserFile" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserFile">
       <Orca OrcaName="VOICE" orcaPath="MaterialRootFolder/VOICE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="Kotonoha" orcaPath="MaterialRootFolder/VOICE/Kotonoha" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Akane" orcaPath="MaterialRootFolder/VOICE/Kotonoha/Akane" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Aoi" orcaPath="MaterialRootFolder/VOICE/Kotonoha/Aoi" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="Itako" orcaPath="MaterialRootFolder/VOICE/Itako" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="Zunko" orcaPath="MaterialRootFolder/VOICE/Zunko" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Kiritan" orcaPath="MaterialRootFolder/VOICE/Kiritan" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
     </Orca>
   </OrcaTree>
 </OrcaTrees>
