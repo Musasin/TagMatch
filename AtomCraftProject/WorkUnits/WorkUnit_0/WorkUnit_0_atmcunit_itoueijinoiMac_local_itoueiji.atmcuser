@@ -5,12 +5,33 @@
     <Orca OrcaName="atmcUserFile" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserFile">
       <Orca OrcaName="WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="WorkUnit_0" orcaPath="CueSheetFolder/WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="UI" orcaPath="CueSheetFolder/WorkUnit_0/Common/UI" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Common" orcaPath="CueSheetFolder/WorkUnit_0/Common" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="accept" orcaPath="CueSheetFolder/WorkUnit_0/Common/UI/accept" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="fire" orcaPath="CueSheetFolder/WorkUnit_0/Common/fire" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="akane_flame" orcaPath="CueSheetFolder/WorkUnit_0/Common/akane_flame" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="enemy_switch" orcaPath="CueSheetFolder/WorkUnit_0/Common/enemy_switch" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="ghost_sound" orcaPath="CueSheetFolder/WorkUnit_0/Common/ghost_sound" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="maki_jump" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_jump" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_jump-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_jump/Track_jump-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="maki_barrier" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_barrier" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_barrier-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_barrier/Track_barrier-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="maki_electric" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_electric" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_electric-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_electric/Track_electric-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="maki_heal" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_heal" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_heal-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_heal/Track_heal-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="maki_damage" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_damage" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_damage-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_damage/Track_damage-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="maki_dead" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_dead" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_dead-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_dead/Track_dead-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="maki_switch" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_switch" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_switch_out-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/MakiVoice/maki_switch/Track_switch_out-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_dash-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/YukariVoice/yukari_dash/Track_dash-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_dash-1" orcaPath="CueSheetFolder/WorkUnit_0/Common/YukariVoice/yukari_dash/Track_dash-1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_down_shot-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/YukariVoice/yukari_down_shot/Track_down_shot-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_up_shot-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/YukariVoice/yukari_up_shot/Track_up_shot-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_switch_out-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/YukariVoice/yukari_switch/Track_switch_out-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_switch_out-1" orcaPath="CueSheetFolder/WorkUnit_0/Common/YukariVoice/yukari_switch/Track_switch_out-1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_dead-0" orcaPath="CueSheetFolder/WorkUnit_0/Common/YukariVoice/yukari_dead/Track_dead-0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Stage1" orcaPath="CueSheetFolder/WorkUnit_0/Stage1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_boss1" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/boss/Track_boss1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_stage1" orcaPath="CueSheetFolder/WorkUnit_0/Stage1/stage/Track_stage1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>

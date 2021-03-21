@@ -1,1 +1,2 @@
-No Error.
+ERR#SwitchVariable が設定されていません。SwitchタイプのCueにはSwitchVariableの設定が必要です。"maki_barrier"
+ACBファイル生成に失敗しました。 "/Users/itoueiji/Projects/TagMatch/AtomCraftProject/Public/WorkUnit_0/Common.acb"
