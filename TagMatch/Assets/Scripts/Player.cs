@@ -262,6 +262,7 @@ public class Player : MonoBehaviour
                     }
                     isUsedDash = true;
                     AudioManager.Instance.PlaySE("dash");
+                    AudioManager.Instance.PlayExVoice("yukari_dash", true);
                 }
                 else if (IsMaki() && StaticValues.makiMP >= MP_COST_MAKI_JUMP && StaticValues.GetSkill("m_jump_1"))
                 {
@@ -280,6 +281,7 @@ public class Player : MonoBehaviour
                     effect.transform.localScale = new Vector2(effect.transform.localScale.x * (isRight ? 1 : -1), effect.transform.localScale.y);
                     isUsedDash = true;
                     AudioManager.Instance.PlaySE("jump");
+                    AudioManager.Instance.PlayExVoice("maki_jump", true);
                 }
             }
         }
@@ -307,6 +309,7 @@ public class Player : MonoBehaviour
                         .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360))
                         .Join(bulletSequence);
                     sequence.Play();
+                    AudioManager.Instance.PlayExVoice("yukari_up_shot", true);
                 }
                 else if (IsMaki())
                 {
@@ -317,6 +320,7 @@ public class Player : MonoBehaviour
                             StaticValues.AddMP(false, -MP_COST_MAKI_ELECTRIC_FIRE);
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
                             AddBulletCount(Bullet.BulletType.MAKI_ELECTRIC_FIRE, 1);
+                            AudioManager.Instance.PlayExVoice("maki_electric", true);
                         }
                     } else
                     {
@@ -326,6 +330,7 @@ public class Player : MonoBehaviour
                             invincibleTime = BARRIER_INVINCIBLE_TIME;
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_BARRIER, electricBarrier, BARRIER_INVINCIBLE_TIME);
                             AddBulletCount(Bullet.BulletType.MAKI_BARRIER, 1);
+                            AudioManager.Instance.PlayExVoice("maki_barrier", true);
                         }
                     }
                 }
@@ -347,6 +352,7 @@ public class Player : MonoBehaviour
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -120 : -60); })
                         .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -360), BACKFLIP_TIME * 4 / 8, RotateMode.FastBeyond360));
                     sequence.Play();
+                    AudioManager.Instance.PlayExVoice("yukari_down_shot", true);
                 }
                 else if (IsMaki()) 
                 {
@@ -372,6 +378,7 @@ public class Player : MonoBehaviour
                         GameObject effect = Instantiate(healEffect);
                         effect.transform.position = new Vector2(transform.position.x, transform.position.y + 1.0f);
                         AudioManager.Instance.PlaySE("restore");
+                        AudioManager.Instance.PlayExVoice("maki_heal", true);
                     }
                 }
                 else
@@ -403,6 +410,7 @@ public class Player : MonoBehaviour
                         return;
                     }
                     Switch(StaticValues.SwitchState.MAKI);
+                    AudioManager.Instance.PlayExVoice("yukari_switch", true);
                     break;
                 case StaticValues.SwitchState.MAKI:
                     if (StaticValues.yukariHP <= 0)
@@ -411,6 +419,7 @@ public class Player : MonoBehaviour
                         return;
                     }
                     Switch(StaticValues.SwitchState.YUKARI);
+                    AudioManager.Instance.PlayExVoice("maki_switch", true);
                     break;
                 default:
                     AudioManager.Instance.PlaySE("cancel"); // 仮？
@@ -510,6 +519,7 @@ public class Player : MonoBehaviour
                     GameObject effect = Instantiate(invincibleEffect);
                     effect.transform.position = new Vector2(transform.position.x, transform.position.y - 0.3f);
                     AudioManager.Instance.PlaySE("avoidance");
+                    AudioManager.Instance.PlayExVoice("maki_hide", true);
                 } 
                 // しゃがみ -> 他のステート でしゃがみ無敵解除
                 else if (animationState == AnimationState.SQUAT)
@@ -627,6 +637,7 @@ public class Player : MonoBehaviour
             {
                 if (IsYukari())
                 {
+                    AudioManager.Instance.PlayExVoice("yukari_dead", true);
                     if (StaticValues.makiHP <= 0 || StaticValues.switchState == StaticValues.SwitchState.YUKARI_ONLY)
                     {
                         isDead = true;
@@ -645,6 +656,7 @@ public class Player : MonoBehaviour
                 }
                 else if (IsMaki())
                 {
+                    AudioManager.Instance.PlayExVoice("maki_dead", true);
                     if (StaticValues.yukariHP <= 0 || StaticValues.switchState == StaticValues.SwitchState.MAKI_ONLY)
                     {
                         isDead = true;
@@ -660,6 +672,17 @@ public class Player : MonoBehaviour
                         transform.position = lastStandPos2;
                         Switch(StaticValues.SwitchState.YUKARI);
                     }
+                }
+            } else
+            {
+
+                if (IsYukari())
+                {
+                    AudioManager.Instance.PlayExVoice("yukari_damage", true);
+                }
+                else
+                {
+                    AudioManager.Instance.PlayExVoice("maki_damage", true);
                 }
             }
         }

@@ -146,9 +146,16 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         playback.Stop(false);
     }
 
-    public void PlayExVoice(string exVoiceName)
+    public void PlayExVoice(string exVoiceName, bool isUseCommonAcb = false)
     {
-        voice.SetCue(currentAcb, exVoiceName);
+        if (isUseCommonAcb)
+        {
+            voice.SetCue(seAcb, exVoiceName);
+        } 
+        else
+        {
+            voice.SetCue(currentAcb, exVoiceName);
+        }
         voice.Start();
     }
 
