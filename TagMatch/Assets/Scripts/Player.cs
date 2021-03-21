@@ -518,8 +518,10 @@ public class Player : MonoBehaviour
                     squatInvincibleTime = 0.5f;
                     GameObject effect = Instantiate(invincibleEffect);
                     effect.transform.position = new Vector2(transform.position.x, transform.position.y - 0.3f);
-                    AudioManager.Instance.PlaySE("avoidance");
-                    AudioManager.Instance.PlayExVoice("maki_hide", true);
+
+                    // しゃがみ連打でうるさかったり同時再生数の上限が越えかねなかったりで良くないので一旦消す。 音や仕組みがいい感じになったら戻すのも検討する
+                    //AudioManager.Instance.PlaySE("avoidance");
+                    //AudioManager.Instance.PlayExVoice("maki_hide", true);
                 } 
                 // しゃがみ -> 他のステート でしゃがみ無敵解除
                 else if (animationState == AnimationState.SQUAT)
