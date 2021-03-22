@@ -55,7 +55,7 @@ public class Title : MonoBehaviour
                     else if (Input.GetAxisRaw("Vertical") > 0) nowSelection--;
                     if (nowSelection > TitleList.EXIT) nowSelection = TitleList.NEW_GAME;
                     if (nowSelection < TitleList.NEW_GAME) nowSelection = TitleList.EXIT;
-                    titleCursor.transform.localPosition = new Vector2(titleCursorDefaultPos.x, titleCursorDefaultPos.y - (76 * (int)nowSelection));
+                    titleCursor.transform.localPosition = new Vector2(titleCursorDefaultPos.x, titleCursorDefaultPos.y - (67 * (int)nowSelection));
                 }
                 AxisDownChecker.AxisDownUpdate();
 

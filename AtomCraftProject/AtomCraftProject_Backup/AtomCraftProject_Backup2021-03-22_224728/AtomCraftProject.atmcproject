@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Orca XML File Format -->
+<OrcaTrees ObjectTypeExpression="Full" BinaryEncodingType="Base64" FileVersion="3" FileRevision="0">
+  <OrcaTree OrcaName="(no name)">
+    <Orca OrcaName="AtomCraftProject" EncryptionKeyType="CompositeKey" FormatVersion="Ver.1.04.00" OoUniqId="fab4a6b8-21dd-48e4-8d22-31b9dfeacdc4" VersionInfoV3="Ver.3.44.20" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoProjectV2">
+      <Orca OrcaName="WaveMarkerTagSetting" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveMarkerTagSetting"/>
+    </Orca>
+  </OrcaTree>
+</OrcaTrees>
+<!-- Copyright (c) CRI Middleware Co.,LTD. -->
+<!-- end of document -->

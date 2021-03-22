@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TitleCamera : MonoBehaviour
 {
-    const float CAMERA_MOVE_SPEED = 10.0f;
+    const float CAMERA_MOVE_SPEED = 5.0f;
 
     // Start is called before the first frame update
     void Start()
