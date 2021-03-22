@@ -7,7 +7,7 @@ public class Title : MonoBehaviour
 {
     Animator anim;
     GameObject titleCursor;
-    GameObject optionCursor;
+    GameObject optionCursor, optionLeftCursor, optionRightCursor;
     Vector2 titleCursorDefaultPos;
     Vector2 optionCursorDefaultPos;
     KeyConfigUI keyConfigUIScript;
@@ -36,6 +36,8 @@ public class Title : MonoBehaviour
         anim = GetComponent<Animator>();
         titleCursor = GameObject.Find("TitleCursor");
         optionCursor = GameObject.Find("OptionCursor");
+        optionLeftCursor = GameObject.Find("OptionLeftCursor");
+        optionRightCursor = GameObject.Find("OptionRightCursor");
         titleCursorDefaultPos = titleCursor.transform.localPosition;
         optionCursorDefaultPos = optionCursor.transform.localPosition;
         keyConfigUIScript = GameObject.Find("KeyConfig").GetComponent<KeyConfigUI>();
@@ -102,6 +104,10 @@ public class Title : MonoBehaviour
                     optionCusrsorPosY -= (optionSelection >= OptionList.KEY_CONFIG ? 38 : 0);
                     optionCusrsorPosY -= (optionSelection >= OptionList.CLOSE ? 38 : 0);
                     optionCursor.transform.localPosition = new Vector2(optionCursorDefaultPos.x, optionCusrsorPosY);
+
+                    bool isLeftRightCursorActive = (optionSelection < OptionList.KEY_CONFIG);
+                    optionLeftCursor.SetActive(isLeftRightCursorActive);
+                    optionRightCursor.SetActive(isLeftRightCursorActive);
                 }
                 AxisDownChecker.AxisDownUpdate();
 

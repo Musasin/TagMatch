@@ -92,6 +92,23 @@ public class KeyConfigUI : MonoBehaviour
         foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
         {
             if (Input.GetKeyDown (code)) {
+
+                // 十字キーはキー設定として受け入れず、何もしないか設定先の切り替えを行う
+                if (code == KeyCode.LeftArrow || code == KeyCode.RightArrow)
+                {
+                    return;
+                }
+                if (code == KeyCode.UpArrow)
+                {
+                    keyConfigState = (KeyConfigState)Math.Max((int)KeyConfigState.INPUT_JUMP, (int)keyConfigState - 1);
+                    return;
+                }
+                if (code == KeyCode.DownArrow)
+                {
+                    keyConfigState = (KeyConfigState)Math.Min((int)KeyConfigState.RESULT, (int)keyConfigState + 1);
+                    return;
+                }
+
                 switch (keyConfigState)
                 {
                     case KeyConfigState.INPUT_JUMP:
