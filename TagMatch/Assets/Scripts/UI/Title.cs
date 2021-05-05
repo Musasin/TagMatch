@@ -41,6 +41,15 @@ public class Title : MonoBehaviour
         titleCursorDefaultPos = titleCursor.transform.localPosition;
         optionCursorDefaultPos = optionCursor.transform.localPosition;
         keyConfigUIScript = GameObject.Find("KeyConfig").GetComponent<KeyConfigUI>();
+
+        if (StaticValues.isReloadACB == false) { return; }
+        AudioManager.Instance.LoadACB("Title", "Title.acb");
+        StaticValues.isReloadACB = false;
+
+        if (AudioManager.Instance.lastPlayedBGM != "title")
+        {
+            AudioManager.Instance.PlayBGM("title");
+        }
     }
 
     // Update is called once per frame
