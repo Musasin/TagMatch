@@ -64,3 +64,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+AtomCraftProject/AtomCraftProject_Backup
+*.user_settings
+*.atmcuser
