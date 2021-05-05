@@ -73,9 +73,11 @@ public class Title : MonoBehaviour
                     switch (nowSelection)
                     {
                         case TitleList.NEW_GAME:
+                            StaticValues.isReloadACB = true;
                             SceneManager.LoadScene("Stage1-0");
                             break;
                         case TitleList.CONTINUE:
+                            StaticValues.isReloadACB = true;
                             // TODO
                             break;
                         case TitleList.EX_MODE:
