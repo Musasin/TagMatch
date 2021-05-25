@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
+    float time;
     Animator anim;
+    Image fadePanel;
     GameObject titleCursor;
     GameObject optionCursor, optionLeftCursor, optionRightCursor;
     Vector2 titleCursorDefaultPos;
@@ -14,7 +17,7 @@ public class Title : MonoBehaviour
 
     enum TitleState
     {
-        TITLE, NEW_GAME_SELECT, EX_MODE_SELECT, OPTION, KEY_CONFIG
+        FADE_IN, TITLE, NEW_GAME_SELECT, EX_MODE_SELECT, OPTION, KEY_CONFIG
     }
     TitleState titleState;
 
@@ -33,7 +36,14 @@ public class Title : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 仮。 Talkにもあるので終わったら統合する
+        AudioManager.Instance.ChangeBGMVolume(0.4f);
+        AudioManager.Instance.ChangeSEVolume(0.4f);
+        AudioManager.Instance.ChangeVoiceVolume(0.4f);
+
+        time = 0;
         anim = GetComponent<Animator>();
+        fadePanel = GameObject.Find("FadePanel").GetComponent<Image>();
         titleCursor = GameObject.Find("TitleCursor");
         optionCursor = GameObject.Find("OptionCursor");
         optionLeftCursor = GameObject.Find("OptionLeftCursor");
@@ -41,25 +51,33 @@ public class Title : MonoBehaviour
         titleCursorDefaultPos = titleCursor.transform.localPosition;
         optionCursorDefaultPos = optionCursor.transform.localPosition;
         keyConfigUIScript = GameObject.Find("KeyConfig").GetComponent<KeyConfigUI>();
-
+        
         if (StaticValues.isReloadACB == false) { return; }
         AudioManager.Instance.LoadACB("Title", "Title.acb");
         StaticValues.isReloadACB = false;
-
-        if (AudioManager.Instance.lastPlayedBGM != "title")
-        {
-            AudioManager.Instance.PlayBGM("title");
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         switch (titleState)
         {
+            case TitleState.FADE_IN:
+                fadePanel.color = new Color(0, 0, 0, 1.0f - time);
+                if (time > 1.0f)
+                {
+                    if (AudioManager.Instance.lastPlayedBGM != "title")
+                    {
+                        AudioManager.Instance.PlayBGM("title");
+                    }
+                    titleState = TitleState.TITLE;
+                }
+                break;
             case TitleState.TITLE:
                 if (AxisDownChecker.GetAxisDownVertical())
                 {
+                    AudioManager.Instance.PlaySE("select");
                     if (Input.GetAxisRaw("Vertical") < 0) nowSelection++;
                     else if (Input.GetAxisRaw("Vertical") > 0) nowSelection--;
                     if (nowSelection > TitleList.EXIT) nowSelection = TitleList.NEW_GAME;
@@ -70,6 +88,7 @@ public class Title : MonoBehaviour
 
                 if (KeyConfig.GetJumpKeyDown())
                 {
+                    AudioManager.Instance.PlaySE("accept");
                     switch (nowSelection)
                     {
                         case TitleList.NEW_GAME:
@@ -106,6 +125,7 @@ public class Title : MonoBehaviour
             case TitleState.OPTION:
                 if (AxisDownChecker.GetAxisDownVertical())
                 {
+                    AudioManager.Instance.PlaySE("select");
                     if (Input.GetAxisRaw("Vertical") < 0) optionSelection++;
                     else if (Input.GetAxisRaw("Vertical") > 0) optionSelection--;
                     if (optionSelection > OptionList.CLOSE) optionSelection = OptionList.WINDOW_SIZE;
@@ -125,6 +145,7 @@ public class Title : MonoBehaviour
 
                 if (KeyConfig.GetJumpKeyDown())
                 {
+                    AudioManager.Instance.PlaySE("accept");
                     switch (optionSelection)
                     {
                         case OptionList.WINDOW_SIZE:
@@ -159,4 +180,5 @@ public class Title : MonoBehaviour
     {
         SceneManager.LoadScene("Stage1-0");
     }
+
 }

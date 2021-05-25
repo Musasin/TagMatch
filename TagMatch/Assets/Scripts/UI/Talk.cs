@@ -70,7 +70,7 @@ public class Talk: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 仮。
+        // 仮。 Titleにもあるので終わったら統合する
         AudioManager.Instance.ChangeBGMVolume(0.4f);
         AudioManager.Instance.ChangeSEVolume(0.4f);
         AudioManager.Instance.ChangeVoiceVolume(0.4f);
