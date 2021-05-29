@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bf45ef6122e4f7d9a11ab668f47781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPass: Picture/Kiritan
+  folderPass: Picture/Frimomen
 --- !u!1 &8044842233105942765
 GameObject:
   m_ObjectHideFlags: 0
