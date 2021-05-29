@@ -273,6 +273,7 @@ public class Player : MonoBehaviour
                             .Append(makiImage.transform.DOLocalRotate(new Vector3(0, 0, 360), BACKFLIP_TIME, RotateMode.FastBeyond360)).Play();
                         InstantiateSpecialBullet(Bullet.BulletType.MAKI_JUMP_ATTACK, jumpAttack, BACKFLIP_TIME);
                         AudioManager.Instance.PlaySE("dash");
+                        AudioManager.Instance.PlayExVoice("maki_jump", true);
                     }
                     StaticValues.AddMP(false, -MP_COST_MAKI_JUMP);
                     velocityY = JUMP_VELOCITY;
@@ -281,7 +282,6 @@ public class Player : MonoBehaviour
                     effect.transform.localScale = new Vector2(effect.transform.localScale.x * (isRight ? 1 : -1), effect.transform.localScale.y);
                     isUsedDash = true;
                     AudioManager.Instance.PlaySE("jump");
-                    AudioManager.Instance.PlayExVoice("maki_jump", true);
                 }
             }
         }
