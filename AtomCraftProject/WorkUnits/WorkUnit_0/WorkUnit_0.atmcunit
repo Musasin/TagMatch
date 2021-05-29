@@ -647,7 +647,7 @@
               </Orca>
             </Orca>
           </Orca>
-          <Orca OrcaName="Stage4" AwbHash="28294" LastOutputCueSheetSize="4081824" OoUniqId="547b3e78-d9bf-4587-a014-76832e1c2e2c" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
+          <Orca OrcaName="Stage4" AwbHash="28294" LastOutputCueSheetSize="5014336" OoUniqId="547b3e78-d9bf-4587-a014-76832e1c2e2c" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
             <Orca OrcaName="stage" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="8" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_stage4" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="stage4.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/stage4.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
@@ -767,15 +767,15 @@
               </Orca>
             </Orca>
           </Orca>
-          <Orca OrcaName="Stage5" AwbHash="28521" OoUniqId="44543649-7492-4baa-be1c-c3f3e5564bea" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
-            <Orca OrcaName="stage" CueID="0" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+          <Orca OrcaName="Stage5" AwbHash="28521" LastOutputCueSheetSize="2010816" OoUniqId="44543649-7492-4baa-be1c-c3f3e5564bea" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
+            <Orca OrcaName="stage" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="0" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_stage5" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="stage5.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/stage5.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
             </Orca>
           </Orca>
-          <Orca OrcaName="Stage6" AwbHash="27282" OoUniqId="1e1a8c5c-a156-4aaf-bb31-f2434c728524" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
-            <Orca OrcaName="stage" CueID="0" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+          <Orca OrcaName="Stage6" AwbHash="27282" LastOutputCueSheetSize="2201728" OoUniqId="1e1a8c5c-a156-4aaf-bb31-f2434c728524" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
+            <Orca OrcaName="stage" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="0" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="0.9" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_title" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="title.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/title.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
