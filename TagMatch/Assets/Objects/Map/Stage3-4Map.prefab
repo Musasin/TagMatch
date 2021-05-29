@@ -14697,7 +14697,7 @@ PrefabInstance:
     - target: {fileID: 1131637329389708283, guid: 5ac69a41530ef44f2ad12624e7687ff0,
         type: 3}
       propertyPath: scenarioFileName
-      value: stage2_boss
+      value: stage3_boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ac69a41530ef44f2ad12624e7687ff0, type: 3}
