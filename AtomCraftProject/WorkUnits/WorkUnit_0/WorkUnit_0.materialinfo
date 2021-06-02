@@ -15,6 +15,8 @@
           <Orca OrcaName="boss2.wav" Channels="2" EncodeFileSize="3169256" ReloopEnableFlag="True" ReloopEnd="4754310" ResamplingRate="44100" SampleFrames="4754310" SamplingRate="44100" SourceFileSize="19017320" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="stage4.wav" Channels="2" EncodeFileSize="2970474" ReloopEnableFlag="True" ReloopEnd="4456420" ReloopStart="557053" ResamplingRate="44100" SampleFrames="4456420" SamplingRate="44100" SourceFileSize="17825760" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="stage5.wav" Channels="2" EncodeFileSize="2003880" ReloopEnableFlag="True" ReloopEnd="3006106" ReloopStart="250509" ResamplingRate="44100" SampleFrames="3006106" SamplingRate="44100" SourceFileSize="12024504" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="Jester.wav" Channels="2" Comment="音子屋" EncodeFileSize="9970936" ReloopEnd="14970593" ResamplingRate="44100" SampleFrames="14970593" SamplingRate="44100" SourceFileSize="59962260" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="opening1.wav" Channels="2" Comment="音子屋" EncodeFileSize="6109452" ReloopEnd="9172579" ResamplingRate="44100" SampleFrames="9172579" SamplingRate="44100" SourceFileSize="36759900" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="SE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="DONT_PUSH" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
