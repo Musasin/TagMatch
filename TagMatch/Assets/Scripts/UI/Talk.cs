@@ -11,7 +11,7 @@ using System.Linq;
 public class Talk: MonoBehaviour
 {
     public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, aoiPrefab, frimomenPrefab;
-    public GameObject leftWindow, rightWindow;
+    public GameObject leftWindow, rightWindow, angerLeftWindow, angerRightWindow;
 
     WipePanel wipePanel;
     GameObject nowWindow, beforeWindow1, beforeWindow2;
@@ -195,9 +195,14 @@ public class Talk: MonoBehaviour
                 break;
 
             case "talk":
-                if (position == "left")
+                if (position == "left" || position == "anger_left")
                 {
-                    AddTalk(leftWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
+                    GameObject window = leftWindow;
+                    if (position == "anger_left")
+                    {
+                        window = angerLeftWindow;
+                    }
+                    AddTalk(window, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
                     foreach (KeyValuePair<string, Animator> kvp in leftCharaAnimator)
                     {
                         if (kvp.Key == chara)
@@ -209,9 +214,14 @@ public class Talk: MonoBehaviour
                         }
                     }
                 } 
-                if (position == "right")
+                if (position == "right" || position == "anger_right")
                 {
-                    AddTalk(rightWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
+                    GameObject window = rightWindow;
+                    if (position == "anger_right")
+                    {
+                        window = angerRightWindow;
+                    }
+                    AddTalk(window, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
                     foreach (KeyValuePair<string, Animator> kvp in rightCharaAnimator)
                     {
                         if (kvp.Key == chara)

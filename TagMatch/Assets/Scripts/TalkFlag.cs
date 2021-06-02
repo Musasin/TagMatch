@@ -5,6 +5,7 @@ using UnityEngine;
 public class TalkFlag : MonoBehaviour
 {
     public string scenarioFileName;
+    public bool isForcePlay;
     Talk talkScript;
     bool isPlayed;
 
@@ -12,12 +13,16 @@ public class TalkFlag : MonoBehaviour
     void Start()
     {
         talkScript = GameObject.Find("TalkUI").GetComponent<Talk>();
+        if (isForcePlay)
+        {
+            talkScript.SetScenario(scenarioFileName, false);
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void OnTriggerStay2D(Collider2D collision)
