@@ -457,5 +457,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpeningCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7134179236029680353, guid: d1e72231f173248009620c936943beba,
+        type: 3}
+      propertyPath: angerRightWindow
+      value: 
+      objectReference: {fileID: 1718639967200246475, guid: 23976b5c8553f42139921b6cf90db77b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1e72231f173248009620c936943beba, type: 3}

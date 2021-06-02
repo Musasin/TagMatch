@@ -329,13 +329,13 @@ public class Talk: MonoBehaviour
         {
             Transform tr = beforeWindow1.GetComponent<Transform>();
             tr.DOMove(new Vector2(tr.position.x, tr.position.y + 200), 0.3f);
-            beforeWindow1.GetComponent<Animator>().SetInteger("state", 1);
+            beforeWindow1.GetComponentInChildren<Animator>().SetInteger("state", 1);
         }
         if (beforeWindow2 != null)
         {
             Transform tr = beforeWindow2.GetComponent<Transform>();
             tr.DOMove(new Vector2(tr.position.x, tr.position.y + 200), 0.3f);
-            beforeWindow2.GetComponent<Animator>().SetInteger("state", 2);
+            beforeWindow2.GetComponentInChildren<Animator>().SetInteger("state", 2);
         }
     }
 

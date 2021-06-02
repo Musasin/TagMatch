@@ -87,7 +87,7 @@ Animator:
   m_GameObject: {fileID: 1092675985158489586}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ac98848135b44a9097390be96438ef2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6ab158a80de4f4f2d8cc4e91d1392153, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
