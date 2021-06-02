@@ -4,18 +4,23 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - yukari: {fileID: 2463399057827028867, guid: 35f1fb21770024ba686eaa6d86b43a59,
-      type: 3}
-  - rightYukari: {fileID: 2463399057827028867, guid: 38dd5421ef36b4a4a940d42b8365f47b,
-      type: 3}
-  - maki: {fileID: 6718408753193743036, guid: 6980f7ee7aa374278aa6152fbe884cb3, type: 3}
-  - rightMaki: {fileID: 5839086669376515938, guid: b8fa881caf37947fe8f9d95b746e5c10,
-      type: 3}
-  - kiritan: {fileID: 7916608249690912060, guid: f18090874b9754c7a85c05f0f68875ea,
-      type: 3}
+  - yukariPrefab: {instanceID: 0}
+  - rightYukariPrefab: {instanceID: 0}
+  - makiPrefab: {instanceID: 0}
+  - rightMakiPrefab: {instanceID: 0}
+  - kiritanPrefab: {instanceID: 0}
+  - akanePrefab: {instanceID: 0}
+  - aoiPrefab: {instanceID: 0}
+  - frimomenPrefab: {instanceID: 0}
   - leftWindow: {fileID: 8393917665650480927, guid: 2b56c1a82139948c4a32a9bd63dfa444,
       type: 3}
   - rightWindow: {fileID: 1092675985158489586, guid: bfa3606c24e8040a89769544a2b105dc,
+      type: 3}
+  - angerLeftWindow: {fileID: 8393917665650480927, guid: ebc132b3cc1a2463999edfbda021398d,
+      type: 3}
+  - angerRightWindow: {fileID: 1092675985158489586, guid: f586f601eb8e54e69a9eb3d919334a86,
+      type: 3}
+  - centerWindow: {fileID: 8393917665650480927, guid: 5ea923e007f92409cb0285e61129fe5b,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

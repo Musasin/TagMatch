@@ -11,7 +11,7 @@ using System.Linq;
 public class Talk: MonoBehaviour
 {
     public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, aoiPrefab, frimomenPrefab;
-    public GameObject leftWindow, rightWindow, angerLeftWindow, angerRightWindow;
+    public GameObject leftWindow, rightWindow, angerLeftWindow, angerRightWindow, centerWindow;
 
     WipePanel wipePanel;
     GameObject nowWindow, beforeWindow1, beforeWindow2;
@@ -233,8 +233,15 @@ public class Talk: MonoBehaviour
                         }
                     }
                 }
+                if (position == "center")
+                {
+                    AddTalk(centerWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
+                }
 
-                charaObject[chara].transform.SetAsLastSibling();
+                if (chara != "")
+                {
+                    charaObject[chara].transform.SetAsLastSibling();
+                }
 
                 // 表情差分
                 if (charaPicture.ContainsKey(chara))
@@ -334,6 +341,7 @@ public class Talk: MonoBehaviour
 
     public void SetScenario(string scenarioFileName, bool isMoveCamera)
     {
+        Debug.Log("SetScenario");
         time = 0;
         nowKey = 0;
         StaticValues.isTalkPause = true;
