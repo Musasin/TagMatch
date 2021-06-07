@@ -8,6 +8,7 @@ public class MoveObject : MonoBehaviour
     public float moveY;
     public float distanceX;
     public float distanceY;
+    public bool isBossStage;
     float firstPosX, firstPosY;
     float posX, posY;
     bool isFront;
@@ -31,6 +32,10 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsActive())
+        {
+            return;
+        }
         bool newIsFront = isFront;
 
         if (isFront)
@@ -77,6 +82,16 @@ public class MoveObject : MonoBehaviour
 
         isFront = newIsFront;
         transform.localPosition = new Vector2(posX, posY);
+    }
+
+    bool IsActive()
+    {
+        if (!isBossStage)
+        {
+            return true;
+        }
+
+        return StaticValues.isFixedCamera && !StaticValues.isPause && !StaticValues.isTalkPause;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
