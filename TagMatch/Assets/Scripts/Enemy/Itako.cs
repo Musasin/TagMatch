@@ -7,6 +7,7 @@ using DG.Tweening;
 public class Itako : BossAIBase
 {
     public GameObject flameBullet, ghostRotationBullet;
+    public bool isSecondBattle;
     BoxCollider2D bc;
     Vector2 upperLeftPos, upperRightPos, upperCenterPos, lowerLeftPos, lowerRightPos, lowerCenterPos;
 
@@ -23,6 +24,9 @@ public class Itako : BossAIBase
         CHARGE,
         FLAME_SHOT,
         FLAME_TWIN_SHOT,
+        FLAME_QUATTRO_SHOT,
+        FLAME_QUADRUPLET_SHOT,
+        FLAME_OCUTUPLET_SHOT,
         GHOST_SHOT,
         LOOP,
         WAIT,
@@ -38,12 +42,22 @@ public class Itako : BossAIBase
         anim = GetComponentInChildren<Animator>();
         bossScript = GetComponent<Boss>();
         state = ActionState.START;
-        upperLeftPos = GameObject.Find("UpperLeftPos").transform.position;
-        upperRightPos = GameObject.Find("UpperRightPos").transform.position;
-        upperCenterPos = GameObject.Find("UpperCenterPos").transform.position;
-        lowerLeftPos = GameObject.Find("LowerLeftPos").transform.position;
-        lowerRightPos = GameObject.Find("LowerRightPos").transform.position;
-        lowerCenterPos = GameObject.Find("LowerCenterPos").transform.position;
+
+        if (isSecondBattle)
+        {
+            upperCenterPos = GameObject.Find("UpperCenterPos").transform.position;
+            lowerLeftPos = GameObject.Find("LowerLeftPos2").transform.position;
+            lowerRightPos = GameObject.Find("LowerRightPos2").transform.position;
+            lowerCenterPos = GameObject.Find("LowerCenterPos").transform.position;
+        } else
+        {
+            upperLeftPos = GameObject.Find("UpperLeftPos").transform.position;
+            upperRightPos = GameObject.Find("UpperRightPos").transform.position;
+            upperCenterPos = GameObject.Find("UpperCenterPos").transform.position;
+            lowerLeftPos = GameObject.Find("LowerLeftPos").transform.position;
+            lowerRightPos = GameObject.Find("LowerRightPos").transform.position;
+            lowerCenterPos = GameObject.Find("LowerCenterPos").transform.position;
+        }
     }
     
     public override void Reset()
@@ -91,84 +105,112 @@ public class Itako : BossAIBase
             case ActionState.START:
                 AudioManager.Instance.PlayExVoice("itako_start");
 
-                actionStateQueue.Add(ActionState.WAIT);
-
-                // 開幕に幽霊攻撃
-                actionStateQueue.Add(ActionState.CHARGE);
-                actionStateQueue.Add(ActionState.GHOST_SHOT);
-
-                // 左側で炎→幽霊
-                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
-                actionStateQueue.Add(ActionState.FLAME_SHOT);
-                actionStateQueue.Add(ActionState.CHARGE);
-                actionStateQueue.Add(ActionState.GHOST_SHOT);
-
-                // 下段どっちかで炎攻撃
-                if (Random.Range(0, 1) < 0.5f)
+                if (isSecondBattle)
                 {
-                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
-                } 
-                else
-                {
+                    actionStateQueue.Add(ActionState.WAIT);
+                    
+                    // 中央で幽霊攻撃
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_CENTER);
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+                    
                     actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
-                }
-                actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
-                
-                // 中央で幽霊攻撃
-                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
-                actionStateQueue.Add(ActionState.GHOST_SHOT);
+                    actionStateQueue.Add(ActionState.FLAME_QUADRUPLET_SHOT);
+                    
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
+                    actionStateQueue.Add(ActionState.FLAME_QUADRUPLET_SHOT);
+                    
+                    actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+                    
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
+                    actionStateQueue.Add(ActionState.FLAME_OCUTUPLET_SHOT);
+                    
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
+                    actionStateQueue.Add(ActionState.FLAME_OCUTUPLET_SHOT);
 
-                // 下段中央で両方に炎攻撃
-                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_CENTER);
-                actionStateQueue.Add(ActionState.FLAME_SHOT);
-                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
-                actionStateQueue.Add(ActionState.CHARGE);
-                actionStateQueue.Add(ActionState.FLAME_SHOT);
+                    actionStateQueue.Add(ActionState.LOOP);
 
-                
-                // 上段どっちかで幽霊→炎攻撃
-                if (Random.Range(0, 1) < 0.5f)
+                } else
                 {
-                    actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
-                } 
-                else
-                {
+                    actionStateQueue.Add(ActionState.WAIT);
+
+                    // 開幕に幽霊攻撃
+                    actionStateQueue.Add(ActionState.CHARGE);
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+
+                    // 左側で炎→幽霊
                     actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
-                }
-                actionStateQueue.Add(ActionState.GHOST_SHOT);
-                actionStateQueue.Add(ActionState.CHARGE);
-                actionStateQueue.Add(ActionState.FLAME_SHOT);
+                    actionStateQueue.Add(ActionState.FLAME_SHOT);
+                    actionStateQueue.Add(ActionState.CHARGE);
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+
+                    // 下段どっちかで炎攻撃
+                    if (Random.Range(0, 1) < 0.5f)
+                    {
+                        actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
+                    } 
+                    else
+                    {
+                        actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
+                    }
+                    actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
+                
+                    // 中央で幽霊攻撃
+                    actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+
+                    // 下段中央で両方に炎攻撃
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_CENTER);
+                    actionStateQueue.Add(ActionState.FLAME_SHOT);
+                    actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+                    actionStateQueue.Add(ActionState.CHARGE);
+                    actionStateQueue.Add(ActionState.FLAME_SHOT);
 
                 
-                // 下段どっちかで幽霊攻撃
-                if (Random.Range(0, 1) < 0.5f)
-                {
+                    // 上段どっちかで幽霊→炎攻撃
+                    if (Random.Range(0, 1) < 0.5f)
+                    {
+                        actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
+                    } 
+                    else
+                    {
+                        actionStateQueue.Add(ActionState.MOVE_TO_UPPER_LEFT);
+                    }
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+                    actionStateQueue.Add(ActionState.CHARGE);
+                    actionStateQueue.Add(ActionState.FLAME_SHOT);
+
+                
+                    // 下段どっちかで幽霊攻撃
+                    if (Random.Range(0, 1) < 0.5f)
+                    {
+                        actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
+                    } 
+                    else
+                    {
+                        actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
+                    }
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+
+                    // 中央で炎攻撃2回
+                    actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
+                    actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
+                    actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+                    actionStateQueue.Add(ActionState.CHARGE);
+                    actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
+                
+                    // 下段中央で幽霊攻撃2回
+                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_CENTER);
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+                    actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+                    actionStateQueue.Add(ActionState.CHARGE);
+                    actionStateQueue.Add(ActionState.GHOST_SHOT);
+                
+                    // 右上に戻って最初から
                     actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
-                } 
-                else
-                {
-                    actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
+                    actionStateQueue.Add(ActionState.LOOP);
+
                 }
-                actionStateQueue.Add(ActionState.GHOST_SHOT);
-
-                // 中央で炎攻撃2回
-                actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
-                actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
-                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
-                actionStateQueue.Add(ActionState.CHARGE);
-                actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
-                
-                // 下段中央で幽霊攻撃2回
-                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_CENTER);
-                actionStateQueue.Add(ActionState.GHOST_SHOT);
-                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
-                actionStateQueue.Add(ActionState.CHARGE);
-                actionStateQueue.Add(ActionState.GHOST_SHOT);
-                
-                // 右上に戻って最初から
-                actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
-                actionStateQueue.Add(ActionState.LOOP);
-
                 break;
             case ActionState.LOOP:
                 isPlaying = false;
@@ -236,6 +278,56 @@ public class Itako : BossAIBase
                     .AppendCallback(() => { InstantiateFlame(isRight ? 1.5f : -1.5f); })
                     .AppendInterval(0.2f)
                     .AppendCallback(() => { InstantiateFlame(isRight ? 3.0f : -3.0f); })
+                    .AppendInterval(1.5f)
+                    .OnComplete(() =>
+                    {
+                        anim.SetBool("isAttack", false);
+                        isPlaying = false;
+                    })
+                    .Play();
+                break;
+            case ActionState.FLAME_QUADRUPLET_SHOT:
+                isPlaying = true;
+                AudioManager.Instance.PlayExVoice("itako_fire");
+                anim.SetBool("isAttack", true);
+                sequence = DOTween.Sequence()
+                    .AppendInterval(0.5f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 1.5f : -1.5f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 3.0f : -3.0f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 4.5f : -4.5f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 6.0f : -6.0f); })
+                    .AppendInterval(1.5f)
+                    .OnComplete(() =>
+                    {
+                        anim.SetBool("isAttack", false);
+                        isPlaying = false;
+                    })
+                    .Play();
+                break;
+            case ActionState.FLAME_OCUTUPLET_SHOT:
+                isPlaying = true;
+                AudioManager.Instance.PlayExVoice("itako_fire");
+                anim.SetBool("isAttack", true);
+                sequence = DOTween.Sequence()
+                    .AppendInterval(0.5f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 1.5f : -1.5f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 3.0f : -3.0f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 4.5f : -4.5f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 6.0f : -6.0f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 7.5f : -7.5f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 9.0f : -9.0f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 10.5f : -10.5f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 12.0f : -12.0f); })
                     .AppendInterval(1.5f)
                     .OnComplete(() =>
                     {

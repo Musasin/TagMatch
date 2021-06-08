@@ -6,6 +6,7 @@ using DG.Tweening;
 public class Kiritan : BossAIBase
 {
     public GameObject kiritanhouBullet;
+    public bool isSecondBattle;
     GameObject kiritanhouPos1, kiritanhouPos2;
     SpriteRenderer jetFlameSR1, jetFlameSR2;
     Vector2 upperLeftPos, upperRightPos, lowerLeftPos, lowerRightPos;
