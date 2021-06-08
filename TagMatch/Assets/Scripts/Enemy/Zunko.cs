@@ -7,6 +7,7 @@ using DG.Tweening;
 public class Zunko : BossAIBase
 {
     public GameObject zundaArrowBullet;
+    public bool isSecondBattle;
     Transform arrowPosTransform;
     GameObject holdingArrow1;
     GameObject holdingArrow2;
@@ -453,7 +454,13 @@ public class Zunko : BossAIBase
     void ShotArrow(GameObject arrow, Vector2 force)
     {
         arrow.GetComponent<RotateWithDirection>().SetIsActive(true);
-        arrow.transform.SetParent(transform.parent);
+        if (isSecondBattle)
+        {
+            arrow.transform.SetParent(transform.parent.parent);
+        } else
+        {
+            arrow.transform.SetParent(transform.parent);
+        }
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.None;
         rb.AddForce(force);
