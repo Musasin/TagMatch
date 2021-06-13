@@ -22,7 +22,8 @@ public class OneWayObject : MonoBehaviour
     void Update()
     {
         forceIgnore = playerScript.IsGetOff();
-        if (!forceIgnore)
+        bc.enabled = (!forceIgnore && !isIgnore);
+        if (!forceIgnore && !isIgnore)
         {
             // 降りる処理の解除は毎フレーム行う
             bc.enabled = true;
@@ -33,12 +34,9 @@ public class OneWayObject : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Player":
-                // プレイヤーが乗っているかつ降りるモードの時だけ降りる
-                if (forceIgnore)
-                {
-                    bc.enabled = false;
-                }
+            case "PlayerTroughJudgement":
+                isIgnore = true;
+                bc.enabled = false;
                 break;
         }
     }
@@ -46,10 +44,9 @@ public class OneWayObject : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Player":
-            case "PlayerBullet":
+            case "PlayerTroughJudgement":
                 isIgnore = true;
-                Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>(), isIgnore);
+                bc.enabled = false;
                 break;
         }
     }
@@ -58,10 +55,8 @@ public class OneWayObject : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Player":
-            case "PlayerBullet":
+            case "PlayerTroughJudgement":
                 isIgnore = false;
-                Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>(), isIgnore);
                 break;
         }
     }
@@ -70,4 +65,5 @@ public class OneWayObject : MonoBehaviour
     {
         return isIgnore;
     }
+
 }
