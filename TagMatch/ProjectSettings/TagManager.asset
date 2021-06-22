@@ -9,6 +9,7 @@ TagManager:
   - Damage
   - Item
   - PlayerBullet
+  - PlayerTroughJudgement
   layers:
   - Default
   - TransparentFX

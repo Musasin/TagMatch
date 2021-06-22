@@ -167,6 +167,12 @@ MonoBehaviour:
     type: 3}
   frimomenPrefab: {fileID: 7916608249690912060, guid: 31f258b9c936e4164bc87ade97ffda74,
     type: 3}
+  mob1Prefab: {fileID: 7916608249690912060, guid: 2f01907c4e8c14acc858d21850252e8b,
+    type: 3}
+  mob2Prefab: {fileID: 7916608249690912060, guid: 58c096eea4deb449eaeef88bd089844b,
+    type: 3}
+  mob3Prefab: {fileID: 7916608249690912060, guid: 62192a7220d8a4b3f9d0c7f6508454d4,
+    type: 3}
   leftWindow: {fileID: 8393917665650480927, guid: 2b56c1a82139948c4a32a9bd63dfa444,
     type: 3}
   rightWindow: {fileID: 1092675985158489586, guid: bfa3606c24e8040a89769544a2b105dc,
