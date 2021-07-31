@@ -244,7 +244,11 @@ MonoBehaviour:
     type: 3}
   akanePrefab: {fileID: 339425498611163847, guid: 615d86d77bb6d40e790049dbcc754e01,
     type: 3}
+  leftAkanePrefab: {fileID: 339425498611163847, guid: 51675909d222a48b696c2217b5dc43b3,
+    type: 3}
   aoiPrefab: {fileID: 8132088265961402930, guid: 5d0357e01976a461587d8dc71ef425ed,
+    type: 3}
+  leftAoiPrefab: {fileID: 8132088265961402930, guid: b509ccb9cd3754a05956986f87290025,
     type: 3}
   itakoPrefab: {fileID: 339425498611163847, guid: 11f6c29fcc2fd4c5dbb86b8d7c035f2c,
     type: 3}

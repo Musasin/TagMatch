@@ -10,7 +10,7 @@ using System.Linq;
 
 public class Talk: MonoBehaviour
 {
-    public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, aoiPrefab, itakoPrefab, zunkoPrefab, frimomenPrefab, mob1Prefab, mob2Prefab, mob3Prefab;
+    public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, leftAkanePrefab, aoiPrefab, leftAoiPrefab, itakoPrefab, zunkoPrefab, frimomenPrefab, mob1Prefab, mob2Prefab, mob3Prefab;
     public GameObject leftWindow, rightWindow, angerLeftWindow, angerRightWindow, centerWindow;
 
     WipePanel wipePanel;
@@ -86,7 +86,9 @@ public class Talk: MonoBehaviour
         charaObject.Add("maki", Instantiate(makiPrefab, transform));
         charaObject.Add("kiritan", Instantiate(kiritanPrefab, transform));
         charaObject.Add("akane", Instantiate(akanePrefab, transform));
+        charaObject.Add("left_akane", Instantiate(leftAkanePrefab, transform));
         charaObject.Add("aoi", Instantiate(aoiPrefab, transform));
+        charaObject.Add("left_aoi", Instantiate(leftAoiPrefab, transform));
         charaObject.Add("itako", Instantiate(itakoPrefab, transform));
         charaObject.Add("zunko", Instantiate(zunkoPrefab, transform));
         charaObject.Add("frimomen", Instantiate(frimomenPrefab, transform));
