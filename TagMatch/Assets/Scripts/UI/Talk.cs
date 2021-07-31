@@ -21,12 +21,12 @@ public class Talk: MonoBehaviour
     Dictionary<string, Animator> rightCharaAnimator = new Dictionary<string, Animator>();
     bool isCameraMoving, isClosing;
     bool beforeIsPlaying;
-    bool isPlaying;
+    bool isPlaying, isWiping;
     bool isBossBattleWaiting;
     string stackScenarioFileName;
     float closeTime;
     int nowKey;
-    float time;
+    float time, wipeTime;
 
     private char lf = (char)10;
 
@@ -83,7 +83,9 @@ public class Talk: MonoBehaviour
         LoadACB(acbName, acbName + ".acb");
         
         charaObject.Add("yukari", Instantiate(yukariPrefab, transform));
+        charaObject.Add("right_yukari", Instantiate(rightYukariPrefab, transform));
         charaObject.Add("maki", Instantiate(makiPrefab, transform));
+        charaObject.Add("right_maki", Instantiate(rightMakiPrefab, transform));
         charaObject.Add("kiritan", Instantiate(kiritanPrefab, transform));
         charaObject.Add("akane", Instantiate(akanePrefab, transform));
         charaObject.Add("left_akane", Instantiate(leftAkanePrefab, transform));
@@ -147,6 +149,20 @@ public class Talk: MonoBehaviour
         {
             return;
         }
+
+        // ワイプ中はボタン押下を受け付けず、ワイプが終わったらその場で再生
+        if (isWiping)
+        {
+            wipeTime -= Time.deltaTime;
+            if (wipeTime <= 0)
+            {
+                isWiping = false;
+                UpdateStep();
+            } else
+            {
+                return;
+            }
+        }
         
         if (KeyConfig.GetShotKeyDown() || KeyConfig.GetJumpKeyDown())
         {
@@ -164,6 +180,7 @@ public class Talk: MonoBehaviour
         string chara = scenario[nowKey.ToString()].chara;
         string position = scenario[nowKey.ToString()].position;
 
+        Debug.Log(scenario[nowKey.ToString()].type);
         switch (scenario[nowKey.ToString()].type)
         {
             case "instantiate":
@@ -285,19 +302,33 @@ public class Talk: MonoBehaviour
             case "start_boss_battle":
                 stackScenarioFileName = scenario[nowKey.ToString()].text;
                 isBossBattleWaiting = true;
-                CloseWindow();
+                CloseWindowForEnd();
                 scenario.Clear();
                 return;
             case "end":
-                CloseWindow();
+                CloseWindowForEnd();
                 scenario.Clear();
                 return;
             case "scene_change":
                 StaticValues.isReloadACB = true;
                 wipePanel.ChangeScene(scenario[nowKey.ToString()].text, true);
-                CloseWindow();
+                CloseWindowForEnd();
                 scenario.Clear();
                 return;
+            case "wipe_in":
+                isWiping = true;
+                wipeTime = 1.0f;
+                wipePanel.WipeIn();
+                break;
+            case "wipe_out":
+                isWiping = true;
+                wipeTime = 1.0f;
+                wipePanel.WipeOut();
+                break;
+            case "close_window":
+                CloseWindow();
+                break;
+
         }
         if (scenario[nowKey.ToString()].play_next)
         {
@@ -309,6 +340,13 @@ public class Talk: MonoBehaviour
         }
     }
 
+    void CloseWindowForEnd()
+    {
+        CloseWindow();
+        isClosing = true;
+        closeTime = 0.1f;
+    }
+
     void CloseWindow()
     {
         if (beforeWindow2 != null)
@@ -317,8 +355,6 @@ public class Talk: MonoBehaviour
             beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
         if (nowWindow != null)
             nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
-        isClosing = true;
-        closeTime = 0.1f;
     }
 
     void AddTalk(GameObject talkWindow, string text)

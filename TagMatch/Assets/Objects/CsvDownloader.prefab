@@ -270,6 +270,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gid: 956662429
   filePath: Scenario/stage2_boss
+--- !u!1 &7341503663434967814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17798227380604851}
+  - component: {fileID: 5415532040542735051}
+  m_Layer: 0
+  m_Name: opening2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17798227380604851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7341503663434967814}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -80, y: -15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7877208469667465087}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5415532040542735051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7341503663434967814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7c4e3979caa4842a50a5b87e494cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gid: 906228607
+  filePath: Scenario/opening2
 --- !u!1 &7877208469207100775
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +444,7 @@ Transform:
   - {fileID: 4178804100931018178}
   - {fileID: 7527572814954107543}
   - {fileID: 3083746155650597438}
+  - {fileID: 17798227380604851}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

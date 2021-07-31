@@ -3,7 +3,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 2,instantiate,left_aoi,left,,,normal,normal,omega,,,,1,
 3,talk,yukari,left,おや、あそこにいるのは...,,anger,half_open,mu,,,,0,
 4,instantiate,itako,right,,,normal,normal,omega,,,,1,
-5,talk,itako,right,困りましたわ...,,,,,,,,0,
+5,talk,itako,right,困りましたわ...,,sad,normal,omega,spirit_sad,,,0,
 6,play_bgm,,,boss,,,,,,,,1,
 7,out,yukari,left,,,,,,,,,1,
 8,out,left_aoi,left,,,,,,,,,1,
