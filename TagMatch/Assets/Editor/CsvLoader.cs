@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine.Networking;
 using System.IO;
 using Unity.EditorCoroutines.Editor;
+using System;
 
 public class CsvLoader : EditorWindow
 {
@@ -40,7 +41,7 @@ public class CsvLoader : EditorWindow
         fileList.Add("stage2_movie.csv", "11724559");
         fileList.Add("stage3_start.csv", "stage3_boss");
         
-        isSelectCheck  = false;
+        isSelectCheck  = true;
         checkFileList.Clear();
         foreach (var file in fileList)
         {
@@ -51,6 +52,11 @@ public class CsvLoader : EditorWindow
     private void OnGUI()
     {
         EditorGUILayout.BeginVertical("Box");
+
+        if (fileList.Count == 0)
+        {
+            LoadFileList();
+        }
 
         if (GUILayout.Button("ファイルリストの更新"))
         {
@@ -83,7 +89,7 @@ public class CsvLoader : EditorWindow
     private IEnumerator Download(string fileName, string gid)
     {
         string filePath = Application.dataPath + "/Resources/Scenario/" + fileName;
-        string url = commonURL1 + sheetURL + commonURL2 + gid + commonURL3;
+        string url = commonURL1 + sheetURL + commonURL2 + gid + commonURL3 + "&v=" + (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds;
         Debug.Log(filePath + " Loading...");
         Debug.Log("URL: " + url);
         using (var request = UnityWebRequest.Get(url)) {
@@ -100,6 +106,6 @@ public class CsvLoader : EditorWindow
                 sw.WriteLine(request.downloadHandler.text);
             }
         }
-        Debug.Log(filePath + " Loaded!");
+        Debug.Log("<color=green>" + filePath + " Loaded!</color>");
     }
 }

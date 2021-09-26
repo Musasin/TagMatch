@@ -317,7 +317,7 @@ public class Talk: MonoBehaviour
                 return;
             case "wipe_in":
                 isWiping = true;
-                wipeTime = 1.0f;
+                wipeTime = 0.5f; // インのときは少し早く停止状態を解く
                 wipePanel.WipeIn();
                 break;
             case "wipe_out":
