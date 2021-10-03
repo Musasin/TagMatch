@@ -343,7 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1736592138512309113}
   - component: {fileID: 755938193445901644}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ForThroughJudgement
   m_TagString: PlayerTroughJudgement
   m_Icon: {fileID: 0}
