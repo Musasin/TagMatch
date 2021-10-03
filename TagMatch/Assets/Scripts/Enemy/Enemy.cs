@@ -17,6 +17,7 @@ public class Enemy : EnemyBase
     public GameObject bullet;
     public GameObject dropItem1;
     public GameObject dropItem2;
+    public GameObject skeletonBullet;
     
     const float STOP_TIME = 0.8f;
     const float DAMAGE_VELOCITY_X = 4.0f;
@@ -35,6 +36,7 @@ public class Enemy : EnemyBase
     GameObject dropedItem1, dropedItem2;
     Sequence attackSequence;
     GameObject playerObject;
+    GameObject bulletPivot;
 
     // Start is called before the first frame update
     public override void Start()
@@ -46,6 +48,7 @@ public class Enemy : EnemyBase
         damageCollider = transform.Find("Damage").gameObject.GetComponent<BoxCollider2D>();
         defaultScale = transform.localScale;
         playerObject = GameObject.Find("Player");
+        bulletPivot = transform.Find("BulletPivot")?.gameObject;
     }
 
     public override void Reset()
@@ -144,6 +147,17 @@ public class Enemy : EnemyBase
             case "move_bat":
                 anim.SetBool("isAttack", true);
                 rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), velocityY * (isUp ? 1 : -1));
+                break;
+            case "skeleton":
+                if (attackInterval != 0 && afterAttackTime > attackInterval)
+                {
+                    rb.velocity = Vector2.zero;
+                    isAttacking = true;
+                    SkeletonAttack();
+                } else
+                {
+                    rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), rb.velocity.y);
+                }
                 break;
 
         }
@@ -296,6 +310,35 @@ public class Enemy : EnemyBase
         GameObject instantiateBullet = Instantiate(bullet, transform.parent);
         instantiateBullet.transform.position = transform.position;
         instantiateBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+    }
+    
+    private void SkeletonAttack()
+    {
+        attackSequence = DOTween.Sequence()
+            .AppendCallback(() => {
+                anim.SetBool("isCharge", true);
+            })
+            .AppendInterval(0.3f)
+            .AppendCallback(() => { 
+                anim.SetBool("isAttack", true);
+                InstantiateSkeletonBullet();
+            })
+            .AppendInterval(0.3f)
+            .AppendCallback(() => {
+                isAttacking = false;
+                afterAttackTime = 0;
+                anim.SetBool("isCharge", false); 
+                anim.SetBool("isAttack", false);
+            }).Play();
+    }
+    private void InstantiateSkeletonBullet()
+    {
+        float addforceX = isRight ? shotPower : -shotPower;
+        
+        GameObject instantiateBullet = Instantiate(skeletonBullet, transform.parent);
+        instantiateBullet.transform.position = bulletPivot.transform.position;
+        instantiateBullet.transform.localScale = new Vector3(isRight ? -1 : 1, 1, 1);
+        instantiateBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, 0));
     }
 
     private void SlimeAttack()
