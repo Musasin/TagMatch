@@ -119,6 +119,8 @@ public class Menu : MonoBehaviour
                     menuState = MenuState.CLOSED;
                     StaticValues.isPause = false;
                     Time.timeScale = 1.0f;
+                    nowSelection = 0;
+                    menuCursor.transform.localPosition = new Vector2(cussorDefaultPos.x, cussorDefaultPos.y);
                 }
                 break;
         }
