@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -11,7 +12,7 @@ public class Menu : MonoBehaviour
     Animator anim;
     enum MenuState
     {
-        CLOSED, MENU, STATUS, SKILL, CLOSING
+        CLOSED, MENU, STATUS, SKILL, TITLE_CHECK, CLOSING, TITLE_CLOSING,
     };
     MenuState menuState;
     enum MenuList
@@ -19,10 +20,12 @@ public class Menu : MonoBehaviour
         STATUS, SKILL, TITLE, CLOSE
     }
     MenuList nowSelection;
-
+    bool returnTitleNowSelection = false;
+    
     GameObject menuCursor;
+    GameObject returnTitleCursor;
     GameObject skillSelectCursor;
-    Vector2 cussorDefaultPos;
+    Vector2 cussorDefaultPos, returnTitleCussorDefaultPos;
     float closeTime;
 
     // Start is called before the first frame update
@@ -32,7 +35,9 @@ public class Menu : MonoBehaviour
         menuState = MenuState.CLOSED;
         nowSelection = MenuList.STATUS;
         menuCursor = GameObject.Find("MenuCursor");
+        returnTitleCursor = GameObject.Find("ReturnTitleCursor");
         cussorDefaultPos = menuCursor.transform.localPosition;
+        returnTitleCussorDefaultPos = returnTitleCursor.transform.localPosition;
         skillSelectCursor = GameObject.Find("SkillSelectCursor");
         skillSelectCursor.GetComponent<SkillSelect>().SetEnabled(false);
         
@@ -81,8 +86,7 @@ public class Menu : MonoBehaviour
                             menuState = MenuState.SKILL;
                             break;
                         case MenuList.TITLE:
-                            // TODO 後で作る
-                            CloseMenu();
+                            menuState = MenuState.TITLE_CHECK;
                             break;
                         case MenuList.CLOSE:
                             CloseMenu();
@@ -115,7 +119,7 @@ public class Menu : MonoBehaviour
                     anim.SetInteger("menuState", (int)menuState);
                 }
                 break;
-
+                
             case MenuState.CLOSING:
                 closeTime -= Time.deltaTime;
                 anim.SetInteger("menuState", (int)MenuState.CLOSED);
@@ -126,6 +130,32 @@ public class Menu : MonoBehaviour
                     Time.timeScale = 1.0f;
                     nowSelection = 0;
                     menuCursor.transform.localPosition = new Vector2(cussorDefaultPos.x, cussorDefaultPos.y);
+                }
+                break;
+
+            case MenuState.TITLE_CHECK:
+                if (AxisDownChecker.GetAxisDownHorizontal())
+                {
+                    AudioManager.Instance.PlaySE("select");
+                    returnTitleNowSelection = !returnTitleNowSelection;
+                    returnTitleCursor.transform.localPosition = new Vector2(returnTitleCussorDefaultPos.x + (returnTitleNowSelection ? -135 : 0), returnTitleCussorDefaultPos.y);
+                }
+                AxisDownChecker.AxisDownUpdate();
+
+                if (KeyConfig.GetShotKeyDown() || KeyConfig.GetMenuKeyDown() || KeyConfig.GetJumpKeyDown() && !returnTitleNowSelection)
+                {
+                    AudioManager.Instance.PlaySE("cancel");
+                    skillSelectCursor.GetComponent<SkillSelect>().SetEnabled(false);
+                    menuState = MenuState.MENU;
+                    anim.SetInteger("menuState", (int)menuState);
+                }
+
+                if (KeyConfig.GetJumpKeyDown() && returnTitleNowSelection)
+                {
+                    AudioManager.Instance.PlaySE("accept");
+                    Time.timeScale = 1.0f;
+                    StaticValues.isReloadACB = true;
+                    GameObject.Find("WipePanel").GetComponent<WipePanel>().ChangeScene("Title");
                 }
                 break;
         }
