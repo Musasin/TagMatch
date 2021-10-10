@@ -12,9 +12,11 @@ public class Talk: MonoBehaviour
 {
     public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, leftAkanePrefab, aoiPrefab, leftAoiPrefab, itakoPrefab, zunkoPrefab, frimomenPrefab, mob1Prefab, mob2Prefab, mob3Prefab;
     public GameObject leftWindow, rightWindow, angerLeftWindow, angerRightWindow, centerWindow;
+    public GameObject leftNamePlate, rightNamePlate;
 
     WipePanel wipePanel;
     GameObject nowWindow, beforeWindow1, beforeWindow2;
+    GameObject namePlate;
     Dictionary<string, GameObject> charaObject = new Dictionary<string, GameObject>();
     Dictionary<string, CharaPicture> charaPicture = new Dictionary<string, CharaPicture>();
     Dictionary<string, Animator> leftCharaAnimator = new Dictionary<string, Animator>();
@@ -221,6 +223,14 @@ public class Talk: MonoBehaviour
                 break;
 
             case "talk":
+
+                // 話者を先頭に持っていく
+                if (chara != "")
+                {
+                    charaObject[chara].transform.SetAsLastSibling();
+                    if (namePlate != null) namePlate.transform.SetAsLastSibling();
+                }
+
                 if (position == "left" || position == "anger_left")
                 {
                     GameObject window = leftWindow;
@@ -264,11 +274,6 @@ public class Talk: MonoBehaviour
                     AddTalk(centerWindow, scenario[nowKey.ToString()].text.Replace("\\n", lf.ToString()));
                 }
 
-                if (chara != "")
-                {
-                    charaObject[chara].transform.SetAsLastSibling();
-                }
-
                 // 表情差分
                 if (charaPicture.ContainsKey(chara))
                 {
@@ -278,7 +283,13 @@ public class Talk: MonoBehaviour
                         scenario[nowKey.ToString()].option1, scenario[nowKey.ToString()].option2, scenario[nowKey.ToString()].option3);
                 }
                 break;
-
+                
+            case "name_plate":
+                if (namePlate != null) Destroy(namePlate);
+                namePlate = Instantiate(position == "left" ? leftNamePlate : rightNamePlate, transform);
+                namePlate.transform.Find("NameText").GetComponent<TextMeshProUGUI>().text = GetCharaName(scenario[nowKey.ToString()].chara);
+                namePlate.transform.Find("DetailText").GetComponent<TextMeshProUGUI>().text = scenario[nowKey.ToString()].text;
+                break;
             case "out":
                 if (position == "right" && rightCharaAnimator.ContainsKey(chara))
                     rightCharaAnimator[chara].SetBool("isOut", true);
@@ -419,6 +430,39 @@ public class Talk: MonoBehaviour
         {
             beforeIsPlaying = false;
             isPlaying = true;
+        }
+    }
+
+    private string GetCharaName(string chara)
+    {
+        switch (chara)
+        {
+            case "frimomen":
+                return "フリモメン";
+            case "yukari":
+                return "結月ゆかり";
+            case "yukari_right":
+                return "結月ゆかり";
+            case "maki":
+                return "弦巻マキ";
+            case "maki_right":
+                return "弦巻マキ";
+            case "akane":
+                return "琴葉茜";
+            case "akane_left":
+                return "琴葉茜";
+            case "aoi":
+                return "琴葉葵";
+            case "aoi_left":
+                return "琴葉葵";
+            case "kiritan":
+                return "東北きりたん";
+            case "zunko":
+                return "東北ずん子";
+            case "itako":
+                return "東北イタコ";
+            default:
+                return "";
         }
     }
         

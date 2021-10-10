@@ -272,6 +272,10 @@ MonoBehaviour:
     type: 3}
   centerWindow: {fileID: 8393917665650480927, guid: 5ea923e007f92409cb0285e61129fe5b,
     type: 3}
+  leftNamePlate: {fileID: 2244419810098398409, guid: 5e812027741134134a2fde9658bbcd48,
+    type: 3}
+  rightNamePlate: {fileID: 786895325944298238, guid: 51153be0e6ac1402da66867a58b06b8c,
+    type: 3}
 --- !u!1 &5880080033413537261
 GameObject:
   m_ObjectHideFlags: 0
