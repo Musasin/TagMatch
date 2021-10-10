@@ -109,7 +109,7 @@ public class Title : MonoBehaviour
                     {
                         case TitleList.NEW_GAME:
                             StaticValues.isReloadACB = true;
-                            loadSceneName = "Stage1-0";
+                            loadSceneName = "Opening";
                             titleState = TitleState.FADE_OUT;
                             time = 0;
                             break;
