@@ -360,6 +360,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: TitleState
     m_EventTreshold: 3
+  - m_ConditionMode: 4
+    m_ConditionEvent: TitleState
+    m_EventTreshold: 6
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2785451308195728735}
   m_Solo: 0
