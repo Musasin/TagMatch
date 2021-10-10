@@ -14,10 +14,11 @@ public class Title : MonoBehaviour
     Vector2 titleCursorDefaultPos;
     Vector2 optionCursorDefaultPos;
     KeyConfigUI keyConfigUIScript;
+    string loadSceneName;
 
     enum TitleState
     {
-        FADE_IN, TITLE, NEW_GAME_SELECT, EX_MODE_SELECT, OPTION, KEY_CONFIG
+        FADE_IN, TITLE, NEW_GAME_SELECT, EX_MODE_SELECT, OPTION, KEY_CONFIG, FADE_OUT, EXIT
     }
     TitleState titleState;
 
@@ -55,6 +56,12 @@ public class Title : MonoBehaviour
         if (StaticValues.isReloadACB == false) { return; }
         AudioManager.Instance.LoadACB("Title", "Title.acb");
         StaticValues.isReloadACB = false;
+
+        if (PlayerPrefs.HasKey("Scene"))
+        {
+            nowSelection = TitleList.CONTINUE;
+            titleCursor.transform.localPosition = new Vector2(titleCursorDefaultPos.x, titleCursorDefaultPos.y - (67 * (int)nowSelection));
+        }
     }
 
     // Update is called once per frame
@@ -72,6 +79,15 @@ public class Title : MonoBehaviour
                         AudioManager.Instance.PlayBGM("title");
                     }
                     titleState = TitleState.TITLE;
+                }
+                break;
+                
+            case TitleState.FADE_OUT:
+                fadePanel.color = new Color(0, 0, 0, 0.0f + time);
+                if (time > 1.0f)
+                {
+                    SceneManager.LoadScene(loadSceneName);
+                    titleState = TitleState.EXIT;
                 }
                 break;
             case TitleState.TITLE:
@@ -93,14 +109,18 @@ public class Title : MonoBehaviour
                     {
                         case TitleList.NEW_GAME:
                             StaticValues.isReloadACB = true;
-                            SceneManager.LoadScene("Stage1-0");
+                            loadSceneName = "Stage1-0";
+                            titleState = TitleState.FADE_OUT;
+                            time = 0;
                             break;
                         case TitleList.CONTINUE:
                             StaticValues.isReloadACB = true;
                             if (PlayerPrefs.HasKey("Scene"))
                             {
                                 StaticValues.Load();
-                                SceneManager.LoadScene(StaticValues.scene);
+                                loadSceneName = StaticValues.scene;
+                                titleState = TitleState.FADE_OUT;
+                                time = 0;
                             }
                             break;
                         case TitleList.EX_MODE:
