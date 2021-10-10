@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System;
+
 
 public class StaticValues : MonoBehaviour
 {
-    public enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
-    public static SwitchState switchState = SwitchState.YUKARI;
-
+    public static float time;
     public static int score;
     public static int coinCount = 2000; // デバッグ用
-    public static float time;
+    public static int deadCount;
+
+    public enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
+    public static SwitchState switchState = SwitchState.YUKARI;
+    
     public static bool isPause;
     public static bool isTalkPause;
     
@@ -29,6 +37,8 @@ public class StaticValues : MonoBehaviour
 
     public static bool isFixedCamera;
 
+    public static string scene;
+
     public static bool isReloadACB = true;
 
     public static Dictionary<string, bool> skills = new Dictionary<string, bool>();
@@ -44,6 +54,99 @@ public class StaticValues : MonoBehaviour
     {
         
     }
+
+    public static void Load()
+    {
+        LoadFloat(ref time, "Time");
+        LoadInt(ref score, "Score");
+        LoadInt(ref coinCount, "CoinCount");
+        LoadInt(ref deadCount, "DeadCount");
+
+        int intSwitchState = 0;
+        LoadInt(ref intSwitchState, "SwitchState");
+        switchState = (SwitchState)intSwitchState;
+
+        LoadInt(ref yukariHP, "YukariHP");
+        LoadInt(ref yukariMaxHP, "YukariMaxHP");
+        LoadInt(ref yukariMP, "YukariMP");
+        LoadInt(ref yukariMaxMP, "YukariMaxMP");
+        LoadInt(ref makiHP, "MakiHP");
+        LoadInt(ref makiMaxHP, "MakiMaxHP");
+        LoadInt(ref makiMP, "MakiMP");
+        LoadInt(ref makiMaxMP, "MakiMaxMP");
+        LoadFloat(ref yukariAttackRatio, "YukariAttackRatio");
+        LoadFloat(ref makiAttackRatio, "MakiAttackRatio");
+
+        skills = LoadDict<string, bool>("Skills");
+
+        if (PlayerPrefs.HasKey("Scene"))
+        {
+            scene = PlayerPrefs.GetString("Scene");
+        }
+    }
+    
+    public static void LoadFloat(ref float value, string prefs)
+    {
+        if (PlayerPrefs.HasKey(prefs))
+        {
+            value = PlayerPrefs.GetFloat(prefs);
+        }
+    }
+    public static void LoadInt(ref int value, string prefs)
+    {
+        if (PlayerPrefs.HasKey(prefs))
+        {
+            value = PlayerPrefs.GetInt(prefs);
+        }
+    }
+    public static void LoadInt(ref int value, string prefs, int defaultValue)
+    {
+        if (PlayerPrefs.HasKey(prefs))
+        {
+            value = PlayerPrefs.GetInt(prefs);
+        }
+        else
+        {
+            value = defaultValue;
+        }
+    }
+
+    public static Dictionary<Key, Value> LoadDict<Key, Value> (string key)
+    {
+        if (PlayerPrefs.HasKey(key)) {
+            string str = PlayerPrefs.GetString(key, "");
+            return Deserialize<Dictionary<Key, Value>> (str);
+        }
+        return new Dictionary<Key, Value> ();
+    }
+
+    public static void Save()
+    {
+        PlayerPrefs.SetFloat("Time", time);
+        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.SetInt("CoinCount", coinCount);
+        PlayerPrefs.SetInt("DeadCount", deadCount);
+
+        PlayerPrefs.SetInt("SwitchState", (int)switchState);
+        PlayerPrefs.SetInt("YukariHP", yukariHP);
+        PlayerPrefs.SetInt("YukariMaxHP", yukariMaxHP);
+        PlayerPrefs.SetInt("YukariMP", yukariMP);
+        PlayerPrefs.SetInt("YukariMaxMP", yukariMaxMP);
+        PlayerPrefs.SetInt("MakiHP", makiHP);
+        PlayerPrefs.SetInt("MakiMaxHP", makiMaxHP);
+        PlayerPrefs.SetInt("MakiMP", makiMP);
+        PlayerPrefs.SetInt("MakiMaxMP", makiMaxMP);
+        
+        PlayerPrefs.SetFloat("YukariAttackRatio", yukariAttackRatio);
+        PlayerPrefs.SetFloat("MakiAttackRatio", makiAttackRatio);
+
+        string serizlizedSkills = Serialize<Dictionary<string, bool>> (skills);
+        PlayerPrefs.SetString ("Skills", serizlizedSkills);
+        
+        scene = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("Scene", scene);
+    }
+
     
     public static void AddMP(bool isYukari, int point)
     { 
@@ -214,5 +317,18 @@ public class StaticValues : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private static string Serialize<T> (T obj){
+        BinaryFormatter binaryFormatter = new BinaryFormatter ();
+        MemoryStream    memoryStream    = new MemoryStream ();
+        binaryFormatter.Serialize (memoryStream , obj);
+        return Convert.ToBase64String (memoryStream   .GetBuffer ());
+    }
+
+    private static T Deserialize<T> (string str){
+        BinaryFormatter binaryFormatter = new BinaryFormatter ();
+        MemoryStream    memoryStream    = new MemoryStream (Convert.FromBase64String (str));
+        return (T)binaryFormatter.Deserialize (memoryStream);
     }
 }

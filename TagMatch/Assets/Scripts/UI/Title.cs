@@ -97,7 +97,11 @@ public class Title : MonoBehaviour
                             break;
                         case TitleList.CONTINUE:
                             StaticValues.isReloadACB = true;
-                            // TODO
+                            if (PlayerPrefs.HasKey("Scene"))
+                            {
+                                StaticValues.Load();
+                                SceneManager.LoadScene(StaticValues.scene);
+                            }
                             break;
                         case TitleList.EX_MODE:
                             // TODO

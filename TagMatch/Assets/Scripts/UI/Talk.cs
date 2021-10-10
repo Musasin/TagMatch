@@ -100,6 +100,8 @@ public class Talk: MonoBehaviour
 
         if (AudioManager.Instance.lastPlayedBGM != "stage")
             AudioManager.Instance.PlayBGM("stage");
+
+        StaticValues.Save();
     }
 
     // Update is called once per frame

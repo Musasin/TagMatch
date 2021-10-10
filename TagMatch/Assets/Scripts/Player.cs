@@ -637,6 +637,7 @@ public class Player : MonoBehaviour
             // 操作キャラが死亡した時
             if ((IsYukari() && StaticValues.yukariHP <= 0) || (!IsYukari() && StaticValues.makiHP <= 0))
             {
+                StaticValues.deadCount++;
                 if (IsYukari())
                 {
                     AudioManager.Instance.PlayExVoice("yukari_dead", true);
