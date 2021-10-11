@@ -453,6 +453,8 @@ public class Zunko : BossAIBase
 
     void ShotArrow(GameObject arrow, Vector2 force)
     {
+        if (arrow == null) return;
+
         arrow.GetComponent<RotateWithDirection>().SetIsActive(true);
         if (isSecondBattle)
         {
