@@ -122,6 +122,8 @@ public class Player : MonoBehaviour
     {
         if (StaticValues.isPause)
         {
+            // 慣性で滑らないようにポーズ中は横移動を強制的に停止させる
+            rb.velocity = new Vector2(velocityX, rb.velocity.y);
             return;
         }
 
