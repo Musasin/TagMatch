@@ -368,6 +368,8 @@ public class Talk: MonoBehaviour
             beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
         if (nowWindow != null)
             nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
+        if (namePlate != null) 
+            Destroy(namePlate);
     }
 
     void AddTalk(GameObject talkWindow, string text)
