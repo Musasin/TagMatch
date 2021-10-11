@@ -6430,6 +6430,16 @@ PrefabInstance:
       propertyPath: isSecondBattle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8051271984531170958, guid: ead43347081fa4bad9a2b7b1fdaab360,
+        type: 3}
+      propertyPath: bossNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051271984531170958, guid: ead43347081fa4bad9a2b7b1fdaab360,
+        type: 3}
+      propertyPath: hp
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8075830558317027181, guid: ead43347081fa4bad9a2b7b1fdaab360,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6829,6 +6839,16 @@ PrefabInstance:
       propertyPath: isSecondBattle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8051271984531170958, guid: 40b0d502d7d5e4affb086d7d02fa876a,
+        type: 3}
+      propertyPath: bossNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051271984531170958, guid: 40b0d502d7d5e4affb086d7d02fa876a,
+        type: 3}
+      propertyPath: hp
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8075830558317027181, guid: 40b0d502d7d5e4affb086d7d02fa876a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7118,6 +7138,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kiritan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852084391723080960, guid: 28c90a7f4545c487eb040b9f7ccdfbee,
+        type: 3}
+      propertyPath: hp
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8236248092548561187, guid: 28c90a7f4545c487eb040b9f7ccdfbee,
         type: 3}
