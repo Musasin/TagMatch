@@ -7,7 +7,7 @@ using System.Linq;
 public class Boss : EnemyBase
 {
     public int bossNumber = 0;
-    const float BOSS_INVINCIBLE_TIME = 0.5f;
+    const float BOSS_INVINCIBLE_TIME = 0.6f;
 
     Vector2 firstPos;
     bool isDead;
