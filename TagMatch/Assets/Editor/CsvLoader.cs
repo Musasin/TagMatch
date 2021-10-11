@@ -42,8 +42,11 @@ public class CsvLoader : EditorWindow
         fileList.Add("stage2_movie.csv", "11724559");
         fileList.Add("stage3_start.csv", "1673465631");
         fileList.Add("stage3_boss.csv", "992445580");
+        fileList.Add("stage3_boss_result.csv", "1987249178");
         fileList.Add("stage4_boss.csv", "2069169908");
+        fileList.Add("stage4_boss_result.csv", "538322999");
         fileList.Add("stage5_boss.csv", "437719464");
+        fileList.Add("stage5_boss_result.csv", "1872305858");
         
         isSelectCheck  = true;
         checkFileList.Clear();
