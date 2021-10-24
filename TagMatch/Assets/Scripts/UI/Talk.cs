@@ -69,6 +69,15 @@ public class Talk: MonoBehaviour
     }
     private Dictionary<string, ScenarioData> scenario = new Dictionary<string, ScenarioData>();
 
+    void AddChraObject(string key, GameObject prefab)
+    {
+        if(prefab == null) { return; }
+        var obj = Instantiate(prefab, transform);
+        if(obj == null) { return; }
+
+        charaObject.Add(key, obj);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,22 +92,23 @@ public class Talk: MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         string acbName = sceneName.Split('-')[0];
         LoadACB(acbName, acbName + ".acb");
-        
-        charaObject.Add("yukari", Instantiate(yukariPrefab, transform));
-        charaObject.Add("right_yukari", Instantiate(rightYukariPrefab, transform));
-        charaObject.Add("maki", Instantiate(makiPrefab, transform));
-        charaObject.Add("right_maki", Instantiate(rightMakiPrefab, transform));
-        charaObject.Add("kiritan", Instantiate(kiritanPrefab, transform));
-        charaObject.Add("akane", Instantiate(akanePrefab, transform));
-        charaObject.Add("left_akane", Instantiate(leftAkanePrefab, transform));
-        charaObject.Add("aoi", Instantiate(aoiPrefab, transform));
-        charaObject.Add("left_aoi", Instantiate(leftAoiPrefab, transform));
-        charaObject.Add("itako", Instantiate(itakoPrefab, transform));
-        charaObject.Add("zunko", Instantiate(zunkoPrefab, transform));
-        charaObject.Add("frimomen", Instantiate(frimomenPrefab, transform));
-        charaObject.Add("mob1", Instantiate(mob1Prefab, transform));
-        charaObject.Add("mob2", Instantiate(mob2Prefab, transform));
-        charaObject.Add("mob3", Instantiate(mob3Prefab, transform));
+
+
+        AddChraObject("yukari", yukariPrefab);
+        AddChraObject("right_yukari", rightYukariPrefab);
+        AddChraObject("maki", makiPrefab);
+        AddChraObject("right_maki", rightMakiPrefab);
+        AddChraObject("kiritan", kiritanPrefab);
+        AddChraObject("akane", akanePrefab);
+        AddChraObject("left_akane", leftAkanePrefab);
+        AddChraObject("aoi", aoiPrefab);
+        AddChraObject("left_aoi", leftAoiPrefab);
+        AddChraObject("itako", itakoPrefab);
+        AddChraObject("zunko", zunkoPrefab);
+        AddChraObject("frimomen", frimomenPrefab);
+        AddChraObject("mob1", mob1Prefab);
+        AddChraObject("mob2", mob2Prefab);
+        AddChraObject("mob3", mob3Prefab);
 
         if (AudioManager.Instance.lastPlayedBGM != "stage")
             AudioManager.Instance.PlayBGM("stage");
