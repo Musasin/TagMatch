@@ -96,6 +96,7 @@ public class CriAtomEditor : Editor
 					config.maxCategories,
 					config.maxSequenceEventsPerFrame,
 					config.maxBeatSyncCallbacksPerFrame,
+					config.maxCueLinkCallbacksPerFrame,
 					config.standardVoicePoolConfig.memoryVoices,
 					config.standardVoicePoolConfig.streamingVoices,
 					config.hcaMxVoicePoolConfig.memoryVoices,

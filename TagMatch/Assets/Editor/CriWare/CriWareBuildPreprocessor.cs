@@ -14,7 +14,22 @@ using UnityEditor;
 using UnityEditor.Build;
 
 
-public class CriWareBuildPreprocessor : ScriptableObject,
+public class CriWareBuildPreprocessor : ScriptableObject {
+	public bool muteOtherAudio = true;
+
+	public static CriWareBuildPreprocessor LoadExistingAsset() {
+		string preProcessorPath = "";
+		string[] searchResult = AssetDatabase.FindAssets("t:CriWareBuildPreprocessor");
+		if (searchResult.Length == 0) {
+			return null;
+		}
+		preProcessorPath = AssetDatabase.GUIDToAssetPath(searchResult[0]);
+		var instance = (CriWareBuildPreprocessor)AssetDatabase.LoadAssetAtPath(preProcessorPath, typeof(CriWareBuildPreprocessor));
+		return instance;
+	}
+}
+
+public class CriWareBuildPreprocessExcecutor :
 #if UNITY_2018_1_OR_NEWER
 	IPreprocessBuildWithReport
 #else
@@ -22,14 +37,13 @@ public class CriWareBuildPreprocessor : ScriptableObject,
 #endif
 {
 	private static string prefsFilePath;
-	public bool muteOtherAudio  = true;
 
 	public int callbackOrder { get { return 0; } }
 
 	[MenuItem("GameObject/CRIWARE/Create CriWareBuildPreprocessorPrefs.asset")]
 	public static void Create()
 	{
-		CriWareBuildPreprocessor instance = LoadExistingAsset();
+		CriWareBuildPreprocessor instance = CriWareBuildPreprocessor.LoadExistingAsset();
 		if (instance) {
 			Debug.LogError("[CRIWARE] Preferences file of CriWareBuildPreprocessor already exists.");
 			Selection.activeObject = instance;
@@ -38,7 +52,7 @@ public class CriWareBuildPreprocessor : ScriptableObject,
 
 		var scobj = ScriptableObject.CreateInstance<CriWareBuildPreprocessor>();
 		if (scobj == null) {
-			Debug.Log("[CRIWARE] Failed to create CriWareBuildPreprocessor");
+			Debug.Log("[CRIWARE] Failed to create CriWareBuildPreprocessor asset");
 			return;
 		}
 
@@ -56,18 +70,6 @@ public class CriWareBuildPreprocessor : ScriptableObject,
 		Selection.activeObject = scobj;
 	}
 
-	private static CriWareBuildPreprocessor LoadExistingAsset()
-	{
-		string preProcessorPath = "";
-		string[] searchResult = AssetDatabase.FindAssets("t:CriWareBuildPreprocessor");
-		if (searchResult.Length == 0) {
-			return null;
-		}
-		preProcessorPath = AssetDatabase.GUIDToAssetPath(searchResult[0]);
-		var instance = (CriWareBuildPreprocessor)AssetDatabase.LoadAssetAtPath(preProcessorPath, typeof(CriWareBuildPreprocessor));
-		return instance;
-	}
-
 #if UNITY_2018_1_OR_NEWER
 	public void OnPreprocessBuild(UnityEditor.Build.Reporting.BuildReport report)
 	{
@@ -77,7 +79,7 @@ public class CriWareBuildPreprocessor : ScriptableObject,
 
 	public void OnPreprocessBuild(BuildTarget build_target, string path)
 	{
-		CriWareBuildPreprocessor instance = LoadExistingAsset();
+		CriWareBuildPreprocessor instance = CriWareBuildPreprocessor.LoadExistingAsset();
 		if (instance == null) {
 			instance = ScriptableObject.CreateInstance<CriWareBuildPreprocessor>();
 			Debug.Log(
@@ -86,26 +88,24 @@ public class CriWareBuildPreprocessor : ScriptableObject,
 			);
 		} else {
 			Debug.Log(
-				"[CRIWARE] Run CriWareBuildPreprocessor.OnPreprocessBuild with default preferences.\n"
+				"[CRIWARE] CriWareBuildPreprocessor preferences file has been loaded.\n"
 				+ "If you want to change the preferences, please edit the preferences file (" + prefsFilePath + ")"
 			);
 		}
 
 		if (instance.muteOtherAudio == true) {
-			instance.ModifyAudioManager(build_target, path);
+			ModifyAudioManager(build_target, path);
 		}
 	}
 
-	private void ModifyAudioManager(BuildTarget build_target, string path)
+	private static void ModifyAudioManager(BuildTarget build_target, string path)
 	{
-		string audioManagerPath="ProjectSettings/AudioManager.asset";
+		string audioManagerPath = "ProjectSettings/AudioManager.asset";
 		SerializedObject audioManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath(audioManagerPath)[0]);
 		SerializedProperty propertyDisableUnityAudio = audioManager.FindProperty("m_DisableAudio");
 
-		if(build_target == BuildTarget.Android)
-		{
-			if(PlayerSettings.muteOtherAudioSources == true)
-			{
+		if (build_target == BuildTarget.Android) {
+			if (PlayerSettings.muteOtherAudioSources == true) {
 				propertyDisableUnityAudio.boolValue = false;
 			}
 		} else {

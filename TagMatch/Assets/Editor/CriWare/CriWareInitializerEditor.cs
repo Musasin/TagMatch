@@ -82,8 +82,8 @@ public class CriWareInitializerEditor : Editor
 	static private bool showFileSystemAndroidConfig     = false;
 	static private bool showAtomStandardVoicePoolConfig = false;
 	static private bool showAtomHcaMxVoicePoolConfig    = false;
-	static private bool showAtomPCConfig = false;
-	static private bool showAtomIOSConfig = false;
+	static private bool showAtomPCConfig                = false;
+	static private bool showAtomIOSConfig               = false;
 	static private bool showAtomAndroidConfig           = false;
 	static private bool showAtomAndroidVoicePoolConfig  = true;
 
@@ -149,6 +149,7 @@ public class CriWareInitializerEditor : Editor
 				GenIntField("Max Categories", "Maximum number of categories.", ref initializer.atomConfig.maxCategories, 0, 1024);
 				GenIntField("Max Sequence Events Per Frame", "Maximum number of sequence events that will be triggered in one application frame.", ref initializer.atomConfig.maxSequenceEventsPerFrame, 0, 64);
 				GenIntField("Max Beat Sync Callbacks Per Frame", "Maximum number of beat synchronized callback that will be triggered in one application frame.", ref initializer.atomConfig.maxBeatSyncCallbacksPerFrame, 0, 64);
+				GenIntField("Max Cue Link Callbacks Per Frame", "Maximum number of cue link callback that will be triggered in one application frame.", ref initializer.atomConfig.maxCueLinkCallbacksPerFrame, 0, 64);
 				GenIntField("Categories per Playback", "Number of category references per playback.", ref initializer.atomConfig.categoriesPerPlayback, 0, 16);
 				GenIntFieldWithUnit("Sampling Rate", "[Hz]",
 					"Sound output sampling rate. "
@@ -185,6 +186,14 @@ public class CriWareInitializerEditor : Editor
 				selected_ingamepreview_switch_mode = EditorGUILayout.Popup("In Game Preview", selected_ingamepreview_switch_mode, inGamePreviewSwitchModes);
 				initializer.atomConfig.inGamePreviewMode = inGamePreviewSwitchModeValues[selected_ingamepreview_switch_mode];
 
+				if (initializer.atomConfig.inGamePreviewMode != CriAtomConfig.InGamePreviewSwitchMode.Disable) {
+					EditorGUI.indentLevel += 1;
+					GenIntField("Max Preview Objects", "", ref initializer.atomConfig.inGamePreviewConfig.maxPreviewObjects, 0, 1024);
+					GenIntFieldWithUnit("Communication Buffer Size", "[KiB]", "Size of buffer for communication between library and tool.", ref initializer.atomConfig.inGamePreviewConfig.communicationBufferSize, 2048, int.MaxValue);
+					GenIntFieldWithUnit("Update Interval", "[counts of server process]", "Interval to update playback position.", ref initializer.atomConfig.inGamePreviewConfig.playbackPositionUpdateInterval, 1, 8);
+					EditorGUI.indentLevel -= 1;
+				}
+
 
 				GenToggleField("VR Mode", "", ref initializer.atomConfig.vrMode);
 				GenToggleField("Keep Playing Sound On Pause", "", ref initializer.atomConfig.keepPlayingSoundOnPause);
@@ -214,7 +223,12 @@ public class CriWareInitializerEditor : Editor
 				showAtomIOSConfig = EditorGUILayout.Foldout(showAtomIOSConfig, "iOS Config");
 				if (showAtomIOSConfig) {
 					EditorGUI.indentLevel += 1;
-					GenIntFieldWithUnit("Buffering Time", "[msec]", "Sound buffering time in msec.", ref initializer.atomConfig.iosBufferingTime, 16, 200);
+					GenToggleField("Enable SonicSYNC", "", ref initializer.atomConfig.iosEnableSonicSync);
+					EditorGUI.BeginDisabledGroup(initializer.atomConfig.iosEnableSonicSync);
+					{
+						GenIntFieldWithUnit("Buffering Time", "[msec]", "Sound buffering time in msec.", ref initializer.atomConfig.iosBufferingTime, 16, 200);
+					}
+					EditorGUI.EndDisabledGroup();
 					GenToggleField("Override iPod Music", "", ref initializer.atomConfig.iosOverrideIPodMusic);
 					EditorGUI.indentLevel -= 1;
 				}
@@ -222,6 +236,8 @@ public class CriWareInitializerEditor : Editor
 				showAtomAndroidConfig = EditorGUILayout.Foldout(showAtomAndroidConfig, "Android Config");
 				if (showAtomAndroidConfig) {
 					EditorGUI.indentLevel += 1;
+					GenToggleField("Enable SonicSYNC", "", ref initializer.atomConfig.androidEnableSonicSync);
+					EditorGUI.BeginDisabledGroup(initializer.atomConfig.androidEnableSonicSync);
 					{
 						/* Ver.2.03.03 以前は 0 がデフォルト値だったことの互換性維持のための処理 */
 						if (initializer.atomConfig.androidBufferingTime == 0) {
@@ -233,6 +249,7 @@ public class CriWareInitializerEditor : Editor
 					}
 					GenIntFieldWithUnit("Buffering Time", "[msec]", "Sound buffering time in msec.", ref initializer.atomConfig.androidBufferingTime, 50, 500);
 					GenIntFieldWithUnit("Start Buffering", "[msec]", "Sound buffering time to start playing. This value will be applied when using the low latency voice pool.", ref initializer.atomConfig.androidStartBufferingTime, 50, 500);
+					EditorGUI.EndDisabledGroup();
 					showAtomAndroidVoicePoolConfig = EditorGUILayout.Foldout(showAtomAndroidVoicePoolConfig, "Low Latency Standard Voice Pool Config");
 					if (showAtomAndroidVoicePoolConfig) {
 						EditorGUI.indentLevel += 1;
@@ -251,6 +268,8 @@ public class CriWareInitializerEditor : Editor
 			EditorGUILayout.EndToggleGroup();
 
 
+			GenToggleField("Dont Initialize On Awake", "", ref initializer.dontInitializeOnAwake);
+			GenToggleField("Dont Destroy On Load",    "", ref initializer.dontDestroyOnLoad);
 		}
 		if (GUI.changed) {
 			EditorUtility.SetDirty(initializer);

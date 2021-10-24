@@ -16,6 +16,7 @@ public class CriAtomWindowPrefs : ScriptableObject
 {
 	public string outputAssetsRoot = String.Empty;
 
+
 	static string FindInstance() {
 		var guids = AssetDatabase.FindAssets("t:" + typeof(CriAtomWindowPrefs).Name);
 		if (guids.Length <= 0)
@@ -26,11 +27,13 @@ public class CriAtomWindowPrefs : ScriptableObject
 		return guids[0];
 	}
 
+
 	public void Save ()
 	{
-		if(string.IsNullOrEmpty(FindInstance())) {
+
+		if (string.IsNullOrEmpty(FindInstance())) {
 			var script = MonoScript.FromScriptableObject(this);
-			var prefsFilePath = Path.Combine(Directory.GetParent(AssetDatabase.GetAssetPath(script)).ToString(), "CriWareBuildPostprocessorPrefs.asset");
+			var prefsFilePath = Path.Combine(Directory.GetParent(AssetDatabase.GetAssetPath(script)).ToString(), "CriAtomWindowPrefs.asset");
 			AssetDatabase.CreateAsset(this, prefsFilePath);
 		} else {
 			EditorUtility.SetDirty(this);
@@ -51,6 +54,7 @@ public class CriAtomWindowPrefs : ScriptableObject
 			preference = AssetDatabase.LoadAssetAtPath<CriAtomWindowPrefs>(path);
 		}
 
+
 		return preference;
 	}
 }
@@ -62,6 +66,7 @@ public class CriAtomWindowInfo {
 	public class InfoBase {
 		public string name = "";
 		public int id = 0;
+		public string assetGuid = null;
 		public string comment = "";
 	}
 
@@ -225,8 +230,10 @@ public class CriAtomWindowInfo {
 				TryGetRelFilePath(file),
 				TryGetAwbFile(file));
 			/* 指定したACBファイル名(キューシート名)を指定してキュー情報を取得 */
-			CriAtomExAcb acb = CriAtomExAcb.LoadAcbFile(null, file.Replace("\\", "/"), "");
+			string acbFilePath = file.Replace("\\", "/");
+			CriAtomExAcb acb = CriAtomExAcb.LoadAcbFile(null, acbFilePath, "");
 			if (acb != null) {
+				acbInfo.assetGuid = AssetDatabase.AssetPathToGUID("Assets" + acbFilePath.Substring(Application.dataPath.Length));
 				/* キュー名リストの作成 */
 				CriAtomEx.CueInfo[] cueInfoList = acb.GetCueInfoList();
 				foreach (CriAtomEx.CueInfo cueInfo in cueInfoList) {

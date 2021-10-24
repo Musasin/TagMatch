@@ -37,6 +37,7 @@ public sealed class CriAtomWindow : EditorWindow
 	private CriAtomExAcb previewAcb = null;
 	private string lastAcbName = null;
 
+
 	[SerializeField] private string searchPath = "";
 	[SerializeField] private CriAtomWindowInfo projInfo = new CriAtomWindowInfo();
 	[SerializeField] private CriAtomWindowPrefs criAtomWindowPrefs = null;
@@ -56,6 +57,7 @@ public sealed class CriAtomWindow : EditorWindow
 	private void OnEnable() {
 		searchPath = Application.streamingAssetsPath;
 		criAtomWindowPrefs = CriAtomWindowPrefs.Load();
+
 
 		if (Selection.gameObjects.Length > 0) {
 			targetObject = Selection.gameObjects[0];
@@ -184,6 +186,7 @@ public sealed class CriAtomWindow : EditorWindow
 	{
 		const int cCueListItemHeight = 18;
 		var acbInfoList = projInfo.GetAcbInfoList(false, searchPath);
+		bool isCueSheetAvailable = false;
 
 		if (isCueSheetListInitiated == true) {
 			lastPreviewCueSheetId = this.selectedCueSheetId;
@@ -224,9 +227,13 @@ public sealed class CriAtomWindow : EditorWindow
 			this.selectedCueInfoIndex = 0;
 		}
 
-		bool isCueSheetAvailable = (acbInfoList.Count > this.selectedCueSheetId);
+		isCueSheetAvailable = (acbInfoList.Count > this.selectedCueSheetId);
 
 		using (var cueListAndInfoScope = new EditorGUILayout.VerticalScope("CN Box")) {
+			bool playButtonPushed = false;
+			bool isCueAvailable = false;
+			CriAtomWindowInfo.CueInfo selectedCueInfo = null;
+
 			/* list title */
 			using (var cueListTitleScope = new EditorGUILayout.HorizontalScope()) {
 				if (GUILayout.Button("Cue Name", toolBarButtonStyle)) {
@@ -244,10 +251,6 @@ public sealed class CriAtomWindow : EditorWindow
 			}
 
 			/* cue list */
-			bool playButtonPushed = false;
-			bool isCueAvailable = false;
-			CriAtomWindowInfo.CueInfo selectedCueInfo = null;
-
 			using (var cueListScope = new EditorGUILayout.ScrollViewScope(scrollPosCueList, GUILayout.ExpandHeight(true))) {
 				scrollPosCueList = cueListScope.scrollPosition;
 				if (isCueSheetAvailable) {
@@ -295,11 +298,45 @@ public sealed class CriAtomWindow : EditorWindow
 				}
 			}
 
-			if (playButtonPushed) {
-				if (isCueSheetAvailable && isCueAvailable) {
+			EditorGUILayout.BeginHorizontal(EditorStyles.toolbar,GUILayout.ExpandWidth(true));
+			{
+				{
+					var tempToggleVal = GUILayout.Toggle(this.showPrivateCue, "Show Private Cue", GUILayout.Width(120));
+					if (tempToggleVal != this.showPrivateCue) {
+						/* Clear cue selection when change setting */
+						this.selectedCueInfoIndex = 0;
+					}
+					this.showPrivateCue = tempToggleVal;
+				}
+				if (GUILayout.Button("Stop All", EditorStyles.toolbarButton, GUILayout.Width(100))) {
+					StopPreview();
+				}
+			}
+			EditorGUILayout.EndHorizontal();
+
+			EditorGUILayout.Space();
+
+			EditorGUILayout.BeginHorizontal("AppToolbar");
+			{
+				GUILayout.Label("Cue Information");
+			}
+			EditorGUILayout.EndHorizontal();
+			EditorGUILayout.LabelField("Cue ID", (isCueSheetAvailable && isCueAvailable) ? selectedCueInfo.id.ToString() : "N/A");
+			string cueName = "N/A";
+			string userData = "";
+			if (isCueSheetAvailable && isCueAvailable) {
+				cueName = selectedCueInfo.name;
+				userData = selectedCueInfo.comment;
+			}
+			EditorGUILayout.LabelField("Cue Name", cueName);
+			EditorGUILayout.LabelField("User Data", userData, EditorStyles.wordWrappedLabel, GUILayout.Height(28));
+
+			if (GUI.changed && isCueSheetAvailable) {
+				var acbInfo = acbInfoList[selectedCueSheetId];
+
+				if (playButtonPushed && isCueAvailable) {
 					StopPreview();
 
-					var acbInfo = acbInfoList[selectedCueSheetId];
 					TryInitializePlugin();
 					if (lastAcbName != acbInfo.name) {
 						if (previewAcb != null) {
@@ -317,33 +354,6 @@ public sealed class CriAtomWindow : EditorWindow
 					}
 				}
 			}
-
-			EditorGUILayout.BeginHorizontal("AppToolbar");
-			{
-				EditorGUILayout.LabelField("Cue Information");
-				EditorGUILayout.Space();
-				{
-					var tempToggleVal = GUILayout.Toggle(this.showPrivateCue, "Show Private Cue", EditorStyles.toolbarButton, GUILayout.Width(150));
-					if (tempToggleVal != this.showPrivateCue) {
-						/* Clear cue selection when change setting */
-						this.selectedCueInfoIndex = 0;
-					}
-					this.showPrivateCue = tempToggleVal;
-				}
-				if (GUILayout.Button("Stop All", EditorStyles.toolbarButton, GUILayout.Width(100))) {
-					StopPreview();
-				}
-			}
-			EditorGUILayout.EndHorizontal();
-			EditorGUILayout.LabelField("Cue ID", (isCueSheetAvailable && isCueAvailable) ? selectedCueInfo.id.ToString() : "N/A");
-			string cueName = "N/A";
-			string userData = "";
-			if (isCueSheetAvailable && isCueAvailable) {
-				cueName = selectedCueInfo.name;
-				userData = selectedCueInfo.comment;
-			}
-			EditorGUILayout.LabelField("Cue Name", cueName);
-			EditorGUILayout.LabelField("User Data", userData, EditorStyles.wordWrappedLabel, GUILayout.Height(28));
 
 			/* edit buttons */
 			GUIEdit();
