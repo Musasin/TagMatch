@@ -1,8 +1,7 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-using DG.Tweening;
+using UnityEngine;
 
 public class Kotonoha : BossAIBase
 {
@@ -216,7 +215,7 @@ public class Kotonoha : BossAIBase
     {
         sequence = DOTween.Sequence()
             .AppendCallback(() => { 
-                AudioManager.Instance.PlaySE("enemy_switch");
+                AudioManager.Instance.PlayExVoice("kotonoha_warp");
                 anim.SetBool("isDisappear", true);
                 bc.enabled = false;
             })
@@ -226,7 +225,7 @@ public class Kotonoha : BossAIBase
                 isRight = movedIsRight;
             })
             .AppendCallback(() => { 
-                AudioManager.Instance.PlaySE("enemy_switch");
+                AudioManager.Instance.PlayExVoice("kotonoha_warp");
                 anim.SetBool("isDisappear", false);
                 bc.enabled = true;
             })
