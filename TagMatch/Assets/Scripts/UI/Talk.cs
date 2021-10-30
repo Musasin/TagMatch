@@ -91,7 +91,7 @@ public class Talk: MonoBehaviour
         isPlaying = false;
         string sceneName = SceneManager.GetActiveScene().name;
         string acbName = sceneName.Split('-')[0];
-        LoadACB(acbName, acbName + ".acb");
+        LoadACB(acbName, acbName + ".acb", acbName + ".awb");
 
 
         AddChraObject("yukari", yukariPrefab);
