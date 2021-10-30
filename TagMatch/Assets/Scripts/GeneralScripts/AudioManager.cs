@@ -26,6 +26,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         if (criWareInitializer == null)
         {
             criWareInitializer = gameObject.GetComponentInChildren<CriWareInitializer>();
+            criWareInitializer.atomConfig.standardVoicePoolConfig.memoryVoices = 32;
 
             criWareInitializer.atomConfig.usesInGamePreview = false;
             criWareInitializer.Initialize();
