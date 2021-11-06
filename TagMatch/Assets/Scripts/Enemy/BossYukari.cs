@@ -467,7 +467,7 @@ public class BossYukari : BossAIBase
             {
                 InstantiateBullet(starBullet, isRight ? 0 : 180, animationState == AnimationState.SQUAT);
             })
-            .AppendInterval(0.2f)
+            .AppendInterval(1.0f)
             .OnComplete(() => { isPlaying = false; })
             .Play();
     }

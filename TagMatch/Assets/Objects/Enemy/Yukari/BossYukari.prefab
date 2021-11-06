@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91efe32cf3fe4d8cb3b5c86ed7e2bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 300
+  hp: 250
   damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
     type: 3}
   defaultPosition: {x: 0, y: 0}
@@ -254,5 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ae320a54c7d483b969cccb9509f917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAstral: 0
   starBullet: {fileID: 1167715330987728161, guid: 5765d2d040c0046cd898bbdc9936e45e,
     type: 3}
