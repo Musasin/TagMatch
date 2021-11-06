@@ -14,12 +14,15 @@ public class EnemyBase : MonoBehaviour
     float invincibleTime = 0;
     SpriteRenderer sr;
 
+    Color defaultColor;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
         maxHp = hp;
         sr = GetComponentInChildren<SpriteRenderer>();
         defaultPosition = transform.localPosition;
+        defaultColor = sr.color;
     }
 
     public virtual void Reset()
@@ -39,8 +42,8 @@ public class EnemyBase : MonoBehaviour
     
     public void UpdateColor()
     {
-        float f = (invincibleTime > 0) ? 0.5f : 1.0f;
-        sr.color = new Color(1.0f, f, f, f);
+        if (invincibleTime > 0) sr.color = new Color(1.0f, 0.5f, 0.5f, 0.5f);
+        else sr.color = defaultColor;
     }
 
     public virtual void HitBullet(int damage, GameObject hitObject)

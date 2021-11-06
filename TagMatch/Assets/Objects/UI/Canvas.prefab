@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yukariPrefab: {fileID: 2463399057827028867, guid: 35f1fb21770024ba686eaa6d86b43a59,
     type: 3}
-  rightYukariPrefab: {fileID: 2463399057827028867, guid: 38dd5421ef36b4a4a940d42b8365f47b,
+  rightYukariPrefab: {fileID: 5839086669376515938, guid: 056a33177ac9547e4a88194ac8007ddb,
     type: 3}
   makiPrefab: {fileID: 6718408753193743036, guid: 6980f7ee7aa374278aa6152fbe884cb3,
     type: 3}

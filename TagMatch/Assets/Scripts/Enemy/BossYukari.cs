@@ -6,13 +6,16 @@ using DG.Tweening;
 
 public class BossYukari : BossAIBase
 {
+    public bool isAstral;
     public GameObject starBullet;
     BoxCollider2D bc;
-    Vector2 l1Pos, l2Pos, l3Pos, l4Pos, r1Pos, r2Pos, r3Pos, r4Pos, c1Pos;
+    GameObject bulletPivot, squatBulletPivot;
+    Vector2 l1Pos, l2Pos, l3Pos, l4Pos, r1Pos, r2Pos, r3Pos, r4Pos, c1Pos, c4Pos;
 
     enum ActionState
     {
         START,
+        SHOT,
         MOVE_TO_L1,
         MOVE_TO_L2,
         MOVE_TO_L3,
@@ -22,6 +25,14 @@ public class BossYukari : BossAIBase
         MOVE_TO_R3,
         MOVE_TO_R4,
         JUMP_TO_C1,
+        JUMP_TO_L1,
+        JUMP_TO_R1,
+        RUN_TO_C4,
+        RUN_TO_L4,
+        RUN_TO_R4,
+        WARP_TO_L4,
+        WARP_TO_R1,
+        WARP_TO_R4,
         CHANGE_IS_RIGHT,
         LOOP,
         WAIT,
@@ -40,6 +51,8 @@ public class BossYukari : BossAIBase
         bossScript = GetComponent<Boss>();
         state = ActionState.START;
         
+        bulletPivot = transform.Find("BulletPivot").gameObject;
+        squatBulletPivot = transform.Find("SquatBulletPivot").gameObject;
         l1Pos = GameObject.Find("L1Pos").transform.position;
         l2Pos = GameObject.Find("L2Pos").transform.position;
         l3Pos = GameObject.Find("L3Pos").transform.position;
@@ -49,6 +62,7 @@ public class BossYukari : BossAIBase
         r3Pos = GameObject.Find("R3Pos").transform.position;
         r4Pos = GameObject.Find("R4Pos").transform.position;
         c1Pos = GameObject.Find("C1Pos").transform.position;
+        c4Pos = GameObject.Find("C4Pos").transform.position;
     }
     
     public override void Reset()
@@ -83,6 +97,11 @@ public class BossYukari : BossAIBase
             return;
         }
 
+        if (isAstral && !IsLifeHalf())
+        {
+            bc.enabled = false;
+            return;
+        }
         
         // アニメーション再生中は次のモードに遷移しない
         if (isPlaying)
@@ -93,19 +112,163 @@ public class BossYukari : BossAIBase
         switch (state)
         {
             case ActionState.START:
-                //AudioManager.Instance.PlayExVoice("itako_start");
+                if (isAstral) bc.enabled = true;
+                //else AudioManager.Instance.PlayExVoice("itako_start"); // TODO: ゆかり開始ボイス作る
 
                 actionStateQueue.Add(ActionState.WAIT);
                 
-                actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                
+                if (isAstral)
+                {
+                    // 分身体は開幕右下からのショットで登場
+                    actionStateQueue.Add(ActionState.MOVE_TO_R4);
+                    actionStateQueue.Add(ActionState.SHOT);
+                } else
+                {
+                    // 開幕右上から中央上、左上にジャンプしながら下方向に攻撃
+                    actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    actionStateQueue.Add(ActionState.JUMP_TO_L1);
+                }
+                
+                // Y軸に若干ランダムを入れつつ、左右にワープして攻撃
+                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
+                actionStateQueue.Add(ActionState.SHOT);
+                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L3 : ActionState.MOVE_TO_L4);
+                actionStateQueue.Add(ActionState.SHOT);
+                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R1 : ActionState.MOVE_TO_R4);
+                actionStateQueue.Add(ActionState.SHOT);
+                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L2);
+                actionStateQueue.Add(ActionState.SHOT);
+
+                // 左右どちらかの二段目から中央上->反対側の上に向かってジャンプ攻撃
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_R2);
+                    actionStateQueue.Add(ActionState.SHOT);
+                    actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    actionStateQueue.Add(ActionState.JUMP_TO_L1);
+                } else
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_L2);
+                    actionStateQueue.Add(ActionState.SHOT);
+                    actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    actionStateQueue.Add(ActionState.JUMP_TO_R1);
+                }
+
+                // ランダムでフェイントを挟む
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R1 : ActionState.MOVE_TO_R4);
+                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
+                }
+
+                // 左右どちらかから端まで走り抜ける
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    AddLRRunStateQueue();
+                } else
+                {
+                    AddRLRunStateQueue();
+                }
+                
+                // ランダムでフェイントを挟む
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L4);
+                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L2 : ActionState.MOVE_TO_L3);
+                }
+
+                // 左上でショット、ジャンプして右端まで
                 actionStateQueue.Add(ActionState.MOVE_TO_L1);
-                actionStateQueue.Add(ActionState.MOVE_TO_L2);
-                actionStateQueue.Add(ActionState.MOVE_TO_L3);
-                actionStateQueue.Add(ActionState.MOVE_TO_L4);
-                actionStateQueue.Add(ActionState.MOVE_TO_R1);
+                actionStateQueue.Add(ActionState.SHOT);
+                actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                actionStateQueue.Add(ActionState.JUMP_TO_R1);
+                
+                // すぐ右端からジャンプして中央に戻ってショット、そしてまた右に消える
+                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+                actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                actionStateQueue.Add(ActionState.SHOT);
+                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+                actionStateQueue.Add(ActionState.JUMP_TO_R1);
+
+                // ランダムでフェイントを挟む
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R4 : ActionState.MOVE_TO_L4);
+                }
+                
+                // Y軸に若干ランダムを入れつつ、左右にワープして攻撃
+                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
+                actionStateQueue.Add(ActionState.SHOT);
+                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L3 : ActionState.MOVE_TO_L4);
+                actionStateQueue.Add(ActionState.SHOT);
+                
+                // ランダムでフェイントを挟む
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_L2);
+                }
+
+                // 左から右、または左から左で走る
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    AddLRRunStateQueue();
+                } else
+                {
+                    AddLLRunStateQueue();
+                }
+                
+                // 左上、中央、左上
+                actionStateQueue.Add(ActionState.MOVE_TO_L1);
+                actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+                actionStateQueue.Add(ActionState.JUMP_TO_L1);
+                
+                // 右か左の縦連
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_R1);
+                    actionStateQueue.Add(ActionState.MOVE_TO_R2);
+                    actionStateQueue.Add(ActionState.SHOT);
+                    actionStateQueue.Add(ActionState.MOVE_TO_R3);
+                    actionStateQueue.Add(ActionState.MOVE_TO_R4);
+                    actionStateQueue.Add(ActionState.SHOT);
+                } else
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_L1);
+                    actionStateQueue.Add(ActionState.SHOT);
+                    actionStateQueue.Add(ActionState.MOVE_TO_L2);
+                    actionStateQueue.Add(ActionState.MOVE_TO_L3);
+                    actionStateQueue.Add(ActionState.SHOT);
+                    actionStateQueue.Add(ActionState.MOVE_TO_L4);
+                }
+
+                // 左右どちらかの二段目から中央上->反対側の上に向かってジャンプ攻撃
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_R2);
+                    actionStateQueue.Add(ActionState.SHOT);
+                    actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    actionStateQueue.Add(ActionState.JUMP_TO_L1);
+                } else
+                {
+                    actionStateQueue.Add(ActionState.MOVE_TO_L2);
+                    actionStateQueue.Add(ActionState.SHOT);
+                    actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    actionStateQueue.Add(ActionState.JUMP_TO_R1);
+                }
+                
+                // ランダムでフェイントを挟む
+                if (Random.Range(0, 1) < 0.5f)
+                {
+                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L4);
+                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L2 : ActionState.MOVE_TO_L3);
+                }
+
+                // 右側二段目でショットして最初に戻る
                 actionStateQueue.Add(ActionState.MOVE_TO_R2);
-                actionStateQueue.Add(ActionState.MOVE_TO_R3);
-                actionStateQueue.Add(ActionState.MOVE_TO_R4);
+                actionStateQueue.Add(ActionState.SHOT);
+                
 
                 actionStateQueue.Add(ActionState.LOOP);
 
@@ -113,6 +276,10 @@ public class BossYukari : BossAIBase
             case ActionState.LOOP:
                 isPlaying = false;
                 stateIndex = 0;
+                break;
+            case ActionState.SHOT:
+                isPlaying = true;
+                PlayShotSequence();
                 break;
             case ActionState.MOVE_TO_L1:
                 isPlaying = true;
@@ -150,6 +317,38 @@ public class BossYukari : BossAIBase
                 isPlaying = true;
                 PlayJumpSequence(c1Pos);
                 break;
+            case ActionState.JUMP_TO_L1:
+                isPlaying = true;
+                PlayJumpSequence(l1Pos);
+                break;
+            case ActionState.JUMP_TO_R1:
+                isPlaying = true;
+                PlayJumpSequence(r1Pos);
+                break;
+            case ActionState.RUN_TO_C4:
+                isPlaying = true;
+                PlayRunSequence(c4Pos);
+                break;
+            case ActionState.RUN_TO_L4:
+                isPlaying = true;
+                PlayRunSequence(l4Pos);
+                break;
+            case ActionState.RUN_TO_R4:
+                isPlaying = true;
+                PlayRunSequence(r4Pos);
+                break;
+            case ActionState.WARP_TO_L4:
+                isPlaying = true;
+                PlayWarpSequenceOutOnly(l4Pos, true);
+                break;
+            case ActionState.WARP_TO_R1:
+                isPlaying = true;
+                PlayWarpSequenceOutOnly(r1Pos, false);
+                break;
+            case ActionState.WARP_TO_R4:
+                isPlaying = true;
+                PlayWarpSequenceOutOnly(r4Pos, false);
+                break;
             case ActionState.CHANGE_IS_RIGHT:
                 isRight = !isRight;
                 break;
@@ -166,7 +365,43 @@ public class BossYukari : BossAIBase
         stateIndex++;
     }
 
-    public virtual void PlayWarpSequence(Vector2 targetPos, bool movedIsRight) 
+    
+    private void AddLRRunStateQueue()
+    {
+        // 左下から右下へ走りながら攻撃
+        actionStateQueue.Add(ActionState.WARP_TO_L4);
+        actionStateQueue.Add(ActionState.RUN_TO_C4);
+        actionStateQueue.Add(ActionState.WAIT);
+        actionStateQueue.Add(ActionState.RUN_TO_R4);
+    }
+    private void AddRLRunStateQueue()
+    {
+        // 右下から左下へ走りながら攻撃
+        actionStateQueue.Add(ActionState.WARP_TO_R4);
+        actionStateQueue.Add(ActionState.RUN_TO_C4);
+        actionStateQueue.Add(ActionState.WAIT);
+        actionStateQueue.Add(ActionState.RUN_TO_L4);
+    }
+    private void AddLLRunStateQueue()
+    {
+        // 左下、中央、左下の順で走りながら攻撃
+        actionStateQueue.Add(ActionState.WARP_TO_L4);
+        actionStateQueue.Add(ActionState.RUN_TO_C4);
+        actionStateQueue.Add(ActionState.WAIT);
+        actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+        actionStateQueue.Add(ActionState.RUN_TO_L4);
+    }
+    private void AddRRRunStateQueue()
+    {
+        // 右下、中央、右下の順で走りながら攻撃
+        actionStateQueue.Add(ActionState.WARP_TO_R4);
+        actionStateQueue.Add(ActionState.RUN_TO_C4);
+        actionStateQueue.Add(ActionState.WAIT);
+        actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
+        actionStateQueue.Add(ActionState.RUN_TO_R4);
+    }
+
+    private void PlayWarpSequence(Vector2 targetPos, bool movedIsRight) 
     {
         bool isNowRightPos = c1Pos.x < transform.position.x;
 
@@ -187,61 +422,131 @@ public class BossYukari : BossAIBase
             .AppendCallback(() => {
                 bc.enabled = true;
             })
-            .AppendInterval(2.0f)
+            .AppendInterval(IsLifeHalf() ? 0.1f : 0.3f)
             .OnComplete(() => { isPlaying = false; })
             .Play();
     }
-
-    public void PlayJumpSequence(Vector2 targetPos)
+    
+    // PlayWarpSequenceから出てくる部分をカットした版
+    private void PlayWarpSequenceOutOnly(Vector2 targetPos, bool movedIsRight) 
     {
         bool isNowRightPos = c1Pos.x < transform.position.x;
 
-        // 飛びながら回転するだけ
         sequence = DOTween.Sequence()
-            .Append(transform.DOLocalJump(targetPos, 1.0f, 1, 1.0f))
-            .Join(transform.DORotate(new Vector3(1, 1, isNowRightPos ? 720 : -720), 1.0f, RotateMode.WorldAxisAdd))
+            .AppendCallback(() => {
+                AudioManager.Instance.PlaySE("buon"); // TODO: ドロン系の音にしたい かくれるが更新されたらそれを当ててみる
+                bc.enabled = false;
+                animationState = AnimationState.SQUAT;
+                anim.SetInteger("state", (int)animationState);
+            })
+            .Append(transform.DOLocalMoveX(transform.localPosition.x + (isNowRightPos ? 2.0f : -2.0f), 0.3f))
+            .AppendInterval(IsLifeHalf() ? 0.5f : 1.0f)
+            .AppendCallback(() => {
+                transform.position = targetPos;
+                isRight = movedIsRight;
+                bc.enabled = true;
+            })
             .OnComplete(() => { isPlaying = false; })
             .Play();
-
-        // ジャンプショットの移植中
-        //Sequence sequence = DOTween.Sequence()
-        //    .Append(transform.DOLocalRotate(new Vector3(0, 0, -45), 0.4f / 8))
-        //    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -45 : -135); })
-        //    .AppendInterval(0.4f / 8)
-        //    .Append(transform.DOLocalRotate(new Vector3(0, 0, -60), 0.4f / 8))
-        //    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -80 : -100); })
-        //    .AppendInterval(0.4f / 8)
-        //    .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -120 : -60); })
-        //    .Append(transform.DOLocalRotate(new Vector3(0, 0, -360), 0.4f * 4 / 8, RotateMode.FastBeyond360));
-        //sequence.Play();
-        //AudioManager.Instance.PlayExVoice("yukari_down_shot", true);
-
-
     }
-        
-    // ジャンプショットの移植中
-    //private void InstantiateBullet(Bullet.BulletType bulletType, GameObject bulletObj, float angleZ, bool isSquat = false)
-    //{
-    //    float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * 400.0f * (bulletType == Bullet.BulletType.YUKARI ? 1.5f : 1.0f);
-    //    float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * 400.0f * (bulletType == Bullet.BulletType.YUKARI ? 1.5f : 1.0f);
 
-    //    GameObject bullet = Instantiate(bulletObj);
-        
-    //    bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
-    //    bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
-    //    bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
-    //    bullet.GetComponent<Bullet>().SetBulletType(bulletType);
-    //    bullet.GetComponent<Bullet>().SetPlayerScript(this);
-    //    AddBulletCount(bulletType, 1);
+    private void PlayShotSequence()
+    {
+        sequence = DOTween.Sequence()
+            .AppendCallback(() =>
+            {
+                InstantiateBullet(starBullet, isRight ? 0 : 180, animationState == AnimationState.SQUAT);
+            })
+            .AppendInterval(0.2f)
+            .AppendCallback(() =>
+            {
+                if(IsLifeHalf()) InstantiateBullet(starBullet, isRight ? 0 : 180, animationState == AnimationState.SQUAT);
+            })
+            .AppendInterval(0.2f)
+            .AppendCallback(() =>
+            {
+                InstantiateBullet(starBullet, isRight ? 0 : 180, animationState == AnimationState.SQUAT);
+            })
+            .AppendInterval(1.0f)
+            .OnComplete(() => { isPlaying = false; })
+            .Play();
+    }
 
-    //    if (IsYukari())
-    //    {
-    //        AudioManager.Instance.PlaySE("shot_yukari");
-    //    } else if (IsMaki())
-    //    {
-    //        AudioManager.Instance.PlaySE("shot_maki");
-    //    }
-    //}
+    private void PlayJumpSequence(Vector2 targetPos)
+    {
+        bool isNowRightPos = c1Pos.x < transform.position.x;
+
+        sequence = DOTween.Sequence()
+            .AppendCallback(() => { 
+                animationState = AnimationState.JUMP;
+                anim.SetInteger("state", (int)animationState);
+                AudioManager.Instance.PlaySE("jump");
+            })
+            .Append(transform.DOLocalJump(targetPos, 1.0f, 1, 1.0f))
+            .Join(
+                DOTween.Sequence()
+                .AppendInterval(0.1f)
+                .AppendCallback(() => { AudioManager.Instance.PlayExVoice("yukari_down_shot", true);})
+                .Append(transform.DOLocalRotate(new Vector3(0, 0, 45), 0.4f / 8))
+                .AppendCallback(() => { InstantiateBullet(starBullet, isRight ? -45 : -135); })
+                .AppendInterval(0.4f / 8)
+                .Append(transform.DOLocalRotate(new Vector3(0, 0, 60), 0.4f / 8))
+                .AppendCallback(() => { InstantiateBullet(starBullet, isRight ? -80 : -100); })
+                .AppendInterval(0.4f / 8)
+                .AppendCallback(() => { InstantiateBullet(starBullet, isRight ? -120 : -60); })
+                .Append(transform.DOLocalRotate(new Vector3(0, 0, 360), 0.4f * 4 / 8, RotateMode.FastBeyond360))
+                .AppendInterval(0.3f)
+            )
+            .OnComplete(() => { 
+                animationState = AnimationState.STAND;
+                anim.SetInteger("state", (int)animationState);
+                isPlaying = false;
+            })
+            .Play();
+    }
+    
+    private void PlayRunSequence(Vector2 targetPos)
+    {
+        sequence = DOTween.Sequence()
+            .AppendCallback(() => { 
+                animationState = AnimationState.RUN;
+                anim.SetInteger("state", (int)animationState);
+            })
+            .Append(transform.DOLocalMove(targetPos, 2.0f)).SetEase(Ease.Linear)
+            .Join(
+                DOTween.Sequence()
+                .AppendInterval(0.2f)
+                .AppendCallback(() =>
+                {
+                    InstantiateBullet(starBullet, isRight ? 0 : 180, false);
+                })
+                .AppendInterval(0.5f)
+                .AppendCallback(() =>
+                {
+                    InstantiateBullet(starBullet, isRight ? 0 : 180, false);
+                })
+            )
+            .OnComplete(() => { 
+                animationState = AnimationState.STAND;
+                anim.SetInteger("state", (int)animationState);
+                isPlaying = false;
+            })
+            .Play();
+    }
+
+    private void InstantiateBullet(GameObject bulletObj, float angleZ, bool isSquat = false)
+    {
+        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * 550.0f;
+        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * 550.0f;
+
+        GameObject bullet = Instantiate(bulletObj);
+
+        bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));
+        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+
+        AudioManager.Instance.PlaySE("shot_yukari");
+    }
 
     bool IsLifeHalf()
     {
