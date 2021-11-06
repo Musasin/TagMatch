@@ -20,6 +20,8 @@
           <Orca OrcaName="MusMus-BGM-122.wav" Channels="2" Comment="MusMus" ReloopEnd="8338176" ResamplingRate="44100" SampleFrames="8338176" SamplingRate="44100" SourceFileSize="33352952" StreamType="Stream" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="opening2.wav" Channels="2" ReloopEnd="2491081" ResamplingRate="44100" SampleFrames="2491081" SamplingRate="44100" SourceFileSize="9964404" StreamType="Stream" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="清々たる森の中で_971566.wav" Channels="2" ReloopEnableFlag="True" ReloopEnd="4302651" ReloopStart="971566" ResamplingRate="48000" SampleFrames="4302651" SamplingRate="48000" SourceFileSize="17211306" StreamType="Stream" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="boss6_maki.wav" Channels="2" EncodeFileSize="1699762" ReloopEnableFlag="True" ReloopEnd="2549025" ReloopStart="332482" ResamplingRate="44100" SampleFrames="2549025" SamplingRate="44100" SourceFileSize="10196180" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="boss6_yukari.wav" Channels="2" EncodeFileSize="1419122" ReloopEnableFlag="True" ReloopEnd="2125574" ReloopStart="860177" ResamplingRate="44100" SampleFrames="2183639" SamplingRate="44100" SourceFileSize="8734636" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="SE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="DONT_PUSH" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
