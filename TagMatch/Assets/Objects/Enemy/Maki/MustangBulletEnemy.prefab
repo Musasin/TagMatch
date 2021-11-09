@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 596801414781287631}
   - component: {fileID: 371683277016192917}
   - component: {fileID: 4465561448575731663}
+  - component: {fileID: -2377292353290903355}
   m_Layer: 0
   m_Name: MustangBulletEnemy
   m_TagString: Damage
@@ -116,6 +117,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePoint: 20
+--- !u!114 &-2377292353290903355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638337299276677076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ca62c01066c4a1ab01ed6394bbdbd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumTime: 0.1
 --- !u!1001 &4638337297758142591
 PrefabInstance:
   m_ObjectHideFlags: 0
