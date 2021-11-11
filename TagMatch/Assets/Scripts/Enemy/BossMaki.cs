@@ -10,7 +10,6 @@ public class BossMaki : BossAIBase
     BoxCollider2D bc;
     GameObject bulletPivot;
     Vector2 l1Pos, r1Pos, c1Pos, c2Pos;
-    float invincibleTime;
     const float BARRIER_INVINCIBLE_TIME = 3.0f;
 
     enum ActionState

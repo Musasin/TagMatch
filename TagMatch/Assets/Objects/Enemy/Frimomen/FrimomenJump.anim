@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FrimomenThrow
+  m_Name: FrimomenJump
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -96,11 +96,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: d6eb551b415c946a88b6e998db5bfa90, type: 3}
-    - time: 0.35
-      value: {fileID: 21300000, guid: 1fe0b4a44d5444cc7ac882a36058a4b9, type: 3}
-    - time: 0.6666667
-      value: {fileID: 21300000, guid: d6eb551b415c946a88b6e998db5bfa90, type: 3}
+      value: {fileID: 21300000, guid: 9e7a06c753ea641ac80870eba85e0a96, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -148,15 +144,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: d6eb551b415c946a88b6e998db5bfa90, type: 3}
-    - {fileID: 21300000, guid: 1fe0b4a44d5444cc7ac882a36058a4b9, type: 3}
-    - {fileID: 21300000, guid: d6eb551b415c946a88b6e998db5bfa90, type: 3}
+    - {fileID: 21300000, guid: 9e7a06c753ea641ac80870eba85e0a96, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.68333334
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
