@@ -54,7 +54,9 @@ public class Title : MonoBehaviour
         keyConfigUIScript = GameObject.Find("KeyConfig").GetComponent<KeyConfigUI>();
         
         if (StaticValues.isReloadACB == false) { return; }
-        AudioManager.Instance.LoadACB("Title", "Title.acb");
+        AudioManager.Instance.LoadACB("Title", "Title.acb", "Title.awb");
+        StaticValues.isReloadACB = false;
+
         StaticValues.isReloadACB = false;
 
         if (PlayerPrefs.HasKey("Scene"))
