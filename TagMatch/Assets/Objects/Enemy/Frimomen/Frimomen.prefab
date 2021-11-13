@@ -340,8 +340,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fff5b554b1394606ab7fe9fa947246e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAstral: 0
-  throwBullet: {fileID: 5903927272621892690, guid: 0353d66dc98d74d289735376637ec34d,
+  throwBulletBlue: {fileID: 5903927272621892690, guid: 0353d66dc98d74d289735376637ec34d,
+    type: 3}
+  throwBulletRed: {fileID: 2363602173395582960, guid: 567c932071dc14cbbac6c25f0d9794dd,
+    type: 3}
+  throwBulletGreen: {fileID: 1277793154932332308, guid: 8a935e8dfea0c41e8b05c2242fe6976a,
+    type: 3}
+  throwBulletPurple: {fileID: 3481255263413561349, guid: b7824abb729b548ca902d65124cbf1cd,
     type: 3}
 --- !u!61 &3683471166814426610
 BoxCollider2D:

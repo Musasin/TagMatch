@@ -6,8 +6,8 @@ using DG.Tweening;
 
 public class Frimomen : BossAIBase
 {
-    public bool isAstral;
-    public GameObject throwBullet;
+    // 青:平均的, 緑:ふんわり落ちてくる, 赤:ダメージ1.5倍, 紫:落下が速い
+    public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple;
     BoxCollider2D bc;
     GameObject bulletPivot;
     Vector2 l1Pos, l2Pos, l3Pos, r1Pos, r2Pos, r3Pos, c1Pos, jumpOutPos;
@@ -28,7 +28,10 @@ public class Frimomen : BossAIBase
         TUCKLE_TO_L1,
         TUCKLE_TO_L2,
         TUCKLE_TO_L3,
-        THROW_BULLET_1,
+        THROW_BULLET_BLUE,
+        THROW_BULLET_RED,
+        THROW_BULLET_GREEN,
+        THROW_BULLET_PURPLE,
         CHANGE_IS_RIGHT,
         LOOP,
         WAIT,
@@ -79,7 +82,7 @@ public class Frimomen : BossAIBase
 
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("yukari_dead");
+            AudioManager.Instance.PlayExVoice("frimomen_dead");
             sequence.Kill();
             isRight = false;
             animationState = AnimationState.STAND;
@@ -93,12 +96,6 @@ public class Frimomen : BossAIBase
             return;
         }
 
-        if (isAstral && !IsLifeHalf())
-        {
-            bc.enabled = false;
-            return;
-        }
-        
         // アニメーション再生中は次のモードに遷移しない
         if (isPlaying)
         {
@@ -110,7 +107,7 @@ public class Frimomen : BossAIBase
         switch (state)
         {
             case ActionState.START:
-                //else AudioManager.Instance.PlayExVoice("itako_start"); // TODO: 開始ボイス作る
+                AudioManager.Instance.PlayExVoice("frimomen_start");
                 
                 isPlaying = true;
                 PlayJumpSequence(jumpOutPos); // ループには含めず、初回だけジャンプでいなくなる
@@ -133,9 +130,18 @@ public class Frimomen : BossAIBase
                 actionStateQueue.Add(ActionState.JUMP_TO_C1);
                 actionStateQueue.Add(ActionState.WAIT);
                 actionStateQueue.Add(ActionState.WAIT);
-                actionStateQueue.Add(ActionState.THROW_BULLET_1);
-                actionStateQueue.Add(ActionState.THROW_BULLET_1);
-                actionStateQueue.Add(ActionState.THROW_BULLET_1);
+                actionStateQueue.Add(ActionState.THROW_BULLET_BLUE);
+                actionStateQueue.Add(ActionState.THROW_BULLET_RED);
+                actionStateQueue.Add(ActionState.THROW_BULLET_GREEN);
+                actionStateQueue.Add(ActionState.THROW_BULLET_PURPLE);
+                actionStateQueue.Add(ActionState.THROW_BULLET_BLUE);
+                actionStateQueue.Add(ActionState.THROW_BULLET_RED);
+                actionStateQueue.Add(ActionState.THROW_BULLET_GREEN);
+                actionStateQueue.Add(ActionState.THROW_BULLET_PURPLE);
+                actionStateQueue.Add(ActionState.THROW_BULLET_BLUE);
+                actionStateQueue.Add(ActionState.THROW_BULLET_RED);
+                actionStateQueue.Add(ActionState.THROW_BULLET_GREEN);
+                actionStateQueue.Add(ActionState.THROW_BULLET_PURPLE);
                 actionStateQueue.Add(ActionState.WAIT);
                 actionStateQueue.Add(ActionState.JUMP_TO_R1);
                 
@@ -194,9 +200,21 @@ public class Frimomen : BossAIBase
                 isPlaying = true;
                 PlayTuckleSequence(l3Pos);
                 break;
-            case ActionState.THROW_BULLET_1:
+            case ActionState.THROW_BULLET_BLUE:
                 isPlaying = true;
-                PlayThrowSequence(throwBullet);
+                PlayThrowSequence(throwBulletBlue);
+                break;
+            case ActionState.THROW_BULLET_RED:
+                isPlaying = true;
+                PlayThrowSequence(throwBulletRed);
+                break;
+            case ActionState.THROW_BULLET_GREEN:
+                isPlaying = true;
+                PlayThrowSequence(throwBulletGreen);
+                break;
+            case ActionState.THROW_BULLET_PURPLE:
+                isPlaying = true;
+                PlayThrowSequence(throwBulletPurple);
                 break;
             case ActionState.CHANGE_IS_RIGHT:
                 isRight = !isRight;
@@ -219,6 +237,7 @@ public class Frimomen : BossAIBase
         sequence = DOTween.Sequence()
             .AppendCallback(() => {
                 dangerAnimator.SetTrigger("isOn");
+                AudioManager.Instance.PlayExVoice("frimomen_danger");
             })
             .AppendInterval(IsLifeHalf() ? 1.0f : 2.5f)
             .OnComplete(() => { 
@@ -244,6 +263,7 @@ public class Frimomen : BossAIBase
         sequence = DOTween.Sequence()
             .AppendCallback(() => { 
                 anim.SetBool("isTuckle", true);
+                AudioManager.Instance.PlayExVoice("frimomen_tuckle");
             })
             .Append(transform.DOLocalMove(targetPos, 1.0f)).SetEase(Ease.Linear)
             .OnComplete(() => { 
@@ -259,7 +279,7 @@ public class Frimomen : BossAIBase
         bullet.transform.position = bulletPivot.transform.position;
 
         float angleZ = Random.Range(90, 180);
-        float power = Random.Range(550, 800);
+        float power = Random.Range(700, 1200);
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * 550.0f;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * 550.0f;
 
@@ -276,9 +296,10 @@ public class Frimomen : BossAIBase
             .AppendInterval(0.3f)
             .AppendCallback(() =>
             {
+                AudioManager.Instance.PlayExVoice("frimomen_throw");
                 bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
             })
-            .AppendInterval(1.0f)
+            .AppendInterval(0.5f)
             .OnComplete(() => { 
                 anim.SetBool("isThrow", false);
                 isPlaying = false;
