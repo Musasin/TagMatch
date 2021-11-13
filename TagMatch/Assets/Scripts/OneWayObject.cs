@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OneWayObject : MonoBehaviour
 {
+    public bool isSideways; // 横向きの一方通行
     bool isIgnore;
     bool forceIgnore;
     Player playerScript;
@@ -21,7 +22,9 @@ public class OneWayObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        forceIgnore = playerScript.IsGetOff();
+        // 下り判定 横向きの一方通行足場では無効
+        forceIgnore = !isSideways && playerScript.IsGetOff();
+
         bc.enabled = (!forceIgnore && !isIgnore);
         if (!forceIgnore && !isIgnore)
         {
