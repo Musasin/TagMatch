@@ -63,6 +63,8 @@
           <Orca OrcaName="ghost_sound.wav" Channels="2" Comment="効果音ラボ" EncodeFileSize="262666" ReloopEnd="393984" ResamplingRate="44100" SampleFrames="393984" SamplingRate="44100" SourceFileSize="1575980" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="YukariShotExp2.wav" Channels="1" EncodeFileSize="5552" ReloopEnd="23723" ResamplingRate="44100" SampleFrames="23723" SamplingRate="44100" SourceFileSize="47574" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="kotonoha_warp.wav" Channels="2" EncodeFileSize="44426" ReloopEnd="66406" ResamplingRate="44100" SampleFrames="66406" SamplingRate="44100" SourceFileSize="265752" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="wood_jump.wav" Channels="1" EncodeFileSize="7598" ReloopEnd="21610" ResamplingRate="44100" SampleFrames="21610" SamplingRate="44100" SourceFileSize="43348" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="wood_swing1.wav" Channels="1" EncodeFileSize="2483" ReloopEnd="6263" ResamplingRate="44100" SampleFrames="6263" SamplingRate="44100" SourceFileSize="12654" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="VOICE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="Kotonoha" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
