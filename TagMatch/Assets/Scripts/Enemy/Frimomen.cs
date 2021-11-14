@@ -103,7 +103,7 @@ public class Frimomen : BossAIBase
         {
             case ActionState.START:
                 AudioManager.Instance.PlayExVoice("frimomen_start");
-                
+
                 actionStateQueue.Add(ActionState.WAIT);
                 actionStateQueue.Add(ActionState.JUMP_OUT);
 
@@ -273,14 +273,28 @@ public class Frimomen : BossAIBase
     }
     private void PlayThrowSequence(GameObject bulletObj)
     {
-        GameObject bullet = Instantiate(bulletObj);
+        GameObject bullet = null, bullet2 = null, bullet3 = null;
+        Vector2 addForceVector = Vector2.zero, addForceVector2 = Vector2.zero, addForceVector3 = Vector2.zero;
+        
+        bullet = Instantiate(bulletObj);
         bullet.SetActive(false);
         bullet.transform.position = bulletPivot.transform.position;
+        addForceVector = CalcAddForceVector(Random.Range(90, 180), Random.Range(500, 1000));
 
-        float angleZ = Random.Range(90, 180);
-        float power = Random.Range(700, 1200);
-        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * 550.0f;
-        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * 550.0f;
+        if (IsLifeTwoThirds())
+        {
+            bullet2 = Instantiate(bulletObj);
+            bullet2.SetActive(false);
+            bullet2.transform.position = bulletPivot.transform.position;
+            addForceVector2 = CalcAddForceVector(Random.Range(90, 180), Random.Range(700, 1000));
+        }
+        if (IsLifeOneThirds())
+        {
+            bullet3 = Instantiate(bulletObj);
+            bullet3.SetActive(false);
+            bullet3.transform.position = bulletPivot.transform.position;
+            addForceVector3 = CalcAddForceVector(Random.Range(90, 180), Random.Range(500, 700));
+        }
 
         sequence = DOTween.Sequence()
             .AppendCallback(() =>
@@ -291,24 +305,50 @@ public class Frimomen : BossAIBase
             .AppendCallback(() =>
             {
                 bullet.SetActive(true);
+                if (bullet2 != null) bullet2.SetActive(true);
+                if (bullet3 != null) bullet3.SetActive(true);
             })
             .AppendInterval(0.3f)
             .AppendCallback(() =>
             {
                 AudioManager.Instance.PlayExVoice("frimomen_throw");
                 AudioManager.Instance.PlaySE("swing");
-                bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+                bullet.GetComponent<Rigidbody2D>().AddForce(addForceVector);
             })
-            .AppendInterval(0.5f)
+            .AppendInterval(0.1f)
+            .AppendCallback(() =>
+            {
+                if (bullet2 != null) bullet2.GetComponent<Rigidbody2D>().AddForce(addForceVector2);
+            })
+            .AppendInterval(0.1f)
+            .AppendCallback(() =>
+            {
+                if (bullet3 != null) bullet3.GetComponent<Rigidbody2D>().AddForce(addForceVector3);
+            })
+            .AppendInterval(0.3f)
             .OnComplete(() => { 
                 anim.SetBool("isThrow", false);
                 isPlaying = false;
             })
             .Play();
     }
+    Vector2 CalcAddForceVector(float angleZ, float power)
+    {
+        float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * power;
+        float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * power;
+        return new Vector2(addforceX, addforceY);
+    }
 
     bool IsLifeHalf()
     {
         return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
+    }
+    bool IsLifeTwoThirds()
+    {
+        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() * 2 / 3));
+    }
+    bool IsLifeOneThirds()
+    {
+        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 3));
     }
 }
