@@ -201,6 +201,13 @@
             <Orca OrcaName="145_ぬん！_02.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="22261" ReloopEnd="65535" ResamplingRate="48000" SampleFrames="65535" SamplingRate="48000" SourceFileSize="198357" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="145_ぬん！_03.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="26694" ReloopEnd="79363" ResamplingRate="48000" SampleFrames="79363" SamplingRate="48000" SourceFileSize="239841" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="165_ほわぁ！？_02.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="26694" ReloopEnd="79478" ResamplingRate="48000" SampleFrames="79478" SamplingRate="48000" SourceFileSize="240186" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="200_おまえら_01.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="23284" ReloopEnd="69502" ResamplingRate="48000" SampleFrames="69502" SamplingRate="48000" SourceFileSize="210256" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="200_おまえら_02.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="26012" ReloopEnd="77302" ResamplingRate="48000" SampleFrames="77302" SamplingRate="48000" SourceFileSize="233656" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="200_おまえら_03.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="29763" ReloopEnd="88640" ResamplingRate="48000" SampleFrames="88640" SamplingRate="48000" SourceFileSize="267672" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="218_フォロー頼んだぞ！_01.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="36583" ReloopEnd="108679" ResamplingRate="48000" SampleFrames="108679" SamplingRate="48000" SourceFileSize="327789" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="218_フォロー頼んだぞ！_02.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="33514" ReloopEnd="99926" ResamplingRate="48000" SampleFrames="99926" SamplingRate="48000" SourceFileSize="301530" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="218_フォロー頼んだぞ！_03.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="79890" ReloopEnd="239124" ResamplingRate="48000" SampleFrames="239124" SamplingRate="48000" SourceFileSize="719124" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="218_フォロー頼んだぞ！_04.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="43062" ReloopEnd="128176" ResamplingRate="48000" SampleFrames="128176" SamplingRate="48000" SourceFileSize="386280" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           </Orca>
         </Orca>
       </Orca>

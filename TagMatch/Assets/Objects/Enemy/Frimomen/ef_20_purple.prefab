@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4797695054450086428}
   - component: {fileID: 1800585304170303722}
   - component: {fileID: -8825959135235071094}
+  - component: {fileID: 7392927878761985453}
   m_Layer: 11
   m_Name: ef_20_purple
   m_TagString: Damage
@@ -4899,3 +4900,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7392927878761985453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3481255263413561349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8ac1d6f68504855972f18e9dc29652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,10 +7,10 @@ using DG.Tweening;
 public class Frimomen : BossAIBase
 {
     // 青:平均的, 緑:ふんわり落ちてくる, 赤:ダメージ1.5倍, 紫:落下が速い
-    public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple;
+    public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple, summonBat;
     BoxCollider2D bc;
     GameObject bulletPivot;
-    Vector2 l1Pos, l2Pos, l3Pos, r1Pos, r2Pos, r3Pos, c1Pos, jumpOutPos;
+    Vector2 l1Pos, l2Pos, l3Pos, l4Pos, r1Pos, r2Pos, r3Pos, r4Pos, c1Pos, jumpOutPos;
     Animator dangerPanel1, dangerPanel2, dangerPanel3;
 
     enum ActionState
@@ -32,6 +32,7 @@ public class Frimomen : BossAIBase
         THROW_BULLET_SLOW,
         THROW_BULLET_LIGHT,
         THROW_BULLET_HEAVY,
+        SUMMON_BUT,
         CHANGE_IS_RIGHT,
         LOOP,
         WAIT,
@@ -51,9 +52,11 @@ public class Frimomen : BossAIBase
         l1Pos = GameObject.Find("L1Pos").transform.position;
         l2Pos = GameObject.Find("L2Pos").transform.position;
         l3Pos = GameObject.Find("L3Pos").transform.position;
+        l4Pos = GameObject.Find("L4Pos").transform.position;
         r1Pos = GameObject.Find("R1Pos").transform.position;
         r2Pos = GameObject.Find("R2Pos").transform.position;
         r3Pos = GameObject.Find("R3Pos").transform.position;
+        r4Pos = GameObject.Find("R4Pos").transform.position;
         c1Pos = GameObject.Find("C1Pos").transform.position;
         jumpOutPos = GameObject.Find("JumpOutPos").transform.position;
         dangerPanel1 = GameObject.Find("DangerPanel1").GetComponent<Animator>();
@@ -64,9 +67,12 @@ public class Frimomen : BossAIBase
     public override void Reset()
     {
         base.Reset();
+        anim.SetBool("isTuckle", false);
+        anim.SetBool("isThrow", false);
+        anim.SetBool("isJump", false);
+        actionStateQueue.Clear();
         stateIndex = 0;
         state = ActionState.START;
-        bc.enabled = true;
     }
 
     // Update is called once per frame
@@ -103,7 +109,7 @@ public class Frimomen : BossAIBase
         {
             case ActionState.START:
                 AudioManager.Instance.PlayExVoice("frimomen_start");
-
+                
                 actionStateQueue.Add(ActionState.WAIT);
                 actionStateQueue.Add(ActionState.JUMP_OUT);
 
@@ -118,6 +124,8 @@ public class Frimomen : BossAIBase
                 actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
                 actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
                 actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                
+                actionStateQueue.Add(ActionState.SUMMON_BUT);
 
                 actionStateQueue.Add(ActionState.JUMP_TO_R1);
 
@@ -135,6 +143,8 @@ public class Frimomen : BossAIBase
                 
                 actionStateQueue.Add(ActionState.WARP_TO_R1);
                 actionStateQueue.Add(ActionState.JUMP_TO_C1);
+
+                actionStateQueue.Add(ActionState.SUMMON_BUT);
                 
                 actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
                 actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
@@ -206,6 +216,10 @@ public class Frimomen : BossAIBase
             case ActionState.THROW_BULLET_HEAVY:
                 isPlaying = true;
                 PlayThrowSequence(throwBulletPurple);
+                break;
+            case ActionState.SUMMON_BUT:
+                isPlaying = true;
+                PlaySummonSequence();
                 break;
             case ActionState.CHANGE_IS_RIGHT:
                 isRight = !isRight;
@@ -283,14 +297,14 @@ public class Frimomen : BossAIBase
 
         if (IsLifeTwoThirds())
         {
-            bullet2 = Instantiate(bulletObj);
+            bullet2 = Instantiate(bulletObj, transform.parent);
             bullet2.SetActive(false);
             bullet2.transform.position = bulletPivot.transform.position;
             addForceVector2 = CalcAddForceVector(Random.Range(90, 180), Random.Range(700, 1000));
         }
         if (IsLifeOneThirds())
         {
-            bullet3 = Instantiate(bulletObj);
+            bullet3 = Instantiate(bulletObj, transform.parent);
             bullet3.SetActive(false);
             bullet3.transform.position = bulletPivot.transform.position;
             addForceVector3 = CalcAddForceVector(Random.Range(90, 180), Random.Range(500, 700));
@@ -332,6 +346,33 @@ public class Frimomen : BossAIBase
             })
             .Play();
     }
+
+    private void PlaySummonSequence()
+    {
+        Instantiate(summonBat, transform.parent).transform.position = r1Pos;
+        Instantiate(summonBat, transform.parent).transform.position = l1Pos;
+
+        if (IsLifeHalf())
+        {
+            Instantiate(summonBat, transform.parent).transform.position = r4Pos;
+            Instantiate(summonBat, transform.parent).transform.position = l4Pos;
+        }
+
+        sequence = DOTween.Sequence()
+            .AppendCallback(() => { 
+                anim.SetBool("isThrow", true);
+                AudioManager.Instance.PlayExVoice("frimomen_summon");
+                AudioManager.Instance.PlaySE("buon");
+            })
+            .Append(transform.DOLocalJump(transform.position, 1.0f, 1, 0.5f))
+            .AppendInterval(2.0f)
+            .OnComplete(() => { 
+                anim.SetBool("isThrow", false);
+                isPlaying = false;
+            })
+            .Play();
+    }
+
     Vector2 CalcAddForceVector(float angleZ, float power)
     {
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * power;

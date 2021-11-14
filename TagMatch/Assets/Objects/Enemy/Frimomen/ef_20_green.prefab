@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -1332948624938849742}
   - component: {fileID: 5546709137202825502}
   - component: {fileID: -5809046456968219706}
+  - component: {fileID: 1328975839751489525}
   m_Layer: 11
   m_Name: ef_20_green
   m_TagString: Damage
@@ -4957,3 +4958,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1328975839751489525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277793154932332308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8ac1d6f68504855972f18e9dc29652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

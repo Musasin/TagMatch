@@ -706,6 +706,10 @@ public class Player : MonoBehaviour
     {
         return getOffTime > 0;
     }
+    public bool IsDead()
+    {
+        return isDead;
+    }
 
     public void AddBulletCount(Bullet.BulletType bulletType, int count)
     {
