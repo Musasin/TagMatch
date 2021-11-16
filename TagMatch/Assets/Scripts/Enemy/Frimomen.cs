@@ -62,6 +62,10 @@ public class Frimomen : BossAIBase
         dangerPanel1 = GameObject.Find("DangerPanel1").GetComponent<Animator>();
         dangerPanel2 = GameObject.Find("DangerPanel2").GetComponent<Animator>();
         dangerPanel3 = GameObject.Find("DangerPanel3").GetComponent<Animator>();
+        
+        Debug.Log(l1Pos);
+        Debug.Log(r1Pos);
+        Debug.Log(jumpOutPos);
     }
     
     public override void Reset()
@@ -159,6 +163,7 @@ public class Frimomen : BossAIBase
                 break;
             case ActionState.JUMP_OUT:
                 isPlaying = true;
+        Debug.Log(jumpOutPos);
                 PlayJumpSequence(jumpOutPos, 5);
                 break;
             case ActionState.JUMP_TO_C1:
@@ -263,7 +268,7 @@ public class Frimomen : BossAIBase
                 anim.SetBool("isJump", true);
                 AudioManager.Instance.PlaySE("enemy_jump");
             })
-            .Append(transform.DOLocalJump(targetPos, jumpPower, 1, 0.7f))
+            .Append(transform.DOJump(targetPos, jumpPower, 1, 0.7f))
             .OnComplete(() => { 
                 anim.SetBool("isJump", false);
                 isPlaying = false;
@@ -278,7 +283,7 @@ public class Frimomen : BossAIBase
                 AudioManager.Instance.PlayExVoice("frimomen_tuckle");
                 AudioManager.Instance.PlaySE("shot_kiritanhou");
             })
-            .Append(transform.DOLocalMove(targetPos, 1.0f)).SetEase(Ease.Linear)
+            .Append(transform.DOMove(targetPos, 1.0f)).SetEase(Ease.Linear)
             .OnComplete(() => { 
                 anim.SetBool("isTuckle", false);
                 isPlaying = false;
@@ -364,7 +369,7 @@ public class Frimomen : BossAIBase
                 AudioManager.Instance.PlayExVoice("frimomen_summon");
                 AudioManager.Instance.PlaySE("buon");
             })
-            .Append(transform.DOLocalJump(transform.position, 1.0f, 1, 0.5f))
+            .Append(transform.DOJump(transform.position, 1.0f, 1, 0.5f))
             .AppendInterval(2.0f)
             .OnComplete(() => { 
                 anim.SetBool("isThrow", false);
