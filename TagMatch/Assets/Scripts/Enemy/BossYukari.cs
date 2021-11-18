@@ -131,17 +131,17 @@ public class BossYukari : BossAIBase
                 }
                 
                 // Y軸に若干ランダムを入れつつ、左右にワープして攻撃
-                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
+                actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
                 actionStateQueue.Add(ActionState.SHOT);
-                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L3 : ActionState.MOVE_TO_L4);
+                actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_L3 : ActionState.MOVE_TO_L4);
                 actionStateQueue.Add(ActionState.SHOT);
-                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R1 : ActionState.MOVE_TO_R4);
+                actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_R1 : ActionState.MOVE_TO_R4);
                 actionStateQueue.Add(ActionState.SHOT);
-                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L2);
+                actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L2);
                 actionStateQueue.Add(ActionState.SHOT);
 
                 // 左右どちらかの二段目から中央上->反対側の上に向かってジャンプ攻撃
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     actionStateQueue.Add(ActionState.MOVE_TO_R2);
                     actionStateQueue.Add(ActionState.SHOT);
@@ -156,14 +156,14 @@ public class BossYukari : BossAIBase
                 }
 
                 // ランダムでフェイントを挟む
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
-                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R1 : ActionState.MOVE_TO_R4);
-                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
+                    actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_R1 : ActionState.MOVE_TO_R4);
+                    actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
                 }
 
                 // 左右どちらかから端まで走り抜ける
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     AddLRRunStateQueue();
                 } else
@@ -172,10 +172,10 @@ public class BossYukari : BossAIBase
                 }
                 
                 // ランダムでフェイントを挟む
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
-                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L4);
-                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L2 : ActionState.MOVE_TO_L3);
+                    actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L4);
+                    actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_L2 : ActionState.MOVE_TO_L3);
                 }
 
                 // 左上でショット、ジャンプして右端まで
@@ -192,25 +192,25 @@ public class BossYukari : BossAIBase
                 actionStateQueue.Add(ActionState.JUMP_TO_R1);
 
                 // ランダムでフェイントを挟む
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
-                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R4 : ActionState.MOVE_TO_L4);
+                    actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_R4 : ActionState.MOVE_TO_L4);
                 }
                 
                 // Y軸に若干ランダムを入れつつ、左右にワープして攻撃
-                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
+                actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_R3);
                 actionStateQueue.Add(ActionState.SHOT);
-                actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L3 : ActionState.MOVE_TO_L4);
+                actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_L3 : ActionState.MOVE_TO_L4);
                 actionStateQueue.Add(ActionState.SHOT);
                 
                 // ランダムでフェイントを挟む
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
-                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_L2);
+                    actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_R2 : ActionState.MOVE_TO_L2);
                 }
 
                 // 左から右、または左から左で走る
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     AddLRRunStateQueue();
                 } else
@@ -225,7 +225,7 @@ public class BossYukari : BossAIBase
                 actionStateQueue.Add(ActionState.JUMP_TO_L1);
                 
                 // 右か左の縦連
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     actionStateQueue.Add(ActionState.MOVE_TO_R1);
                     actionStateQueue.Add(ActionState.MOVE_TO_R2);
@@ -244,7 +244,7 @@ public class BossYukari : BossAIBase
                 }
 
                 // 左右どちらかの二段目から中央上->反対側の上に向かってジャンプ攻撃
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     actionStateQueue.Add(ActionState.MOVE_TO_R2);
                     actionStateQueue.Add(ActionState.SHOT);
@@ -259,10 +259,10 @@ public class BossYukari : BossAIBase
                 }
                 
                 // ランダムでフェイントを挟む
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
-                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L4);
-                    actionStateQueue.Add(Random.Range(0, 1) < 0.5f ? ActionState.MOVE_TO_L2 : ActionState.MOVE_TO_L3);
+                    actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_L1 : ActionState.MOVE_TO_L4);
+                    actionStateQueue.Add(Random.Range(0, 1.0f) < 0.5f ? ActionState.MOVE_TO_L2 : ActionState.MOVE_TO_L3);
                 }
 
                 // 右側二段目でショットして最初に戻る

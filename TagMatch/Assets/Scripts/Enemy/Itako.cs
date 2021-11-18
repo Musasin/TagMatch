@@ -145,7 +145,7 @@ public class Itako : BossAIBase
                     actionStateQueue.Add(ActionState.GHOST_SHOT);
 
                     // 下段どっちかで炎攻撃
-                    if (Random.Range(0, 1) < 0.5f)
+                    if (Random.Range(0, 1.0f) < 0.5f)
                     {
                         actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
                     } 
@@ -168,7 +168,7 @@ public class Itako : BossAIBase
 
                 
                     // 上段どっちかで幽霊→炎攻撃
-                    if (Random.Range(0, 1) < 0.5f)
+                    if (Random.Range(0, 1.0f) < 0.5f)
                     {
                         actionStateQueue.Add(ActionState.MOVE_TO_UPPER_RIGHT);
                     } 
@@ -182,7 +182,7 @@ public class Itako : BossAIBase
 
                 
                     // 下段どっちかで幽霊攻撃
-                    if (Random.Range(0, 1) < 0.5f)
+                    if (Random.Range(0, 1.0f) < 0.5f)
                     {
                         actionStateQueue.Add(ActionState.MOVE_TO_LOWER_RIGHT);
                     } 
