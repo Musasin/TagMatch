@@ -10,7 +10,7 @@ public class Frimomen : BossAIBase
     public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple, summonBat;
     BoxCollider2D bc;
     GameObject bulletPivot;
-    Vector2 l1Pos, l2Pos, l3Pos, l4Pos, r1Pos, r2Pos, r3Pos, r4Pos, c1Pos, jumpOutPos;
+    Vector2 l1Pos, l2Pos, l3Pos, l4Pos, r1Pos, r2Pos, r3Pos, r4Pos, c1Pos, c2Pos, c3Pos, jumpOutPos;
     Animator dangerPanel1, dangerPanel2, dangerPanel3;
 
     enum ActionState
@@ -18,6 +18,8 @@ public class Frimomen : BossAIBase
         START,
         JUMP_OUT,
         JUMP_TO_C1,
+        JUMP_TO_C2,
+        JUMP_TO_C3,
         JUMP_TO_R1,
         WARP_TO_R1,
         WARP_TO_R2,
@@ -58,14 +60,12 @@ public class Frimomen : BossAIBase
         r3Pos = GameObject.Find("R3Pos").transform.position;
         r4Pos = GameObject.Find("R4Pos").transform.position;
         c1Pos = GameObject.Find("C1Pos").transform.position;
+        c2Pos = GameObject.Find("C2Pos").transform.position;
+        c3Pos = GameObject.Find("C3Pos").transform.position;
         jumpOutPos = GameObject.Find("JumpOutPos").transform.position;
         dangerPanel1 = GameObject.Find("DangerPanel1").GetComponent<Animator>();
         dangerPanel2 = GameObject.Find("DangerPanel2").GetComponent<Animator>();
         dangerPanel3 = GameObject.Find("DangerPanel3").GetComponent<Animator>();
-        
-        Debug.Log(l1Pos);
-        Debug.Log(r1Pos);
-        Debug.Log(jumpOutPos);
     }
     
     public override void Reset()
@@ -83,7 +83,6 @@ public class Frimomen : BossAIBase
     void Update()
     {
         transform.localScale = new Vector2(isRight ? -1 : 1, 1);
-
         if (!isDead && bossScript.IsDead())
         {
             AudioManager.Instance.PlayExVoice("frimomen_dead");
@@ -107,8 +106,6 @@ public class Frimomen : BossAIBase
             return;
         }
 
-        Debug.Log(state);
-
         switch (state)
         {
             case ActionState.START:
@@ -117,42 +114,79 @@ public class Frimomen : BossAIBase
                 actionStateQueue.Add(ActionState.WAIT);
                 actionStateQueue.Add(ActionState.JUMP_OUT);
 
-                actionStateQueue.Add(ActionState.WARP_TO_R1);
-                actionStateQueue.Add(ActionState.DANGER_1);
-                actionStateQueue.Add(ActionState.TUCKLE_TO_L1);
-                
+                // 下段タックル
+                AddTuckleQueue(1);
 
+                // 下段か中段に現れて三回投げる
                 actionStateQueue.Add(ActionState.WARP_TO_R1);
-                actionStateQueue.Add(ActionState.JUMP_TO_C1);
-                
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                else actionStateQueue.Add(ActionState.JUMP_TO_C2);
                 actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
                 actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
                 actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
                 
+                // その場または上段に跳ぶかしてから召喚
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C3);
                 actionStateQueue.Add(ActionState.SUMMON_BUT);
 
+                // 下段+中段か上段どちらかの二連続タックル
                 actionStateQueue.Add(ActionState.JUMP_TO_R1);
-
+                AddTuckleQueue(1);
+                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(2);
+                else AddTuckleQueue(3);
+                
+                // 下段か上段に現れて召喚
                 actionStateQueue.Add(ActionState.WARP_TO_R1);
-                actionStateQueue.Add(ActionState.DANGER_1);
-                actionStateQueue.Add(ActionState.TUCKLE_TO_L1);
-                
-                actionStateQueue.Add(ActionState.WARP_TO_R2);
-                actionStateQueue.Add(ActionState.DANGER_2);
-                actionStateQueue.Add(ActionState.TUCKLE_TO_L2);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                else actionStateQueue.Add(ActionState.JUMP_TO_C3);
+                actionStateQueue.Add(ActionState.SUMMON_BUT);
 
-                actionStateQueue.Add(ActionState.WARP_TO_R3);
-                actionStateQueue.Add(ActionState.DANGER_3);
-                actionStateQueue.Add(ActionState.TUCKLE_TO_L3);
+                // 中段で二回投げる
+                actionStateQueue.Add(ActionState.JUMP_TO_C2);
+                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
                 
+                // 上段で二回投げる
+                actionStateQueue.Add(ActionState.JUMP_TO_C3);
+                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+
+                // ランダム要素強めに三連続タックル
+                actionStateQueue.Add(ActionState.JUMP_TO_R1);
+                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(3);
+                else AddTuckleQueue(1);
+                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(2);
+                else AddTuckleQueue(3);
+                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(1);
+                else AddTuckleQueue(2);
+
+                // 下段中段上段でそれぞれ二回ずつ投げる
                 actionStateQueue.Add(ActionState.WARP_TO_R1);
                 actionStateQueue.Add(ActionState.JUMP_TO_C1);
-
-                actionStateQueue.Add(ActionState.SUMMON_BUT);
+                actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
+                actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
+                actionStateQueue.Add(ActionState.JUMP_TO_C2);
+                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                actionStateQueue.Add(ActionState.JUMP_TO_C3);
+                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
                 
+                // 中段+下段または上段タックル
+                actionStateQueue.Add(ActionState.JUMP_TO_R1);
+                AddTuckleQueue(2);
+                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(1);
+                else AddTuckleQueue(3);
+
+                // 下段で三回投げる
+                actionStateQueue.Add(ActionState.WARP_TO_R1);
+                actionStateQueue.Add(ActionState.JUMP_TO_C1);
                 actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
                 actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
                 actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+
+                // その場で召喚
+                actionStateQueue.Add(ActionState.SUMMON_BUT);
 
                 actionStateQueue.Add(ActionState.LOOP);
 
@@ -163,12 +197,19 @@ public class Frimomen : BossAIBase
                 break;
             case ActionState.JUMP_OUT:
                 isPlaying = true;
-        Debug.Log(jumpOutPos);
                 PlayJumpSequence(jumpOutPos, 5);
                 break;
             case ActionState.JUMP_TO_C1:
                 isPlaying = true;
                 PlayJumpSequence(c1Pos, 3);
+                break;
+            case ActionState.JUMP_TO_C2:
+                isPlaying = true;
+                PlayJumpSequence(c2Pos, 3);
+                break;
+            case ActionState.JUMP_TO_C3:
+                isPlaying = true;
+                PlayJumpSequence(c3Pos, 3);
                 break;
             case ActionState.JUMP_TO_R1:
                 isPlaying = true;
@@ -242,6 +283,28 @@ public class Frimomen : BossAIBase
         stateIndex++;
     }
     
+    private void AddTuckleQueue(int pos)
+    {
+        switch (pos)
+        {
+            case 1:
+                actionStateQueue.Add(ActionState.WARP_TO_R1);
+                actionStateQueue.Add(ActionState.DANGER_1);
+                actionStateQueue.Add(ActionState.TUCKLE_TO_L1);
+                break;
+            case 2:
+                actionStateQueue.Add(ActionState.WARP_TO_R2);
+                actionStateQueue.Add(ActionState.DANGER_2);
+                actionStateQueue.Add(ActionState.TUCKLE_TO_L2);
+                break;
+            case 3:
+                actionStateQueue.Add(ActionState.WARP_TO_R3);
+                actionStateQueue.Add(ActionState.DANGER_3);
+                actionStateQueue.Add(ActionState.TUCKLE_TO_L3);
+                break;
+        }
+    }
+
     private void PlayDangerSequence(Animator dangerAnimator)
     {
         sequence = DOTween.Sequence()
