@@ -552,13 +552,13 @@ public class Player : MonoBehaviour
     }
     private void UpdateLastStandPos()
     {
-        // 0.1秒おきに立っている位置を記録して、死亡した際に２つ前に記録した位置からスタートする。
+        // 0.2秒おきに立っている位置を記録して、死亡した際に２つ前に記録した位置からスタートする。
         // 一つ前のにしないのは、崖から落ちる直前に記録されるとそのまま落ちてしまいやすいため。
         if (checkLastStandPosTime <= 0)
         {
             lastStandPos2 = lastStandPos1;
             lastStandPos1 = transform.position;
-            checkLastStandPosTime = 0.1f;
+            checkLastStandPosTime = 0.2f;
         }
     }
     private void UpdateColor()
@@ -705,6 +705,10 @@ public class Player : MonoBehaviour
     public bool IsGetOff()
     {
         return getOffTime > 0;
+    }
+    public bool IsDead()
+    {
+        return isDead;
     }
 
     public void AddBulletCount(Bullet.BulletType bulletType, int count)

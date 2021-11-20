@@ -236,6 +236,10 @@ public class Enemy : EnemyBase
             bool isBulletRight= hitObject.GetComponent<Rigidbody2D>().velocity.x < 0;
             rb.velocity = new Vector2(isBulletRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X, DAMAGE_VELOCITY_Y);
             transform.Rotate(new Vector3(0, 0, 180.0f));
+            if (attackSequence != null)
+            {
+                attackSequence.Kill();
+            }
         } 
         else
         {

@@ -66,6 +66,11 @@ public class ResetScript : MonoBehaviour
         {
             Destroy(effect.gameObject);
         }
+        DestroyWhenPlayerDead[] destroyObjList = enemiesObject.GetComponentsInChildren<DestroyWhenPlayerDead>();
+        foreach (DestroyWhenPlayerDead destroyObj in destroyObjList)
+        {
+            Destroy(destroyObj.gameObject);
+        }
     }
 
     public void Reset()

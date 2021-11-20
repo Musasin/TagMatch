@@ -10,7 +10,6 @@ public class BossMaki : BossAIBase
     BoxCollider2D bc;
     GameObject bulletPivot;
     Vector2 l1Pos, r1Pos, c1Pos, c2Pos;
-    float invincibleTime;
     const float BARRIER_INVINCIBLE_TIME = 3.0f;
 
     enum ActionState
@@ -110,10 +109,10 @@ public class BossMaki : BossAIBase
                 actionStateQueue.Add(ActionState.ROLLING_JUMP);
                 
                 // 攻撃かジャンプ攻撃のどちらかをランダムに二発
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
                 else actionStateQueue.Add(ActionState.JUMP_SHOT);
                 actionStateQueue.Add(ActionState.WAIT);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
                 else actionStateQueue.Add(ActionState.JUMP_SHOT);
                 actionStateQueue.Add(ActionState.WAIT);
                 
@@ -131,10 +130,10 @@ public class BossMaki : BossAIBase
                 
                 // ジャンプ攻撃多めの連続攻撃
                 actionStateQueue.Add(ActionState.JUMP_SHOT);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
                 else actionStateQueue.Add(ActionState.JUMP_SHOT);
                 actionStateQueue.Add(ActionState.JUMP_SHOT);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
                 else actionStateQueue.Add(ActionState.JUMP_SHOT);
 
                 // 上経由で左端へ
@@ -171,17 +170,17 @@ public class BossMaki : BossAIBase
                 actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
 
                 // ランダム要素多めの連撃
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.JUMP_SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_SHOT);
                 else actionStateQueue.Add(ActionState.ROLLING_JUMP);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
                 else actionStateQueue.Add(ActionState.JUMP_SHOT);
                 actionStateQueue.Add(ActionState.JUMP);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.JUMP_SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_SHOT);
                 else actionStateQueue.Add(ActionState.JUMP);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
-                if (Random.Range(0, 1) < 0.5f) actionStateQueue.Add(ActionState.JUMP);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.SHOT);
+                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP);
                 else actionStateQueue.Add(ActionState.ROLLING_JUMP);
 
                 // 上に飛んで元いた右に戻る

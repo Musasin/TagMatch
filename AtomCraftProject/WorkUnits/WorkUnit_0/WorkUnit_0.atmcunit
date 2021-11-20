@@ -8,7 +8,7 @@
       </Orca>
       <Orca OrcaName="CueSheetFolder" BusMap="/CriAtomCraftV2Root/GlobalSettings/BusMap/BusMapforCue/BusMap_Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheetFolder">
         <Orca OrcaName="WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheetSubFolder">
-          <Orca OrcaName="Common" AwbHash="26756" LastOutputCueSheetSize="1606848" OoUniqId="121206cd-1147-4f4c-9e4a-300889110a98" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
+          <Orca OrcaName="Common" AwbHash="26756" LastOutputCueSheetSize="1537888" OoUniqId="121206cd-1147-4f4c-9e4a-300889110a98" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
             <Orca OrcaName="coin" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/SE" CueID="0" PlaybackLimitEnableFlag="True" PlaybackLimits="3" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="0.7" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_coin" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="coin.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/coin.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
@@ -594,6 +594,16 @@
                 <Orca OrcaName="yukari_dead" LinkCueSynth="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0/CueSheetFolder/WorkUnit_0/Common/YukariVoice/yukari_dead" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthLink"/>
               </Orca>
             </Orca>
+            <Orca OrcaName="swing" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/SE" CueID="48" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_wood_swing1" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="wood_swing1.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/wood_swing1.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
+            <Orca OrcaName="enemy_jump" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/SE" CueID="49" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="3" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_wood_jump" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="wood_jump.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/wood_jump.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
           </Orca>
           <Orca OrcaName="Title" AwbHash="41159" LastOutputCueSheetSize="9664" OoUniqId="71a83cd5-97dd-418f-81c2-1c03888c1e75" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
             <Orca OrcaName="title" Bpm="164" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="0" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Timebase="Bars" Volume="0.9" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
@@ -693,7 +703,7 @@
                 <Orca OrcaName="start-1.wav_0" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Kotonoha/Aoi/start-1.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
             </Orca>
-            <Orca OrcaName="akane_attack" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="4" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthShuffle" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+            <Orca OrcaName="akane_attack" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="4" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthShuffle" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_attack-0" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="attack-0.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Kotonoha/Akane/attack-0.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
@@ -713,7 +723,7 @@
                 <Orca OrcaName="attack-5.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Kotonoha/Akane/attack-5.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
             </Orca>
-            <Orca OrcaName="aoi_attack" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="5" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthShuffle" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+            <Orca OrcaName="aoi_attack" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="5" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthShuffle" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_attack-0" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="attack-0.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Kotonoha/Aoi/attack-0.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform">
                   <Orca OrcaName="attack-0.wav_Trimmer" TrimmingEndPosition="374.374083332845" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveformTrimmer"/>
@@ -751,7 +761,7 @@
                 </Orca>
               </Orca>
             </Orca>
-            <Orca OrcaName="kotonoha_dead" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="6" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+            <Orca OrcaName="kotonoha_dead" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="6" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_dead-0" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="dead-0.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Kotonoha/Akane/dead-0.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
@@ -977,18 +987,18 @@
               </Orca>
             </Orca>
           </Orca>
-          <Orca OrcaName="Stage6" AwbHash="27282" LastOutputCueSheetSize="9664" OoUniqId="1e1a8c5c-a156-4aaf-bb31-f2434c728524" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
+          <Orca OrcaName="Stage6" AwbHash="27282" LastOutputCueSheetSize="3878976" OoUniqId="1e1a8c5c-a156-4aaf-bb31-f2434c728524" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
             <Orca OrcaName="stage" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="0" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="0.9" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_title" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="title.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/title.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
             </Orca>
-            <Orca OrcaName="boss_maki" CueID="1" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+            <Orca OrcaName="boss_maki" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="1" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_boss6_maki" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="boss6_maki.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/boss6_maki.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
             </Orca>
-            <Orca OrcaName="boss_yukari" CueID="2" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+            <Orca OrcaName="boss_yukari" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="2" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_boss6_yukari" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="boss6_yukari.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/boss6_yukari.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
@@ -996,6 +1006,101 @@
             <Orca OrcaName="frimomen" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BGM" CueID="3" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_Jester" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="Jester.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/BGM/Jester.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
+            <Orca OrcaName="frimomen_throw" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="4" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthShuffle" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_022_えい！_01" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="022_えい！_01.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/022_えい！_01.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_022_えい！_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="022_えい！_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/022_えい！_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_022_えい！_03" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="022_えい！_03.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/022_えい！_03.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_145_ぬん！_01" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="145_ぬん！_01.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/145_ぬん！_01.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_145_ぬん！_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="145_ぬん！_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/145_ぬん！_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_145_ぬん！_03" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="145_ぬん！_03.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/145_ぬん！_03.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_095_そこ_01" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="095_そこ_01.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/095_そこ_01.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_095_そこ_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="095_そこ_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/095_そこ_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_095_そこ_03" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="095_そこ_03.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/095_そこ_03.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
+            <Orca OrcaName="frimomen_tuckle" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="5" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthShuffle" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_079_しゅたっ_01" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="079_しゅたっ_01.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/079_しゅたっ_01.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_079_しゅたっ_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="079_しゅたっ_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/079_しゅたっ_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_079_しゅたっ_03" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="079_しゅたっ_03.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/079_しゅたっ_03.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_094_そりゃー！_01" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="094_そりゃー！_01.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/094_そりゃー！_01.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_094_そりゃー！_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="094_そりゃー！_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/094_そりゃー！_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_094_そりゃー！_03" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="094_そりゃー！_03.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/094_そりゃー！_03.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_055_こっち_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="055_こっち_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/055_こっち_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
+            <Orca OrcaName="frimomen_start" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="6" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthSequential" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_001_やぁ、フリモメンだよ！_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="001_やぁ、フリモメンだよ！_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/001_やぁ、フリモメンだよ！_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_002_みんなのアイドル、フリモメン！_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="002_みんなのアイドル、フリモメン！_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/002_みんなのアイドル、フリモメン！_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_003_オレを呼んだかな？_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="003_オレを呼んだかな？_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/003_オレを呼んだかな？_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_004_大丈夫、フリモメンだよ_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="004_大丈夫、フリモメンだよ_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/004_大丈夫、フリモメンだよ_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
+            <Orca OrcaName="frimomen_dead" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="7" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_165_ほわぁ！？_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="165_ほわぁ！？_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/165_ほわぁ！？_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
+            <Orca OrcaName="frimomen_danger" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/BATTLE_VOICE" CueID="8" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthShuffle" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_057_ゴゴゴゴゴ…_01" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="057_ゴゴゴゴゴ…_01.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/057_ゴゴゴゴゴ…_01.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_057_ゴゴゴゴゴ…_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="057_ゴゴゴゴゴ…_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/057_ゴゴゴゴゴ…_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_057_ゴゴゴゴゴ…_03" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="057_ゴゴゴゴゴ…_03.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/057_ゴゴゴゴゴ…_03.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+            </Orca>
+            <Orca OrcaName="frimomen_summon" CueID="9" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthSequential" Volume="2" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
+              <Orca OrcaName="Track_200_おまえら_01" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="200_おまえら_01.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/200_おまえら_01.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+                <Orca OrcaName="218_フォロー頼んだぞ！_01.wav" DelayTimeMS="800" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/218_フォロー頼んだぞ！_01.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_200_おまえら_02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="200_おまえら_02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/200_おまえら_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+                <Orca OrcaName="218_フォロー頼んだぞ！_02.wav" DelayTimeMS="800" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/218_フォロー頼んだぞ！_02.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+              </Orca>
+              <Orca OrcaName="Track_218_フォロー頼んだぞ！_04" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+                <Orca OrcaName="218_フォロー頼んだぞ！_04.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/VOICE/Frimomen/218_フォロー頼んだぞ！_04.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
             </Orca>
           </Orca>

@@ -136,7 +136,7 @@ public class Zunko : BossAIBase
                 actionStateQueue.Add(ActionState.ATTACK);
 
                 // 乱数で発射速度が異なるのを2発
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     // 中速度二発
                     actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
@@ -174,7 +174,7 @@ public class Zunko : BossAIBase
                 actionStateQueue.Add(ActionState.ATTACK);
                 
                 // 乱数で正面一発を追加
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
                     actionStateQueue.Add(ActionState.READY);
@@ -235,7 +235,7 @@ public class Zunko : BossAIBase
                 actionStateQueue.Add(ActionState.ATTACK);
 
                 // 乱数で発射速度が異なるのを四発
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     // 中速度二発
                     actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
@@ -291,7 +291,7 @@ public class Zunko : BossAIBase
                 actionStateQueue.Add(ActionState.ATTACK);
                 
                 // 乱数で正面一発を追加
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
                     actionStateQueue.Add(ActionState.READY);
@@ -320,7 +320,7 @@ public class Zunko : BossAIBase
                 actionStateQueue.Add(ActionState.ATTACK);
 
                 // 乱数で三本撃ちか二本撃ちを追加
-                if (Random.Range(0, 1) < 0.5f)
+                if (Random.Range(0, 1.0f) < 0.5f)
                 {
                     actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_1);
                     actionStateQueue.Add(ActionState.INSTANTIATE_ARROW_2);

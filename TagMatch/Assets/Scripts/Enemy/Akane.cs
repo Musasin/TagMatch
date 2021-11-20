@@ -47,7 +47,7 @@ public class Akane : Kotonoha
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_4);
         actionStateQueue.Add(ActionState.AKANE_FLAME);
 
-        if (Random.Range(0, 1) < 0.5f)
+        if (Random.Range(0, 1.0f) < 0.5f)
         {
             actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_4);
             actionStateQueue.Add(ActionState.MOVE_TO_LEFT_3);
@@ -68,7 +68,7 @@ public class Akane : Kotonoha
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_4);
         actionStateQueue.Add(ActionState.MOVE_TO_LEFT_1);
 
-        if (Random.Range(0, 1) < 0.5f)
+        if (Random.Range(0, 1.0f) < 0.5f)
         {
             actionStateQueue.Add(ActionState.MOVE_TO_RIGHT_1);
             actionStateQueue.Add(ActionState.AKANE_FLAME);
