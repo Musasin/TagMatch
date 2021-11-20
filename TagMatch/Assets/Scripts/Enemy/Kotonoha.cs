@@ -247,7 +247,7 @@ public class Kotonoha : BossAIBase
     public virtual void InstantiateAoiShot()
     {
         AudioManager.Instance.PlayExVoice("aoi_attack");
-        AudioManager.Instance.PlaySE("buon");
+        AudioManager.Instance.PlaySE("generate_shot");
 
         GameObject b1 = Instantiate(aoiShot, transform.parent);
         b1.transform.position = new Vector2(transform.position.x, transform.position.y + 2);
