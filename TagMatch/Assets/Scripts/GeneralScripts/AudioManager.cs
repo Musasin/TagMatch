@@ -49,6 +49,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
             Coroutine coroutine = StartCoroutine("LoadACB");
             GameObject.DontDestroyOnLoad(this);
+
+            ChangeBGMVolume(0.4f);
+            ChangeSEVolume(0.8f);
+            ChangeVoiceVolume(0.4f);
         }
     }
 
@@ -124,6 +128,23 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         CriAtom.SetCategoryVolume("VOICE", volume);
         CriAtom.SetCategoryVolume("BATTLE_VOICE", volume);
+    }
+
+    public float GetMasterVolume()
+    {
+        float volume = 1.0f;
+        CriAtomExAsr.GetBusVolume("MasterOut", out volume);
+        return volume;
+    }
+
+    public float GetBGMVolume(){
+        return CriAtom.GetCategoryVolume("BGM");
+    }
+    public float GetSEVolume(){
+        return CriAtom.GetCategoryVolume("SE");
+    }
+    public float GetVoiceVolume(){
+        return CriAtom.GetCategoryVolume("VOICE");
     }
 
     public void ChangeDSPSnapshot(string snapShotName)
