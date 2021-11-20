@@ -23,7 +23,7 @@ public class Itako : BossAIBase
         CHANGE_IS_RIGHT,
         CHARGE,
         FLAME_SHOT,
-        FLAME_TWIN_SHOT,
+        FLAME_MULTI_SHOT,
         FLAME_QUATTRO_SHOT,
         FLAME_QUADRUPLET_SHOT,
         FLAME_OCUTUPLET_SHOT,
@@ -153,7 +153,7 @@ public class Itako : BossAIBase
                     {
                         actionStateQueue.Add(ActionState.MOVE_TO_LOWER_LEFT);
                     }
-                    actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
+                    actionStateQueue.Add(ActionState.FLAME_MULTI_SHOT);
                 
                     // 中央で幽霊攻撃
                     actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
@@ -194,10 +194,10 @@ public class Itako : BossAIBase
 
                     // 中央で炎攻撃2回
                     actionStateQueue.Add(ActionState.MOVE_TO_UPPER_CENTER);
-                    actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
+                    actionStateQueue.Add(ActionState.FLAME_MULTI_SHOT);
                     actionStateQueue.Add(ActionState.CHANGE_IS_RIGHT);
                     actionStateQueue.Add(ActionState.CHARGE);
-                    actionStateQueue.Add(ActionState.FLAME_TWIN_SHOT);
+                    actionStateQueue.Add(ActionState.FLAME_MULTI_SHOT);
                 
                     // 下段中央で幽霊攻撃2回
                     actionStateQueue.Add(ActionState.MOVE_TO_LOWER_CENTER);
@@ -269,7 +269,7 @@ public class Itako : BossAIBase
                     })
                     .Play();
                 break;
-            case ActionState.FLAME_TWIN_SHOT:
+            case ActionState.FLAME_MULTI_SHOT:
                 isPlaying = true;
                 AudioManager.Instance.PlayExVoice("itako_fire");
                 anim.SetBool("isAttack", true);
@@ -278,6 +278,8 @@ public class Itako : BossAIBase
                     .AppendCallback(() => { InstantiateFlame(isRight ? 1.5f : -1.5f); })
                     .AppendInterval(0.2f)
                     .AppendCallback(() => { InstantiateFlame(isRight ? 3.0f : -3.0f); })
+                    .AppendInterval(0.2f)
+                    .AppendCallback(() => { InstantiateFlame(isRight ? 4.5f : -4.5f); })
                     .AppendInterval(1.5f)
                     .OnComplete(() =>
                     {
