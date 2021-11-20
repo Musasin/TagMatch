@@ -37,11 +37,7 @@ public class Title : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 仮。 Talkにもあるので終わったら統合する
-        AudioManager.Instance.ChangeBGMVolume(0.4f);
-        AudioManager.Instance.ChangeSEVolume(0.4f);
-        AudioManager.Instance.ChangeVoiceVolume(0.4f);
-
+        StaticValues.LoadVolume();
         time = 0;
         anim = GetComponent<Animator>();
         fadePanel = GameObject.Find("FadePanel").GetComponent<Image>();

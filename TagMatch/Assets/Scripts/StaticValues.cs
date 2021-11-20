@@ -10,6 +10,10 @@ using System;
 
 public class StaticValues : MonoBehaviour
 {
+    public static float bgmVolume = 0.5f;
+    public static float seVolume = 0.5f;
+    public static float voiceVolume = 0.5f;
+
     public static float time;
     public static int score;
     public static int coinCount = 2000; // デバッグ用
@@ -84,6 +88,18 @@ public class StaticValues : MonoBehaviour
             scene = PlayerPrefs.GetString("Scene");
         }
     }
+
+    public static void LoadVolume()
+    {
+        LoadFloat(ref bgmVolume, "BGMVolume");
+        LoadFloat(ref seVolume, "SEVolume");
+        LoadFloat(ref voiceVolume, "VoiceVolume");
+        
+        AudioManager.Instance.ChangeBGMVolume(bgmVolume);
+        AudioManager.Instance.ChangeSEVolume(seVolume);
+        AudioManager.Instance.ChangeVoiceVolume(voiceVolume);
+    }
+
     
     public static void LoadFloat(ref float value, string prefs)
     {
@@ -145,6 +161,17 @@ public class StaticValues : MonoBehaviour
         
         scene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("Scene", scene);
+    }
+
+    public static void SaveVolume()
+    {
+        PlayerPrefs.SetFloat("BGMVolume", bgmVolume);
+        PlayerPrefs.SetFloat("SEVolume", seVolume);
+        PlayerPrefs.SetFloat("VoiceVolume", voiceVolume);
+
+        AudioManager.Instance.ChangeBGMVolume(bgmVolume);
+        AudioManager.Instance.ChangeSEVolume(seVolume);
+        AudioManager.Instance.ChangeVoiceVolume(voiceVolume);
     }
 
     

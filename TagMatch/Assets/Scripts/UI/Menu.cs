@@ -12,34 +12,50 @@ public class Menu : MonoBehaviour
     Animator anim;
     enum MenuState
     {
-        CLOSED, MENU, STATUS, SKILL, TITLE_CHECK, CLOSING, TITLE_CLOSING,
+        CLOSED, MENU, STATUS, SKILL, VOLUME, TITLE_CHECK, CLOSING, TITLE_CLOSING,
     };
     MenuState menuState;
     enum MenuList
     {
-        STATUS, SKILL, TITLE, CLOSE
+        STATUS, SKILL, VOLUME, TITLE, CLOSE,
     }
     MenuList nowSelection;
+    enum VolumeList
+    {
+        BGM, SE, VOICE, CLOSE,
+    }
+    VolumeList volumeNowSelection;
     bool returnTitleNowSelection = false;
     
-    GameObject menuCursor;
-    GameObject returnTitleCursor;
-    GameObject skillSelectCursor;
-    Vector2 cussorDefaultPos, returnTitleCussorDefaultPos;
+    GameObject menuCursor, volumeCursor, returnTitleCursor, skillSelectCursor;
+    Vector2 cursorDefaultPos, volumeCursorDefaultPos, returnTitleCursorDefaultPos;
+    Text bgmVolumeText, seVolumeText, voiceVolumeText;
     float closeTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        StaticValues.LoadVolume();
         anim = GetComponent<Animator>();
         menuState = MenuState.CLOSED;
         nowSelection = MenuList.STATUS;
+        volumeNowSelection = VolumeList.BGM;
+        
         menuCursor = GameObject.Find("MenuCursor");
+        cursorDefaultPos = menuCursor.transform.localPosition;
+        
+        volumeCursor = GameObject.Find("VolumeMenuCursor");
+        volumeCursorDefaultPos = volumeCursor.transform.localPosition;
+
         returnTitleCursor = GameObject.Find("ReturnTitleCursor");
-        cussorDefaultPos = menuCursor.transform.localPosition;
-        returnTitleCussorDefaultPos = returnTitleCursor.transform.localPosition;
+        returnTitleCursorDefaultPos = returnTitleCursor.transform.localPosition;
+        
         skillSelectCursor = GameObject.Find("SkillSelectCursor");
         skillSelectCursor.GetComponent<SkillSelect>().SetEnabled(false);
+        
+        bgmVolumeText = GameObject.Find("BGMVolume").GetComponent<Text>();
+        seVolumeText = GameObject.Find("SEVolume").GetComponent<Text>();
+        voiceVolumeText = GameObject.Find("VoiceVolume").GetComponent<Text>();
         
         // ポーズ中でも動かせるようにタイムスケールを無視する
         anim.updateMode = AnimatorUpdateMode.UnscaledTime;
@@ -70,7 +86,7 @@ public class Menu : MonoBehaviour
                     else if (Input.GetAxisRaw("Vertical") > 0) nowSelection--;
                     if (nowSelection > MenuList.CLOSE) nowSelection = MenuList.STATUS;
                     if (nowSelection < MenuList.STATUS) nowSelection = MenuList.CLOSE;
-                    menuCursor.transform.localPosition = new Vector2(cussorDefaultPos.x, cussorDefaultPos.y - (50 * (int)nowSelection) - (nowSelection == MenuList.CLOSE ? 50 : 0));
+                    menuCursor.transform.localPosition = new Vector2(cursorDefaultPos.x, cursorDefaultPos.y - (50 * (int)nowSelection) - (nowSelection == MenuList.CLOSE ? 50 : 0));
                 }
                 AxisDownChecker.AxisDownUpdate();
 
@@ -84,6 +100,9 @@ public class Menu : MonoBehaviour
                             break;
                         case MenuList.SKILL:
                             menuState = MenuState.SKILL;
+                            break;
+                        case MenuList.VOLUME:
+                            menuState = MenuState.VOLUME;
                             break;
                         case MenuList.TITLE:
                             menuState = MenuState.TITLE_CHECK;
@@ -119,18 +138,60 @@ public class Menu : MonoBehaviour
                     anim.SetInteger("menuState", (int)menuState);
                 }
                 break;
-                
-            case MenuState.CLOSING:
-                closeTime -= Time.deltaTime;
-                anim.SetInteger("menuState", (int)MenuState.CLOSED);
-                if (closeTime <= 0)
+
+            case MenuState.VOLUME:
+                if (KeyConfig.GetJumpKeyDown() || KeyConfig.GetShotKeyDown() || KeyConfig.GetMenuKeyDown())
                 {
-                    menuState = MenuState.CLOSED;
-                    StaticValues.isPause = false;
-                    Time.timeScale = 1.0f;
-                    nowSelection = 0;
-                    menuCursor.transform.localPosition = new Vector2(cussorDefaultPos.x, cussorDefaultPos.y);
+                    AudioManager.Instance.PlaySE("cancel");
+                    menuState = MenuState.MENU;
+                    anim.SetInteger("menuState", (int)menuState);
                 }
+
+                if (AxisDownChecker.GetAxisDownVertical())
+                {
+                    AudioManager.Instance.PlaySE("select");
+                    if (Input.GetAxisRaw("Vertical") < 0) volumeNowSelection++;
+                    else if (Input.GetAxisRaw("Vertical") > 0) volumeNowSelection--;
+                    if (volumeNowSelection > VolumeList.CLOSE) volumeNowSelection = VolumeList.BGM;
+                    if (volumeNowSelection < VolumeList.BGM) volumeNowSelection = VolumeList.CLOSE;
+                    volumeCursor.transform.localPosition = new Vector2(volumeCursorDefaultPos.x, volumeCursorDefaultPos.y - (50 * (int)volumeNowSelection) - (volumeNowSelection == VolumeList.CLOSE ? 50 : 0));
+                }
+
+
+                if (Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Horizontal") > 0)
+                {
+                    switch (volumeNowSelection)
+                    {
+                        case VolumeList.BGM:
+                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.bgmVolume -= 0.01f;
+                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.bgmVolume += 0.01f;
+                            StaticValues.bgmVolume = Mathf.Clamp(StaticValues.bgmVolume, 0, 1.0f);
+                            StaticValues.SaveVolume();
+                            break;
+                        case VolumeList.SE:
+                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.seVolume -= 0.01f;
+                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.seVolume += 0.01f;
+                            StaticValues.seVolume = Mathf.Clamp(StaticValues.seVolume, 0, 1.0f);
+                            StaticValues.SaveVolume();
+                            if (Mathf.Floor(StaticValues.seVolume * 100) % 3 == 0) AudioManager.Instance.PlaySE("select");
+                            break;
+                        case VolumeList.VOICE:
+                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.voiceVolume -= 0.01f;
+                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.voiceVolume += 0.01f;
+                            StaticValues.voiceVolume = Mathf.Clamp(StaticValues.voiceVolume, 0, 1.0f);
+                            StaticValues.SaveVolume();
+                            if (Mathf.Floor(StaticValues.voiceVolume * 100) % 3 == 0) AudioManager.Instance.PlaySE("yukari_dash");
+                            break;
+                        case VolumeList.CLOSE:
+                            break;
+                    }
+                }
+                
+                bgmVolumeText.text = Mathf.Floor(StaticValues.bgmVolume * 100).ToString() + "％";
+                seVolumeText.text = Mathf.Floor(StaticValues.seVolume * 100).ToString() + "％";
+                voiceVolumeText.text = Mathf.Floor(StaticValues.voiceVolume * 100).ToString() + "％";
+
+                AxisDownChecker.AxisDownUpdate();
                 break;
 
             case MenuState.TITLE_CHECK:
@@ -138,7 +199,7 @@ public class Menu : MonoBehaviour
                 {
                     AudioManager.Instance.PlaySE("select");
                     returnTitleNowSelection = !returnTitleNowSelection;
-                    returnTitleCursor.transform.localPosition = new Vector2(returnTitleCussorDefaultPos.x + (returnTitleNowSelection ? -135 : 0), returnTitleCussorDefaultPos.y);
+                    returnTitleCursor.transform.localPosition = new Vector2(returnTitleCursorDefaultPos.x + (returnTitleNowSelection ? -135 : 0), returnTitleCursorDefaultPos.y);
                 }
                 AxisDownChecker.AxisDownUpdate();
 
@@ -156,6 +217,19 @@ public class Menu : MonoBehaviour
                     Time.timeScale = 1.0f;
                     StaticValues.isReloadACB = true;
                     GameObject.Find("WipePanel").GetComponent<WipePanel>().ChangeScene("Title");
+                }
+                break;
+                
+            case MenuState.CLOSING:
+                closeTime -= Time.deltaTime;
+                anim.SetInteger("menuState", (int)MenuState.CLOSED);
+                if (closeTime <= 0)
+                {
+                    menuState = MenuState.CLOSED;
+                    StaticValues.isPause = false;
+                    Time.timeScale = 1.0f;
+                    nowSelection = 0;
+                    menuCursor.transform.localPosition = new Vector2(cursorDefaultPos.x, cursorDefaultPos.y);
                 }
                 break;
         }
