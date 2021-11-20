@@ -244,17 +244,17 @@ MonoBehaviour:
     type: 3}
   akanePrefab: {fileID: 339425498611163847, guid: 615d86d77bb6d40e790049dbcc754e01,
     type: 3}
-  leftAkanePrefab: {fileID: 339425498611163847, guid: 51675909d222a48b696c2217b5dc43b3,
+  leftAkanePrefab: {fileID: 339425498611163847, guid: f0bc0c0065e5dd84b8ce0c5960205a7b,
     type: 3}
   aoiPrefab: {fileID: 8132088265961402930, guid: 5d0357e01976a461587d8dc71ef425ed,
     type: 3}
-  leftAoiPrefab: {fileID: 8132088265961402930, guid: b509ccb9cd3754a05956986f87290025,
+  leftAoiPrefab: {fileID: 8132088265961402930, guid: a307ad30e31e1a4438dc6aab73cac0c0,
     type: 3}
-  itakoPrefab: {fileID: 339425498611163847, guid: 11f6c29fcc2fd4c5dbb86b8d7c035f2c,
+  itakoPrefab: {fileID: 339425498611163847, guid: 4eae11da62f6d9a4a892e8a77b9df718,
     type: 3}
-  zunkoPrefab: {fileID: 339425498611163847, guid: 2c22f96dd0dba4f00881eec2855dce22,
+  zunkoPrefab: {fileID: 339425498611163847, guid: 44c2717c1c3040142b9c0961f0dba5b5,
     type: 3}
-  frimomenPrefab: {fileID: 7916608249690912060, guid: 31f258b9c936e4164bc87ade97ffda74,
+  frimomenPrefab: {fileID: 7916608249690912060, guid: 29483b0ab6e3bf941b48b4a03828ca6d,
     type: 3}
   mob1Prefab: {fileID: 7916608249690912060, guid: 2f01907c4e8c14acc858d21850252e8b,
     type: 3}
@@ -266,15 +266,15 @@ MonoBehaviour:
     type: 3}
   rightWindow: {fileID: 1092675985158489586, guid: bfa3606c24e8040a89769544a2b105dc,
     type: 3}
-  angerLeftWindow: {fileID: 8393917665650480927, guid: ebc132b3cc1a2463999edfbda021398d,
+  angerLeftWindow: {fileID: 8393917665650480927, guid: 2f1e70c764ddd584595ee2b6684a2b36,
     type: 3}
-  angerRightWindow: {fileID: 1718639967200246475, guid: 23976b5c8553f42139921b6cf90db77b,
+  angerRightWindow: {fileID: 1718639967200246475, guid: 8ac86868444c9af4d818f82e5ab80612,
     type: 3}
-  centerWindow: {fileID: 8393917665650480927, guid: 5ea923e007f92409cb0285e61129fe5b,
+  centerWindow: {fileID: 8393917665650480927, guid: a9b855fc95e3a9b4e93523579e5c38f5,
     type: 3}
-  leftNamePlate: {fileID: 2244419810098398409, guid: 5e812027741134134a2fde9658bbcd48,
+  leftNamePlate: {fileID: 2244419810098398409, guid: 72906f99444deb146be520c2ee937289,
     type: 3}
-  rightNamePlate: {fileID: 786895325944298238, guid: 51153be0e6ac1402da66867a58b06b8c,
+  rightNamePlate: {fileID: 786895325944298238, guid: e02cc08717ab10242a6647dfd6dfd2ed,
     type: 3}
 --- !u!1 &5880080033413537261
 GameObject:
