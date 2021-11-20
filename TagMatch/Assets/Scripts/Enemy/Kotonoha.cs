@@ -252,9 +252,4 @@ public class Kotonoha : BossAIBase
         GameObject b1 = Instantiate(aoiShot, transform.parent);
         b1.transform.position = new Vector2(transform.position.x, transform.position.y + 2);
     }
-    
-    bool IsLifeHalf()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
-    }
 }

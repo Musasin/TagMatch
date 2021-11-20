@@ -547,9 +547,4 @@ public class BossYukari : BossAIBase
 
         AudioManager.Instance.PlaySE("shot_yukari");
     }
-
-    bool IsLifeHalf()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
-    }
 }

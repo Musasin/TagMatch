@@ -414,9 +414,4 @@ public class Itako : BossAIBase
             bullet2.transform.localScale = new Vector2(isRight ? 1.0f : -1.0f, 1.0f);
         }
     }
-
-    bool IsLifeHalf()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
-    }
 }

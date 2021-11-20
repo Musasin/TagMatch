@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using DG.Tweening;
 
 public class Frimomen : BossAIBase
@@ -446,18 +445,5 @@ public class Frimomen : BossAIBase
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * power;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * power;
         return new Vector2(addforceX, addforceY);
-    }
-
-    bool IsLifeHalf()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
-    }
-    bool IsLifeTwoThirds()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() * 2 / 3));
-    }
-    bool IsLifeOneThirds()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 3));
     }
 }
