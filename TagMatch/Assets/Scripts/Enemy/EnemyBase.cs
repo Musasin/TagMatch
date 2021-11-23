@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     public int hp;
-    public GameObject damagePointEffect;
+    public GameObject damagePointEffect, healPointEffect;
     public Vector2 defaultPosition;
 
     const float INVINCIBLE_TIME = 0.2f;
@@ -46,19 +46,25 @@ public class EnemyBase : MonoBehaviour
         else sr.color = defaultColor;
     }
 
-    public virtual void HitBullet(int damage, GameObject hitObject)
+    public virtual void HitBullet(int damage, GameObject hitObject, bool ignoreInvincible = false)
     {
-        if (invincibleTime > 0)
+        if (invincibleTime > 0 && !ignoreInvincible)
         {
             return;
         }
 
-        hp -= damage;
-        GameObject dp = Instantiate(damagePointEffect);
+        hp = Mathf.Min(hp - damage, maxHp);
+        GameObject dp = damage < 0 ? Instantiate(healPointEffect) : Instantiate(damagePointEffect);
         dp.transform.position = transform.position;
         dp.GetComponent<DamagePointEffect>().SetDamagePointAndPlay(damage);
-        invincibleTime = INVINCIBLE_TIME;
-        AudioManager.Instance.PlaySE("hit_enemy");
+        if (damage >= 0)
+        {
+            AudioManager.Instance.PlaySE("hit_enemy");
+        }
+        if (!ignoreInvincible)
+        {
+            invincibleTime = INVINCIBLE_TIME;
+        }
     }
     public bool IsInvincible()
     {

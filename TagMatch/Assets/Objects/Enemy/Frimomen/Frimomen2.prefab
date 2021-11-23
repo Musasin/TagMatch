@@ -463,6 +463,8 @@ MonoBehaviour:
   hp: 500
   damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
     type: 3}
+  healPointEffect: {fileID: 689011227499450108, guid: 528c54185161e49f8a7ac338c23ff21b,
+    type: 3}
   defaultPosition: {x: 0, y: 0}
   bossNumber: 0
 --- !u!114 &1922518248281076382
@@ -487,6 +489,7 @@ MonoBehaviour:
     type: 3}
   summonBat: {fileID: 7787921097148712848, guid: 45ff9a193b8a24f2d918267395fd8deb,
     type: 3}
+  isSecondBattle: 1
 --- !u!61 &8982574061098869304
 BoxCollider2D:
   m_ObjectHideFlags: 0

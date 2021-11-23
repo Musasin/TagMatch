@@ -219,9 +219,9 @@ public class Enemy : EnemyBase
             isRight = !isRight;
         }
     }
-    public override void HitBullet(int damage, GameObject hitObject) 
+    public override void HitBullet(int damage, GameObject hitObject, bool ignoreInvincible = false)
     {
-        base.HitBullet(damage, hitObject);
+        base.HitBullet(damage, hitObject, ignoreInvincible);
 
         if (hp <= 0)
         {

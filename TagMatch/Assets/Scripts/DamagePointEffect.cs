@@ -22,15 +22,16 @@ public class DamagePointEffect : MonoBehaviour
 
     public void SetDamagePointAndPlay(int damage)
     {
-        if (damage < 10)
+        int absDamage = Mathf.Abs(damage);
+        if (absDamage < 10)
         {
-            transform.Find("FirstPlace").gameObject.GetComponent<DamagePointNumber>().SetNumber(damage);
+            transform.Find("FirstPlace").gameObject.GetComponent<DamagePointNumber>().SetNumber(absDamage);
             transform.Find("TenthPlace").gameObject.SetActive(false);
         }
         else
         {
-            transform.Find("FirstPlace").gameObject.GetComponent<DamagePointNumber>().SetNumber(damage % 10);
-            transform.Find("TenthPlace").gameObject.GetComponent<DamagePointNumber>().SetNumber(damage / 10);
+            transform.Find("FirstPlace").gameObject.GetComponent<DamagePointNumber>().SetNumber(absDamage % 10);
+            transform.Find("TenthPlace").gameObject.GetComponent<DamagePointNumber>().SetNumber(absDamage / 10);
         }
         GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.0f, 2.0f), 15.0f);
     }

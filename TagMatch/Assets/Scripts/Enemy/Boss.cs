@@ -43,15 +43,18 @@ public class Boss : EnemyBase
         }
     }
 
-    public override void HitBullet(int damage, GameObject hitObject) 
+    public override void HitBullet(int damage, GameObject hitObject, bool ignoreInvincible = false)
     {
         if (!IsActive())
         {
             return;
         }
-        base.HitBullet(damage, hitObject);
+        base.HitBullet(damage, hitObject, ignoreInvincible);
         StaticValues.bossHP[bossNumber] = hp;
-        base.SetInvincible(BOSS_INVINCIBLE_TIME);
+        if (!ignoreInvincible)
+        {
+            base.SetInvincible(BOSS_INVINCIBLE_TIME);
+        }
     }
 
     public bool IsActive()
