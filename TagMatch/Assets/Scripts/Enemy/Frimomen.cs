@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using DG.Tweening;
 
 public class Frimomen : BossAIBase
 {
     // 青:平均的, 緑:ふんわり落ちてくる, 赤:ダメージ1.5倍, 紫:落下が速い
     public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple, summonBat;
+    public bool isSecondBattle;
     BoxCollider2D bc;
     GameObject bulletPivot;
     Vector2 l1Pos, l2Pos, l3Pos, l4Pos, r1Pos, r2Pos, r3Pos, r4Pos, c1Pos, c2Pos, c3Pos, jumpOutPos;
     Animator dangerPanel1, dangerPanel2, dangerPanel3;
+
+    const float AUTO_HEAL_INTERVAL = 2.0f;
+    float autoHealTime = 2.0f;
 
     enum ActionState
     {
@@ -100,6 +103,16 @@ public class Frimomen : BossAIBase
             return;
         }
 
+        if (isSecondBattle)
+        {
+            autoHealTime += Time.deltaTime;
+            if (autoHealTime >= AUTO_HEAL_INTERVAL)
+            {
+                autoHealTime = 0;
+                bossScript.HitBullet(-99, null, true);
+            }
+        }
+
         // アニメーション再生中は次のモードに遷移しない
         if (isPlaying)
         {
@@ -109,87 +122,99 @@ public class Frimomen : BossAIBase
         switch (state)
         {
             case ActionState.START:
-                AudioManager.Instance.PlayExVoice("frimomen_start");
-                
-                actionStateQueue.Add(ActionState.WAIT);
-                actionStateQueue.Add(ActionState.JUMP_OUT);
+                if (isSecondBattle)
+                {
+                    // 第二形態
+                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                    actionStateQueue.Add(ActionState.LOOP);
 
-                // 下段タックル
-                AddTuckleQueue(1);
+                }
+                else
+                {
+                    // 第一形態
 
-                // 下段か中段に現れて三回投げる
-                actionStateQueue.Add(ActionState.WARP_TO_R1);
-                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C1);
-                else actionStateQueue.Add(ActionState.JUMP_TO_C2);
-                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                
-                // その場または上段に跳ぶかしてから召喚
-                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C3);
-                actionStateQueue.Add(ActionState.SUMMON_BUT);
+                    AudioManager.Instance.PlayExVoice("frimomen_start");
 
-                // 下段+中段か上段どちらかの二連続タックル
-                actionStateQueue.Add(ActionState.JUMP_TO_R1);
-                AddTuckleQueue(1);
-                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(2);
-                else AddTuckleQueue(3);
-                
-                // 下段か上段に現れて召喚
-                actionStateQueue.Add(ActionState.WARP_TO_R1);
-                if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C1);
-                else actionStateQueue.Add(ActionState.JUMP_TO_C3);
-                actionStateQueue.Add(ActionState.SUMMON_BUT);
+                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.JUMP_OUT);
 
-                // 中段で二回投げる
-                actionStateQueue.Add(ActionState.JUMP_TO_C2);
-                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                
-                // 上段で二回投げる
-                actionStateQueue.Add(ActionState.JUMP_TO_C3);
-                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
-                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+                    // 下段タックル
+                    AddTuckleQueue(1);
 
-                // ランダム要素強めに三連続タックル
-                actionStateQueue.Add(ActionState.JUMP_TO_R1);
-                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(3);
-                else AddTuckleQueue(1);
-                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(2);
-                else AddTuckleQueue(3);
-                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(1);
-                else AddTuckleQueue(2);
+                    // 下段か中段に現れて三回投げる
+                    actionStateQueue.Add(ActionState.WARP_TO_R1);
+                    if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    else actionStateQueue.Add(ActionState.JUMP_TO_C2);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
 
-                // 下段中段上段でそれぞれ二回ずつ投げる
-                actionStateQueue.Add(ActionState.WARP_TO_R1);
-                actionStateQueue.Add(ActionState.JUMP_TO_C1);
-                actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
-                actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
-                actionStateQueue.Add(ActionState.JUMP_TO_C2);
-                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                actionStateQueue.Add(ActionState.JUMP_TO_C3);
-                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
-                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
-                
-                // 中段+下段または上段タックル
-                actionStateQueue.Add(ActionState.JUMP_TO_R1);
-                AddTuckleQueue(2);
-                if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(1);
-                else AddTuckleQueue(3);
+                    // その場または上段に跳ぶかしてから召喚
+                    if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C3);
+                    actionStateQueue.Add(ActionState.SUMMON_BUT);
 
-                // 下段で三回投げる
-                actionStateQueue.Add(ActionState.WARP_TO_R1);
-                actionStateQueue.Add(ActionState.JUMP_TO_C1);
-                actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
-                actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+                    // 下段+中段か上段どちらかの二連続タックル
+                    actionStateQueue.Add(ActionState.JUMP_TO_R1);
+                    AddTuckleQueue(1);
+                    if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(2);
+                    else AddTuckleQueue(3);
 
-                // その場で召喚
-                actionStateQueue.Add(ActionState.SUMMON_BUT);
+                    // 下段か上段に現れて召喚
+                    actionStateQueue.Add(ActionState.WARP_TO_R1);
+                    if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    else actionStateQueue.Add(ActionState.JUMP_TO_C3);
+                    actionStateQueue.Add(ActionState.SUMMON_BUT);
 
-                actionStateQueue.Add(ActionState.LOOP);
+                    // 中段で二回投げる
+                    actionStateQueue.Add(ActionState.JUMP_TO_C2);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
 
+                    // 上段で二回投げる
+                    actionStateQueue.Add(ActionState.JUMP_TO_C3);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+
+                    // ランダム要素強めに三連続タックル
+                    actionStateQueue.Add(ActionState.JUMP_TO_R1);
+                    if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(3);
+                    else AddTuckleQueue(1);
+                    if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(2);
+                    else AddTuckleQueue(3);
+                    if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(1);
+                    else AddTuckleQueue(2);
+
+                    // 下段中段上段でそれぞれ二回ずつ投げる
+                    actionStateQueue.Add(ActionState.WARP_TO_R1);
+                    actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
+                    actionStateQueue.Add(ActionState.JUMP_TO_C2);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                    actionStateQueue.Add(ActionState.JUMP_TO_C3);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+
+                    // 中段+下段または上段タックル
+                    actionStateQueue.Add(ActionState.JUMP_TO_R1);
+                    AddTuckleQueue(2);
+                    if (Random.Range(0, 1.0f) < 0.5f) AddTuckleQueue(1);
+                    else AddTuckleQueue(3);
+
+                    // 下段で三回投げる
+                    actionStateQueue.Add(ActionState.WARP_TO_R1);
+                    actionStateQueue.Add(ActionState.JUMP_TO_C1);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_LIGHT);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                    actionStateQueue.Add(ActionState.THROW_BULLET_HEAVY);
+
+                    // その場で召喚
+                    actionStateQueue.Add(ActionState.SUMMON_BUT);
+
+                    actionStateQueue.Add(ActionState.LOOP);
+                }
                 break;
             case ActionState.LOOP:
                 isPlaying = false;
@@ -446,18 +471,5 @@ public class Frimomen : BossAIBase
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * power;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * power;
         return new Vector2(addforceX, addforceY);
-    }
-
-    bool IsLifeHalf()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
-    }
-    bool IsLifeTwoThirds()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() * 2 / 3));
-    }
-    bool IsLifeOneThirds()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 3));
     }
 }

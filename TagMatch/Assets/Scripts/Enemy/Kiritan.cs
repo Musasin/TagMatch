@@ -156,7 +156,7 @@ public class Kiritan : BossAIBase
                 anim.SetBool("isReady", true);
                 anim.SetBool("isFloat", false);
                 
-                if (bossScript.hp <= 50)
+                if (IsLifeOneThirds())
                 {
                     AudioManager.Instance.PlayExVoice("kiritan_attack3");
                     sequence = DOTween.Sequence()
@@ -176,7 +176,7 @@ public class Kiritan : BossAIBase
                         })
                         .Play();
                 }
-                else if (bossScript.hp <= 100)
+                else if (IsLifeTwoThirds())
                 {
                     AudioManager.Instance.PlayExVoice("kiritan_attack2");
                     sequence = DOTween.Sequence()

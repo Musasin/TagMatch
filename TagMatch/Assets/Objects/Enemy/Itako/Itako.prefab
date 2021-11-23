@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91efe32cf3fe4d8cb3b5c86ed7e2bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 300
+  hp: 400
   damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
     type: 3}
   defaultPosition: {x: 0, y: 0}
@@ -197,6 +197,7 @@ MonoBehaviour:
     type: 3}
   ghostRotationBullet: {fileID: 2952196207657320248, guid: b2b6aa85cdfcf4802ac01b74841d3343,
     type: 3}
+  isSecondBattle: 0
 --- !u!1001 &1403068253923356008
 PrefabInstance:
   m_ObjectHideFlags: 0

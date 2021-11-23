@@ -6318,10 +6318,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 30
+  - m_RefCount: 32
     m_Data: {fileID: 3278438005082653381, guid: 76e59e5aa092a446f9f3310e097aae55,
       type: 3}
-  - m_RefCount: 5
+  - m_RefCount: 1
     m_Data: {fileID: -2104378394200413046, guid: 76e59e5aa092a446f9f3310e097aae55,
       type: 3}
   - m_RefCount: 5
@@ -7200,6 +7200,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708282, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 10.660099
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131637329389708282, guid: 5ac69a41530ef44f2ad12624e7687ff0,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.4745169
       objectReference: {fileID: 0}
     - target: {fileID: 1131637329389708283, guid: 5ac69a41530ef44f2ad12624e7687ff0,
         type: 3}

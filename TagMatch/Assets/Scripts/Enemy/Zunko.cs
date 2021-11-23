@@ -467,10 +467,4 @@ public class Zunko : BossAIBase
         rb.constraints = RigidbodyConstraints2D.None;
         rb.AddForce(force);
     }
-
-
-    bool IsLifeHalf()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
-    }
 }

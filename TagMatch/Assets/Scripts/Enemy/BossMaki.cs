@@ -420,9 +420,4 @@ public class BossMaki : BossAIBase
 
         AudioManager.Instance.PlaySE("shot_maki");
     }
-
-    bool IsLifeHalf()
-    {
-        return (StaticValues.bossHP.Sum() < (StaticValues.bossMaxHP.Sum() / 2));
-    }
 }
