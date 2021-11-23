@@ -82,7 +82,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.050000012, y: -0.15929759}
+  m_Offset: {x: 0.05, y: -0.15929759}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -157,8 +157,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05000001, y: -0.5708124}
-  m_Size: {x: 0.50000006, y: 0.10837509}
+  m_Offset: {x: 0.05, y: -0.5708124}
+  m_Size: {x: 0.5, y: 0.10837509}
   m_Direction: 1
 --- !u!1 &1125446380228976033
 GameObject:
@@ -272,8 +272,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1125446380617308716}
-  - component: {fileID: 1125446380617308717}
   - component: {fileID: 1125446380617308706}
+  - component: {fileID: 1663459731027447690}
   m_Layer: 8
   m_Name: FootJudgement
   m_TagString: Player
@@ -289,38 +289,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125446380617308719}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.622, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1125446380103258035}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1125446380617308717
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125446380617308719}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.049999997, y: -0.0017955303}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.06615305}
-  m_EdgeRadius: 0
 --- !u!114 &1125446380617308706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +307,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53ea0b2e75ba48508c4ad7a6a4aa7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &1663459731027447690
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125446380617308719}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.05, y: -0.5738315}
+  m_Size: {x: 0.5, y: 0.11441328}
+  m_Direction: 1
 --- !u!1 &3334612648908427205
 GameObject:
   m_ObjectHideFlags: 0
