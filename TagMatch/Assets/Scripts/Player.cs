@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetAxisRaw("Vertical") < 0) // しゃがみ判定
                 {
-                    getOffTime = 0.2f;
+                    getOffTime = 0.1f;
                 } else
                 {
                     velocityY = JUMP_VELOCITY;
@@ -487,14 +487,14 @@ public class Player : MonoBehaviour
     }
     private void UpdateState()
     {
-        if (GetIsLanding() == false || backflipTime > 0)
-        {
-            newAnimationState = AnimationState.JUMP;
-        } 
-        else if (Input.GetAxisRaw("Vertical") < 0 && GetIsLanding()) // しゃがみ判定
+        if (Input.GetAxisRaw("Vertical") < 0 && GetIsLanding() || IsGetOff()) // しゃがみ判定
         {
             UpdateLastStandPos();
             newAnimationState = AnimationState.SQUAT;
+        } 
+        else if (GetIsLanding() == false || backflipTime > 0)
+        {
+            newAnimationState = AnimationState.JUMP;
         } 
         else 
         {
