@@ -112,7 +112,6 @@ public class GaugeUI : MonoBehaviour
             case GaugeType.BossHP:
                 gaugePoint = StaticValues.bossHP.Sum();
                 gaugePointMax = StaticValues.bossMaxHP.Sum();
-                Debug.Log(gaugePoint + "/" + gaugePointMax);
                 break;
         }
     }

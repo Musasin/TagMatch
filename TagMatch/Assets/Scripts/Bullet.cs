@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public int damage;
     public GameObject hitEffect;
     public bool isTrample;
+    public bool isIgnoreInvincible;
     float time;
     float deadTime;
     const float MINIMUM_TIME = 0.1f;
@@ -89,7 +90,7 @@ public class Bullet : MonoBehaviour
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
             if (enemy != null)
             {
-                if (!enemy.IsInvincible())
+                if (!enemy.IsInvincible() || isIgnoreInvincible)
                 {
                     int dmg = damage;
                     if (bulletType == BulletType.YUKARI)
@@ -100,7 +101,7 @@ public class Bullet : MonoBehaviour
                     {
                         dmg = (int)(dmg * StaticValues.makiAttackRatio);
                     }
-                    enemy.HitBullet(dmg, gameObject);
+                    enemy.HitBullet(dmg, gameObject, isIgnoreInvincible);
                     PlayHitEffect(collision.gameObject.transform.position);
                     if (!isTrample)
                     {
