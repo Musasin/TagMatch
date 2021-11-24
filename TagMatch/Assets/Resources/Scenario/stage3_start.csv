@@ -9,7 +9,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 8,talk,left_aoi,left,くんくん...,,normal,close,omega,,,,0,
 9,talk,left_aoi,left,地上のお姉ちゃんの匂いが、\nあっちの方に移動してる...,,anger,normal,laugh,,,,0,
 10,talk,yukari,left,なんですかその能力,,normal,half_open,o,sweat,,,0,
-11,talk,yukari,left,でも、ということは茜ちゃんとマキさんは向こうで洞窟の出口を探してくれているのかもしれませんね,,normal,normal,omega,,,,0,
+11,talk,yukari,left,でも、ということは茜ちゃんとマキさんは向こうで洞窟の出口を探してくれているのかもしれませんね,,normal,normal,omega,nothing,,,0,
 12,talk,yukari,left,とりあえずそっちに向かいましょうか\n歩けますか？,,normal,smile,laugh,,,,0,
 13,talk,left_aoi,left,.....。,,anger,half_open,mu,,,,0,
 14,talk,left_aoi,left,どうして親切にしてくれるんですか？\n今は敵同士なのに...,,anger,half_open,triangle,,,,0,
