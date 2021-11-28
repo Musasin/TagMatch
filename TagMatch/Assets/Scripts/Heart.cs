@@ -6,9 +6,9 @@ public class Heart : MonoBehaviour
 {
     public int hpPoint;
     public int mpPoint;
+    public bool isGot;
     
     Animator anim;
-    bool isGot;
     // Start is called before the first frame update
     void Start()
     {

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public GameObject starBullet, mustangBullet, electricBarrier, greatElectricFire, jumpAttack;
     public GameObject jumpEffect, invincibleEffect, healEffect;
+    public GameObject damagePointEffect, healPointEffect, mpPointEffect;
 
     const float MOVE_VELOCITY = 6.0f;
     const float JUMP_VELOCITY = 15.0f;
@@ -393,6 +394,8 @@ public class Player : MonoBehaviour
                         effect.transform.position = new Vector2(transform.position.x, transform.position.y + 1.0f);
                         AudioManager.Instance.PlaySE("restore");
                         AudioManager.Instance.PlayExVoice("maki_heal", true);
+                        
+                        PlayDamagePointEffect(-50);
                     }
                 }
                 else
@@ -593,6 +596,30 @@ public class Player : MonoBehaviour
         // 突き抜け床を登っている最中に着地判定を取られてしまわないよう、上昇中は着地扱いにしない
         return (footJudgement.GetIsLanding() && velocityY <= 0.01f);
     }
+    private void PlayDamagePointEffect(int hpDamage, int mpDamage = 0)
+    {
+        int point = 0;
+        GameObject dpObj = null;
+
+        if (hpDamage > 0)
+        {
+            dpObj = Instantiate(damagePointEffect);
+            point = hpDamage;
+        } else if (hpDamage < 0)
+        {
+            dpObj = Instantiate(healPointEffect);
+            point = -hpDamage;
+        } else if (mpDamage < 0)
+        {
+            dpObj = Instantiate(mpPointEffect);
+            point = mpDamage;
+        }
+
+        if (point == 0) return;
+
+        dpObj.transform.position = transform.position;
+        dpObj.GetComponent<DamagePointEffect>().SetDamagePointAndPlay(point);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -605,9 +632,10 @@ public class Player : MonoBehaviour
                 coin.GetCoin();
             }
             Heart heart = collision.gameObject.GetComponent<Heart>();
-            if (heart != null)
+            if (heart != null && !heart.isGot)
             {
                 heart.GetHeart();
+                PlayDamagePointEffect(-heart.hpPoint, -heart.mpPoint);
             }
         }
     }
@@ -627,9 +655,10 @@ public class Player : MonoBehaviour
                 coin.GetCoin();
             }
             Heart heart = collision.gameObject.GetComponent<Heart>();
-            if (heart != null)
+            if (heart != null && !heart.isGot)
             {
                 heart.GetHeart();
+                PlayDamagePointEffect(-heart.hpPoint, -heart.mpPoint);
             }
         }
         if (invincibleTime > 0 || squatInvincibleTime > 0)
@@ -648,6 +677,8 @@ public class Player : MonoBehaviour
             velocityX = isEnemyRight ? -DAMAGE_VELOCITY_X : DAMAGE_VELOCITY_X;
             rb.velocity = new Vector2(velocityX, DAMAGE_VELOCITY_Y);
             AudioManager.Instance.PlaySE("hit_player");
+
+            if (dp < 100) PlayDamagePointEffect(dp); // 落下死ではダメージを表示しない (100超えるのは落下ダメージだけ)
 
             // 操作キャラが死亡した時
             if ((IsYukari() && StaticValues.yukariHP <= 0) || (!IsYukari() && StaticValues.makiHP <= 0))

@@ -144,6 +144,12 @@ MonoBehaviour:
     type: 3}
   healEffect: {fileID: 4038885400652790906, guid: 99374737d312547f0b71db68139465ae,
     type: 3}
+  damagePointEffect: {fileID: 689011227499450108, guid: db63a3d59af254ce1a1c7554c5121268,
+    type: 3}
+  healPointEffect: {fileID: 689011227499450108, guid: 528c54185161e49f8a7ac338c23ff21b,
+    type: 3}
+  mpPointEffect: {fileID: 689011227499450108, guid: 4bc55faa5473e4b5eb9bdd4251ad6384,
+    type: 3}
 --- !u!70 &4257521843042841558
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
