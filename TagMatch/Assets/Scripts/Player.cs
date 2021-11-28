@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     float shotImpossibleTime = 0;
     float invincibleTime = 0;
     float squatInvincibleTime = 0;
+    float deadInvincibleTime = 0;
     float mpRecoverTime = 0;
     float checkLastStandPosTime = 0;
     float getOffTime = 0;
@@ -159,6 +160,7 @@ public class Player : MonoBehaviour
         shotImpossibleTime -= Time.deltaTime;
         invincibleTime -= Time.deltaTime;
         squatInvincibleTime -= Time.deltaTime;
+        deadInvincibleTime -= Time.deltaTime;
         mpRecoverTime += Time.deltaTime;
         checkLastStandPosTime -= Time.deltaTime;
         getOffTime -= Time.deltaTime;
@@ -579,7 +581,7 @@ public class Player : MonoBehaviour
     }
     private void UpdateColor()
     {
-        float alpha = (invincibleTime > 0 || squatInvincibleTime > 0) ? 0.5f : 1.0f;
+        float alpha = (invincibleTime > 0 || squatInvincibleTime > 0 || deadInvincibleTime > 0) ? 0.5f : 1.0f;
         if (dashTime > 0)
         {
             yukariImage.GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.8f, 1.0f, alpha);
@@ -661,16 +663,16 @@ public class Player : MonoBehaviour
                 PlayDamagePointEffect(-heart.hpPoint, -heart.mpPoint);
             }
         }
-        if (invincibleTime > 0 || squatInvincibleTime > 0)
-        {
-            return;
-        }
         if (collision.gameObject.tag == "Damage")
         {
+            int dp = collision.gameObject.GetComponent<Damage>().damagePoint;
+
+            if (deadInvincibleTime > 0) return;
+            if (dp < 100 && (invincibleTime > 0 || squatInvincibleTime > 0)) return; // 落下死は無敵では防げない (100超えるのは落下ダメージだけ)
+
             stopTime = STOP_TIME;
             invincibleTime = INVINCIBLE_TIME;
 
-            int dp = collision.gameObject.GetComponent<Damage>().damagePoint;
             StaticValues.AddHP(IsYukari(), -dp);
             
             bool isEnemyRight = transform.position.x < collision.gameObject.transform.position.x;
@@ -684,6 +686,7 @@ public class Player : MonoBehaviour
             if ((IsYukari() && StaticValues.yukariHP <= 0) || (!IsYukari() && StaticValues.makiHP <= 0))
             {
                 StaticValues.deadCount++;
+                deadInvincibleTime = INVINCIBLE_TIME;
                 if (IsYukari())
                 {
                     AudioManager.Instance.PlayExVoice("yukari_dead", true);
@@ -797,6 +800,7 @@ public class Player : MonoBehaviour
         shotImpossibleTime = 0;
         invincibleTime = 0;
         squatInvincibleTime = 0;
+        deadInvincibleTime = 0;
         mpRecoverTime = 0;
         checkLastStandPosTime = 0;
         isUsedDash = false;
