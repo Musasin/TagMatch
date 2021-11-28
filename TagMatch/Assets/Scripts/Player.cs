@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
     int makiBulletCount = 0;
     int barrierBulletCount = 0;
     int electricFireCount = 0;
+    int usedJumpShotCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -339,10 +340,11 @@ public class Player : MonoBehaviour
             } 
             else if (dy < 0 && !GetIsLanding()) // 空中下射撃
             {
-                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DOWN_SHOT && StaticValues.GetSkill("y_shot_2"))
+                if (IsYukari() && StaticValues.yukariMP >= MP_COST_YUKARI_DOWN_SHOT && StaticValues.GetSkill("y_shot_2") && usedJumpShotCount < 2)
                 {
                     StaticValues.AddMP(true, -MP_COST_YUKARI_DOWN_SHOT);
                     downShotTime = DOWNSHOT_TIME;
+                    usedJumpShotCount++;
 
                     Sequence sequence = DOTween.Sequence()
                         .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -45), BACKFLIP_TIME / 8))
@@ -499,6 +501,7 @@ public class Player : MonoBehaviour
         else 
         {
             isUsedDash = false;
+            usedJumpShotCount = 0;
             UpdateLastStandPos();
             if (Mathf.Abs(velocityX) < 0.2)
             {
@@ -743,6 +746,7 @@ public class Player : MonoBehaviour
         makiBulletCount = 0;
         barrierBulletCount = 0;
         electricFireCount = 0;
+        usedJumpShotCount = 0;
         velocityX = 0;
         velocityY = 0;
         dashTime = 0;
