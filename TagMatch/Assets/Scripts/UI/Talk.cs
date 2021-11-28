@@ -87,8 +87,7 @@ public class Talk: MonoBehaviour
         AudioManager.Instance.ChangeVoiceVolume(0.4f);
         
         wipePanel = GameObject.Find("WipePanel").GetComponent<WipePanel>();
-
-        isPlaying = false;
+        
         string sceneName = SceneManager.GetActiveScene().name;
         string acbName = sceneName.Split('-')[0];
         LoadACB(acbName, acbName + ".acb", acbName + ".awb");
@@ -409,7 +408,7 @@ public class Talk: MonoBehaviour
 
     public void SetScenario(string scenarioFileName, bool isMoveCamera)
     {
-        Debug.Log("SetScenario");
+        Debug.Log("SetScenario: " + scenarioFileName);
         time = 0;
         nowKey = 0;
         StaticValues.isTalkPause = true;
