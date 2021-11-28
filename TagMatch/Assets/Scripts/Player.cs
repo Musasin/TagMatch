@@ -102,20 +102,30 @@ public class Player : MonoBehaviour
 
         string sceneName = SceneManager.GetActiveScene().name;
         string stageName = sceneName.Split('-')[0];
-        if (stageName == "Stage3")
+        string stageCount = sceneName.Split('-').Length >=2 ? sceneName.Split('-')[1] : "";
+        if (stageName == "Stage3" || sceneName == "Stage6-M")
         {
             StaticValues.switchState = StaticValues.SwitchState.YUKARI_ONLY;
         }
-        if (stageName == "Stage4")
+        if (stageName == "Stage4" || sceneName == "Stage6-Y")
         {
             StaticValues.switchState = StaticValues.SwitchState.MAKI_ONLY;
         }
-        if (stageName == "Stage5") // 元に戻す
+        if (stageName == "Stage5" || sceneName == "Stage6-F") // 元に戻す
         {
-            StaticValues.switchState = StaticValues.SwitchState.MAKI;
+            StaticValues.switchState = StaticValues.SwitchState.YUKARI;
         }
 
         Switch(StaticValues.switchState, false);
+        
+        // ボス戦の後の1つ目のステージでHP/MPをリセット
+        if (stageCount == "1")
+        {
+            StaticValues.yukariHP = StaticValues.yukariMaxHP;
+            StaticValues.yukariMP = StaticValues.yukariMaxMP;
+            StaticValues.makiHP = StaticValues.makiMaxHP;
+            StaticValues.makiMP = StaticValues.makiMaxMP;
+        }
     }
 
     // Update is called once per frame
