@@ -10,7 +10,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 9,talk,left_akane,left,え？うん、持っとるけど...,,sad,normal,mu,,,,0,
 10,talk,maki,left,今いるのがここで、\nこの横穴に落ちたんだと\n思うんだよね,,normal,normal,o,,,,0,
 11,talk,left_akane,left,そういえば、\nいくつかルートがあるって\n話やったな,,normal,normal,omega,,,,0,
-12,talk,maki,left,ここからそんなに遠くない所に\n横穴の出口があるみたい\nだから、そこまで行って\n二人を迎えに行こう,,anger,normal,laugh,,,,0,
+12,talk,maki,left,ここからそう遠くない所に\n横穴の出口があるようだから\nそこまで二人を迎えに行こう,,anger,normal,laugh,,,,0,
 13,talk,left_akane,left,！！\nせやな、そうしよう！,,anger,normal,laugh,,,,0,
 14,talk,left_akane,left,あ、でも...,,sad,normal,mu,,,,0,
 15,talk,left_akane,left,ウチ、さっきの戦いで\nもう魔力がスッカラカンで、\n道中なんか出ても\nなんもできんかもしれん...,,sad,close,mu,,,,0,

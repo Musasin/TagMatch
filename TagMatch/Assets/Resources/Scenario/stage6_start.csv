@@ -1,0 +1,13 @@
+id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,play_next,voice
+1,instantiate,maki,left,,,normal,normal,o,,,,1,
+2,instantiate,yukari,left,,,,,,,,,1,
+3,talk,yukari,left,ほわぁ？！なんですかここは！,,anger,white,waxtu,sweat,,,0,
+4,talk,maki,left,これは...パソコンの中に\n入っちゃったとか？,,normal,normal,o,,,,0,
+5,talk,yukari,left,そんなことあります？！\n確かに私達はそういう存在と\nいえばそうではあるんですが...,,anger,shock,waxtu,sweat,,,0,
+6,talk,maki,left,うーん...\nよくわからないけど、\nここに決勝のフィールドが\nあるらしいし、,,sad,normal,o,,,,0,
+7,talk,maki,left,進んでみる？,,normal,normal,laugh,,,,0,
+8,talk,yukari,left,そうですね...,,sad,close,omega,sweat,,,0,
+9,talk,yukari,left,いくところまで行ってみますか！,,anger,normal,laugh,nothing,,,0,
+10,out,yukari,left,,,,,,,,,1,
+11,out,maki,left,,,,,,,,,1,
+12,end,,,,,,,,,,,0,

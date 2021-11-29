@@ -327,7 +327,7 @@ public class Talk: MonoBehaviour
                 scenario.Clear();
                 return;
             case "scene_change":
-                StaticValues.isReloadACB = true;
+                StaticValues.isReloadACB = scenario[nowKey.ToString()].main == "unreload" ? false : true;
                 wipePanel.ChangeScene(scenario[nowKey.ToString()].text, true);
                 CloseWindowForEnd();
                 scenario.Clear();

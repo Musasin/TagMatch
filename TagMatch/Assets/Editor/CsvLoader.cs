@@ -47,9 +47,11 @@ public class CsvLoader : EditorWindow
         fileList.Add("stage4_boss.csv", "2069169908");
         fileList.Add("stage4_boss_result.csv", "538322999");
         fileList.Add("stage4_movie.csv", "1653076123");
+        fileList.Add("stage4_movie2.csv", "1642843584");
         fileList.Add("stage5_start.csv", "1765698329");
         fileList.Add("stage5_boss.csv", "437719464");
         fileList.Add("stage5_boss_result.csv", "1872305858");
+        fileList.Add("stage6_start.csv", "2096379014");
         fileList.Add("stage6_boss_yukari.csv", "1981528181");
         fileList.Add("stage6_boss_maki.csv", "726849357");
         
