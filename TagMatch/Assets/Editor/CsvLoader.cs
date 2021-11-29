@@ -30,6 +30,7 @@ public class CsvLoader : EditorWindow
     static private void LoadFileList()
     {
         fileList.Clear();
+        fileList.Add("skill_tree.csv", "0");
         fileList.Add("opening.csv", "449411701");
         fileList.Add("opening2.csv", "906228607");
         fileList.Add("start_tutorial.csv", "314693860");
@@ -102,7 +103,9 @@ public class CsvLoader : EditorWindow
     
     private IEnumerator Download(string fileName, string gid)
     {
-        string filePath = Application.dataPath + "/Resources/Scenario/" + fileName;
+        string folder = Application.dataPath + "/Resources/Scenario/";
+        if (fileName == "skill_tree.csv") folder = Application.dataPath + "/Resources/MasterData/";
+        string filePath = folder + fileName;
         string url = commonURL1 + sheetURL + commonURL2 + gid + commonURL3 + "&v=" + (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds;
         Debug.Log(filePath + " Loading...");
         Debug.Log("URL: " + url);
