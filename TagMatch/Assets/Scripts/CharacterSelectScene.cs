@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelectScene : MonoBehaviour
 {
@@ -83,9 +84,15 @@ public class CharacterSelectScene : MonoBehaviour
                 AxisDownChecker.AxisDownUpdate();
                 if (KeyConfig.GetJumpKeyDown())
                 {
-                    AudioManager.Instance.PlaySE("accept");
-                    time = 0;
-                    state = CharacterSelectState.FADE_OUT;
+                    if (isYukari || isMaki)
+                    {
+                        AudioManager.Instance.PlaySE("accept");
+                        time = 0;
+                        state = CharacterSelectState.FADE_OUT;
+                    } else
+                    {
+                        AudioManager.Instance.PlaySE("cancel");
+                    }
                 }
                 break;
             case CharacterSelectState.FADE_OUT:
@@ -93,6 +100,9 @@ public class CharacterSelectScene : MonoBehaviour
                 if (time > 1.0f)
                 {
                     // 選択した方だけを使える状態にしてシーン遷移
+                    if (isYukari) SceneManager.LoadScene("Stage6-M");
+                    else SceneManager.LoadScene("Stage6-Y");
+                    state = CharacterSelectState.EXIT;
                 }
                 break;
         }
