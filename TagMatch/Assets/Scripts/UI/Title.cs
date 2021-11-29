@@ -11,6 +11,7 @@ public class Title : MonoBehaviour
     Image fadePanel;
     GameObject titleCursor;
     GameObject optionCursor, optionLeftCursor, optionRightCursor;
+    Text bgmVolumeText, seVolumeText, voiceVolumeText;
     Vector2 titleCursorDefaultPos;
     Vector2 optionCursorDefaultPos;
     KeyConfigUI keyConfigUIScript;
@@ -48,6 +49,10 @@ public class Title : MonoBehaviour
         titleCursorDefaultPos = titleCursor.transform.localPosition;
         optionCursorDefaultPos = optionCursor.transform.localPosition;
         keyConfigUIScript = GameObject.Find("KeyConfig").GetComponent<KeyConfigUI>();
+
+        bgmVolumeText = GameObject.Find("BGMVolume").GetComponent<Text>();
+        seVolumeText = GameObject.Find("SEVolume").GetComponent<Text>();
+        voiceVolumeText = GameObject.Find("VoiceVolume").GetComponent<Text>();
         
         if (StaticValues.isReloadACB == false) { return; }
         AudioManager.Instance.LoadACB("Title", "Title.acb", "Title.awb");
@@ -162,6 +167,38 @@ public class Title : MonoBehaviour
                     optionLeftCursor.SetActive(isLeftRightCursorActive);
                     optionRightCursor.SetActive(isLeftRightCursorActive);
                 }
+
+                if (Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Horizontal") > 0)
+                {
+                    switch (optionSelection)
+                    {
+                        case OptionList.BGM:
+                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.bgmVolume -= 0.01f;
+                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.bgmVolume += 0.01f;
+                            StaticValues.bgmVolume = Mathf.Clamp(StaticValues.bgmVolume, 0, 1.0f);
+                            StaticValues.SaveVolume();
+                            break;
+                        case OptionList.SE:
+                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.seVolume -= 0.01f;
+                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.seVolume += 0.01f;
+                            StaticValues.seVolume = Mathf.Clamp(StaticValues.seVolume, 0, 1.0f);
+                            StaticValues.SaveVolume();
+                            if (Mathf.Floor(StaticValues.seVolume * 100) % 3 == 0) AudioManager.Instance.PlaySE("select");
+                            break;
+                        case OptionList.VOICE:
+                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.voiceVolume -= 0.01f;
+                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.voiceVolume += 0.01f;
+                            StaticValues.voiceVolume = Mathf.Clamp(StaticValues.voiceVolume, 0, 1.0f);
+                            StaticValues.SaveVolume();
+                            if (Mathf.Floor(StaticValues.voiceVolume * 100) % 3 == 0) AudioManager.Instance.PlaySE("yukari_dash");
+                            break;
+                    }
+                }
+                bgmVolumeText.text = Mathf.Floor(StaticValues.bgmVolume * 100).ToString() + "％";
+                seVolumeText.text = Mathf.Floor(StaticValues.seVolume * 100).ToString() + "％";
+                voiceVolumeText.text = Mathf.Floor(StaticValues.voiceVolume * 100).ToString() + "％";
+
+
                 AxisDownChecker.AxisDownUpdate();
 
 

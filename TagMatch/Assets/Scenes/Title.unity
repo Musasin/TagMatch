@@ -1549,7 +1549,7 @@ GameObject:
   - component: {fileID: 535186204}
   - component: {fileID: 535186203}
   m_Layer: 5
-  m_Name: VOICEVolume
+  m_Name: VoiceVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
