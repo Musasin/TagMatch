@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         if (StaticValues.isPause)
         {
             // 慣性で滑らないようにポーズ中は横移動を強制的に停止させる
-            rb.velocity = new Vector2(velocityX, rb.velocity.y);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             return;
         }
 
@@ -150,6 +150,7 @@ public class Player : MonoBehaviour
             animationState = AnimationState.STAND;
             yukariAnimator.SetInteger("state", (int)animationState);
             makiAnimator.SetInteger("state", (int)animationState);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             return;
         }
 
