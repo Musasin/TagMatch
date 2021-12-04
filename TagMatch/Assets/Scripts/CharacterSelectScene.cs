@@ -99,6 +99,12 @@ public class CharacterSelectScene : MonoBehaviour
                 fadePanel.color = new Color(0, 0, 0, 0.0f + time);
                 if (time > 1.0f)
                 {
+                    // 死んでると困るので全回復させちゃう
+                    StaticValues.yukariHP = StaticValues.yukariMaxHP;
+                    StaticValues.yukariMP = StaticValues.yukariMaxMP;
+                    StaticValues.makiHP = StaticValues.makiMaxHP;
+                    StaticValues.makiMP = StaticValues.makiMaxMP;
+
                     // 選択した方だけを使える状態にしてシーン遷移
                     if (isYukari) SceneManager.LoadScene("Stage6-M");
                     else SceneManager.LoadScene("Stage6-Y");
