@@ -404,6 +404,8 @@ public class BossYukari : BossAIBase
     private void PlayWarpSequence(Vector2 targetPos, bool movedIsRight) 
     {
         bool isNowRightPos = c1Pos.x < transform.position.x;
+        Debug.Log(c1Pos);
+        Debug.Log(transform.position.x);
 
         sequence = DOTween.Sequence()
             .AppendCallback(() => {
@@ -412,13 +414,13 @@ public class BossYukari : BossAIBase
                 animationState = AnimationState.SQUAT;
                 anim.SetInteger("state", (int)animationState);
             })
-            .Append(transform.DOLocalMoveX(transform.localPosition.x + (isNowRightPos ? 2.0f : -2.0f), 0.3f))
+            .Append(transform.DOMoveX(transform.position.x + (isNowRightPos ? 2.0f : -2.0f), 0.3f))
             .AppendInterval(IsLifeHalf() ? 0.5f : 1.0f)
             .AppendCallback(() => {
                 transform.position = targetPos;
                 isRight = movedIsRight;
             })
-            .Append(transform.DOLocalMoveX(targetPos.x + (movedIsRight ? 2.0f : -2.0f), 0.3f))
+            .Append(transform.DOMoveX(targetPos.x + (movedIsRight ? 2.0f : -2.0f), 0.3f))
             .AppendCallback(() => {
                 bc.enabled = true;
             })
@@ -439,7 +441,7 @@ public class BossYukari : BossAIBase
                 animationState = AnimationState.SQUAT;
                 anim.SetInteger("state", (int)animationState);
             })
-            .Append(transform.DOLocalMoveX(transform.localPosition.x + (isNowRightPos ? 2.0f : -2.0f), 0.3f))
+            .Append(transform.DOMoveX(transform.position.x + (isNowRightPos ? 2.0f : -2.0f), 0.3f))
             .AppendInterval(IsLifeHalf() ? 0.5f : 1.0f)
             .AppendCallback(() => {
                 transform.position = targetPos;
@@ -475,6 +477,8 @@ public class BossYukari : BossAIBase
     private void PlayJumpSequence(Vector2 targetPos)
     {
         bool isNowRightPos = c1Pos.x < transform.position.x;
+        Debug.Log(c1Pos);
+        Debug.Log(transform.position.x);
 
         sequence = DOTween.Sequence()
             .AppendCallback(() => { 
@@ -482,7 +486,7 @@ public class BossYukari : BossAIBase
                 anim.SetInteger("state", (int)animationState);
                 AudioManager.Instance.PlaySE("jump");
             })
-            .Append(transform.DOLocalJump(targetPos, 1.0f, 1, 1.0f))
+            .Append(transform.DOJump(targetPos, 1.0f, 1, 1.0f))
             .Join(
                 DOTween.Sequence()
                 .AppendInterval(0.1f)
@@ -512,7 +516,7 @@ public class BossYukari : BossAIBase
                 animationState = AnimationState.RUN;
                 anim.SetInteger("state", (int)animationState);
             })
-            .Append(transform.DOLocalMove(targetPos, 2.0f)).SetEase(Ease.Linear)
+            .Append(transform.DOMove(targetPos, 2.0f)).SetEase(Ease.Linear)
             .Join(
                 DOTween.Sequence()
                 .AppendInterval(0.2f)
@@ -539,7 +543,7 @@ public class BossYukari : BossAIBase
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * 550.0f;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * 550.0f;
 
-        GameObject bullet = Instantiate(bulletObj);
+        GameObject bullet = Instantiate(bulletObj, transform.parent);
 
         bullet.transform.position = isSquat ? squatBulletPivot.transform.position : bulletPivot.transform.position;
         bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));

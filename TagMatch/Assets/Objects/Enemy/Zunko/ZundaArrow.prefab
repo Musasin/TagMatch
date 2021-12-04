@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3704252541949575707}
   - component: {fileID: 6513752360177983362}
   - component: {fileID: 8394529141720533681}
+  - component: {fileID: -550463381486004261}
   m_Layer: 0
   m_Name: ZundaArrow
   m_TagString: Untagged
@@ -155,6 +156,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumTime: 2
+--- !u!114 &-550463381486004261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6610863175686141763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8ac1d6f68504855972f18e9dc29652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8783254359971459275
 GameObject:
   m_ObjectHideFlags: 0

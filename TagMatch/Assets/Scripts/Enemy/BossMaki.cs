@@ -310,7 +310,7 @@ public class BossMaki : BossAIBase
                 anim.SetInteger("state", (int)animationState);
                 AudioManager.Instance.PlaySE("jump");
             })
-            .Append(transform.DOLocalJump(transform.position, 1.0f, 1, 0.5f))
+            .Append(transform.DOJump(transform.position, 1.0f, 1, 0.5f))
             .Join(
                 DOTween.Sequence()
                 .AppendInterval(0.25f)
@@ -357,7 +357,7 @@ public class BossMaki : BossAIBase
                 anim.SetInteger("state", (int)animationState);
                 AudioManager.Instance.PlaySE("jump");
             })
-            .Append(transform.DOLocalJump(targetPos, 1.0f, 1, isLongJump ? 1.0f : 0.5f))
+            .Append(transform.DOJump(targetPos, 1.0f, 1, isLongJump ? 1.0f : 0.5f))
             .OnComplete(() => { 
                 animationState = AnimationState.STAND;
                 anim.SetInteger("state", (int)animationState);
@@ -378,7 +378,7 @@ public class BossMaki : BossAIBase
                 AudioManager.Instance.PlaySE("dash");
                 AudioManager.Instance.PlayExVoice("maki_jump", true);
             })
-            .Append(transform.DOLocalJump(targetPos, 1.0f, 1, 0.5f))
+            .Append(transform.DOJump(targetPos, 1.0f, 1, 0.5f))
             .Join(
                 DOTween.Sequence()
                 .Append(transform.DOLocalRotate(new Vector3(0, 0, 360), 0.4f, RotateMode.FastBeyond360))
@@ -398,7 +398,7 @@ public class BossMaki : BossAIBase
                 animationState = AnimationState.RUN;
                 anim.SetInteger("state", (int)animationState);
             })
-            .Append(transform.DOLocalMove(targetPos, 2.0f)).SetEase(Ease.Linear)
+            .Append(transform.DOMove(targetPos, 2.0f)).SetEase(Ease.Linear)
             .OnComplete(() => { 
                 animationState = AnimationState.STAND;
                 anim.SetInteger("state", (int)animationState);
@@ -412,7 +412,7 @@ public class BossMaki : BossAIBase
         float addforceX = Mathf.Cos(angleZ * Mathf.Deg2Rad) * 400.0f;
         float addforceY = Mathf.Sin(angleZ * Mathf.Deg2Rad) * 400.0f;
 
-        GameObject bullet = Instantiate(bulletObj);
+        GameObject bullet = Instantiate(bulletObj, transform.parent);
 
         bullet.transform.position = bulletPivot.transform.position;
         bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleZ));

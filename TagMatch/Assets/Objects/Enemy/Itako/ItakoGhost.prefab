@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6590212725231206697}
   - component: {fileID: 4476285377859757721}
   - component: {fileID: 6136868028194104318}
+  - component: {fileID: 115565023191543008}
   m_Layer: 11
   m_Name: ItakoGhost
   m_TagString: Damage
@@ -94,6 +95,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &115565023191543008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4525157025755260037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8ac1d6f68504855972f18e9dc29652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5740355151586000208
 GameObject:
   m_ObjectHideFlags: 0
