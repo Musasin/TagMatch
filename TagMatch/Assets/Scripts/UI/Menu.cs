@@ -67,7 +67,7 @@ public class Menu : MonoBehaviour
         switch (menuState)
         {
             case MenuState.CLOSED:
-                if (KeyConfig.GetMenuKeyDown())
+                if (KeyConfig.GetMenuKeyDown() && !StaticValues.isTalkPause)
                 {
                     AudioManager.Instance.PlaySE("open_menu");
                     StaticValues.isPause = true;
