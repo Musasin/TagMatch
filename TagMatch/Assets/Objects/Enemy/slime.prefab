@@ -413,9 +413,10 @@ MonoBehaviour:
   hp: 24
   damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
     type: 3}
+  healPointEffect: {fileID: 0}
   defaultPosition: {x: 0, y: 0}
   type: slime
-  velocityX: 100
+  velocityX: 200
   velocityY: 500
   attackInterval: 3
   shotPower: 200
@@ -426,3 +427,4 @@ MonoBehaviour:
   bullet: {fileID: 511471703815891128, guid: a7d2b4f267c4846e3b25587564786dcb, type: 3}
   dropItem1: {fileID: 0}
   dropItem2: {fileID: 0}
+  skeletonBullet: {fileID: 0}
