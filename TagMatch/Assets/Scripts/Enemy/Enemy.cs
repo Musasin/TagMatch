@@ -173,7 +173,7 @@ public class Enemy : EnemyBase
         {
             isRight = !isRight;
             // スライムは壁接触で加速度を反転
-            if (type == "slyme")
+            if (type == "slime")
             {
                 rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
             }
@@ -350,6 +350,7 @@ public class Enemy : EnemyBase
         attackSequence = DOTween.Sequence()
             .AppendCallback(() => {
                 anim.SetBool("isCharge", true);
+                rb.AddForce(new Vector2(30 * (isRight ? -1 : 1), 0)); // 逆側に少し下がってから跳ぶ
             })
             .AppendInterval(0.5f)
             .AppendCallback(() => { 
