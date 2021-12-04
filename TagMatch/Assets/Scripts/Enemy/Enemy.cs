@@ -350,7 +350,7 @@ public class Enemy : EnemyBase
         attackSequence = DOTween.Sequence()
             .AppendCallback(() => {
                 anim.SetBool("isCharge", true);
-                rb.AddForce(new Vector2(30 * (isRight ? -1 : 1), 0)); // 逆側に少し下がってから跳ぶ
+                rb.AddForce(new Vector2(velocityX / 7 * (isRight ? -1 : 1), 0)); // 逆側に少し下がってから跳ぶ
             })
             .AppendInterval(0.5f)
             .AppendCallback(() => { 
