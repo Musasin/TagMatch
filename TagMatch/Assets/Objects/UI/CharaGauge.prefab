@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2446437825423600035}
   m_Layer: 0
-  m_Name: MakiiGauge
+  m_Name: MakiGauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
