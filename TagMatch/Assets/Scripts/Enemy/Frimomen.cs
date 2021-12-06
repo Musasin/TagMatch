@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Frimomen : BossAIBase
 {
     // 青:平均的, 緑:ふんわり落ちてくる, 赤:ダメージ1.5倍, 紫:落下が速い
-    public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple, summonBat;
+    public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple, summonBat, wallBullet;
     public bool isSecondBattle;
     BoxCollider2D bc;
     GameObject bulletPivot;
@@ -38,6 +38,7 @@ public class Frimomen : BossAIBase
         THROW_BULLET_LIGHT,
         THROW_BULLET_HEAVY,
         SUMMON_BUT,
+        INSTANTIATE_WALL_BULLET,
         CHANGE_IS_RIGHT,
         LOOP,
         WAIT,
@@ -124,9 +125,15 @@ public class Frimomen : BossAIBase
             case ActionState.START:
                 if (isSecondBattle)
                 {
+                    GameObject.Find("cannonR").GetComponent<Cannon>().In();
+                    GameObject.Find("cannonL").GetComponent<Cannon>().In();
+                    GameObject.Find("cannonT").GetComponent<Cannon>().In();
+
                     // 第二形態
                     actionStateQueue.Add(ActionState.WAIT);
                     actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
+                    actionStateQueue.Add(ActionState.INSTANTIATE_WALL_BULLET);
+                    actionStateQueue.Add(ActionState.WAIT);
                     actionStateQueue.Add(ActionState.LOOP);
 
                 }
@@ -291,6 +298,9 @@ public class Frimomen : BossAIBase
             case ActionState.SUMMON_BUT:
                 isPlaying = true;
                 PlaySummonSequence();
+                break;
+            case ActionState.INSTANTIATE_WALL_BULLET:
+                PlayInstantiateWallBulletSequence();
                 break;
             case ActionState.CHANGE_IS_RIGHT:
                 isRight = !isRight;
@@ -464,6 +474,41 @@ public class Frimomen : BossAIBase
                 isPlaying = false;
             })
             .Play();
+    }
+    
+    private void PlayInstantiateWallBulletSequence()
+    {
+        var wallObject = Instantiate(wallBullet, transform.parent);
+        var wallScript = wallObject.GetComponent<WallBullet>();
+
+        wallObject.transform.localScale = new Vector2(wallObject.transform.localScale.x / 4 * Random.Range(1, 8), wallObject.transform.localScale.y);
+        wallScript.moveTime = Random.Range(1, 3);
+        wallScript.deadTime = wallScript.moveTime + Random.Range(0, 2);
+
+        switch(Random.Range(0, 3))
+        {
+            case 0: // 左に生成
+                wallObject.transform.localPosition = new Vector2(6, Random.Range(-5, 3));
+                wallObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                wallScript.moveX = 6;
+                wallScript.moveY = 0;
+                break;
+                
+            case 1: // 右に生成
+                wallObject.transform.localPosition = new Vector2(25, Random.Range(-5, 3));
+                wallObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                wallScript.moveX = -6;
+                wallScript.moveY = 0;
+                break;
+                
+            case 2:
+            case 3: // 下に生成
+                wallObject.transform.localPosition = new Vector2(Random.Range(8, 24), -6);
+                wallObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                wallScript.moveX = 0;
+                wallScript.moveY = 6;
+                break;
+        }
     }
 
     Vector2 CalcAddForceVector(float angleZ, float power)

@@ -489,6 +489,8 @@ MonoBehaviour:
     type: 3}
   summonBat: {fileID: 7787921097148712848, guid: 45ff9a193b8a24f2d918267395fd8deb,
     type: 3}
+  wallBullet: {fileID: 2447088806716228710, guid: dfae2612db3674354b97c8560c3c596c,
+    type: 3}
   isSecondBattle: 1
 --- !u!61 &8982574061098869304
 BoxCollider2D:

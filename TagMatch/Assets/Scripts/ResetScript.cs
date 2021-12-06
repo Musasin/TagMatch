@@ -56,6 +56,11 @@ public class ResetScript : MonoBehaviour
         {
             boss.Reset();
         }
+        Cannon[] cannonList = enemiesObject.GetComponentsInChildren<Cannon>();
+        foreach (Cannon cannon in cannonList)
+        {
+            cannon.Reset();
+        }
         AimForPlayerBullet[] aimForPlayerBulletList = enemiesObject.GetComponentsInChildren<AimForPlayerBullet>();
         foreach (AimForPlayerBullet aimForPlayerBullet in aimForPlayerBulletList)
         {
