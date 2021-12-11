@@ -5,12 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 1c8ffd70881ef4448a0911dc549d8913
+  - enabled: 1
+    path: Assets/Scenes/Opening.unity
+    guid: 7d4490a8a144f4101a475d00d565cb62
+  - enabled: 1
+    path: Assets/Scenes/Opening-2.unity
+    guid: 896191cf7d647485eb338cbeea9c16bf
   - enabled: 1
     path: Assets/Scenes/Stage1-0.unity
     guid: 20855ee0a041044ea974c5a6114632ee
@@ -63,38 +69,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage4-4.unity
     guid: 68633d59a99264486a27582b078e9148
   - enabled: 1
-    path: Assets/Scenes/Stage5-1.unity
-    guid: 00049ac38f0cf4c3083e16df3d3e361f
-  - enabled: 1
-    path: Assets/Scenes/Stage6-1.unity
-    guid: 9f826503182be46668442aade2cc614c
-  - enabled: 1
-    path: Assets/Scenes/Opening-2.unity
-    guid: 896191cf7d647485eb338cbeea9c16bf
-  - enabled: 1
-    path: Assets/Scenes/Opening.unity
-    guid: 7d4490a8a144f4101a475d00d565cb62
-  - enabled: 1
     path: Assets/Scenes/Stage4-Movie.unity
     guid: a04a408f5b7b64ab7864182a4cd42fad
   - enabled: 1
     path: Assets/Scenes/Stage4-Movie2.unity
     guid: 5de5027457a2d48978a1e14ab0c1896d
   - enabled: 1
-    path: Assets/Scenes/Stage6-Select.unity
-    guid: 514c0e533b5994c938fdb3fe4c6c2ca1
-  - enabled: 1
-    path: Assets/Scenes/Stage6-M.unity
-    guid: 11678c9ffc6854451a11d54ce25a0c46
-  - enabled: 1
-    path: Assets/Scenes/Stage6-Y.unity
-    guid: 8fa3351d29bf147d1af63bb487d31564
-  - enabled: 1
-    path: Assets/Scenes/Stage6-F.unity
-    guid: d75831cbed0134e72879890a7b4b5657
-  - enabled: 1
-    path: Assets/Scenes/Stage6-F2.unity
-    guid: 1459b5f769f7a41858bdd7b7bcf9cf2d
+    path: Assets/Scenes/Stage5-1.unity
+    guid: 00049ac38f0cf4c3083e16df3d3e361f
   - enabled: 1
     path: Assets/Scenes/Stage5-2.unity
     guid: 86c3bc6b9a20e453dbc37f1b91157cf8
@@ -105,9 +87,30 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage5-4.unity
     guid: 3196f86d6aeae4845804d96026d62f0d
   - enabled: 1
+    path: Assets/Scenes/Stage6-1.unity
+    guid: 9f826503182be46668442aade2cc614c
+  - enabled: 1
     path: Assets/Scenes/Stage6-2.unity
     guid: 682e9117cdf6d463781072f8fb6a2547
   - enabled: 1
     path: Assets/Scenes/Stage6-3.unity
     guid: d3f060c98381a465486a495119d22c52
+  - enabled: 1
+    path: Assets/Scenes/Stage6-Select.unity
+    guid: 514c0e533b5994c938fdb3fe4c6c2ca1
+  - enabled: 1
+    path: Assets/Scenes/Stage6-Y.unity
+    guid: 11678c9ffc6854451a11d54ce25a0c46
+  - enabled: 1
+    path: Assets/Scenes/Stage6-M.unity
+    guid: 8fa3351d29bf147d1af63bb487d31564
+  - enabled: 1
+    path: Assets/Scenes/Stage6-FY.unity
+    guid: 6456516c15e2448aebd93aee4e29c185
+  - enabled: 1
+    path: Assets/Scenes/Stage6-FM.unity
+    guid: d75831cbed0134e72879890a7b4b5657
+  - enabled: 1
+    path: Assets/Scenes/Stage6-F2.unity
+    guid: 1459b5f769f7a41858bdd7b7bcf9cf2d
   m_configObjects: {}

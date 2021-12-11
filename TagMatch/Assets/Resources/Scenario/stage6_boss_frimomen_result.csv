@@ -1,0 +1,13 @@
+id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,play_next,voice
+1,instantiate,frimomen,right,,,,,,,,,1,
+2,talk,frimomen,right,ぐああああああ！！！！,,,,,,,,0,
+3,talk,frimomen,right,バカな！バカなああああああ！！！！,,,,,,,,0,
+4,talk,frimomen,right,,,,,,,,,0,
+5,instantiate,yukari,left,,,,,,,,,1,
+6,instantiate,maki,left,,,,,,,,,1,
+7,talk,yukari,left,,,,,,,,,0,
+8,talk,maki,left,,,,,,,,,0,
+9,out,frimomen,right,,,,,,,,,1,
+10,out,maki,left,,,,,,,,,1,
+11,out,yukari,left,,,,,,,,,1,
+12,scene_change,,,stage6-F2,,,,,,,,0,

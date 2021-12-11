@@ -105,15 +105,15 @@ public class Player : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         string stageName = sceneName.Split('-')[0];
         string stageCount = sceneName.Split('-').Length >=2 ? sceneName.Split('-')[1] : "";
-        if (stageName == "Stage3" || sceneName == "Stage6-M")
+        if (stageName == "Stage3" || sceneName == "Stage6-Y")
         {
             StaticValues.switchState = StaticValues.SwitchState.YUKARI_ONLY;
         }
-        if (stageName == "Stage4" || sceneName == "Stage6-Y")
+        if (stageName == "Stage4" || sceneName == "Stage6-M")
         {
             StaticValues.switchState = StaticValues.SwitchState.MAKI_ONLY;
         }
-        if (stageName == "Stage5" || sceneName == "Stage6-F") // 元に戻す
+        if (stageName == "Stage5" || sceneName == "Stage6-FM" || sceneName == "Stage6-FY") // 元に戻す
         {
             StaticValues.switchState = StaticValues.SwitchState.YUKARI;
         }

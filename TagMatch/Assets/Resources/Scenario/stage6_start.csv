@@ -7,7 +7,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 6,talk,maki,left,うーん...\nよくわからないけど、\nここに決勝のフィールドが\nあるらしいし、,,sad,normal,o,,,,0,
 7,talk,maki,left,進んでみる？,,normal,normal,laugh,,,,0,
 8,talk,yukari,left,そうですね...,,sad,close,omega,sweat,,,0,
-9,talk,yukari,left,いくところまで行ってみますか！,,anger,normal,laugh,nothing,,,0,
+9,talk,yukari,left,いくところまで\n行ってみますか！,,anger,normal,laugh,nothing,,,0,
 10,out,yukari,left,,,,,,,,,1,
 11,out,maki,left,,,,,,,,,1,
 12,end,,,,,,,,,,,0,

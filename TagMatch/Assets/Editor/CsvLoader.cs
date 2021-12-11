@@ -53,8 +53,14 @@ public class CsvLoader : EditorWindow
         fileList.Add("stage5_boss.csv", "437719464");
         fileList.Add("stage5_boss_result.csv", "1872305858");
         fileList.Add("stage6_start.csv", "2096379014");
-        fileList.Add("stage6_boss_yukari.csv", "1981528181");
-        fileList.Add("stage6_boss_maki.csv", "726849357");
+        fileList.Add("stage6_end.csv", "13925378");
+        fileList.Add("stage6_boss_m.csv", "1981528181");
+        fileList.Add("stage6_boss_result_m.csv", "290970279");
+        fileList.Add("stage6_boss_y.csv", "726849357");
+        fileList.Add("stage6_boss_result_y.csv", "994772608");
+        fileList.Add("stage6_boss_frimomen_y.csv", "1741330806");
+        fileList.Add("stage6_boss_frimomen_m.csv", "1795352083");
+        fileList.Add("stage6_boss_frimomen_result.csv", "294638304");
         
         isSelectCheck  = true;
         checkFileList.Clear();

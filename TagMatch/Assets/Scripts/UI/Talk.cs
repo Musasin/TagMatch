@@ -304,6 +304,9 @@ public class Talk: MonoBehaviour
                 AudioManager.Instance.StopBGM();
                 AudioManager.Instance.PlayBGM(scenario[nowKey.ToString()].text);
                 break;
+            case "stop_bgm":
+                AudioManager.Instance.StopBGM();
+                break;
             case "animation_flag":
                 GameObject obj = GameObject.Find(scenario[nowKey.ToString()].chara);
                 if (obj != null)
