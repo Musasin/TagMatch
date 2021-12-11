@@ -13,6 +13,7 @@ public class Talk: MonoBehaviour
     public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, leftAkanePrefab, aoiPrefab, leftAoiPrefab, itakoPrefab, zunkoPrefab, frimomenPrefab, mob1Prefab, mob2Prefab, mob3Prefab;
     public GameObject leftWindow, rightWindow, angerLeftWindow, angerRightWindow, centerWindow;
     public GameObject leftNamePlate, rightNamePlate;
+    public GameObject talkFlash;
 
     WipePanel wipePanel;
     GameObject nowWindow, beforeWindow1, beforeWindow2;
@@ -28,7 +29,7 @@ public class Talk: MonoBehaviour
     string stackScenarioFileName;
     float closeTime;
     int nowKey;
-    float time, wipeTime;
+    float time, wipeTime, waitTime;
 
     private char lf = (char)10;
 
@@ -167,6 +168,19 @@ public class Talk: MonoBehaviour
                 isWiping = false;
                 UpdateStep();
             } else
+            {
+                return;
+            }
+        }
+
+        if (waitTime > 0)
+        {
+            waitTime -= Time.deltaTime;
+            if (waitTime <= 0)
+            {
+                UpdateStep();
+            }
+            else
             {
                 return;
             }
@@ -344,6 +358,12 @@ public class Talk: MonoBehaviour
                 isWiping = true;
                 wipeTime = 1.0f;
                 wipePanel.WipeOut();
+                break;
+            case "flash":
+                Instantiate(talkFlash, transform);
+                break;
+            case "wait":
+                waitTime = float.Parse(scenario[nowKey.ToString()].text);
                 break;
             case "close_window":
                 CloseWindow();
