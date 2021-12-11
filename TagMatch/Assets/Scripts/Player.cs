@@ -317,9 +317,13 @@ public class Player : MonoBehaviour
 
                     Sequence bulletSequence = DOTween.Sequence()
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 30 : 150); })
-                        .AppendInterval(0.1f)
+                        .AppendInterval(0.05f)
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 37.5f : 142.5f); })
+                        .AppendInterval(0.05f)
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 45 : 135); })
-                        .AppendInterval(0.1f)
+                        .AppendInterval(0.05f)
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 52.5f : 127.5f); })
+                        .AppendInterval(0.05f)
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? 60 : 120); });
 
                     Sequence sequence = DOTween.Sequence()
@@ -361,12 +365,18 @@ public class Player : MonoBehaviour
                     usedJumpShotCount++;
 
                     Sequence sequence = DOTween.Sequence()
-                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -45), BACKFLIP_TIME / 8))
+                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -45), BACKFLIP_TIME / 16))
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -45 : -135); })
-                        .AppendInterval(BACKFLIP_TIME / 8)
-                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -60), BACKFLIP_TIME / 8))
+                        .AppendInterval(BACKFLIP_TIME / 16)
+                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -52.5f), BACKFLIP_TIME / 16))
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -62.5f : -117.5f); })
+                        .AppendInterval(BACKFLIP_TIME / 16)
+                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -60), BACKFLIP_TIME / 16))
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -80 : -100); })
-                        .AppendInterval(BACKFLIP_TIME / 8)
+                        .AppendInterval(BACKFLIP_TIME / 16)
+                        .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -67.5f), BACKFLIP_TIME / 16))
+                        .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -100 : -80); })
+                        .AppendInterval(BACKFLIP_TIME / 16)
                         .AppendCallback(() => { InstantiateBullet(Bullet.BulletType.YUKARI, starBullet, isRight ? -120 : -60); })
                         .Append(yukariImage.transform.DOLocalRotate(new Vector3(0, 0, -360), BACKFLIP_TIME * 4 / 8, RotateMode.FastBeyond360));
                     sequence.Play();
