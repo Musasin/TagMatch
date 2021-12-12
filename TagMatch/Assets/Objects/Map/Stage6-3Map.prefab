@@ -36225,6 +36225,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: g_bat_07
       objectReference: {fileID: 0}
+    - target: {fileID: 7787921097148712852, guid: fba8cd0468ab34354b4134bf1100f994,
+        type: 3}
+      propertyPath: attackInterval
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7787921097148712855, guid: fba8cd0468ab34354b4134bf1100f994,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39224,6 +39229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: g_bat_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787921097148712852, guid: fba8cd0468ab34354b4134bf1100f994,
+        type: 3}
+      propertyPath: attackInterval
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7787921097148712855, guid: fba8cd0468ab34354b4134bf1100f994,
         type: 3}
@@ -43969,6 +43979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: g_bat_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787921097148712852, guid: fba8cd0468ab34354b4134bf1100f994,
+        type: 3}
+      propertyPath: attackInterval
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7787921097148712855, guid: fba8cd0468ab34354b4134bf1100f994,
         type: 3}

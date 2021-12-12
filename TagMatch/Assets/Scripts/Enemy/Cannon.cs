@@ -53,6 +53,7 @@ public class Cannon : MonoBehaviour
     void Update()
     {
         if (!isIn) return;
+        if (StaticValues.isPause || StaticValues.isTalkPause) return;
 
         if (isCharging)
         {

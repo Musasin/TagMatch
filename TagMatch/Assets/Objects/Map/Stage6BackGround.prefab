@@ -5272,7 +5272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPositionX: 102.4
-  speed: 0.06
+  speed: 0
 --- !u!1 &4816127310214855948
 GameObject:
   m_ObjectHideFlags: 0

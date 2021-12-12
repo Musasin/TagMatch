@@ -79,6 +79,11 @@ public class Enemy : EnemyBase
             anim.SetBool("isKnockBack", true);
             return;
         }
+        
+        if (StaticValues.isPause || StaticValues.isTalkPause)
+        {
+            return;
+        }
 
         anim.SetBool("isKnockBack", isKnockBack);
         if (isKnockBack) // 被ダメージ硬直
