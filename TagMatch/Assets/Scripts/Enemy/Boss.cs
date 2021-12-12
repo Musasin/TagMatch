@@ -51,6 +51,7 @@ public class Boss : EnemyBase
         }
         base.HitBullet(damage, hitObject, ignoreInvincible);
         StaticValues.bossHP[bossNumber] = hp;
+        StaticValues.bossDamage += Mathf.Max(0, damage);
         if (!ignoreInvincible)
         {
             base.SetInvincible(BOSS_INVINCIBLE_TIME);

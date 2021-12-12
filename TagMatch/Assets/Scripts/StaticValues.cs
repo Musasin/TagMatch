@@ -38,6 +38,7 @@ public class StaticValues : MonoBehaviour
     
     public static int[] bossHP = { 0, 0, 0 };
     public static int[] bossMaxHP = { 0, 0, 0 };
+    public static int bossDamage = 0;
 
     public static bool isFixedCamera;
 
@@ -212,6 +213,7 @@ public class StaticValues : MonoBehaviour
             bossHP[i] = 0;
             bossMaxHP[i] = 0;
         }
+        bossDamage = 0;
     }
 
     public static void AddSkill(string skillName, bool flag)

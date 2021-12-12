@@ -25,7 +25,7 @@ public class Talk: MonoBehaviour
     bool isCameraMoving, isClosing;
     bool beforeIsPlaying;
     bool isPlaying, isWiping;
-    bool isBossBattleWaiting;
+    bool isBossBattleWaiting, isSpecialBossBattleWaiting;
     string stackScenarioFileName;
     float closeTime;
     int nowKey;
@@ -137,6 +137,11 @@ public class Talk: MonoBehaviour
         }
 
         if (isBossBattleWaiting && StaticValues.bossHP.Sum() <= 0)
+        {
+            SetScenario(stackScenarioFileName, false);
+        }
+
+        if (isSpecialBossBattleWaiting && StaticValues.bossDamage > 150)
         {
             SetScenario(stackScenarioFileName, false);
         }
@@ -339,6 +344,12 @@ public class Talk: MonoBehaviour
                 CloseWindowForEnd();
                 scenario.Clear();
                 return;
+            case "start_boss_battle_special": // フリモメン第二形態でのみ使用 回復分を加味せず、一定量のダメージを与えたら発火
+                stackScenarioFileName = scenario[nowKey.ToString()].text;
+                isSpecialBossBattleWaiting = true;
+                CloseWindowForEnd();
+                scenario.Clear();
+                return;
             case "end":
                 CloseWindowForEnd();
                 scenario.Clear();
@@ -431,6 +442,7 @@ public class Talk: MonoBehaviour
         nowKey = 0;
         StaticValues.isTalkPause = true;
         isBossBattleWaiting = false;
+        isSpecialBossBattleWaiting = false;
 
         TextAsset csvFile = Resources.Load("Scenario/" + scenarioFileName) as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
