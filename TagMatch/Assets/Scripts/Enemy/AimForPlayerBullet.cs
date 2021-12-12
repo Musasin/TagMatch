@@ -12,12 +12,13 @@ public class AimForPlayerBullet : MonoBehaviour
     public float aimForPlayerPower;
     public float deadTime;
     public float delayTime;
+    public bool isSupportBullet;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = isSupportBullet ? GameObject.Find("Frimomen2") : GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
     }
 

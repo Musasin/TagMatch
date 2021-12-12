@@ -376,6 +376,9 @@ public class Talk: MonoBehaviour
             case "wait":
                 waitTime = float.Parse(scenario[nowKey.ToString()].text);
                 break;
+            case "support_on": // フリモメン第二形態専用
+                GameObject.Find("SupportBullet").GetComponent<SupportBulletCreater>().SetEnabled(true);
+                break;
             case "close_window":
                 CloseWindow();
                 break;

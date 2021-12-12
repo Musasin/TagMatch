@@ -38,7 +38,7 @@ public class Boss : EnemyBase
         {
             isDead = true;
             var deadPos = new Vector2(firstPos.x + 5, firstPos.y);
-            transform.DOLocalJump(deadPos, 3, 1, 1.0f);
+            transform.DOJump(deadPos, 3, 1, 1.0f);
             transform.DOLocalRotate(new Vector3(0, 0, 720), 1.0f, RotateMode.FastBeyond360);
         }
     }
