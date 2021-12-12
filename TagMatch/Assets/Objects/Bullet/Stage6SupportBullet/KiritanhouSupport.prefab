@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7722623621357101332}
   - component: {fileID: 2897635109177135246}
-  - component: {fileID: 7679957082845223383}
+  - component: {fileID: 3839484428133967595}
   m_Layer: 0
   m_Name: KiritanhouImage
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -453676706799375951, guid: b46f9abbbf6e3474e9c2fb4e9f780a28,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7679957082845223383
+--- !u!95 &3839484428133967595
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 69457123449318478}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 43c5546d2084841cd9079e89dab2022e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 47608958db4964e04a9605b6db3b4fcb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -303,7 +303,7 @@ SpriteRenderer:
   m_SortingLayer: 19
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3f5ba3e4bd0f42841b4b63138d139337, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

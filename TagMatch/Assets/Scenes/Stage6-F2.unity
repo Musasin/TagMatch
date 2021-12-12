@@ -621,5 +621,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage6-F2Map
       objectReference: {fileID: 0}
+    - target: {fileID: 5982261153361252370, guid: 81a98e9c6d4c8438bb98270fadcd771d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982261153361252370, guid: 81a98e9c6d4c8438bb98270fadcd771d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81a98e9c6d4c8438bb98270fadcd771d, type: 3}
