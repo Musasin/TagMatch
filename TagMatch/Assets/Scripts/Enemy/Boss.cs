@@ -20,6 +20,7 @@ public class Boss : EnemyBase
         // TODO 今のままだと、複数ボスのステージをクリア後、ボス1体のステージに行くと2体目のMaxHPがそのまま残ってしまうので、シーン読み込み時等に初期化する処理を入れる
         StaticValues.bossMaxHP[bossNumber] = hp;
         StaticValues.bossHP[bossNumber] = hp;
+        StaticValues.bossDamage = 0;
     }
     
     public override void Reset()
