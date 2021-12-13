@@ -491,6 +491,8 @@ MonoBehaviour:
     type: 3}
   wallBullet: {fileID: 2447088806716228710, guid: dfae2612db3674354b97c8560c3c596c,
     type: 3}
+  afterimageEffect: {fileID: 4150688544185414838, guid: fe462e4829a4b4b0f83f15e5ee0d4e40,
+    type: 3}
   isSecondBattle: 1
 --- !u!61 &8982574061098869304
 BoxCollider2D:

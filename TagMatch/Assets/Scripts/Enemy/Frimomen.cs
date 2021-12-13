@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Frimomen : BossAIBase
 {
     // 青:平均的, 緑:ふんわり落ちてくる, 赤:ダメージ1.5倍, 紫:落下が速い
-    public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple, summonBat, wallBullet;
+    public GameObject throwBulletBlue, throwBulletRed, throwBulletGreen, throwBulletPurple, summonBat, wallBullet, afterimageEffect;
     public bool isSecondBattle;
     BoxCollider2D bc;
     GameObject bulletPivot;
@@ -14,7 +14,12 @@ public class Frimomen : BossAIBase
     Animator dangerPanel1, dangerPanel2, dangerPanel3;
 
     const float AUTO_HEAL_INTERVAL = 2.0f;
-    float autoHealTime = 2.0f;
+    const float AFTERIMAGE_INTERVAL = 0.1f;
+    const float INSTANTIATE_WALL_INTERVAL = 2.0f;
+    float autoHealTime = 0;
+    float afterimageTime = 0;
+    float instantiateWallTime = 0;
+    GameObject playerObject;
 
     enum ActionState
     {
@@ -38,8 +43,21 @@ public class Frimomen : BossAIBase
         THROW_BULLET_LIGHT,
         THROW_BULLET_HEAVY,
         SUMMON_BUT,
-        INSTANTIATE_WALL_BULLET,
         CHANGE_IS_RIGHT,
+        
+        MOVE_R1,
+        MOVE_R2,
+        MOVE_R3,
+        MOVE_L1,
+        MOVE_L2,
+        MOVE_L3,
+        FAST_MOVE_R1,
+        FAST_MOVE_R2,
+        FAST_MOVE_R3,
+        FAST_MOVE_L1,
+        FAST_MOVE_L2,
+        FAST_MOVE_L3,
+
         LOOP,
         WAIT,
     }
@@ -66,10 +84,21 @@ public class Frimomen : BossAIBase
         c1Pos = GameObject.Find("C1Pos").transform.position;
         c2Pos = GameObject.Find("C2Pos").transform.position;
         c3Pos = GameObject.Find("C3Pos").transform.position;
+
+        if (isSecondBattle)
+        {
+            l1Pos = new Vector2(l1Pos.x + 4, l1Pos.y);
+            l2Pos = new Vector2(l2Pos.x + 4, l2Pos.y);
+            l3Pos = new Vector2(l3Pos.x + 4, l3Pos.y);
+            r1Pos = new Vector2(r1Pos.x - 4, r1Pos.y);
+            r2Pos = new Vector2(r2Pos.x - 4, r2Pos.y);
+            r3Pos = new Vector2(r3Pos.x - 4, r3Pos.y);
+        }
         jumpOutPos = GameObject.Find("JumpOutPos").transform.position;
         dangerPanel1 = GameObject.Find("DangerPanel1").GetComponent<Animator>();
         dangerPanel2 = GameObject.Find("DangerPanel2").GetComponent<Animator>();
         dangerPanel3 = GameObject.Find("DangerPanel3").GetComponent<Animator>();
+        playerObject = GameObject.Find("Player");
     }
     
     public override void Reset()
@@ -106,11 +135,33 @@ public class Frimomen : BossAIBase
 
         if (isSecondBattle)
         {
+            // 向きを自動補正
+            transform.localScale = new Vector2(transform.position.x < playerObject.transform.position.x ? -1 : 1, 1);
+
+            // 自動回復
             autoHealTime += Time.deltaTime;
             if (autoHealTime >= AUTO_HEAL_INTERVAL)
             {
                 autoHealTime = 0;
                 bossScript.HitBullet(-99, null, true);
+            }
+
+            // 壁オブジェクトを生成
+            instantiateWallTime += Time.deltaTime;
+            if (instantiateWallTime >= INSTANTIATE_WALL_INTERVAL)
+            {
+                instantiateWallTime = 0;
+                InstantiateWallBullet();
+            }
+
+            // 残像を生成
+            afterimageTime += Time.deltaTime;
+            if (afterimageTime >= AFTERIMAGE_INTERVAL)
+            {
+                afterimageTime = 0;
+                var afterimage = Instantiate(afterimageEffect, transform.parent);
+                afterimage.transform.position = transform.position;
+                afterimage.transform.localScale = transform.localScale;
             }
         }
 
@@ -131,8 +182,14 @@ public class Frimomen : BossAIBase
 
                     // 第二形態
                     actionStateQueue.Add(ActionState.WAIT);
-                    actionStateQueue.Add(ActionState.THROW_BULLET_NORMAL);
-                    actionStateQueue.Add(ActionState.INSTANTIATE_WALL_BULLET);
+                    actionStateQueue.Add(ActionState.MOVE_R1);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R3);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R1);
+                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.MOVE_L1);
+                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L3);
+                    actionStateQueue.Add(ActionState.MOVE_R3);
                     actionStateQueue.Add(ActionState.WAIT);
                     actionStateQueue.Add(ActionState.LOOP);
 
@@ -299,9 +356,56 @@ public class Frimomen : BossAIBase
                 isPlaying = true;
                 PlaySummonSequence();
                 break;
-            case ActionState.INSTANTIATE_WALL_BULLET:
-                PlayInstantiateWallBulletSequence();
+                
+            case ActionState.MOVE_R1:
+                isPlaying = true;
+                PlayMoveSequence(r1Pos, 2.0f);
                 break;
+            case ActionState.MOVE_R2:
+                isPlaying = true;
+                PlayMoveSequence(r2Pos, 2.0f);
+                break;
+            case ActionState.MOVE_R3:
+                isPlaying = true;
+                PlayMoveSequence(r3Pos, 2.0f);
+                break;
+            case ActionState.MOVE_L1:
+                isPlaying = true;
+                PlayMoveSequence(l1Pos, 2.0f);
+                break;
+            case ActionState.MOVE_L2:
+                isPlaying = true;
+                PlayMoveSequence(l2Pos, 2.0f);
+                break;
+            case ActionState.MOVE_L3:
+                isPlaying = true;
+                PlayMoveSequence(l3Pos, 2.0f);
+                break;
+            case ActionState.FAST_MOVE_R1:
+                isPlaying = true;
+                PlayMoveSequence(r1Pos, 1.0f);
+                break;
+            case ActionState.FAST_MOVE_R2:
+                isPlaying = true;
+                PlayMoveSequence(r2Pos, 1.0f);
+                break;
+            case ActionState.FAST_MOVE_R3:
+                isPlaying = true;
+                PlayMoveSequence(r3Pos, 1.0f);
+                break;
+            case ActionState.FAST_MOVE_L1:
+                isPlaying = true;
+                PlayMoveSequence(l1Pos, 1.0f);
+                break;
+            case ActionState.FAST_MOVE_L2:
+                isPlaying = true;
+                PlayMoveSequence(l2Pos, 1.0f);
+                break;
+            case ActionState.FAST_MOVE_L3:
+                isPlaying = true;
+                PlayMoveSequence(l3Pos, 1.0f);
+                break;
+
             case ActionState.CHANGE_IS_RIGHT:
                 isRight = !isRight;
                 break;
@@ -384,6 +488,18 @@ public class Frimomen : BossAIBase
             .Append(transform.DOMove(targetPos, 1.0f)).SetEase(Ease.Linear)
             .OnComplete(() => { 
                 anim.SetBool("isTuckle", false);
+                isPlaying = false;
+            })
+            .Play();
+    }
+    private void PlayMoveSequence(Vector2 targetPos, float time)
+    {
+        sequence = DOTween.Sequence()
+            .AppendCallback(() => {
+                AudioManager.Instance.PlaySE("buon");
+            })
+            .Append(transform.DOMove(targetPos, time))
+            .OnComplete(() => { 
                 isPlaying = false;
             })
             .Play();
@@ -476,7 +592,7 @@ public class Frimomen : BossAIBase
             .Play();
     }
     
-    private void PlayInstantiateWallBulletSequence()
+    private void InstantiateWallBullet()
     {
         var wallObject = Instantiate(wallBullet, transform.parent);
         var wallScript = wallObject.GetComponent<WallBullet>();

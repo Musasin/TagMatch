@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAimForPlayer: 1
-  aimForPlayerPower: 500
+  aimForPlayerPower: 800
   deadTime: 10
   delayTime: 1
   isSupportBullet: 1
