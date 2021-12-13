@@ -30,6 +30,7 @@ public class Boss : EnemyBase
         transform.position = firstPos;
         StaticValues.bossMaxHP[bossNumber] = hp;
         StaticValues.bossHP[bossNumber] = hp;
+        StaticValues.bossDamage = 0;
     }
 
     public override void Update()
