@@ -25,6 +25,7 @@
           <Orca OrcaName="opening1.wav" Channels="2" EncodeFileSize="349952" ReloopChanFlag="True" ReloopEnableFlag="True" ReloopEnd="523633" ReloopStart="130906" ResamplingRate="48000" SampleFrames="523636" SamplingRate="48000" SourceFileSize="2095246" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="Stage6.wav" Channels="2" EncodeFileSize="2362680" ReloopEnableFlag="True" ReloopEnd="3544615" ReloopStart="354462" ResamplingRate="48000" SampleFrames="3544615" SamplingRate="48000" SourceFileSize="14179162" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="boss5.wav" Channels="2" EncodeFileSize="2531062" ReloopEnableFlag="True" ReloopEnd="3799148" ReloopStart="245106" ResamplingRate="48000" SampleFrames="3799148" SamplingRate="48000" SourceFileSize="15197294" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="Boss6_Maki1.wav" Channels="2" EncodeFileSize="1962698" ReloopEnableFlag="True" ReloopEnd="2944000" ReloopStart="896000" ResamplingRate="48000" SampleFrames="2944000" SamplingRate="48000" SourceFileSize="11776702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="SE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="DONT_PUSH" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
