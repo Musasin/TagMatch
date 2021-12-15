@@ -76,7 +76,7 @@ public class Zunko : BossAIBase
 
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("zunko_dead");
+            AudioManager.Instance.PlayExVoice("zunko_dead", true);
             sequence.Kill();
             isRight = false;
             anim.SetBool("isReady", false);
@@ -110,7 +110,7 @@ public class Zunko : BossAIBase
         switch (state)
         {
             case ActionState.AWAKE:
-                AudioManager.Instance.PlayExVoice("zunko_start");
+                AudioManager.Instance.PlayExVoice("zunko_start", true);
                 actionStateQueue.Add(ActionState.WAIT);
                 actionStateQueue.Add(ActionState.START);
                 break;
@@ -413,7 +413,7 @@ public class Zunko : BossAIBase
     
     void PlayReadySequence()
     {
-        AudioManager.Instance.PlayExVoice("zunko_set");
+        AudioManager.Instance.PlayExVoice("zunko_set", true);
         isHoldingArrow = true;
         isPlaying = true;
         anim.SetBool("isReady", true);
@@ -428,7 +428,7 @@ public class Zunko : BossAIBase
     }
     void PlayAttackSequence()
     {
-        AudioManager.Instance.PlayExVoice("zunko_attack");
+        AudioManager.Instance.PlayExVoice("zunko_attack", true);
         isHoldingArrow = false;
         isPlaying = true;
         anim.SetBool("isAttack", true);

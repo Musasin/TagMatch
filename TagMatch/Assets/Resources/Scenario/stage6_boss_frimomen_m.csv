@@ -26,7 +26,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 25,talk,frimomen,right,どうしたらこの状況を打開し、フリモメンのシェア率を上げる事ができるのか,,,,,,,,0,
 26,stop_bgm,,,,,,,,,,,1,
 27,talk,frimomen,right,考えて考えて、\n一つの結論に辿り着いた,,,,,,,,0,
-28,play_bgm,,,boss_frimomen,,,,,,,,1,
+28,play_bgm,,,frimomen1st,,,,,,,,1,
 29,talk,frimomen,right,全員いなくなればいい,,,,,,,,0,
 30,talk,frimomen,right,そして、俺が\n唯一のボイスロイドとして\n君臨すれば良いということに,,,,,,,,0,
 31,talk,frimomen,right,この大会は、君たち\nボイスロイドが潰し合い、\n疲弊した所を始末するための舞台装置だったというわけさ,,,,,,,,0,

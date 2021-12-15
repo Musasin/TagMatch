@@ -58,7 +58,7 @@ public class Kiritan : BossAIBase
         
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("kiritan_dead");
+            AudioManager.Instance.PlayExVoice("kiritan_dead", true);
             sequence.Kill();
             isRight = false;
             anim.SetBool("isFloat", false);
@@ -82,7 +82,7 @@ public class Kiritan : BossAIBase
         switch (state)
         {
             case ActionState.START:
-                AudioManager.Instance.PlayExVoice("kiritan_start");
+                AudioManager.Instance.PlayExVoice("kiritan_start", true);
                 
                 isPlaying = true;
                 sequence = DOTween.Sequence()
@@ -158,7 +158,7 @@ public class Kiritan : BossAIBase
                 
                 if (IsLifeOneThirds())
                 {
-                    AudioManager.Instance.PlayExVoice("kiritan_attack3");
+                    AudioManager.Instance.PlayExVoice("kiritan_attack3", true);
                     sequence = DOTween.Sequence()
                         .AppendInterval(0.2f)
                         .AppendCallback(() => { InstantiateTwinBullet(); })
@@ -178,7 +178,7 @@ public class Kiritan : BossAIBase
                 }
                 else if (IsLifeTwoThirds())
                 {
-                    AudioManager.Instance.PlayExVoice("kiritan_attack2");
+                    AudioManager.Instance.PlayExVoice("kiritan_attack2", true);
                     sequence = DOTween.Sequence()
                         .AppendInterval(0.2f)
                         .AppendCallback(() => { InstantiateTwinBullet(); })
@@ -194,7 +194,7 @@ public class Kiritan : BossAIBase
                 }
                 else
                 {
-                    AudioManager.Instance.PlayExVoice("kiritan_attack1");
+                    AudioManager.Instance.PlayExVoice("kiritan_attack1", true);
                     sequence = DOTween.Sequence()
                         .AppendInterval(0.2f)
                         .AppendCallback(() => { InstantiateTwinBullet(); })

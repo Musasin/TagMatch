@@ -83,7 +83,7 @@ public class BossYukari : BossAIBase
 
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("yukari_dead");
+            AudioManager.Instance.PlayExVoice("yukari_dead", true);
             sequence.Kill();
             isRight = false;
             animationState = AnimationState.STAND;

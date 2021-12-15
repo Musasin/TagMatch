@@ -69,7 +69,7 @@ public class BossMaki : BossAIBase
 
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("maki_dead");
+            AudioManager.Instance.PlayExVoice("maki_dead", true);
             sequence.Kill();
             isRight = false;
             animationState = AnimationState.STAND;

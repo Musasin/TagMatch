@@ -19,7 +19,7 @@ public class Akane : Kotonoha
         // 一回だけ呼ばれるように茜の方でだけ再生
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("kotonoha_dead");
+            AudioManager.Instance.PlayExVoice("kotonoha_dead", true);
         }
         base.Update();
     }
@@ -35,7 +35,7 @@ public class Akane : Kotonoha
         // 開幕に一回だけ呼ばれるように茜の方でだけ再生
         if (!playedStartVoice)
         {
-            AudioManager.Instance.PlayExVoice("kotonoha_start");
+            AudioManager.Instance.PlayExVoice("kotonoha_start", true);
             playedStartVoice = true;
         }
 

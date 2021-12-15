@@ -26,7 +26,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 25,stop_bgm,,,,,,,,,,,1,
 26,talk,frimomen,right,ウィルスがやることなんて、だいたい想像がつくだろう？,,,,,,,,0,
 27,talk,frimomen,right,世界征服さ,,,,,,,,0,
-28,play_bgm,,,boss_frimomen_second,,,,,,,,1,
+28,play_bgm,,,frimomen2nd_battle1,,,,,,,,1,
 29,talk,frimomen,right,まずは手始めに、ボイスロイドとやらを全員食っちまうとするかね！,,,,,,,,0,
 30,talk,maki,left,こいつを野放しにしたら、みんなが...！,,,,,,,,0,
 31,talk,yukari,left,それどころか世界の危機ってわけですか、尚更放ってはおけませんね,,,,,,,,0,

@@ -215,7 +215,7 @@ public class Kotonoha : BossAIBase
     {
         sequence = DOTween.Sequence()
             .AppendCallback(() => { 
-                AudioManager.Instance.PlayExVoice("kotonoha_warp");
+                AudioManager.Instance.PlaySE("kotonoha_warp");
                 anim.SetBool("isDisappear", true);
                 bc.enabled = false;
             })
@@ -225,7 +225,7 @@ public class Kotonoha : BossAIBase
                 isRight = movedIsRight;
             })
             .AppendCallback(() => { 
-                AudioManager.Instance.PlayExVoice("kotonoha_warp");
+                AudioManager.Instance.PlaySE("kotonoha_warp");
                 anim.SetBool("isDisappear", false);
                 bc.enabled = true;
             })
@@ -236,7 +236,7 @@ public class Kotonoha : BossAIBase
 
     public virtual void InstantiateAkaneFlame()
     {
-        AudioManager.Instance.PlayExVoice("akane_attack");
+        AudioManager.Instance.PlayExVoice("akane_attack", true);
         AudioManager.Instance.PlaySE("akane_flame");
 
         GameObject bullet = Instantiate(akaneFlame, transform.parent);
@@ -246,7 +246,7 @@ public class Kotonoha : BossAIBase
     
     public virtual void InstantiateAoiShot()
     {
-        AudioManager.Instance.PlayExVoice("aoi_attack");
+        AudioManager.Instance.PlayExVoice("aoi_attack", true);
         AudioManager.Instance.PlaySE("generate_shot");
 
         GameObject b1 = Instantiate(aoiShot, transform.parent);

@@ -79,7 +79,7 @@ public class Itako : BossAIBase
 
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("itako_dead");
+            AudioManager.Instance.PlayExVoice("itako_dead", true);
             sequence.Kill();
             isRight = false;
             anim.SetBool("isReady", false);
@@ -103,7 +103,7 @@ public class Itako : BossAIBase
         switch (state)
         {
             case ActionState.START:
-                AudioManager.Instance.PlayExVoice("itako_start");
+                AudioManager.Instance.PlayExVoice("itako_start", true);
 
                 if (isSecondBattle)
                 {
@@ -256,7 +256,7 @@ public class Itako : BossAIBase
                 break;
             case ActionState.FLAME_SHOT:
                 isPlaying = true;
-                AudioManager.Instance.PlayExVoice("itako_fire");
+                AudioManager.Instance.PlayExVoice("itako_fire", true);
                 anim.SetBool("isAttack", true);
                 sequence = DOTween.Sequence()
                     .AppendInterval(0.5f)
@@ -271,7 +271,7 @@ public class Itako : BossAIBase
                 break;
             case ActionState.FLAME_MULTI_SHOT:
                 isPlaying = true;
-                AudioManager.Instance.PlayExVoice("itako_fire");
+                AudioManager.Instance.PlayExVoice("itako_fire", true);
                 anim.SetBool("isAttack", true);
                 sequence = DOTween.Sequence()
                     .AppendInterval(0.5f)
@@ -290,7 +290,7 @@ public class Itako : BossAIBase
                 break;
             case ActionState.FLAME_QUADRUPLET_SHOT:
                 isPlaying = true;
-                AudioManager.Instance.PlayExVoice("itako_fire");
+                AudioManager.Instance.PlayExVoice("itako_fire", true);
                 anim.SetBool("isAttack", true);
                 sequence = DOTween.Sequence()
                     .AppendInterval(0.5f)
@@ -311,7 +311,7 @@ public class Itako : BossAIBase
                 break;
             case ActionState.FLAME_OCUTUPLET_SHOT:
                 isPlaying = true;
-                AudioManager.Instance.PlayExVoice("itako_fire");
+                AudioManager.Instance.PlayExVoice("itako_fire", true);
                 anim.SetBool("isAttack", true);
                 sequence = DOTween.Sequence()
                     .AppendInterval(0.5f)
@@ -340,7 +340,7 @@ public class Itako : BossAIBase
                 break;
             case ActionState.GHOST_SHOT:
                 isPlaying = true;
-                AudioManager.Instance.PlayExVoice("itako_ghost");
+                AudioManager.Instance.PlayExVoice("itako_ghost", true);
                 anim.SetBool("isAttack", true);
                 sequence = DOTween.Sequence()
                     .AppendInterval(0.2f)
