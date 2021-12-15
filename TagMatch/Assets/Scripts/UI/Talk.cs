@@ -143,7 +143,7 @@ public class Talk: MonoBehaviour
             SetScenario(stackScenarioFileName, false);
         }
 
-        if (isSpecialBossBattleWaiting && StaticValues.bossDamage > 150)
+        if (isSpecialBossBattleWaiting && StaticValues.bossDamage >= 200)
         {
             SetScenario(stackScenarioFileName, false);
         }

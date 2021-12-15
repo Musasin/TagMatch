@@ -144,6 +144,7 @@ public class Frimomen : BossAIBase
             {
                 autoHealTime = 0;
                 bossScript.HitBullet(-99, null, true);
+                AudioManager.Instance.PlaySE("restore");
             }
 
             // 壁オブジェクトを生成
