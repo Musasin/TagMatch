@@ -1,9 +1,0 @@
-id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,play_next,voice
-1,instantiate,maki,left,,,anger,normal,o,,,,1,
-2,talk,maki,left,いくよ！,,anger,normal,o,,,,0,
-3,play_bgm,,,boss_yukari,,,,,,,,1,
-4,instantiate,right_yukari,right,,,anger,normal,laugh,,,,1,
-5,talk,right_yukari,right,ええ、始めましょう！,,anger,normal,laugh,,,,0,
-6,out,maki,left,,,,,,,,,1,
-7,out,right_yukari,right,,,,,,,,,1,
-8,start_boss_battle,,,stage4_boss_result,,,,,,,,0,

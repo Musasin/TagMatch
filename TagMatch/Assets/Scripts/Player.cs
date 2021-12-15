@@ -342,6 +342,7 @@ public class Player : MonoBehaviour
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_ELECTRIC_FIRE, greatElectricFire, BARRIER_INVINCIBLE_TIME);
                             AddBulletCount(Bullet.BulletType.MAKI_ELECTRIC_FIRE, 1);
                             AudioManager.Instance.PlayExVoice("maki_electric", true);
+                            AudioManager.Instance.PlaySE("elecfire");
                         }
                     } else
                     {
@@ -352,6 +353,7 @@ public class Player : MonoBehaviour
                             InstantiateSpecialBullet(Bullet.BulletType.MAKI_BARRIER, electricBarrier, BARRIER_INVINCIBLE_TIME);
                             AddBulletCount(Bullet.BulletType.MAKI_BARRIER, 1);
                             AudioManager.Instance.PlayExVoice("maki_barrier", true);
+                            AudioManager.Instance.PlaySE("E_Bal");
                         }
                     }
                 }

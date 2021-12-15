@@ -342,6 +342,7 @@ public class BossMaki : BossAIBase
                 GameObject bullet = Instantiate(barrierBuller, transform);
                 bullet.transform.position = transform.position;
                 AudioManager.Instance.PlayExVoice("maki_barrier", true);
+                AudioManager.Instance.PlaySE("E_Bal");
                 bossScript.SetInvincible(BARRIER_INVINCIBLE_TIME);
             })
             .AppendInterval(0.2f)
