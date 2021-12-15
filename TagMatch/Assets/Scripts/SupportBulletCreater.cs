@@ -7,6 +7,7 @@ public class SupportBulletCreater : MonoBehaviour
 {
     public GameObject kiritanBullet, zunkoBullet, itakoBullet, akaneBullet, aoiBullet;
     GameObject target, rightUpPos, rightPos, leftUpPos;
+    int kiritanCount, zunkoCount, itakoCount, akaneCount, aoiCount;
     
     enum ActionState
     {
@@ -81,32 +82,37 @@ public class SupportBulletCreater : MonoBehaviour
                 break;
                 
             case ActionState.KIRITAN:
-                AudioManager.Instance.PlayExVoice("kiritan_attack1", true);
+                kiritanCount++;
+                if (kiritanCount % 3 == 0) AudioManager.Instance.PlayExVoice("kiritan_attack1", true);
                 AudioManager.Instance.PlaySE("buon");
                 GameObject kb = Instantiate(kiritanBullet, transform.parent);
                 kb.transform.position = rightUpPos.transform.position;
                 break;
             case ActionState.ZUNKO:
-                AudioManager.Instance.PlayExVoice("zunko_attack", true);
+                zunkoCount++;
+                if (zunkoCount % 3 == 1) AudioManager.Instance.PlayExVoice("zunko_attack", true);
                 AudioManager.Instance.PlaySE("swing");
                 GameObject zb = Instantiate(zunkoBullet, transform.parent);
                 zb.transform.position = rightPos.transform.position;
                 zb.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1000, 0));
                 break;
             case ActionState.ITAKO:
-                AudioManager.Instance.PlayExVoice("itako_fire", true);
+                itakoCount++;
+                if (itakoCount % 3 == 2) AudioManager.Instance.PlayExVoice("itako_fire", true);
                 AudioManager.Instance.PlaySE("fire");
                 GameObject ib = Instantiate(itakoBullet, transform.parent);
                 ib.transform.position = target.transform.position;
                 break;
             case ActionState.AKANE:
-                AudioManager.Instance.PlayExVoice("akane_attack", true);
+                akaneCount++;
+                if (akaneCount % 2 == 0) AudioManager.Instance.PlayExVoice("akane_attack", true);
                 AudioManager.Instance.PlaySE("fire");
                 GameObject akab = Instantiate(akaneBullet, transform.parent);
                 akab.transform.position = target.transform.position;
                 break;
             case ActionState.AOI:
-                AudioManager.Instance.PlayExVoice("aoi_attack", true);
+                aoiCount++;
+                if (aoiCount % 2 == 1) AudioManager.Instance.PlayExVoice("aoi_attack", true);
                 AudioManager.Instance.PlaySE("buon");
                 GameObject aob = Instantiate(aoiBullet, transform.parent);
                 aob.transform.position = leftUpPos.transform.position;
