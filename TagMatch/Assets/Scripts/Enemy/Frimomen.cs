@@ -57,6 +57,7 @@ public class Frimomen : BossAIBase
         FAST_MOVE_L1,
         FAST_MOVE_L2,
         FAST_MOVE_L3,
+        BEAM,
 
         LOOP,
         WAIT,
@@ -186,9 +187,9 @@ public class Frimomen : BossAIBase
                     actionStateQueue.Add(ActionState.MOVE_R1);
                     actionStateQueue.Add(ActionState.FAST_MOVE_R3);
                     actionStateQueue.Add(ActionState.FAST_MOVE_R1);
-                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.BEAM);
                     actionStateQueue.Add(ActionState.MOVE_L1);
-                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.BEAM);
                     actionStateQueue.Add(ActionState.FAST_MOVE_L3);
                     actionStateQueue.Add(ActionState.MOVE_R3);
                     actionStateQueue.Add(ActionState.WAIT);
@@ -405,6 +406,20 @@ public class Frimomen : BossAIBase
             case ActionState.FAST_MOVE_L3:
                 isPlaying = true;
                 PlayMoveSequence(l3Pos, 1.0f);
+                break;
+            case ActionState.BEAM:
+                isPlaying = true;
+                sequence = DOTween.Sequence()
+                    .AppendCallback(() => { 
+                        anim.SetBool("isBeam", true);
+                        AudioManager.Instance.PlaySE("frimomen_beam");
+                    })
+                    .AppendInterval(2.0f)
+                    .OnComplete(() => { 
+                        anim.SetBool("isBeam", false);
+                        isPlaying = false;
+                    })
+                    .Play();
                 break;
 
             case ActionState.CHANGE_IS_RIGHT:
