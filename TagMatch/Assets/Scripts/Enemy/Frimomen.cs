@@ -19,6 +19,7 @@ public class Frimomen : BossAIBase
     float autoHealTime = 0;
     float afterimageTime = 0;
     float instantiateWallTime = 0;
+    bool isLeftCannonSummoned, isRightCannonSummoned, isCenterCannonSummoned;
     GameObject playerObject;
 
     enum ActionState
@@ -111,6 +112,9 @@ public class Frimomen : BossAIBase
         actionStateQueue.Clear();
         stateIndex = 0;
         state = ActionState.START;
+        isLeftCannonSummoned = false;
+        isRightCannonSummoned = false;
+        isCenterCannonSummoned = false;
     }
 
     // Update is called once per frame
@@ -165,6 +169,26 @@ public class Frimomen : BossAIBase
                 afterimage.transform.position = transform.position;
                 afterimage.transform.localScale = transform.localScale;
             }
+
+            // HPが減ったら大砲を出す
+            if (IsLifeThreeQuarter() && !isRightCannonSummoned)
+            {
+                isRightCannonSummoned = true;
+                GameObject.Find("cannonR").GetComponent<Cannon>().In();
+                AudioManager.Instance.PlaySE("buon");
+            }
+            if (IsLifeTwoThirds() && !isLeftCannonSummoned)
+            {
+                isLeftCannonSummoned = true;
+                GameObject.Find("cannonL").GetComponent<Cannon>().In();
+                AudioManager.Instance.PlaySE("buon");
+            }
+            if (IsLifeHalf() && !isCenterCannonSummoned)
+            {
+                isCenterCannonSummoned = true;
+                GameObject.Find("cannonT").GetComponent<Cannon>().In();
+                AudioManager.Instance.PlaySE("buon");
+            }
         }
 
         // アニメーション再生中は次のモードに遷移しない
@@ -178,10 +202,6 @@ public class Frimomen : BossAIBase
             case ActionState.START:
                 if (isSecondBattle)
                 {
-                    GameObject.Find("cannonR").GetComponent<Cannon>().In();
-                    GameObject.Find("cannonL").GetComponent<Cannon>().In();
-                    GameObject.Find("cannonT").GetComponent<Cannon>().In();
-
                     // 第二形態
                     actionStateQueue.Add(ActionState.WAIT);
                     actionStateQueue.Add(ActionState.MOVE_R1);

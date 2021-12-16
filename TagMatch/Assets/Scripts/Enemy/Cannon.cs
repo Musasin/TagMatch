@@ -43,6 +43,7 @@ public class Cannon : MonoBehaviour
     public void Reset()
     {
         anim.SetTrigger("reset");
+        isIn = false;
         transform.position = firstPos;
         isCharging = false;
         maxChargeTime = 1.0f;
