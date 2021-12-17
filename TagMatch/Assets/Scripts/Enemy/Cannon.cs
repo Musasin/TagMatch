@@ -43,6 +43,7 @@ public class Cannon : MonoBehaviour
     public void Reset()
     {
         anim.SetTrigger("reset");
+        isIn = false;
         transform.position = firstPos;
         isCharging = false;
         maxChargeTime = 1.0f;
@@ -70,6 +71,18 @@ public class Cannon : MonoBehaviour
             if (intervalTime > maxIntervalTime)
             {
                 anim.SetTrigger("charge");
+                switch (cannonType)
+                {
+                    case CannonType.TOP:
+                        AudioManager.Instance.PlaySE("cannon_charge");
+                        break;
+                    case CannonType.LEFT:
+                        AudioManager.Instance.PlaySE("cannon_charge_left");
+                        break;
+                    case CannonType.RIGHT:
+                        AudioManager.Instance.PlaySE("cannon_charge_right");
+                        break;
+                }
                 isCharging = true;
                 intervalTime = 0;
                 maxIntervalTime = Random.Range(5.0f, 10.0f);
@@ -122,6 +135,18 @@ public class Cannon : MonoBehaviour
         bullet.transform.position = bulletPivot.transform.position;
         bullet.GetComponent<Rigidbody2D>().AddForce(addForceVector);
         anim.SetTrigger("shot");
+        switch (cannonType)
+        {
+            case CannonType.TOP:
+                AudioManager.Instance.PlaySE("cannon_shot");
+                break;
+            case CannonType.LEFT:
+                AudioManager.Instance.PlaySE("cannon_shot_left");
+                break;
+            case CannonType.RIGHT:
+                AudioManager.Instance.PlaySE("cannon_shot_right");
+                break;
+        }
     }
     
     Vector2 CalcAddForceVector(float angleZ, float power)

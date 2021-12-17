@@ -370,7 +370,7 @@ public class Itako : BossAIBase
     {
         sequence = DOTween.Sequence()
             .AppendCallback(() => { 
-                AudioManager.Instance.PlaySE("buon"); // TODO: ドロン系の音にしたい かくれるが更新されたらそれを当ててみる
+                AudioManager.Instance.PlaySE("smoke");
                 anim.SetBool("isReady", true);
                 anim.SetBool("isDisappear", true);
                 bc.enabled = false;

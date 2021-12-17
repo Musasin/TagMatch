@@ -48,4 +48,14 @@ public class BossAIBase : MonoBehaviour
     {
         return (StaticValues.bossHP.Sum() <= (StaticValues.bossMaxHP.Sum() / 3));
     }
+
+    
+    public virtual bool IsLifeThreeQuarter()
+    {
+        return (StaticValues.bossHP.Sum() <= (StaticValues.bossMaxHP.Sum() * 3 / 4));
+    }
+    public virtual bool IsLifeOneQuarter()
+    {
+        return (StaticValues.bossHP.Sum() <= (StaticValues.bossMaxHP.Sum() / 4));
+    }
 }

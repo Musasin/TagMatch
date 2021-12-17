@@ -19,6 +19,7 @@ public class Frimomen : BossAIBase
     float autoHealTime = 0;
     float afterimageTime = 0;
     float instantiateWallTime = 0;
+    bool isLeftCannonSummoned, isRightCannonSummoned, isCenterCannonSummoned;
     GameObject playerObject;
 
     enum ActionState
@@ -57,6 +58,7 @@ public class Frimomen : BossAIBase
         FAST_MOVE_L1,
         FAST_MOVE_L2,
         FAST_MOVE_L3,
+        BEAM,
 
         LOOP,
         WAIT,
@@ -110,6 +112,9 @@ public class Frimomen : BossAIBase
         actionStateQueue.Clear();
         stateIndex = 0;
         state = ActionState.START;
+        isLeftCannonSummoned = false;
+        isRightCannonSummoned = false;
+        isCenterCannonSummoned = false;
     }
 
     // Update is called once per frame
@@ -164,6 +169,26 @@ public class Frimomen : BossAIBase
                 afterimage.transform.position = transform.position;
                 afterimage.transform.localScale = transform.localScale;
             }
+
+            // HPが減ったら大砲を出す
+            if (IsLifeThreeQuarter() && !isRightCannonSummoned)
+            {
+                isRightCannonSummoned = true;
+                GameObject.Find("cannonR").GetComponent<Cannon>().In();
+                AudioManager.Instance.PlaySE("buon");
+            }
+            if (IsLifeTwoThirds() && !isLeftCannonSummoned)
+            {
+                isLeftCannonSummoned = true;
+                GameObject.Find("cannonL").GetComponent<Cannon>().In();
+                AudioManager.Instance.PlaySE("buon");
+            }
+            if (IsLifeHalf() && !isCenterCannonSummoned)
+            {
+                isCenterCannonSummoned = true;
+                GameObject.Find("cannonT").GetComponent<Cannon>().In();
+                AudioManager.Instance.PlaySE("buon");
+            }
         }
 
         // アニメーション再生中は次のモードに遷移しない
@@ -177,18 +202,14 @@ public class Frimomen : BossAIBase
             case ActionState.START:
                 if (isSecondBattle)
                 {
-                    GameObject.Find("cannonR").GetComponent<Cannon>().In();
-                    GameObject.Find("cannonL").GetComponent<Cannon>().In();
-                    GameObject.Find("cannonT").GetComponent<Cannon>().In();
-
                     // 第二形態
                     actionStateQueue.Add(ActionState.WAIT);
                     actionStateQueue.Add(ActionState.MOVE_R1);
                     actionStateQueue.Add(ActionState.FAST_MOVE_R3);
                     actionStateQueue.Add(ActionState.FAST_MOVE_R1);
-                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.BEAM);
                     actionStateQueue.Add(ActionState.MOVE_L1);
-                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.BEAM);
                     actionStateQueue.Add(ActionState.FAST_MOVE_L3);
                     actionStateQueue.Add(ActionState.MOVE_R3);
                     actionStateQueue.Add(ActionState.WAIT);
@@ -405,6 +426,20 @@ public class Frimomen : BossAIBase
             case ActionState.FAST_MOVE_L3:
                 isPlaying = true;
                 PlayMoveSequence(l3Pos, 1.0f);
+                break;
+            case ActionState.BEAM:
+                isPlaying = true;
+                sequence = DOTween.Sequence()
+                    .AppendCallback(() => { 
+                        anim.SetBool("isBeam", true);
+                        AudioManager.Instance.PlaySE("frimomen_beam");
+                    })
+                    .AppendInterval(2.0f)
+                    .OnComplete(() => { 
+                        anim.SetBool("isBeam", false);
+                        isPlaying = false;
+                    })
+                    .Play();
                 break;
 
             case ActionState.CHANGE_IS_RIGHT:
