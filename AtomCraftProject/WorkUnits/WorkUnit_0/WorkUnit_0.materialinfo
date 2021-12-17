@@ -30,6 +30,7 @@
           <Orca OrcaName="frimomen2nd_battle1.wav" Channels="2" Comment="PeriTune" EncodeFileSize="6279858" ReloopEnableFlag="True" ReloopEnd="9425452" ResamplingRate="48000" SampleFrames="9425452" SamplingRate="48000" SourceFileSize="37701852" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="frimomen2nd_talk.wav" Channels="2" Comment="RP-MUSIC " EncodeFileSize="3154934" ReloopEnableFlag="True" ReloopEnd="4733568" ResamplingRate="44100" SampleFrames="4733568" SamplingRate="44100" SourceFileSize="18934778" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="frimomen2nd_battle2.wav" Channels="2" Comment="PeriTune" EncodeFileSize="2852126" ReloopEnableFlag="True" ReloopEnd="4279038" ResamplingRate="48000" SampleFrames="4279038" SamplingRate="48000" SourceFileSize="17116196" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="Boss6_F1_172800.wav" Channels="2" ReloopEnableFlag="True" ReloopEnd="3283199" ReloopStart="172800" ResamplingRate="48000" SampleFrames="3283199" SamplingRate="48000" SourceFileSize="13133498" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="SE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="DONT_PUSH" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
