@@ -7,7 +7,8 @@ public class SupportBulletCreater : MonoBehaviour
 {
     public GameObject kiritanBullet, zunkoBullet, itakoBullet, akaneBullet, aoiBullet;
     GameObject target, rightUpPos, rightPos, leftUpPos;
-    int kiritanCount, zunkoCount, itakoCount, akaneCount, aoiCount;
+    int kiritanCount, zunkoCount, itakoCount, akaneCount, aoiCount, healCount;
+    Player player;
     
     enum ActionState
     {
@@ -18,6 +19,7 @@ public class SupportBulletCreater : MonoBehaviour
         ITAKO,
         AKANE,
         AOI,
+        HEAL,
     }
     ActionState state;
     List<ActionState> actionStateQueue = new List<ActionState>();
@@ -33,6 +35,7 @@ public class SupportBulletCreater : MonoBehaviour
         rightUpPos = GameObject.Find("SupportBulletRightUpPos");
         rightPos = GameObject.Find("SupportBulletRightPos");
         leftUpPos = GameObject.Find("SupportBulletLeftUpPos");
+        player = GameObject.Find("Player").GetComponent<Player>();
         actionStateQueue.Clear();
         stateIndex = 0;
         state = ActionState.START;
@@ -70,6 +73,7 @@ public class SupportBulletCreater : MonoBehaviour
                 actionStateQueue.Add(ActionState.WAIT);
                 actionStateQueue.Add(ActionState.AKANE);
                 actionStateQueue.Add(ActionState.AOI);
+                actionStateQueue.Add(ActionState.HEAL);
                 actionStateQueue.Add(ActionState.START);
                 break;
                 
@@ -105,18 +109,27 @@ public class SupportBulletCreater : MonoBehaviour
                 break;
             case ActionState.AKANE:
                 akaneCount++;
-                if (akaneCount % 2 == 0) AudioManager.Instance.PlayExVoice("akane_attack", true);
+                if (akaneCount % 3 == 0) AudioManager.Instance.PlayExVoice("akane_attack", true);
                 AudioManager.Instance.PlaySE("fire");
                 GameObject akab = Instantiate(akaneBullet, transform.parent);
                 akab.transform.position = target.transform.position;
                 break;
             case ActionState.AOI:
                 aoiCount++;
-                if (aoiCount % 2 == 1) AudioManager.Instance.PlayExVoice("aoi_attack", true);
+                if (aoiCount % 3 == 1) AudioManager.Instance.PlayExVoice("aoi_attack", true);
                 AudioManager.Instance.PlaySE("buon");
                 GameObject aob = Instantiate(aoiBullet, transform.parent);
                 aob.transform.position = leftUpPos.transform.position;
                 break;
+            case ActionState.HEAL:
+                healCount++;
+                if (healCount % 3 == 2)
+                {
+                    AudioManager.Instance.PlayExVoice("kotonoha_heal", true);
+                    player.Heal(20);
+                }
+                break;
+
         }
         state = actionStateQueue[stateIndex];
         stateIndex++;

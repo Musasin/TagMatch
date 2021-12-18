@@ -92,7 +92,7 @@ public class BossMaki : BossAIBase
         switch (state)
         {
             case ActionState.START:
-                //else AudioManager.Instance.PlayExVoice("itako_start"); // TODO: マキ開始ボイス作る
+                AudioManager.Instance.PlayExVoice("maki_start", true);
 
                 actionStateQueue.Add(ActionState.WAIT);
                 

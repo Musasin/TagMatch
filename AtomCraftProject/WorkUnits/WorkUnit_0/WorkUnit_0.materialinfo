@@ -92,6 +92,8 @@
               <Orca OrcaName="dead-0.wav" Channels="1" EncodeFileSize="19192" ReloopEnd="56371" ResamplingRate="44100" SampleFrames="56371" SamplingRate="44100" SourceFileSize="112786" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
               <Orca OrcaName="start-0.wav" Channels="1" EncodeFileSize="13054" ReloopEnd="38175" ResamplingRate="44100" SampleFrames="38175" SamplingRate="44100" SourceFileSize="76394" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
               <Orca OrcaName="start-1.wav" Channels="1" EncodeFileSize="13736" ReloopEnd="44785" ResamplingRate="44100" SampleFrames="40321" SamplingRate="44100" SourceFileSize="80686" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+              <Orca OrcaName="heal-0.wav" Channels="1" EncodeFileSize="14418" ReloopEnd="42202" ResamplingRate="44100" SampleFrames="42202" SamplingRate="44100" SourceFileSize="84448" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+              <Orca OrcaName="heal-1.wav" Channels="1" EncodeFileSize="13054" ReloopEnd="38205" ResamplingRate="44100" SampleFrames="38205" SamplingRate="44100" SourceFileSize="76454" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             </Orca>
             <Orca OrcaName="Aoi" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
               <Orca OrcaName="attack-0.wav" Channels="1" EncodeFileSize="5893" ReloopEnd="33858" ResamplingRate="44100" SampleFrames="33858" SamplingRate="44100" SourceFileSize="67760" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
@@ -103,6 +105,8 @@
               <Orca OrcaName="dead-0.wav" Channels="1" EncodeFileSize="16123" ReloopEnd="47817" ResamplingRate="44100" SampleFrames="47817" SamplingRate="44100" SourceFileSize="95678" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
               <Orca OrcaName="start-0.wav" Channels="1" EncodeFileSize="13054" ReloopEnd="38579" ResamplingRate="44100" SampleFrames="38579" SamplingRate="44100" SourceFileSize="77202" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
               <Orca OrcaName="start-1.wav" Channels="1" EncodeFileSize="13054" ReloopEnd="37982" ResamplingRate="44100" SampleFrames="37982" SamplingRate="44100" SourceFileSize="76008" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+              <Orca OrcaName="heal-0.wav" Channels="1" EncodeFileSize="16464" ReloopEnd="48506" ResamplingRate="44100" SampleFrames="48506" SamplingRate="44100" SourceFileSize="97056" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+              <Orca OrcaName="heal-1.wav" Channels="1" EncodeFileSize="13054" ReloopEnd="38608" ResamplingRate="44100" SampleFrames="38608" SamplingRate="44100" SourceFileSize="77260" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             </Orca>
           </Orca>
           <Orca OrcaName="Itako" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
@@ -171,6 +175,8 @@
             <Orca OrcaName="switch_out-0.wav" Channels="1" EncodeFileSize="14077" ReloopEnd="40920" ResamplingRate="44100" SampleFrames="40920" SamplingRate="44100" SourceFileSize="81884" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="switch_out-1.wav" Channels="1" EncodeFileSize="11349" ReloopEnd="33261" ResamplingRate="44100" SampleFrames="33261" SamplingRate="44100" SourceFileSize="66566" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="title_coal-0.wav" Channels="1" EncodeFileSize="27035" ReloopEnd="80611" ResamplingRate="44100" SampleFrames="80611" SamplingRate="44100" SourceFileSize="161266" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="start-0.wav" Channels="1" EncodeFileSize="18510" ReloopEnd="55158" ResamplingRate="44100" SampleFrames="55158" SamplingRate="44100" SourceFileSize="110360" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="start-1.wav" Channels="1" EncodeFileSize="14077" ReloopEnd="41340" ResamplingRate="44100" SampleFrames="41340" SamplingRate="44100" SourceFileSize="82724" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           </Orca>
           <Orca OrcaName="Yukari" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
             <Orca OrcaName="damage-0.wav" Channels="1" EncodeFileSize="12713" ReloopEnd="37315" ResamplingRate="44100" SampleFrames="37315" SamplingRate="44100" SourceFileSize="74674" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
@@ -189,6 +195,8 @@
             <Orca OrcaName="up_shot-0.wav" Channels="1" EncodeFileSize="12713" ReloopEnd="37204" ResamplingRate="44100" SampleFrames="37204" SamplingRate="44100" SourceFileSize="74452" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="up_shot-1.wav" Channels="1" EncodeFileSize="12713" ReloopEnd="37447" ResamplingRate="44100" SampleFrames="37447" SamplingRate="44100" SourceFileSize="74938" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="title_coal-0.wav" Channels="1" EncodeFileSize="20215" ReloopEnd="82801" ResamplingRate="44100" SampleFrames="82801" SamplingRate="44100" SourceFileSize="165646" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="start-0.wav" Channels="1" EncodeFileSize="22602" ReloopEnd="67248" ResamplingRate="44100" SampleFrames="67248" SamplingRate="44100" SourceFileSize="134540" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="start-1.wav" Channels="1" EncodeFileSize="14418" ReloopEnd="42550" ResamplingRate="44100" SampleFrames="42550" SamplingRate="44100" SourceFileSize="85144" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           </Orca>
           <Orca OrcaName="Frimomen" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
             <Orca OrcaName="001_やぁ、フリモメンだよ！_02.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="42380" ReloopEnd="126626" ResamplingRate="48000" SampleFrames="126626" SamplingRate="48000" SourceFileSize="381628" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>

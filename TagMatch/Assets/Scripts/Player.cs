@@ -403,14 +403,8 @@ public class Player : MonoBehaviour
                     else if (IsMaki() && StaticValues.GetSkill("m_down_1") && StaticValues.makiMP >= MP_COST_MAKI_HEAL) 
                     {
                         StaticValues.AddMP(false, -MP_COST_MAKI_HEAL);
-                        StaticValues.AddHP(true, 50);
-                        StaticValues.AddHP(false, 50);
-                        GameObject effect = Instantiate(healEffect);
-                        effect.transform.position = new Vector2(transform.position.x, transform.position.y + 1.0f);
-                        AudioManager.Instance.PlaySE("restore");
                         AudioManager.Instance.PlayExVoice("maki_heal", true);
-                        
-                        PlayDamagePointEffect(-50);
+                        Heal(50);
                     }
                 }
                 else
@@ -769,6 +763,16 @@ public class Player : MonoBehaviour
     public bool IsDead()
     {
         return isDead;
+    }
+
+    public void Heal(int healPoint)
+    {
+        StaticValues.AddHP(true, healPoint);
+        StaticValues.AddHP(false, healPoint);
+        GameObject effect = Instantiate(healEffect);
+        effect.transform.position = new Vector2(transform.position.x, transform.position.y + 1.0f);
+        AudioManager.Instance.PlaySE("restore");
+        PlayDamagePointEffect(-healPoint);
     }
 
     public void AddBulletCount(Bullet.BulletType bulletType, int count)

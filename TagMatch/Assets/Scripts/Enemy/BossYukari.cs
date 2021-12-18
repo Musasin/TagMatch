@@ -113,7 +113,7 @@ public class BossYukari : BossAIBase
         {
             case ActionState.START:
                 if (isAstral) bc.enabled = true;
-                //else AudioManager.Instance.PlayExVoice("itako_start"); // TODO: ゆかり開始ボイス作る
+                AudioManager.Instance.PlayExVoice("yukari_start", true);
 
                 actionStateQueue.Add(ActionState.WAIT);
                 
