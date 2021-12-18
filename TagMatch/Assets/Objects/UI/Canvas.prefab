@@ -278,6 +278,8 @@ MonoBehaviour:
     type: 3}
   talkFlash: {fileID: 4589331781009614515, guid: 1ae605a2d50ac4860b3da95a55fd84b0,
     type: 3}
+  whiteOutPanel: {fileID: 3570051086978380125, guid: 1fcc2dc86f5264c2d8b70cfb667e087b,
+    type: 3}
 --- !u!1 &5880080033413537261
 GameObject:
   m_ObjectHideFlags: 0

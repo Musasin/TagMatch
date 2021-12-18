@@ -123,7 +123,8 @@ public class Frimomen : BossAIBase
         transform.localScale = new Vector2(isRight ? -1 : 1, 1);
         if (!isDead && bossScript.IsDead())
         {
-            AudioManager.Instance.PlayExVoice("frimomen_dead");
+            if (isSecondBattle) AudioManager.Instance.PlayExVoice("frimomen_dead_2");
+            else AudioManager.Instance.PlayExVoice("frimomen_dead");
             sequence.Kill();
             isRight = false;
             anim.SetBool("isTuckle", false);
