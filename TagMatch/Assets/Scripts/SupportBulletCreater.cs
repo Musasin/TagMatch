@@ -126,7 +126,7 @@ public class SupportBulletCreater : MonoBehaviour
                 if (healCount % 3 == 2)
                 {
                     AudioManager.Instance.PlayExVoice("kotonoha_heal", true);
-                    player.Heal(20);
+                    player.Heal(15);
                 }
                 break;
 
