@@ -14,6 +14,7 @@ public class Cannon : MonoBehaviour
 
     GameObject bulletPivot;
     Animator anim;
+    BoxCollider2D bc;
     Vector2 firstPos;
     bool isIn;
     bool isCharging;
@@ -27,6 +28,7 @@ public class Cannon : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         bulletPivot = transform.Find("CannonPivot").gameObject;
+        bc = GetComponent<BoxCollider2D>();
         firstPos = transform.position;
         maxChargeTime = 1.0f;
         maxIntervalTime = Random.Range(5.0f, 10.0f);
@@ -38,6 +40,7 @@ public class Cannon : MonoBehaviour
                 .SetLoops(-1, LoopType.Yoyo)
                 .Play();
         }
+        bc.enabled = false;
     }
 
     public void Reset()
@@ -48,6 +51,7 @@ public class Cannon : MonoBehaviour
         isCharging = false;
         maxChargeTime = 1.0f;
         maxIntervalTime = Random.Range(5.0f, 10.0f);
+        bc.enabled = false;
     }
 
     // Update is called once per frame
@@ -94,6 +98,7 @@ public class Cannon : MonoBehaviour
     {
         anim.SetTrigger("in");
         isIn = true;
+        bc.enabled = true;
     }
 
     private void Shot()
