@@ -203,16 +203,130 @@ public class Frimomen : BossAIBase
                 if (isSecondBattle)
                 {
                     // 第二形態
-                    actionStateQueue.Add(ActionState.WAIT);
                     actionStateQueue.Add(ActionState.MOVE_R1);
+
+                    // 下段か中段でビーム  その後左側へ移動
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R2);
                     actionStateQueue.Add(ActionState.FAST_MOVE_R3);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R2);
                     actionStateQueue.Add(ActionState.FAST_MOVE_R1);
-                    actionStateQueue.Add(ActionState.BEAM);
-                    actionStateQueue.Add(ActionState.MOVE_L1);
-                    actionStateQueue.Add(ActionState.BEAM);
-                    actionStateQueue.Add(ActionState.FAST_MOVE_L3);
+                    if (Random.Range(0, 1.0f) < 0.5f)
+                    {
+                        actionStateQueue.Add(ActionState.FAST_MOVE_R2);
+                        actionStateQueue.Add(ActionState.BEAM);
+                        actionStateQueue.Add(ActionState.MOVE_L2);
+                    }
+                    else
+                    {
+                        actionStateQueue.Add(ActionState.BEAM);
+                        actionStateQueue.Add(ActionState.MOVE_L1);
+                    }
+
+                    // 右回りに一回転
+                    actionStateQueue.Add(ActionState.MOVE_L3);
                     actionStateQueue.Add(ActionState.MOVE_R3);
-                    actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.MOVE_R1);
+                    actionStateQueue.Add(ActionState.MOVE_L1);
+
+                    // 下段と中段でビーム 順番はランダム
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L2);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L1);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L2);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L3);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L2);
+                    if (Random.Range(0, 1.0f) < 0.5f)
+                    {
+                        actionStateQueue.Add(ActionState.BEAM);
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L1);
+                        actionStateQueue.Add(ActionState.BEAM);
+                    }
+                    else
+                    {
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L1);
+                        actionStateQueue.Add(ActionState.BEAM);
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L2);
+                        actionStateQueue.Add(ActionState.BEAM);
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L1);
+                    }
+
+                    // そのまま右に行くか、三連続ビームかのランダム
+                    if (Random.Range(0, 1.0f) < 0.5f)
+                    {
+                        actionStateQueue.Add(ActionState.WAIT);
+                        actionStateQueue.Add(ActionState.MOVE_R1);
+                    }
+                    else
+                    {
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L2);
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L3);
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L2);
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L3);
+                        actionStateQueue.Add(ActionState.BEAM);
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L2);
+                        actionStateQueue.Add(ActionState.BEAM);
+                        actionStateQueue.Add(ActionState.FAST_MOVE_L1);
+                        actionStateQueue.Add(ActionState.BEAM);
+                        actionStateQueue.Add(ActionState.MOVE_R1);
+                    }
+
+                    // 一発ビーム撃ってから左回りに一回転
+                    actionStateQueue.Add(ActionState.BEAM);
+                    actionStateQueue.Add(ActionState.MOVE_R3);
+                    actionStateQueue.Add(ActionState.MOVE_L3);
+                    actionStateQueue.Add(ActionState.MOVE_L1);
+                    actionStateQueue.Add(ActionState.MOVE_R1);
+
+                    // ビーム撃ってから左に行くかそのまま左に行くかのランダム
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R2);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R3);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R2);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R1);
+                    if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.BEAM);
+                    else actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.MOVE_L1);
+
+                    // 高速で上下した後、ビーム撃ってからまたはそのまま移動 その後またビーム
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L3);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L1);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L3);
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L1);
+                    if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.BEAM);
+                    else actionStateQueue.Add(ActionState.WAIT);
+                    actionStateQueue.Add(ActionState.MOVE_R1);
+                    actionStateQueue.Add(ActionState.BEAM);
+
+                    // ここで初めて中段で移動
+                    actionStateQueue.Add(ActionState.MOVE_R2);
+                    actionStateQueue.Add(ActionState.MOVE_L2);
+
+                    // 下段でビーム二連射
+                    actionStateQueue.Add(ActionState.FAST_MOVE_L1);
+                    actionStateQueue.Add(ActionState.BEAM);
+                    actionStateQueue.Add(ActionState.BEAM);
+
+
+                    // 上段か下段で移動、その後すぐ戻る
+                    if (Random.Range(0, 1.0f) < 0.5f) { 
+                        actionStateQueue.Add(ActionState.MOVE_L3);
+                        actionStateQueue.Add(ActionState.MOVE_R3);
+                        actionStateQueue.Add(ActionState.MOVE_L3);
+                    } else
+                    {
+                        actionStateQueue.Add(ActionState.MOVE_R1);
+                        actionStateQueue.Add(ActionState.MOVE_L1);
+                    }
+
+                    // 中段でビーム ランダムで二回撃つ その後右に移動
+                    actionStateQueue.Add(ActionState.MOVE_L2);
+                    actionStateQueue.Add(ActionState.BEAM);
+                    if (Random.Range(0, 1.0f) < 0.5f) actionStateQueue.Add(ActionState.BEAM);
+                    actionStateQueue.Add(ActionState.MOVE_R2);
+                    
+                    // 左回りに一回転
+                    actionStateQueue.Add(ActionState.FAST_MOVE_R3);
+                    actionStateQueue.Add(ActionState.MOVE_L3);
+                    actionStateQueue.Add(ActionState.MOVE_L1);
+
                     actionStateQueue.Add(ActionState.LOOP);
 
                 }
@@ -405,27 +519,27 @@ public class Frimomen : BossAIBase
                 break;
             case ActionState.FAST_MOVE_R1:
                 isPlaying = true;
-                PlayMoveSequence(r1Pos, 1.0f);
+                PlayMoveSequence(r1Pos, 0.3f);
                 break;
             case ActionState.FAST_MOVE_R2:
                 isPlaying = true;
-                PlayMoveSequence(r2Pos, 1.0f);
+                PlayMoveSequence(r2Pos, 0.3f);
                 break;
             case ActionState.FAST_MOVE_R3:
                 isPlaying = true;
-                PlayMoveSequence(r3Pos, 1.0f);
+                PlayMoveSequence(r3Pos, 0.3f);
                 break;
             case ActionState.FAST_MOVE_L1:
                 isPlaying = true;
-                PlayMoveSequence(l1Pos, 1.0f);
+                PlayMoveSequence(l1Pos, 0.3f);
                 break;
             case ActionState.FAST_MOVE_L2:
                 isPlaying = true;
-                PlayMoveSequence(l2Pos, 1.0f);
+                PlayMoveSequence(l2Pos, 0.3f);
                 break;
             case ActionState.FAST_MOVE_L3:
                 isPlaying = true;
-                PlayMoveSequence(l3Pos, 1.0f);
+                PlayMoveSequence(l3Pos, 0.3f);
                 break;
             case ActionState.BEAM:
                 isPlaying = true;
