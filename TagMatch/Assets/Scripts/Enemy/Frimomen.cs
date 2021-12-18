@@ -771,6 +771,7 @@ public class Frimomen : BossAIBase
             case 3: // 下に生成
                 wallObject.transform.localPosition = new Vector2(Random.Range(8, 24), -6);
                 wallObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                wallObject.transform.localScale = new Vector2(wallObject.transform.localScale.x * 1.5f, wallObject.transform.localScale.y);
                 wallScript.moveX = 0;
                 wallScript.moveY = 6;
                 break;
