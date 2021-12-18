@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91efe32cf3fe4d8cb3b5c86ed7e2bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 500
+  hp: 600
   damagePointEffect: {fileID: 689011227499450108, guid: 5b80d32a89b55436d8666139a0dc4be9,
     type: 3}
   healPointEffect: {fileID: 689011227499450108, guid: 528c54185161e49f8a7ac338c23ff21b,
@@ -813,7 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d6806bef5114cb698a8e039afcfa7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePoint: 40
+  damagePoint: 60
 --- !u!61 &1984596291324014656
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class Talk: MonoBehaviour
     public GameObject yukariPrefab, rightYukariPrefab, makiPrefab, rightMakiPrefab, kiritanPrefab, akanePrefab, leftAkanePrefab, aoiPrefab, leftAoiPrefab, itakoPrefab, zunkoPrefab, frimomenPrefab, mob1Prefab, mob2Prefab, mob3Prefab;
     public GameObject leftWindow, rightWindow, angerLeftWindow, angerRightWindow, centerWindow;
     public GameObject leftNamePlate, rightNamePlate;
-    public GameObject talkFlash;
+    public GameObject talkFlash, whiteOutPanel;
 
     WipePanel wipePanel;
     GameObject nowWindow, beforeWindow1, beforeWindow2;
@@ -24,12 +24,12 @@ public class Talk: MonoBehaviour
     Dictionary<string, Animator> rightCharaAnimator = new Dictionary<string, Animator>();
     bool isCameraMoving, isClosing;
     bool beforeIsPlaying;
-    bool isPlaying, isWiping;
-    bool isBossBattleWaiting, isSpecialBossBattleWaiting;
-    string stackScenarioFileName;
+    bool isPlaying, isWiping, isWhiteOuting;
+    bool isBossBattleWaiting, isSpecialBossBattleWaiting, isLastBossBattleWaiting;
+    string stackScenarioFileName, stackSceneName;
     float closeTime;
     int nowKey;
-    float time, wipeTime, waitTime;
+    float time, wipeTime, waitTime, whiteOutTime;
 
     private char lf = (char)10;
 
@@ -147,6 +147,34 @@ public class Talk: MonoBehaviour
         {
             SetScenario(stackScenarioFileName, false);
         }
+
+        // ラスボスのHPを削りきったら、スローモーションにしつつ画面をホワイトアウトさせる
+        if (isLastBossBattleWaiting && StaticValues.bossHP.Sum() <= 0)
+        {
+            StaticValues.isTalkPause = true;
+            isLastBossBattleWaiting = false;
+            isWhiteOuting = true;
+            whiteOutTime = 1;
+            Instantiate(whiteOutPanel, transform);
+            Time.timeScale = 0.25f;
+        }
+        
+        // ホワイトアウト中はボタン押下を受け付けず、ホワイトアウトが終わったらその場でシーン切り替え
+        if (isWhiteOuting)
+        {
+            whiteOutTime -= Time.deltaTime;
+            if (whiteOutTime <= 0)
+            {
+                Time.timeScale = 1.0f;
+                isWhiteOuting = false;
+                StaticValues.isReloadACB = true;
+                wipePanel.ChangeScene(stackSceneName, true);
+            } else
+            {
+                return;
+            }
+        }
+
 
         if (!isPlaying)
         {
@@ -349,6 +377,12 @@ public class Talk: MonoBehaviour
             case "start_boss_battle_special": // フリモメン第二形態でのみ使用 回復分を加味せず、一定量のダメージを与えたら発火
                 stackScenarioFileName = scenario[nowKey.ToString()].text;
                 isSpecialBossBattleWaiting = true;
+                CloseWindowForEnd();
+                scenario.Clear();
+                return;
+            case "start_last_boss_battle": // フリモメン第二形態でのみ使用 撃破後にスローモーション+ホワイトアウトでシーンを切り替える
+                stackSceneName = scenario[nowKey.ToString()].text;
+                isLastBossBattleWaiting = true;
                 CloseWindowForEnd();
                 scenario.Clear();
                 return;

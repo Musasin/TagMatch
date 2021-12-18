@@ -63,7 +63,6 @@ public class CsvLoader : EditorWindow
         fileList.Add("stage6_boss_frimomen_result.csv", "294638304");
         fileList.Add("stage6_boss_frimomen_second.csv", "725347445");
         fileList.Add("stage6_boss_frimomen_second_2.csv", "889410848");
-        fileList.Add("stage6_boss_frimomen_second_result.csv", "2139011044");
         
         isSelectCheck  = true;
         checkFileList.Clear();
