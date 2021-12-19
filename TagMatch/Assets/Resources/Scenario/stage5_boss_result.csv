@@ -4,9 +4,9 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 3,instantiate,itako,right,,,sad,guruguru,cat,spirit_sad,,,1,
 4,instantiate,kiritan,right,,kiritan,sad,white_tears,gununu,,,,1,
 5,instantiate,zunko,right,,,sad,close,mu,,,,1,
-6,talk,itako,right,ちゅわーっ!!,,,,,,,,0,
-7,talk,kiritan,right,やられたー！,,,,,,,,0,
-8,talk,zunko,right,三姉妹揃っても\n敵わないとは...!,,,,,,,,0,
+6,talk,itako,right,ちゅわーっ!!,,,,,,,,0,itako-22
+7,talk,kiritan,right,やられたー！,,,,,,,,0,kiritan-18
+8,talk,zunko,right,三姉妹揃っても\n敵わないとは...!,,,,,,,,0,zunko-11
 9,talk,yukari,left,ど...どんなもんですか！,,,,,,,,0,
 10,talk,maki,left,恐ろしい弾幕だった...,,,,,,,,0,
 11,out,itako,right,,,,,,,,,1,

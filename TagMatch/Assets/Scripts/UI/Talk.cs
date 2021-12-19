@@ -277,6 +277,8 @@ public class Talk: MonoBehaviour
 
             case "talk":
 
+                AudioManager.Instance.StopExVoice();
+
                 // 話者を先頭に持っていく
                 if (chara != "")
                 {
@@ -335,6 +337,12 @@ public class Talk: MonoBehaviour
                         scenario[nowKey.ToString()].eye_brows, scenario[nowKey.ToString()].eye, scenario[nowKey.ToString()].mouse, 
                         scenario[nowKey.ToString()].option1, scenario[nowKey.ToString()].option2, scenario[nowKey.ToString()].option3);
                 }
+
+                if (scenario[nowKey.ToString()].voice != "")
+                {
+                    AudioManager.Instance.PlayExVoice(scenario[nowKey.ToString()].voice);
+                }
+
                 break;
                 
             case "name_plate":

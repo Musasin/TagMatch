@@ -181,6 +181,11 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         voice.Start();
     }
 
+    public void StopExVoice()
+    {
+        voice.Stop();
+    }
+
     public bool IsPlayingExVoice()
     {
         return voice.GetStatus() == CriAtomExPlayer.Status.Playing;

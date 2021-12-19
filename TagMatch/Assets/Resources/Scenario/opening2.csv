@@ -12,9 +12,9 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 11,close_window,,,,,,,,,,,1,
 12,wipe_in,,,,,,,,,,,0,
 13,instantiate,kiritan,right,,,normal,half_open,omega,,,,1,
-14,talk,kiritan,right,むっふっふ...\nこれはまたとないチャンス！,,,,,,,,0,
-15,talk,kiritan,right,この大会の賞金があれば欲しかったゲームが買い放題！,,,normal,laugh,,,,0,
-16,talk,kiritan,right,さっそく準備を進めなくては,,,smile,,,,,0,
+14,talk,kiritan,right,むっふっふ...\nこれはまたとないチャンス！,,,,,,,,0,kiritan-0
+15,talk,kiritan,right,この大会の賞金があれば欲しかったゲームが買い放題！,,,normal,laugh,,,,0,kiritan-1
+16,talk,kiritan,right,さっそく準備を進めなくては,,,smile,,,,,0,kiritan-2
 17,out,kiritan,right,,,,,,,,,1,
 18,wipe_out,,,,,,,,,,,0,
 19,close_window,,,,,,,,,,,1,
