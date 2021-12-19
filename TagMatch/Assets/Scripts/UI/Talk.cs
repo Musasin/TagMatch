@@ -403,6 +403,7 @@ public class Talk: MonoBehaviour
                 wipePanel.ChangeScene(scenario[nowKey.ToString()].text, true);
                 CloseWindowForEnd();
                 scenario.Clear();
+                StaticValues.ResetBossHP();
                 return;
             case "wipe_in":
                 isWiping = true;
