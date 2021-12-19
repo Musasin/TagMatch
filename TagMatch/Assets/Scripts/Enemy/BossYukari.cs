@@ -113,7 +113,7 @@ public class BossYukari : BossAIBase
         {
             case ActionState.START:
                 if (isAstral) bc.enabled = true;
-                AudioManager.Instance.PlayExVoice("yukari_start", true);
+                else AudioManager.Instance.PlayExVoice("yukari_start", true);
 
                 actionStateQueue.Add(ActionState.WAIT);
                 
@@ -409,7 +409,7 @@ public class BossYukari : BossAIBase
 
         sequence = DOTween.Sequence()
             .AppendCallback(() => {
-                AudioManager.Instance.PlaySE("buon"); // TODO: ドロン系の音にしたい かくれるが更新されたらそれを当ててみる
+                AudioManager.Instance.PlaySE("buon");
                 bc.enabled = false;
                 animationState = AnimationState.SQUAT;
                 anim.SetInteger("state", (int)animationState);
@@ -436,7 +436,7 @@ public class BossYukari : BossAIBase
 
         sequence = DOTween.Sequence()
             .AppendCallback(() => {
-                AudioManager.Instance.PlaySE("buon"); // TODO: ドロン系の音にしたい かくれるが更新されたらそれを当ててみる
+                AudioManager.Instance.PlaySE("buon");
                 bc.enabled = false;
                 animationState = AnimationState.SQUAT;
                 anim.SetInteger("state", (int)animationState);
