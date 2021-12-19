@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Ending : MonoBehaviour
 {
-    TextMeshProUGUI timeText, coinText, deadText, calcText, scoreText, skipText;
+    Animator anim;
+    bool canChangeScene;
+    TextMeshProUGUI timeText, coinText, deadText, calcText, scoreText, skipText, playNextText;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         AudioManager.Instance.LoadACB("Ending", "Ending.acb", "Ending.awb");
         AudioManager.Instance.PlayBGM("ending");
         
@@ -19,7 +23,7 @@ public class Ending : MonoBehaviour
         calcText = GameObject.Find("CalcText").GetComponent<TextMeshProUGUI>();
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         skipText = GameObject.Find("SkipText").GetComponent<TextMeshProUGUI>();
-
+        playNextText = GameObject.Find("PlayNextText").GetComponent<TextMeshProUGUI>();
         
         int intTime = (int)StaticValues.time;
         int min = intTime / 60;
@@ -43,18 +47,35 @@ public class Ending : MonoBehaviour
         scoreText.text = totalScore.ToString();
 
         skipText.text = "[" + KeyConfig.GetTextFromKeyCode(KeyConfig.menuKey) + "]長押し: スキップ";
+
+        playNextText.text = "[" + KeyConfig.GetTextFromKeyCode(KeyConfig.jumpKey) + "]: 進む";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (KeyConfig.GetMenuKey())
+        if (KeyConfig.GetMenuKey() && !canChangeScene)
         {
             Time.timeScale = 5.0f;
         } else
         {
             Time.timeScale = 1.0f;
         }
-        
+
+        if (canChangeScene && KeyConfig.GetJumpKeyDown())
+        {
+            anim.SetTrigger("Press");
+        }
+    }
+
+    public void SetCanChangeSceneFlag()
+    {
+        canChangeScene = true;
+    }
+    
+    public void ChangeScene()
+    {
+        StaticValues.isReloadACB = true;
+        SceneManager.LoadScene("Epilogue");
     }
 }
