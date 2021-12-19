@@ -5,7 +5,7 @@ using TMPro;
 
 public class Ending : MonoBehaviour
 {
-    TextMeshProUGUI timeText, coinText, deadText, calcText, scoreText;
+    TextMeshProUGUI timeText, coinText, deadText, calcText, scoreText, skipText;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,7 @@ public class Ending : MonoBehaviour
         deadText = GameObject.Find("DeadText").GetComponent<TextMeshProUGUI>();
         calcText = GameObject.Find("CalcText").GetComponent<TextMeshProUGUI>();
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        skipText = GameObject.Find("SkipText").GetComponent<TextMeshProUGUI>();
 
         
         int intTime = (int)StaticValues.time;
@@ -40,11 +41,20 @@ public class Ending : MonoBehaviour
         calcText.text += "Dead: -" + deadScore.ToString() + "\n";
         calcText.text += "\nTotal:";
         scoreText.text = totalScore.ToString();
+
+        skipText.text = "[" + KeyConfig.GetTextFromKeyCode(KeyConfig.menuKey) + "]長押し: スキップ";
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (KeyConfig.GetMenuKey())
+        {
+            Time.timeScale = 5.0f;
+        } else
+        {
+            Time.timeScale = 1.0f;
+        }
         
     }
 }

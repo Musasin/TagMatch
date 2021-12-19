@@ -89,6 +89,10 @@ public class KeyConfig : MonoBehaviour
     {
         return Input.GetKeyDown(menuKey);
     }
+    public static bool GetMenuKey()
+    {
+        return Input.GetKey(menuKey);
+    }
 
     public static string GetTextFromKeyCode(KeyCode kc)
     {
