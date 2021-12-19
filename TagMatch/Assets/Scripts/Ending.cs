@@ -37,7 +37,7 @@ public class Ending : MonoBehaviour
         
         int timeScore = Mathf.Max(0, 7200 - intTime) * 100;
         int coinScore = StaticValues.maxCoinCount * 100;
-        int deadScore = StaticValues.maxCoinCount * 2000;
+        int deadScore = StaticValues.deadCount * 2000;
         int totalScore = timeScore + coinScore - deadScore;
         
         calcText.text = "Time: +" + timeScore.ToString() + "\n";
