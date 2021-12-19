@@ -16,7 +16,8 @@ public class StaticValues : MonoBehaviour
 
     public static float time;
     public static int score;
-    public static int coinCount = 2000; // デバッグ用
+    public static int coinCount;
+    public static int maxCoinCount;
     public static int deadCount;
 
     public enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
@@ -65,6 +66,7 @@ public class StaticValues : MonoBehaviour
         LoadFloat(ref time, "Time");
         LoadInt(ref score, "Score");
         LoadInt(ref coinCount, "CoinCount");
+        LoadInt(ref maxCoinCount, "MaxCoinCount");
         LoadInt(ref deadCount, "DeadCount");
 
         int intSwitchState = 0;
@@ -142,6 +144,7 @@ public class StaticValues : MonoBehaviour
         PlayerPrefs.SetFloat("Time", time);
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("CoinCount", coinCount);
+        PlayerPrefs.SetInt("MaxCoinCount", maxCoinCount);
         PlayerPrefs.SetInt("DeadCount", deadCount);
 
         PlayerPrefs.SetInt("SwitchState", (int)switchState);

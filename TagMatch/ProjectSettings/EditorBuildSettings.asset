@@ -116,4 +116,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Epilogue.unity
     guid: 29888181c060146cebfbf46fda4a7dc6
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 0e5738cc0c0d74423b6b8ddcaaa17958
   m_configObjects: {}

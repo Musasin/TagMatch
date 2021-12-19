@@ -51,4 +51,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 50,out,frimomen,right,,,,,,,,,1,
 51,out,maki,left,,,,,,,,,1,
 52,out,yukari,left,,,,,,,,,1,
-53,start_last_boss_battle,,,Epilogue,,,,,,,,0,
+53,start_last_boss_battle,,,Ending,,,,,,,,0,

@@ -39,5 +39,6 @@ public class Coin : MonoBehaviour
         anim.SetBool("isGot", isGot);
         StaticValues.score += score;
         StaticValues.coinCount += point;
+        StaticValues.maxCoinCount += point;
     }
 }
