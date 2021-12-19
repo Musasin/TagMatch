@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         {
             StaticValues.switchState = StaticValues.SwitchState.MAKI_ONLY;
         }
-        if (stageName == "Stage5" || sceneName == "Stage6-FM" || sceneName == "Stage6-FY") // 元に戻す
+        if (sceneName == "Stage5-1" || sceneName == "Stage6-FM" || sceneName == "Stage6-FY") // 元に戻す
         {
             StaticValues.switchState = StaticValues.SwitchState.YUKARI;
         }
