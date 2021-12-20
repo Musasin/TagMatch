@@ -10,10 +10,11 @@ public class Title : MonoBehaviour
     Animator anim;
     Image fadePanel;
     GameObject titleCursor;
-    GameObject optionCursor, optionLeftCursor, optionRightCursor;
-    Text bgmVolumeText, seVolumeText, voiceVolumeText;
+    GameObject optionCursor, optionLeftCursor, optionRightCursor, levelSelectCursor;
+    Text bgmVolumeText, seVolumeText, voiceVolumeText, levelDescriptionText;
     Vector2 titleCursorDefaultPos;
     Vector2 optionCursorDefaultPos;
+    Vector2 levelSelecrCursorDefaultPos;
     KeyConfigUI keyConfigUIScript;
     string loadSceneName;
 
@@ -35,6 +36,8 @@ public class Title : MonoBehaviour
     }
     OptionList optionSelection;
 
+    bool isSelectHardMode = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,13 +49,16 @@ public class Title : MonoBehaviour
         optionCursor = GameObject.Find("OptionCursor");
         optionLeftCursor = GameObject.Find("OptionLeftCursor");
         optionRightCursor = GameObject.Find("OptionRightCursor");
+        levelSelectCursor = GameObject.Find("LevelSelectCursor");
         titleCursorDefaultPos = titleCursor.transform.localPosition;
         optionCursorDefaultPos = optionCursor.transform.localPosition;
+        levelSelecrCursorDefaultPos = levelSelectCursor.transform.localPosition;
         keyConfigUIScript = GameObject.Find("KeyConfig").GetComponent<KeyConfigUI>();
 
         bgmVolumeText = GameObject.Find("BGMVolume").GetComponent<Text>();
         seVolumeText = GameObject.Find("SEVolume").GetComponent<Text>();
         voiceVolumeText = GameObject.Find("VoiceVolume").GetComponent<Text>();
+        levelDescriptionText = GameObject.Find("LevelDescriptionText").GetComponent<Text>();
         
         if (StaticValues.isReloadACB == false) { return; }
         AudioManager.Instance.LoadACB("Title", "Title.acb", "Title.awb");
@@ -127,11 +133,10 @@ public class Title : MonoBehaviour
                             }
                             break;
                         case TitleList.EX_MODE:
-                            // TODO
+                            titleState = TitleState.EX_MODE_SELECT;
                             break;
                         case TitleList.OPTION:
                             titleState = TitleState.OPTION;
-                            // TODO
                             break;
                         case TitleList.EXIT:                            
 #if UNITY_EDITOR
@@ -144,9 +149,42 @@ public class Title : MonoBehaviour
                 }
                 break;
                 
-            case TitleState.NEW_GAME_SELECT:
+            case TitleState.NEW_GAME_SELECT: // 未使用
+                break;
             case TitleState.EX_MODE_SELECT:
-                // そのうち難易度選択画面が必要になる
+                if (AxisDownChecker.GetAxisDownVertical())
+                {
+                    AudioManager.Instance.PlaySE("select");
+                    isSelectHardMode = !isSelectHardMode;
+
+                    if (isSelectHardMode)
+                    {
+                        levelSelectCursor.transform.localPosition = new Vector2(levelSelecrCursorDefaultPos.x, levelSelecrCursorDefaultPos.y - 76);
+                        levelDescriptionText.text = "空中ダッシュと二段ジャンプのみが開放された状態で\nすべてのボスと連戦する高難易度モードです";
+                    } else
+                    {
+                        levelSelectCursor.transform.localPosition = new Vector2(levelSelecrCursorDefaultPos.x, levelSelecrCursorDefaultPos.y);
+                        levelDescriptionText.text = "スキルツリーが全て開放された状態で\nすべてのボスと連戦するモードです";
+                    }
+                }
+                AxisDownChecker.AxisDownUpdate();
+
+                if (KeyConfig.GetJumpKeyDown())
+                {
+                    AudioManager.Instance.PlaySE("accept");
+                    StaticValues.isReloadACB = true;
+                    loadSceneName = "Opening";
+                    titleState = TitleState.FADE_OUT;
+                    time = 0;
+                    StaticValues.isExMode = true;
+                    StaticValues.isHardMode = isSelectHardMode;
+                }
+
+                if (KeyConfig.GetShotKeyDown())
+                {
+                    AudioManager.Instance.PlaySE("cancel");
+                    titleState = TitleState.TITLE;
+                }
                 break;
                 
             case TitleState.OPTION:

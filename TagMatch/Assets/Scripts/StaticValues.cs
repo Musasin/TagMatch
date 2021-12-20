@@ -13,6 +13,9 @@ public class StaticValues : MonoBehaviour
     public static float bgmVolume = 0.5f;
     public static float seVolume = 0.5f;
     public static float voiceVolume = 0.5f;
+    
+    public static bool isExMode;
+    public static bool isHardMode;
 
     public static float time;
     public static int score;
@@ -64,6 +67,14 @@ public class StaticValues : MonoBehaviour
 
     public static void Load()
     {
+        int playModeInt = 0;
+        LoadInt(ref playModeInt, "IsExMode");
+        isExMode = (playModeInt == 1);
+        
+        int levelInt = 0;
+        LoadInt(ref levelInt, "IsHardMode");
+        isHardMode = (levelInt == 1);
+
         LoadFloat(ref time, "Time");
         LoadInt(ref score, "Score");
         LoadInt(ref coinCount, "CoinCount");
@@ -146,6 +157,9 @@ public class StaticValues : MonoBehaviour
 
     public static void Save()
     {
+        PlayerPrefs.SetInt("IsExMode", isExMode ? 1 : 0);
+        PlayerPrefs.SetInt("IsHardMode", isHardMode ? 1 : 0);
+
         PlayerPrefs.SetFloat("Time", time);
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("CoinCount", coinCount);
@@ -154,6 +168,7 @@ public class StaticValues : MonoBehaviour
         
         PlayerPrefs.SetInt("SwitchState", (int)switchState);
         PlayerPrefs.SetInt("Stage6SelectChara", (int)stage6SelectChara);
+
         PlayerPrefs.SetInt("YukariHP", yukariHP);
         PlayerPrefs.SetInt("YukariMaxHP", yukariMaxHP);
         PlayerPrefs.SetInt("YukariMP", yukariMP);
