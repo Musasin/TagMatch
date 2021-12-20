@@ -117,12 +117,14 @@ public class Title : MonoBehaviour
                     switch (nowSelection)
                     {
                         case TitleList.NEW_GAME:
+                            StaticValues.Reset();
                             StaticValues.isReloadACB = true;
                             loadSceneName = "Opening";
                             titleState = TitleState.FADE_OUT;
                             time = 0;
                             break;
                         case TitleList.CONTINUE:
+                            StaticValues.Reset();
                             StaticValues.isReloadACB = true;
                             if (PlayerPrefs.HasKey("Scene"))
                             {
@@ -171,13 +173,28 @@ public class Title : MonoBehaviour
 
                 if (KeyConfig.GetJumpKeyDown())
                 {
+                    StaticValues.Reset();
                     AudioManager.Instance.PlaySE("accept");
                     StaticValues.isReloadACB = true;
-                    loadSceneName = "Opening";
+                    loadSceneName = "Stage1-3";
                     titleState = TitleState.FADE_OUT;
                     time = 0;
                     StaticValues.isExMode = true;
                     StaticValues.isHardMode = isSelectHardMode;
+                    if (!isSelectHardMode)
+                    {
+                        // EXモードかつハードモードでない時のパッシブスキルを予め適用させておく
+                        StaticValues.yukariMaxHP = 200;
+                        StaticValues.yukariHP = 200;
+                        StaticValues.yukariMaxMP = 200;
+                        StaticValues.yukariMP = 200;
+                        StaticValues.yukariAttackRatio = 2.0f;
+                        StaticValues.makiMaxHP = 200;
+                        StaticValues.makiHP = 200;
+                        StaticValues.makiMaxMP = 200;
+                        StaticValues.makiMP = 200;
+                        StaticValues.makiAttackRatio = 2.0f;
+                    }
                 }
 
                 if (KeyConfig.GetShotKeyDown())

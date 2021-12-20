@@ -31,4 +31,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 30,talk,maki,left,吸い込まれるー！！,,anger,normal,laugh,,,,0,
 31,out,yukari,left,,,,,,,,,1,
 32,out,maki,left,,,,,,,,,1,
-33,scene_change,,,stage6-1,,,,,,,,0,
+33,scene_change,,,stage6-1,,Stage6-Y,,,,,,0,

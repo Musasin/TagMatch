@@ -10,4 +10,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 9,out,maki,left,,,,,,,,,1,
 10,out,left_akane,left,,,,,,,,,1,
 11,out,zunko,right,,,,,,,,,1,
-12,scene_change,,,Stage4-Movie,,,,,,,,0,
+12,scene_change,,,Stage4-Movie,,Stage5-4,,,,,,0,

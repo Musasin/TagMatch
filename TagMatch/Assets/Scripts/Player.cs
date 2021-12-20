@@ -117,9 +117,10 @@ public class Player : MonoBehaviour
         {
             StaticValues.switchState = StaticValues.SwitchState.YUKARI;
         }
-        if (sceneName == "Stage6-FM" || sceneName == "Stage6-FY") // フリモメン戦前にソロモードを解除する 先頭は選んだキャラにする
+        if (sceneName == "Stage6-FM" || sceneName == "Stage6-FY") // フリモメン戦前にソロモードを解除する 先頭は選んだキャラにする EXモードは必ずマキ操作の後に来るのでマキにする
         {
-            StaticValues.switchState = StaticValues.stage6SelectChara;
+            if (StaticValues.isExMode) StaticValues.switchState = StaticValues.SwitchState.MAKI;
+            else StaticValues.switchState = StaticValues.stage6SelectChara;
         }
 
         Switch(StaticValues.switchState, false);
@@ -131,6 +132,13 @@ public class Player : MonoBehaviour
             StaticValues.yukariMP = StaticValues.yukariMaxMP;
             StaticValues.makiHP = StaticValues.makiMaxHP;
             StaticValues.makiMP = StaticValues.makiMaxMP;
+        }
+
+        // EXモードは死んでた時だけHP10で蘇生させる
+        if (StaticValues.isExMode)
+        {
+            if (StaticValues.yukariHP <= 0) StaticValues.yukariHP = 10;
+            if (StaticValues.makiHP <= 0) StaticValues.makiHP = 10;
         }
     }
 

@@ -14,6 +14,12 @@ public class Coin : MonoBehaviour
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+
+        // EXモードではコインを全部消しておく
+        if (StaticValues.isExMode)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

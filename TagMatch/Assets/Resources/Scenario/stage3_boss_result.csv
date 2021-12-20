@@ -27,4 +27,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 26,out,left_aoi,left,,,,,,,,,1,
 27,out,yukari,left,,,,,,,,,1,
 28,out,itako,right,,,,,,,,,1,
-29,scene_change,,,stage4-1,,,,,,,,0,
+29,scene_change,,,stage4-1,,Stage4-4,,,,,,0,

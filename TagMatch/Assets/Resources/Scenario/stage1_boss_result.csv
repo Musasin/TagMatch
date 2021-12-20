@@ -17,4 +17,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 16,out,yukari,left,,,,,,,,,1,
 17,out,maki,left,,,,,,,,,1,
 18,out,kiritan,right,,,,,,,,,1,
-19,scene_change,,,Stage2-1,,,,,,,,0,
+19,scene_change,,,Stage2-1,,Stage2-4,,,,,,0,

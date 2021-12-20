@@ -15,4 +15,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 14,talk,frimomen,right,ガアアアアアアッ！！！,,,,,,,,0,
 15,flash,,,,,,,,,,,1,
 16,wait,,,1,,,,,,,,0,
-17,scene_change,,,stage6-F2,unreload,,,,,,,0,
+17,scene_change,,,stage6-F2,unreload,Stage6-F2,,,,,,0,

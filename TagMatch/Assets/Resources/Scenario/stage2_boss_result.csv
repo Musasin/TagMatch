@@ -9,4 +9,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 8,out,maki,left,,,,,,,,,1,
 9,out,akane,right,,,,,,,,,1,
 10,out,aoi,right,,,,,,,,,1,
-11,scene_change,,,stage2-Movie,,,,,,,,0,
+11,scene_change,,,stage2-Movie,,Stage3-4,,,,,,0,

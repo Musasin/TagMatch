@@ -65,6 +65,34 @@ public class StaticValues : MonoBehaviour
         
     }
 
+    public static void Reset()
+    {
+        isExMode = false;
+        isHardMode = false;
+        time = 0;
+        score = 0;
+        coinCount = 0;
+        maxCoinCount = 0;
+        deadCount = 0;
+
+        switchState = SwitchState.YUKARI;
+        stage6SelectChara = SwitchState.YUKARI;
+        
+        yukariMaxHP = 100;
+        yukariHP = 100;
+        yukariMaxMP = 100;
+        yukariMP = 100;
+        yukariAttackRatio = 1.0f;
+        makiMaxHP = 100;
+        makiHP = 100;
+        makiMaxMP = 100;
+        makiMP = 100;
+        makiAttackRatio = 1.0f;
+
+        skills = new Dictionary<string, bool>();
+        scene = "";
+    }
+
     public static void Load()
     {
         int playModeInt = 0;
@@ -248,6 +276,16 @@ public class StaticValues : MonoBehaviour
     }
     public static bool GetSkill(string skillName)
     {
+        if (isExMode)
+        {
+            if (isHardMode)
+            {
+                return skillName == "y_dash_1" || skillName == "m_jump_1";
+            } else
+            {
+                return true;
+            }
+        }
         return skills.ContainsKey(skillName) && skills[skillName];
     }
     static void UpdateMaxHPMP()

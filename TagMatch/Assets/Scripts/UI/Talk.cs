@@ -237,7 +237,26 @@ public class Talk: MonoBehaviour
         string chara = scenario[nowKey.ToString()].chara;
         string position = scenario[nowKey.ToString()].position;
 
-        Debug.Log(scenario[nowKey.ToString()].type);
+        if (StaticValues.isExMode)
+        {
+            switch (scenario[nowKey.ToString()].type)
+            {
+                case "scene_change":
+                case "play_bgm":
+                case "support_on":
+                case "start_boss_battle":
+                case "start_last_boss_battle":
+                case "start_boss_battle_special":
+                case "end":
+                    break;
+
+                default: // EXモード中は上記の命令以外を全部読み飛ばし、次のステップを実行する
+                    nowKey++;
+                    UpdateStep();
+                    return;
+            }
+        }
+
         switch (scenario[nowKey.ToString()].type)
         {
             case "instantiate":
@@ -400,7 +419,14 @@ public class Talk: MonoBehaviour
                 return;
             case "scene_change":
                 StaticValues.isReloadACB = scenario[nowKey.ToString()].main == "unreload" ? false : true;
-                wipePanel.ChangeScene(scenario[nowKey.ToString()].text, true);
+                if (StaticValues.isExMode)
+                {
+                    wipePanel.ChangeScene(scenario[nowKey.ToString()].eye_brows, true); // EXモード中は特別な遷移を行う
+                }
+                else
+                {
+                    wipePanel.ChangeScene(scenario[nowKey.ToString()].text, true);
+                }
                 CloseWindowForEnd();
                 scenario.Clear();
                 StaticValues.ResetBossHP();

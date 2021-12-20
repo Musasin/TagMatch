@@ -19,4 +19,4 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 18,out,frimomen,right,,,,,,,,,1,
 19,out,maki,left,,,,,,,,,1,
 20,out,yukari,left,,,,,,,,,1,
-21,scene_change,,,stage6-FY,,,,,,,,0,
+21,scene_change,,,stage6-FY,,Stage6-M,,,,,,0,
