@@ -106,8 +106,16 @@ public class CharacterSelectScene : MonoBehaviour
                     StaticValues.makiMP = StaticValues.makiMaxMP;
 
                     // 選択した方だけを使える状態にしてシーン遷移
-                    if (isYukari) SceneManager.LoadScene("Stage6-Y");
-                    else SceneManager.LoadScene("Stage6-M");
+                    if (isYukari)
+                    {
+                        StaticValues.stage6SelectChara = StaticValues.SwitchState.YUKARI;
+                        SceneManager.LoadScene("Stage6-Y");
+                    }
+                    else
+                    {
+                        StaticValues.stage6SelectChara = StaticValues.SwitchState.MAKI;
+                        SceneManager.LoadScene("Stage6-M");
+                    }
                     state = CharacterSelectState.EXIT;
                 }
                 break;

@@ -22,6 +22,7 @@ public class StaticValues : MonoBehaviour
 
     public enum SwitchState { YUKARI = 0, YUKARI_ONLY = 1, MAKI = 2, MAKI_ONLY = 3};
     public static SwitchState switchState = SwitchState.YUKARI;
+    public static SwitchState stage6SelectChara = SwitchState.YUKARI;
     
     public static bool isPause;
     public static bool isTalkPause;
@@ -72,6 +73,10 @@ public class StaticValues : MonoBehaviour
         int intSwitchState = 0;
         LoadInt(ref intSwitchState, "SwitchState");
         switchState = (SwitchState)intSwitchState;
+
+        int intStage6SelectChara = 0;
+        LoadInt(ref intStage6SelectChara, "Stage6SelectChara");
+        stage6SelectChara = (SwitchState)intStage6SelectChara;
 
         LoadInt(ref yukariHP, "YukariHP");
         LoadInt(ref yukariMaxHP, "YukariMaxHP");
@@ -146,8 +151,9 @@ public class StaticValues : MonoBehaviour
         PlayerPrefs.SetInt("CoinCount", coinCount);
         PlayerPrefs.SetInt("MaxCoinCount", maxCoinCount);
         PlayerPrefs.SetInt("DeadCount", deadCount);
-
+        
         PlayerPrefs.SetInt("SwitchState", (int)switchState);
+        PlayerPrefs.SetInt("Stage6SelectChara", (int)stage6SelectChara);
         PlayerPrefs.SetInt("YukariHP", yukariHP);
         PlayerPrefs.SetInt("YukariMaxHP", yukariMaxHP);
         PlayerPrefs.SetInt("YukariMP", yukariMP);

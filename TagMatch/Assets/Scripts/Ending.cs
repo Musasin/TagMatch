@@ -76,6 +76,14 @@ public class Ending : MonoBehaviour
     public void ChangeScene()
     {
         StaticValues.isReloadACB = true;
-        SceneManager.LoadScene("Epilogue");
+
+        // 6面で選択したキャラによってエピローグを出し分ける
+        if (StaticValues.stage6SelectChara == StaticValues.SwitchState.YUKARI)
+        {
+            SceneManager.LoadScene("Epilogue-Y");
+        } else
+        {
+            SceneManager.LoadScene("Epilogue-M");
+        }
     }
 }

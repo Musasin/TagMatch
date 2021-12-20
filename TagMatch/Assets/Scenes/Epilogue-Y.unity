@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f1dd928c7e34a4aad5a1e71eae9db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenarioFileName: opening
+  scenarioFileName: epilogue_y
   isForcePlay: 1
 --- !u!4 &1414725164
 Transform:
