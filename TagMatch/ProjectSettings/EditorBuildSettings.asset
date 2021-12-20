@@ -114,9 +114,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage6-F2.unity
     guid: 1459b5f769f7a41858bdd7b7bcf9cf2d
   - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 0e5738cc0c0d74423b6b8ddcaaa17958
+  - enabled: 1
     path: Assets/Scenes/Epilogue-Y.unity
     guid: 29888181c060146cebfbf46fda4a7dc6
   - enabled: 1
-    path: Assets/Scenes/Ending.unity
-    guid: 0e5738cc0c0d74423b6b8ddcaaa17958
+    path: Assets/Scenes/Epilogue-M.unity
+    guid: 362d436b09b9d4ca89d736163ed11bb3
   m_configObjects: {}
