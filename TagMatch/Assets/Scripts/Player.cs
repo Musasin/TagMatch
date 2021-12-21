@@ -117,6 +117,10 @@ public class Player : MonoBehaviour
         {
             StaticValues.switchState = StaticValues.SwitchState.YUKARI;
         }
+        if (StaticValues.isExMode && sceneName == "Stage5-4") // EXモードは5-4で戻す
+        {
+            StaticValues.switchState = StaticValues.SwitchState.YUKARI;
+        }
         if (sceneName == "Stage6-FM" || sceneName == "Stage6-FY") // フリモメン戦前にソロモードを解除する 先頭は選んだキャラにする EXモードは必ずマキ操作の後に来るのでマキにする
         {
             if (StaticValues.isExMode) StaticValues.switchState = StaticValues.SwitchState.MAKI;
