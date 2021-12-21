@@ -107,6 +107,8 @@ public class Talk: MonoBehaviour
 
         if (sceneName == "Stage6-F2")
             AudioManager.Instance.PlayBGM("frimomen2nd_talk");
+        else if (sceneName == "Stage6-FM" || sceneName == "Stage6-FY")
+            AudioManager.Instance.PlayBGM("frimomen1st_talk");
         else if (AudioManager.Instance.lastPlayedBGM != "stage")
             AudioManager.Instance.PlayBGM("stage");
 
