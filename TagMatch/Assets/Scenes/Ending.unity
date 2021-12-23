@@ -50268,7 +50268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3053\u3046\u3061\u3083\u3093 (@MUkoutyan)"
+  m_text: "\u4F86\u5948\u6D25 (@MUkoutyan)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68eaf600a17ed427294b0e480a926700, type: 2}
   m_sharedMaterial: {fileID: -9163568551117969088, guid: 68eaf600a17ed427294b0e480a926700,
