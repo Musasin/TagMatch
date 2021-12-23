@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class Frimomen : BossAIBase
 {
@@ -647,7 +646,7 @@ public class Frimomen : BossAIBase
     {
         sequence = DOTween.Sequence()
             .AppendCallback(() => {
-                AudioManager.Instance.PlaySE("buon");
+                AudioManager.Instance.PlaySE("buon2");
             })
             .Append(transform.DOMove(targetPos, time))
             .OnComplete(() => { 
@@ -732,7 +731,7 @@ public class Frimomen : BossAIBase
             .AppendCallback(() => { 
                 anim.SetBool("isThrow", true);
                 AudioManager.Instance.PlayExVoice("frimomen_summon");
-                AudioManager.Instance.PlaySE("buon");
+                AudioManager.Instance.PlaySE("buon2");
             })
             .Append(transform.DOJump(transform.position, 1.0f, 1, 0.5f))
             .AppendInterval(2.0f)

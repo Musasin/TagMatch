@@ -85,6 +85,7 @@
           <Orca OrcaName="wood_swing1.wav" Channels="1" EncodeFileSize="2483" ReloopEnd="6263" ResamplingRate="44100" SampleFrames="6263" SamplingRate="44100" SourceFileSize="12654" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="boss3_move.wav" Channels="1" EncodeFileSize="14418" ReloopEnd="42226" ResamplingRate="44100" SampleFrames="42226" SamplingRate="44100" SourceFileSize="84580" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="Quake.wav" Channels="2" EncodeFileSize="119366" ReloopEnableFlag="True" ReloopEnd="176400" ReloopStart="22050" ResamplingRate="44100" SampleFrames="176400" SamplingRate="44100" SourceFileSize="705804" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="buon2.wav" Channels="2" EncodeFileSize="52610" ReloopEnd="78000" ResamplingRate="48000" SampleFrames="78000" SamplingRate="48000" SourceFileSize="312702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="VOICE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="Kotonoha" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
