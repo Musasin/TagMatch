@@ -8,7 +8,7 @@
       </Orca>
       <Orca OrcaName="CueSheetFolder" BusMap="/CriAtomCraftV2Root/GlobalSettings/BusMap/BusMapforCue/BusMap_Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheetFolder">
         <Orca OrcaName="WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheetSubFolder">
-          <Orca OrcaName="Common" AwbHash="26756" LastOutputCueSheetSize="2805984" OoUniqId="121206cd-1147-4f4c-9e4a-300889110a98" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
+          <Orca OrcaName="Common" AwbHash="26756" LastOutputCueSheetSize="2814848" OoUniqId="121206cd-1147-4f4c-9e4a-300889110a98" StartCueId="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSheet">
             <Orca OrcaName="coin" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/SE" CueID="0" PlaybackLimitEnableFlag="True" PlaybackLimits="3" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="0.7" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_coin" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="coin.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/coin.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
@@ -81,7 +81,9 @@
             </Orca>
             <Orca OrcaName="buon" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/SE" CueID="13" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
               <Orca OrcaName="Track_buon" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
-                <Orca OrcaName="buon.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/buon.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
+                <Orca OrcaName="buon.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/buon.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform">
+                  <Orca OrcaName="buon.wav_Fade" FadeInCurveStrength="0.45" FadeInTime="72.0980054635668" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveformFade"/>
+                </Orca>
               </Orca>
             </Orca>
             <Orca OrcaName="hit_player" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/SE" CueID="14" PlaybackLimitEnableFlag="True" PlaybackLimits="2" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthPolyphonic" Volume="0.7" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
