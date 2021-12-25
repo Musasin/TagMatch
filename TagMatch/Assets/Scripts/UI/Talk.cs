@@ -394,6 +394,10 @@ public class Talk: MonoBehaviour
                     {
                         bool beforeFlag = anim.GetBool(scenario[nowKey.ToString()].text);
                         anim.SetBool(scenario[nowKey.ToString()].text, !beforeFlag);
+                        if (scenario[nowKey.ToString()].text == "isQuake")
+                        {
+                            AudioManager.Instance.PlaySE("Quake");
+                        }
                     }
                 }
                 break;
