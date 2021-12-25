@@ -123,7 +123,11 @@ public class Talk: MonoBehaviour
             AudioManager.Instance.PlayBGM("stage");
         }
 
-        StaticValues.Save();
+        // オープニング, エンディング, エピローグではデータ保存しない
+        if (sceneName != "Opening" && sceneName != "Opening-2" && sceneName != "Epilogue-M" && sceneName != "Epilogue-Y" && sceneName != "Ending")
+        {
+            StaticValues.Save();
+        }
     }
 
     // Update is called once per frame
