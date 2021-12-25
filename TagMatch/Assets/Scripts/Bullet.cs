@@ -105,10 +105,6 @@ public class Bullet : MonoBehaviour
                     PlayHitEffect(collision.gameObject.transform.position);
                     if (!isTrample)
                     {
-                        if (bulletType == BulletType.YUKARI)
-                        {
-                            AudioManager.Instance.PlaySE("shot_yukari_bomb");
-                        }
                         Dead();
                     }
                 }
