@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c36dbe54c46f4440a4448c65a45169a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetPositionX: 102.4
+  resetPositionX: 30.733334
   speed: 0.06
 --- !u!1 &2267126271943120328
 GameObject:
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c36dbe54c46f4440a4448c65a45169a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetPositionX: 102.4
+  resetPositionX: 30.733334
   speed: 0.25
 --- !u!1 &2267126272413578989
 GameObject:
@@ -820,5 +820,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c36dbe54c46f4440a4448c65a45169a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetPositionX: 102.4
+  resetPositionX: 30.733334
   speed: 0.5

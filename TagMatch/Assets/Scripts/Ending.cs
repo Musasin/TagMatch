@@ -13,6 +13,8 @@ public class Ending : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StaticValues.ClearedSave(); // エンディング開始時点でクリアフラグを保存しておく
+
         anim = GetComponent<Animator>();
         AudioManager.Instance.LoadACB("Ending", "Ending.acb", "Ending.awb");
         AudioManager.Instance.PlayBGM("ending");

@@ -10,6 +10,8 @@ using System;
 
 public class StaticValues : MonoBehaviour
 {
+    public static bool isCleared;
+
     public static float bgmVolume = 0.5f;
     public static float seVolume = 0.5f;
     public static float voiceVolume = 0.5f;
@@ -135,7 +137,18 @@ public class StaticValues : MonoBehaviour
             scene = PlayerPrefs.GetString("Scene");
         }
     }
-
+    
+    public static void LoadIsCleared()
+    {
+        int clearInt = 0;
+        LoadInt(ref clearInt, "IsCleared");
+        isCleared = (clearInt == 1);
+    }
+    public static void ClearedSave()
+    {
+        isCleared = true;
+        PlayerPrefs.SetInt("IsCleared", 1);
+    }
     public static void LoadVolume()
     {
         LoadFloat(ref bgmVolume, "BGMVolume");

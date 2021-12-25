@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Title : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class Title : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StaticValues.LoadIsCleared();
         StaticValues.LoadVolume();
         time = 0;
         anim = GetComponent<Animator>();
@@ -70,6 +72,11 @@ public class Title : MonoBehaviour
         {
             nowSelection = TitleList.CONTINUE;
             titleCursor.transform.localPosition = new Vector2(titleCursorDefaultPos.x, titleCursorDefaultPos.y - (67 * (int)nowSelection));
+            GameObject.Find("ContinueText").GetComponent<TextMeshProUGUI>().color = new Vector4(0, 0, 0, 1);
+        }
+        if (StaticValues.isCleared)
+        {
+            GameObject.Find("EXModeText").GetComponent<TextMeshProUGUI>().color = new Vector4(0, 0, 0, 1);
         }
     }
 
@@ -113,10 +120,10 @@ public class Title : MonoBehaviour
 
                 if (KeyConfig.GetJumpKeyDown())
                 {
-                    AudioManager.Instance.PlaySE("accept");
                     switch (nowSelection)
                     {
                         case TitleList.NEW_GAME:
+                            AudioManager.Instance.PlaySE("accept");
                             StaticValues.Reset();
                             StaticValues.isReloadACB = true;
                             loadSceneName = "Opening";
@@ -124,6 +131,12 @@ public class Title : MonoBehaviour
                             time = 0;
                             break;
                         case TitleList.CONTINUE:
+                            if (!PlayerPrefs.HasKey("Scene"))
+                            {
+                                AudioManager.Instance.PlaySE("cancel");
+                                return;
+                            }
+                            AudioManager.Instance.PlaySE("accept");
                             StaticValues.Reset();
                             StaticValues.isReloadACB = true;
                             if (PlayerPrefs.HasKey("Scene"))
@@ -135,12 +148,20 @@ public class Title : MonoBehaviour
                             }
                             break;
                         case TitleList.EX_MODE:
+                            if (!StaticValues.isCleared)
+                            {
+                                AudioManager.Instance.PlaySE("cancel");
+                                return;
+                            }
+                            AudioManager.Instance.PlaySE("accept");
                             titleState = TitleState.EX_MODE_SELECT;
                             break;
                         case TitleList.OPTION:
+                            AudioManager.Instance.PlaySE("accept");
                             titleState = TitleState.OPTION;
                             break;
-                        case TitleList.EXIT:                            
+                        case TitleList.EXIT:       
+                            AudioManager.Instance.PlaySE("accept");                     
 #if UNITY_EDITOR
                                 UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_STANDALONE
