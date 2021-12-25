@@ -18,6 +18,8 @@ public class Title : MonoBehaviour
     Vector2 levelSelecrCursorDefaultPos;
     KeyConfigUI keyConfigUIScript;
     string loadSceneName;
+    private int volumeWaitFlame;
+    private int beforeInputHorSign;
 
     enum TitleState
     {
@@ -244,30 +246,51 @@ public class Title : MonoBehaviour
                     optionRightCursor.SetActive(isLeftRightCursorActive);
                 }
 
-                if (Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Horizontal") > 0)
+                var inputHor = Input.GetAxisRaw("Horizontal");
+                var inputSign = System.Math.Sign((int)inputHor);
+                if ((inputHor < 0 || 0 < inputHor) && beforeInputHorSign != inputSign)
                 {
+                    var delta = 0.1f * (float)inputSign;
                     switch (optionSelection)
                     {
                         case OptionList.BGM:
-                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.bgmVolume -= 0.01f;
-                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.bgmVolume += 0.01f;
+                            StaticValues.bgmVolume += delta;
                             StaticValues.bgmVolume = Mathf.Clamp(StaticValues.bgmVolume, 0, 1.0f);
                             StaticValues.SaveVolume();
+                            volumeWaitFlame = 0;
                             break;
                         case OptionList.SE:
-                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.seVolume -= 0.01f;
-                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.seVolume += 0.01f;
+                            StaticValues.seVolume += delta;
                             StaticValues.seVolume = Mathf.Clamp(StaticValues.seVolume, 0, 1.0f);
                             StaticValues.SaveVolume();
-                            if (Mathf.Floor(StaticValues.seVolume * 100) % 3 == 0) AudioManager.Instance.PlaySE("select");
                             break;
                         case OptionList.VOICE:
-                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.voiceVolume -= 0.01f;
-                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.voiceVolume += 0.01f;
+                            StaticValues.voiceVolume += delta;
                             StaticValues.voiceVolume = Mathf.Clamp(StaticValues.voiceVolume, 0, 1.0f);
                             StaticValues.SaveVolume();
-                            if (Mathf.Floor(StaticValues.voiceVolume * 100) % 3 == 0) AudioManager.Instance.PlaySE("yukari_dash");
                             break;
+                    }
+                    beforeInputHorSign = inputSign;
+                }
+                if (inputHor == 0)
+                {
+                    beforeInputHorSign = 0;
+                }
+
+                if (optionSelection == OptionList.SE)
+                {
+                    if (volumeWaitFlame++ >= 200)
+                    {
+                        AudioManager.Instance.PlaySE("coin");
+                        volumeWaitFlame = 0;
+                    }
+                }
+                else if (optionSelection == OptionList.VOICE)
+                {
+                    if (volumeWaitFlame++ >= 200)
+                    {
+                        AudioManager.Instance.PlaySE("yukari_dash");
+                        volumeWaitFlame = 0;
                     }
                 }
                 bgmVolumeText.text = Mathf.Floor(StaticValues.bgmVolume * 100).ToString() + "％";
