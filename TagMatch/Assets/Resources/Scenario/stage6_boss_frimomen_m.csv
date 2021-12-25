@@ -13,7 +13,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 12,talk,frimomen,right,そうこうしているうちに\n組織は大きくなり、\nキャラクターの数も\n増えてきた,frimomen_close,,,,,,,0,
 13,talk,frimomen,right,キャラクターを題材とした\n製品も生まれ、シリーズ化\nしてシェアを広げていった,frimomen_close,,,,,,,0,
 14,talk,frimomen,right,そう、\n君たちボイスロイドの事だ,frimomen,,,,,,,0,
-15,talk,maki,left,...,,anger,half_open,mu,,,,0,
+15,talk,maki,left,...,,anger,half_open,o,,,,0,
 16,talk,frimomen,right,ピンとこないか、\nそれでは完結に述べよう,frimomen_close,,,,,,,0,
 17,talk,frimomen,right,最古参とも言える俺が、未だにボイスロイド化していないのはおかしいと思わないか？,frimomen,,,,,,,0,
 18,talk,maki,left,へ？,,normal,white,o,,,,0,
