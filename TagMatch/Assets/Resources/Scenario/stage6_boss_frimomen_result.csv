@@ -4,14 +4,14 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 3,talk,frimomen,right,バカな！\nバカなあああああ！！！！,frimomen,,,,,,,0,
 4,instantiate,yukari,left,,,,,,,,,1,
 5,instantiate,maki,left,,,anger,normal,o,,,,1,
-6,talk,yukari,left,ふー.....\nどうにかなりましたね,,anger,normal,laugh,,,sweat,0,
-7,talk,maki,left,しっかり反省してもらうよ！,,anger,normal,gaa,,,,0,
+6,talk,yukari,left,ふー.....\nどうにかなりましたね,,anger,normal,laugh,,,sweat,0,yukari-106
+7,talk,maki,left,しっかり反省してもらうよ！,,anger,normal,gaa,,,,0,maki-83
 8,talk,frimomen,right,認めん！\n認めんぞおおお！！！！,frimomen,,,,,,,0,
 9,talk,frimomen,right,俺は、こんなところで、,frimomen_close,,,,,,,0,
 10,talk,frimomen,right,俺は、俺は....！！,frimomen_close,,,,,,,0,
 11,talk,frimomen,anger_right,オレ、ハ...\nァァァ！！！,frimomen,,,,,,,0,
 12,talk,yukari,left,！！,,anger,normal,o,,,,0,
-13,talk,maki,left,様子がおかしい！,,anger,normal,gaa,,,,0,
+13,talk,maki,left,様子がおかしい！,,anger,normal,gaa,,,,0,maki-84
 14,talk,frimomen,anger_right,ガアアアアアアッ！！！,frimomen,,,,,,,0,
 15,flash,,,,,,,,,,,1,
 16,wait,,,1,,,,,,,,0,

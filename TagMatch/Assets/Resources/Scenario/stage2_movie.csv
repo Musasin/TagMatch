@@ -1,22 +1,22 @@
 id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,play_next,voice
 1,instantiate,akane,right,,,,,,,,,1,
 2,instantiate,aoi,right,,,normal,normal,mu,,,,1,
-3,talk,akane,right,いやー、負けた負けた。完敗や,,normal,smile,laugh,,,,0,
+3,talk,akane,right,いやー、負けた負けた。完敗や,,normal,smile,laugh,,,,0,akane-8
 4,instantiate,yukari,left,,,,,,,,,1,
 5,instantiate,maki,left,,,normal,normal,omega,,,,1,
-6,talk,yukari,left,ふふふ、どんなもんですか,,normal,close,omega,,,,0,
-7,talk,aoi,right,ぐぬぬぬぬぬ\nそんなはずは...,,anger,half_open,mu,,,,0,
+6,talk,yukari,left,ふふふ、どんなもんですか,,normal,close,omega,,,,0,yukari-26
+7,talk,aoi,right,ぐぬぬぬぬ\nそんなはずは...,,anger,half_open,mu,,,,0,aoi-6
 8,animation_flag,Stage2MovieMap,,isQuake,,,,,,,,1,
-9,talk,akane,right,残念やけど、ウチ達はここで...,,sad,normal,laugh,,,,0,
-10,talk,akane,right,わ、わわ、何や、地震か?!,,anger,normal,gaa,,,,0,
-11,talk,aoi,right,あわわわわ,,anger,guruguru,gaa,,,,0,
-12,talk,maki,left,！！ まずい、地面が！,,anger,normal,o,,,,0,
+9,talk,akane,right,残念やけど、ウチ達はここで...,,sad,normal,laugh,,,,0,akane-9
+10,talk,akane,right,わ、わわ、何や、地震か?!,,anger,normal,gaa,,,,0,akane-10
+11,talk,aoi,right,あわわわわ,,anger,guruguru,gaa,,,,0,aoi-7
+12,talk,maki,left,！！ まずい、地面が！,,anger,normal,o,,,,0,maki-18
 13,animation_flag,Stage2MovieMap,,isFall,,,,,,,,1,
-14,talk,yukari,left,おわーっ!!!,,anger,white,axtu,,,,0,
+14,talk,yukari,left,おわーっ!!!,,anger,white,axtu,,,,0,yukari-27
 15,out,yukari,left,,,,,,,,,1,
 16,out,aoi,right,,,,,,,,,1,
-17,talk,akane,right,あ、あおいーーーー！！,,anger,white,gaa,,,,0,
-18,talk,maki,left,ゆかりーーーーん！！,,anger,normal,gaa,,,,0,
+17,talk,akane,right,あ、あおいーーーー！！,,anger,white,gaa,,,,0,akane-11
+18,talk,maki,left,ゆかりーーーーん！！,,anger,normal,gaa,,,,0,maki-19
 19,out,maki,left,,,,,,,,,1,
 20,out,akane,right,,,,,,,,,1,
 21,scene_change,,,stage3-1,,,,,,,,0,

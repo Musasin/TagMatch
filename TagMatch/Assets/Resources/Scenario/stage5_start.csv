@@ -1,10 +1,10 @@
 id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,play_next,voice
 1,instantiate,maki,left,,,,,,,,,1,
 2,instantiate,yukari,left,,,,,,,,,1,
-3,talk,yukari,left,おお...これまた\n仰々しい所に出ましたね,,anger,normal,laugh,,,,0,
-4,talk,maki,left,終りが近いってことかな,,anger,normal,o,,,,0,
-5,talk,yukari,left,きっとモンスターも手強くなっている事でしょう\n気を引き締めて\nかかるとしますか,,anger,half_open,omega,,,,0,
-6,talk,maki,left,おー！,,anger,smile,laugh,,,,0,
+3,talk,yukari,left,おお...これまた\n仰々しい所に出ましたね,,anger,normal,laugh,,,,0,yukari-57
+4,talk,maki,left,終りが近いってことかな,,anger,normal,o,,,,0,maki-38
+5,talk,yukari,left,きっとモンスターも手強くなっている事でしょう\n気を引き締めて\nかかるとしますか,,anger,half_open,omega,,,,0,yukari-58
+6,talk,maki,left,おー！,,anger,smile,laugh,,,,0,maki-39
 7,out,yukari,left,,,,,,,,,1,
 8,out,maki,left,,,,,,,,,1,
 9,end,,,,,,,,,,,0,

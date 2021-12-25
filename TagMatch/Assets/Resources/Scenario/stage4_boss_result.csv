@@ -3,9 +3,9 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 2,instantiate,maki,left,,,anger,normal,laugh,,,,1,
 3,instantiate,zunko,right,,,sad,close,mu,,,,1,
 4,talk,zunko,right,くうっ...\n参りました,,sad,close,mu,,,,0,zunko-7
-5,talk,left_akane,left,さすがやな！,,normal,smile,laugh,,,,0,
-6,talk,maki,left,よし！さっそく\n二人を迎えに行こう！,,anger,smile,laugh,,,,0,
-7,talk,left_akane,left,悪いけど先を急ぐんで、\nまたな！ずんちゃん！,,anger,normal,laugh,,,,0,
+5,talk,left_akane,left,さすがやな！,,normal,smile,laugh,,,,0,akane-25
+6,talk,maki,left,よし！さっそく\n二人を迎えに行こう！,,anger,smile,laugh,,,,0,maki-32
+7,talk,left_akane,left,悪いけど先を急ぐんで、\nまたな！ずんちゃん！,,anger,normal,laugh,,,,0,akane-26
 8,out,yukari,left,,,,,,,,,1,
 9,out,maki,left,,,,,,,,,1,
 10,out,left_akane,left,,,,,,,,,1,
