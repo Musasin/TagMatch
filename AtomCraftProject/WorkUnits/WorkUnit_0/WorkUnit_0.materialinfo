@@ -44,6 +44,7 @@
             <Orca OrcaName="se_lightning_charge_04.wav" Channels="2" EncodeFileSize="110580" ReloopEnd="164957" ResamplingRate="48000" SampleFrames="164957" SamplingRate="48000" SourceFileSize="659916" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="se_lightning_spark_heavy_12.wav" Channels="2" EncodeFileSize="34878" ReloopEnd="51302" ResamplingRate="48000" SampleFrames="51302" SamplingRate="48000" SourceFileSize="205296" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="se_lightning_strike_shot_03.wav" Channels="2" EncodeFileSize="116718" ReloopEnd="174245" ResamplingRate="48000" SampleFrames="174245" SamplingRate="48000" SourceFileSize="697068" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="BONE-BREAK_GEN-HDF-04308.wav" Channels="2" EncodeFileSize="17828" ReloopEnd="25600" ResamplingRate="44100" SampleFrames="25600" SamplingRate="44100" SourceFileSize="127768" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           </Orca>
           <Orca OrcaName="UI" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
             <Orca OrcaName="accept.wav" Channels="1" EncodeFileSize="9303" ReloopEnd="27009" ResamplingRate="44100" SampleFrames="27009" SamplingRate="44100" SourceFileSize="54146" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
@@ -90,6 +91,7 @@
           <Orca OrcaName="summon_canon.wav" Channels="2" EncodeFileSize="48518" ReloopEnd="72000" ResamplingRate="48000" SampleFrames="72000" SamplingRate="48000" SourceFileSize="288702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="frimomen_throw.wav" Channels="2" EncodeFileSize="20556" ReloopEnd="72000" ResamplingRate="48000" SampleFrames="30000" SamplingRate="48000" SourceFileSize="120702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="spore.wav" Channels="2" EncodeFileSize="28740" ReloopEnd="54000" ResamplingRate="48000" SampleFrames="42000" SamplingRate="48000" SourceFileSize="168702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="bone_throw1.wav" Channels="2" EncodeFileSize="28740" ReloopEnd="42000" ResamplingRate="48000" SampleFrames="42000" SamplingRate="48000" SourceFileSize="168702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="VOICE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="Kotonoha" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">

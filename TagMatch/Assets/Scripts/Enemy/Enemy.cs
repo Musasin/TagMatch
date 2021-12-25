@@ -330,6 +330,7 @@ public class Enemy : EnemyBase
             .AppendCallback(() => { 
                 anim.SetBool("isAttack", true);
                 InstantiateSkeletonBullet();
+                PlaySEWhenInScreen("bone_throw");
             })
             .AppendInterval(0.3f)
             .AppendCallback(() => {
