@@ -417,29 +417,34 @@ public class Talk: MonoBehaviour
                 }
                 break;
             case "start_boss_battle":
+                AudioManager.Instance.StopExVoice();
                 stackScenarioFileName = scenario[nowKey.ToString()].text;
                 isBossBattleWaiting = true;
                 CloseWindowForEnd();
                 scenario.Clear();
                 return;
             case "start_boss_battle_special": // フリモメン第二形態でのみ使用 回復分を加味せず、一定量のダメージを与えたら発火
+                AudioManager.Instance.StopExVoice();
                 stackScenarioFileName = scenario[nowKey.ToString()].text;
                 isSpecialBossBattleWaiting = true;
                 CloseWindowForEnd();
                 scenario.Clear();
                 return;
             case "start_last_boss_battle": // フリモメン第二形態でのみ使用 撃破後にスローモーション+ホワイトアウトでシーンを切り替える
+                AudioManager.Instance.StopExVoice();
                 stackSceneName = scenario[nowKey.ToString()].text;
                 isLastBossBattleWaiting = true;
                 CloseWindowForEnd();
                 scenario.Clear();
                 return;
             case "end":
+                AudioManager.Instance.StopExVoice();
                 CloseWindowForEnd();
                 scenario.Clear();
                 return;
             case "scene_change":
                 AudioManager.Instance.StopSE();
+                AudioManager.Instance.StopExVoice();
                 StaticValues.isReloadACB = scenario[nowKey.ToString()].main == "unreload" ? false : true;
                 if (StaticValues.isExMode)
                 {
