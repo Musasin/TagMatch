@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using UnityEngine;
-using DG.Tweening;
 
 public class Enemy : EnemyBase
 {
@@ -319,6 +317,7 @@ public class Enemy : EnemyBase
         GameObject instantiateBullet = Instantiate(bullet, transform.parent);
         instantiateBullet.transform.position = transform.position;
         instantiateBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(addforceX, addforceY));
+        PlaySEWhenInScreen("spore");
     }
     
     private void SkeletonAttack()
@@ -389,5 +388,18 @@ public class Enemy : EnemyBase
             y = velocityY;
 
         rb.velocity = new Vector2(x, y);
+    }
+
+    private void PlaySEWhenInScreen(string seName)
+    {
+        SpriteRenderer[] spriteList = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in spriteList)
+        {
+            if (sprite.isVisible)
+            {
+                AudioManager.Instance.PlaySE(seName);
+                break;
+            }
+        }
     }
 }

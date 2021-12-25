@@ -89,6 +89,7 @@
           <Orca OrcaName="doron.wav" Channels="2" EncodeFileSize="48518" ReloopEnd="72000" ResamplingRate="48000" SampleFrames="72000" SamplingRate="48000" SourceFileSize="288702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="summon_canon.wav" Channels="2" EncodeFileSize="48518" ReloopEnd="72000" ResamplingRate="48000" SampleFrames="72000" SamplingRate="48000" SourceFileSize="288702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="frimomen_throw.wav" Channels="2" EncodeFileSize="20556" ReloopEnd="72000" ResamplingRate="48000" SampleFrames="30000" SamplingRate="48000" SourceFileSize="120702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="spore.wav" Channels="2" EncodeFileSize="28740" ReloopEnd="54000" ResamplingRate="48000" SampleFrames="42000" SamplingRate="48000" SourceFileSize="168702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="VOICE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="Kotonoha" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
