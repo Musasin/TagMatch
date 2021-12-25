@@ -917,5 +917,7 @@ PrefabInstance:
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[5].x
       value: 4.9999704
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8451608813879701698, guid: 9c6646fbeaf3346c69e0a5e11cf11f5d, type: 3}
+    - {fileID: 1786770576824680512, guid: 9c6646fbeaf3346c69e0a5e11cf11f5d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c6646fbeaf3346c69e0a5e11cf11f5d, type: 3}
