@@ -14,7 +14,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 13,talk,frimomen,right,キャラクターを題材とした\n製品も生まれ、シリーズ化\nしてシェアを広げていった,frimomen_close,,,,,,,0,
 14,talk,frimomen,right,そう、\n君たちボイスロイドの事だ,frimomen,,,,,,,0,
 15,talk,yukari,left,...何が言いたいんです,,anger,half_open,o,,,,0,yukari-93
-16,talk,frimomen,right,いいだろう、完結に答えよう,frimomen_close,,,,,,,0,
+16,talk,frimomen,right,いいだろう、簡潔に答えよう,frimomen_close,,,,,,,0,
 17,talk,frimomen,right,最古参とも言える俺が、未だ\nボイスロイド化していないの\nはおかしいと思わないか？,frimomen,,,,,,,0,
 18,talk,maki,left,へ？,,normal,white,o,,,,0,maki-72
 19,talk,yukari,left,はい？,,normal,white,o,,,,0,yukari-94

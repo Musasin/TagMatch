@@ -7,8 +7,8 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 6,talk,kiritan,right,小学生相手に2対1でボコボコにして、恥ずかしくないんですか！,,sad,white_tears,omega,,,,0,kiritan-12
 7,talk,maki,left,ちょっと恥ずかしい,,sad,smile,laugh,,,,0,maki-13
 8,talk,yukari,left,勝ちゃあ良いんですよォ！,,anger,normal,laugh,,,,0,yukari-20
-9,talk,maki,left,ゆかりんのクールキャラが早くも剥がれつつあるねぇ,,sad,normal,laugh,,,,0,maki-14
-10,talk,kiritan,right,過程はともかく、負けは負けです\nどうぞお通りください,,sad,half_open,gununu,,,,0,kiritan-13
+9,talk,maki,left,ゆかりんのクールキャラが\n早くも剥がれつつあるねぇ,,sad,normal,laugh,,,,0,maki-14
+10,talk,kiritan,right,過程はともかく、\n負けは負けです\nどうぞお通りください,,sad,half_open,gununu,,,,0,kiritan-13
 11,talk,yukari,left,ふー....\nそれじゃあ遠慮なく\nいきましょうマキさん,,normal,normal,laugh,,,,0,yukari-21
 12,talk,maki,left,あ、うん,,normal,normal,o,,,,0,maki-15
 13,talk,maki,left,またねー,,normal,smile,laugh,,,,0,maki-16

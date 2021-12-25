@@ -106,7 +106,11 @@ public class Talk: MonoBehaviour
         AddChraObject("mob2", mob2Prefab);
         AddChraObject("mob3", mob3Prefab);
 
-        if (sceneName == "Stage6-F2")
+        if (sceneName == "Opening-2")
+        {
+            AudioManager.Instance.PlayBGM("opening2");
+        }
+        else if (sceneName == "Stage6-F2")
         {
             AudioManager.Instance.PlayBGM("frimomen2nd_talk");
         }

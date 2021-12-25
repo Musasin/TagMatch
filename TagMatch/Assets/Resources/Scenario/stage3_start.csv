@@ -10,9 +10,9 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 9,talk,left_aoi,left,地上のお姉ちゃんの匂いが、\nあっちの方に移動してる...,,anger,normal,laugh,,,,0,aoi-11
 10,talk,yukari,left,なんですかその能力,,normal,half_open,o,,,sweat,0,yukari-31
 11,talk,yukari,left,でも、ということは茜ちゃんとマキさんは向こうで洞窟の出口を探してくれているのかもしれませんね,,normal,normal,omega,,,nothing,0,yukari-32
-12,talk,yukari,left,とりあえずそっちに向かいましょう\n歩けますか？,,normal,smile,laugh,,,,0,yukari-33
+12,talk,yukari,left,とりあえず\nそっちに向かいましょう\n歩けますか？,,normal,smile,laugh,,,,0,yukari-33
 13,talk,left_aoi,left,.....。,,anger,half_open,mu,,,,0,
-14,talk,left_aoi,left,どうして親切にしてくれるんですか？\n敵同士なのに...,,anger,half_open,triangle,,,,0,aoi-12
+14,talk,left_aoi,left,どうして\n親切にしてくれるんですか？\n敵同士なのに...,,anger,half_open,triangle,,,,0,aoi-12
 15,talk,yukari,left,今は脱出してそれぞれの相棒に合流するのが先決ですよ,,normal,normal,smile,,,,0,yukari-34
 16,talk,yukari,left,それに、すでに一度勝負は\nついているじゃないですか,,normal,half_open,nisisi,,,,0,yukari-35
 17,talk,left_aoi,left,お姉ちゃんと合流したら\nまた勝負を仕掛けるかも\nしれませんよ,,anger,half_open,mu,,,,0,aoi-13

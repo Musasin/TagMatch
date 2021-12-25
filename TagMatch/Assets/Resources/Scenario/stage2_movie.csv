@@ -7,7 +7,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 6,talk,yukari,left,ふふふ、どんなもんですか,,normal,close,omega,,,,0,yukari-26
 7,talk,aoi,right,ぐぬぬぬぬ\nそんなはずは...,,anger,half_open,mu,,,,0,aoi-6
 8,animation_flag,Stage2MovieMap,,isQuake,,,,,,,,1,
-9,talk,akane,right,残念やけど、ウチ達はここで...,,sad,normal,laugh,,,,0,akane-9
+9,talk,akane,right,残念やけど、\nウチ達はここで...,,sad,normal,laugh,,,,0,akane-9
 10,talk,akane,right,わ、わわ、何や、地震か?!,,anger,normal,gaa,,,,0,akane-10
 11,talk,aoi,right,あわわわわ,,anger,guruguru,gaa,,,,0,aoi-7
 12,talk,maki,left,！！ まずい、地面が！,,anger,normal,o,,,,0,maki-18
