@@ -109,6 +109,8 @@ public class Talk: MonoBehaviour
             AudioManager.Instance.PlayBGM("frimomen2nd_talk");
         else if (sceneName == "Stage6-FM" || sceneName == "Stage6-FY")
             AudioManager.Instance.PlayBGM("frimomen1st_talk");
+        else if (sceneName == "Epilogue-M" || sceneName == "Epilogue-Y")
+            { } // エピローグではエンディング用の曲を流しっぱなしで始める
         else if (AudioManager.Instance.lastPlayedBGM != "stage")
             AudioManager.Instance.PlayBGM("stage");
 
@@ -424,6 +426,7 @@ public class Talk: MonoBehaviour
                 scenario.Clear();
                 return;
             case "scene_change":
+                AudioManager.Instance.StopSE();
                 StaticValues.isReloadACB = scenario[nowKey.ToString()].main == "unreload" ? false : true;
                 if (StaticValues.isExMode)
                 {
