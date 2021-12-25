@@ -23,6 +23,7 @@ public class Enemy : EnemyBase
 
     float stopTime = 0;
     float afterAttackTime = 0;
+    float nextAttackInterval;
     bool isKnockBack;
     bool isAttacking;
     bool isDead;
@@ -47,6 +48,7 @@ public class Enemy : EnemyBase
         defaultScale = transform.localScale;
         playerObject = GameObject.Find("Player");
         bulletPivot = transform.Find("BulletPivot")?.gameObject;
+        nextAttackInterval = attackInterval;
     }
 
     public override void Reset()
@@ -152,10 +154,11 @@ public class Enemy : EnemyBase
                 rb.velocity = new Vector2(velocityX * (isRight ? 1 : -1), velocityY * (isUp ? 1 : -1));
                 break;
             case "skeleton":
-                if (attackInterval != 0 && afterAttackTime > attackInterval)
+                if (attackInterval != 0 && afterAttackTime > nextAttackInterval)
                 {
                     rb.velocity = Vector2.zero;
                     isAttacking = true;
+                    nextAttackInterval = attackInterval + Random.Range(-0.2f, 0.2f);
                     SkeletonAttack();
                 } else
                 {
