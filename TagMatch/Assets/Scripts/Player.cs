@@ -188,10 +188,10 @@ public class Player : MonoBehaviour
         if (mpRecoverTime >= MP_RECOVER_TIME)
         {
             mpRecoverTime = 0;
-            if (IsYukari())
+            if (IsYukari() && StaticValues.makiHP > 0)
             {
                 StaticValues.AddMP(false, 5);
-            } else if (IsMaki())
+            } else if (IsMaki() && StaticValues.yukariHP > 0)
             {
                 StaticValues.AddMP(true, 5);
             }
