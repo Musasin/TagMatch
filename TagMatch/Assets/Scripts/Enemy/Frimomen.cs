@@ -695,7 +695,7 @@ public class Frimomen : BossAIBase
             .AppendCallback(() =>
             {
                 AudioManager.Instance.PlayExVoice("frimomen_throw");
-                AudioManager.Instance.PlaySE("swing");
+                AudioManager.Instance.PlaySE("frimomen_throw_se");
                 bullet.GetComponent<Rigidbody2D>().AddForce(addForceVector);
             })
             .AppendInterval(0.1f)
