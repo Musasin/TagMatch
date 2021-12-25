@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndingCamera : MonoBehaviour
+public class AutoMoveCamera : MonoBehaviour
 {
-    const float CAMERA_MOVE_SPEED = 5.0f;
+    public float CAMERA_MOVE_SPEED = 5.0f;
 
     // Start is called before the first frame update
     void Start()

@@ -424,6 +424,7 @@ public class Talk: MonoBehaviour
                 scenario.Clear();
                 return;
             case "scene_change":
+                AudioManager.Instance.StopSE();
                 StaticValues.isReloadACB = scenario[nowKey.ToString()].main == "unreload" ? false : true;
                 if (StaticValues.isExMode)
                 {
