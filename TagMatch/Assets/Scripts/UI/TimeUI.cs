@@ -16,7 +16,7 @@ public class TimeUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!StaticValues.isPause)
+        if (!StaticValues.isPause && !StaticValues.isTalkPause)
         {
             StaticValues.time += Time.deltaTime;
         }
