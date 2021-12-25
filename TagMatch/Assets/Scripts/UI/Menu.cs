@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -31,10 +28,14 @@ public class Menu : MonoBehaviour
     Vector2 cursorDefaultPos, volumeCursorDefaultPos, returnTitleCursorDefaultPos;
     Text bgmVolumeText, seVolumeText, voiceVolumeText;
     float closeTime;
+    private int volumeWaitFlame;
+    private int beforeInputHorSign;
 
     // Start is called before the first frame update
     void Start()
     {
+        volumeWaitFlame = 0;
+        beforeInputHorSign = 0;
         StaticValues.LoadVolume();
         anim = GetComponent<Animator>();
         menuState = MenuState.CLOSED;
@@ -157,36 +158,55 @@ public class Menu : MonoBehaviour
                     volumeCursor.transform.localPosition = new Vector2(volumeCursorDefaultPos.x, volumeCursorDefaultPos.y - (50 * (int)volumeNowSelection) - (volumeNowSelection == VolumeList.CLOSE ? 50 : 0));
                 }
 
-
-                if (Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Horizontal") > 0)
+                var inputHor = Input.GetAxisRaw("Horizontal");
+                var inputSign = System.Math.Sign((int)inputHor);
+                if ((inputHor < 0 || 0 < inputHor) && beforeInputHorSign != inputSign)
                 {
+                    var delta = 0.1f * (float)inputSign;
                     switch (volumeNowSelection)
                     {
                         case VolumeList.BGM:
-                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.bgmVolume -= 0.01f;
-                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.bgmVolume += 0.01f;
+                            StaticValues.bgmVolume += delta;
                             StaticValues.bgmVolume = Mathf.Clamp(StaticValues.bgmVolume, 0, 1.0f);
                             StaticValues.SaveVolume();
+                            volumeWaitFlame = 0;
                             break;
                         case VolumeList.SE:
-                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.seVolume -= 0.01f;
-                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.seVolume += 0.01f;
+                            StaticValues.seVolume += delta;
                             StaticValues.seVolume = Mathf.Clamp(StaticValues.seVolume, 0, 1.0f);
                             StaticValues.SaveVolume();
-                            if (Mathf.Floor(StaticValues.seVolume * 100) % 3 == 0) AudioManager.Instance.PlaySE("select");
                             break;
                         case VolumeList.VOICE:
-                            if (Input.GetAxisRaw("Horizontal") < 0) StaticValues.voiceVolume -= 0.01f;
-                            else if (Input.GetAxisRaw("Horizontal") > 0) StaticValues.voiceVolume += 0.01f;
+                            StaticValues.voiceVolume += delta;
                             StaticValues.voiceVolume = Mathf.Clamp(StaticValues.voiceVolume, 0, 1.0f);
                             StaticValues.SaveVolume();
-                            if (Mathf.Floor(StaticValues.voiceVolume * 100) % 3 == 0) AudioManager.Instance.PlaySE("yukari_dash");
                             break;
                         case VolumeList.CLOSE:
                             break;
                     }
+                    beforeInputHorSign = inputSign;
                 }
-                
+                if(inputHor == 0){
+                    beforeInputHorSign = 0;
+                }
+
+                if (volumeNowSelection == VolumeList.SE)
+                {
+                    if (volumeWaitFlame++ >= 200)
+                    {
+                        AudioManager.Instance.PlaySE("coin");
+                        volumeWaitFlame = 0;
+                    }
+                }
+                else if (volumeNowSelection == VolumeList.VOICE)
+                {
+                    if (volumeWaitFlame++ >= 200)
+                    {
+                        AudioManager.Instance.PlaySE("yukari_dash");
+                        volumeWaitFlame = 0;
+                    }
+                }
+
                 bgmVolumeText.text = Mathf.Floor(StaticValues.bgmVolume * 100).ToString() + "％";
                 seVolumeText.text = Mathf.Floor(StaticValues.seVolume * 100).ToString() + "％";
                 voiceVolumeText.text = Mathf.Floor(StaticValues.voiceVolume * 100).ToString() + "％";
