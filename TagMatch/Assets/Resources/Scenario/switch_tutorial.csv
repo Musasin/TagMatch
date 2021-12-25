@@ -3,7 +3,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 2,instantiate,maki,left,,,,,,,,,1,
 3,talk,yukari,left,むむっ！\n壁の向こうから攻撃してくるとは！,,anger,normal,laugh,,,,0,yukari-12
 4,talk,maki,left,任せて！\n私の攻撃は壁や敵を突き抜けるよ！,,normal,smile,laugh,,,,0,maki-8
-5,talk,yukari,left,ではお任せするとしましょう。\nやっちゃってください！,,normal,close,omega,,,,0,yukari-13
+5,talk,yukari,left,では\nお任せするとしましょう\nやっちゃってください！,,normal,close,omega,,,,0,yukari-13
 6,talk,maki,left,よしきた！,,normal,normal,laugh,,,,0,maki-9
 7,talk,yukari,left,その間ゆかりさんは出番に\n備えておきましょうかね,,normal,normal,omega,,,,0,yukari-14
 8,talk,,center,控えにいると、\n少しずつMPが回復します,,,,,,,,0,

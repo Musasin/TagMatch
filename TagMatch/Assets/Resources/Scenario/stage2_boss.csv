@@ -11,10 +11,10 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 10,name_plate,aoi,right,琴葉姉妹次女 姉が大好き,,,,,,,,1,
 11,talk,aoi,right,そちらこそ、\n即興のタッグですか？,,anger,half_open,mu,,,,0,aoi-3
 12,talk,maki,left,即興とは失礼な、\n私達だって負けてないよ！,,anger,normal,laugh,,,,0,maki-17
-13,talk,yukari,left,年季の入った\nコンビネーションを見せて差し上げましょう,,normal,close,laugh,,,,0,yukari-25
+13,talk,yukari,left,年季の入った\nコンビネーションを\n見せて差し上げましょう,,normal,close,laugh,,,,0,yukari-25
 14,talk,akane,right,琴葉姉妹にタッグで勝負を\n仕掛けるとは、いい度胸やな,,anger,normal,nisisi,,,,0,akane-5
 15,play_bgm,,,boss,,,,,,,,1,
-16,talk,akane,right,いっちょ見せたろうやないか！ \n行くで葵ちゃん！,,anger,normal,laugh,,,,0,akane-6
+16,talk,akane,right,いっちょ\n見せたろうやないか！ \n行くで葵ちゃん！,,anger,normal,laugh,,,,0,akane-6
 17,talk,aoi,right,うん！お姉ちゃん！,,normal,smile,laugh,,,,0,aoi-4
 18,out,yukari,left,,,,,,,,,1,
 19,out,maki,left,,,,,,,,,1,
