@@ -175,19 +175,19 @@ public class Frimomen : BossAIBase
             {
                 isRightCannonSummoned = true;
                 GameObject.Find("cannonR").GetComponent<Cannon>().In();
-                AudioManager.Instance.PlaySE("buon");
+                AudioManager.Instance.PlaySE("summon_canon_R");
             }
             if (IsLifeTwoThirds() && !isLeftCannonSummoned)
             {
                 isLeftCannonSummoned = true;
                 GameObject.Find("cannonL").GetComponent<Cannon>().In();
-                AudioManager.Instance.PlaySE("buon");
+                AudioManager.Instance.PlaySE("summon_canon_L");
             }
             if (IsLifeHalf() && !isCenterCannonSummoned)
             {
                 isCenterCannonSummoned = true;
                 GameObject.Find("cannonT").GetComponent<Cannon>().In();
-                AudioManager.Instance.PlaySE("buon");
+                AudioManager.Instance.PlaySE("summon_canon_C");
             }
         }
 
