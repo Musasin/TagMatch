@@ -459,6 +459,9 @@ public class Talk: MonoBehaviour
             case "support_on": // フリモメン第二形態専用
                 GameObject.Find("SupportBullet").GetComponent<SupportBulletCreater>().SetEnabled(true);
                 break;
+            case "epilogue_step": // エピローグ専用
+                GameObject.Find("Camera").GetComponent<Epilogue>().Step();
+                break;
             case "close_window":
                 CloseWindow();
                 break;
