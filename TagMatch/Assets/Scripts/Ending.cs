@@ -8,7 +8,7 @@ public class Ending : MonoBehaviour
 {
     Animator anim;
     bool canChangeScene;
-    TextMeshProUGUI timeText, coinText, deadText, calcText, scoreText, skipText, playNextText;
+    TextMeshProUGUI modeText, timeText, coinText, maxCoinText, deadText, calcText, scoreText, skipText, playNextText;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +19,18 @@ public class Ending : MonoBehaviour
         AudioManager.Instance.LoadACB("Ending", "Ending.acb", "Ending.awb");
         AudioManager.Instance.PlayBGM("ending");
         
+        modeText = GameObject.Find("ModeText").GetComponent<TextMeshProUGUI>();
         timeText = GameObject.Find("TimeText").GetComponent<TextMeshProUGUI>();
         coinText = GameObject.Find("CoinText").GetComponent<TextMeshProUGUI>();
+        maxCoinText = GameObject.Find("MaxCoinText").GetComponent<TextMeshProUGUI>();
         deadText = GameObject.Find("DeadText").GetComponent<TextMeshProUGUI>();
         calcText = GameObject.Find("CalcText").GetComponent<TextMeshProUGUI>();
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         skipText = GameObject.Find("SkipText").GetComponent<TextMeshProUGUI>();
         playNextText = GameObject.Find("PlayNextText").GetComponent<TextMeshProUGUI>();
-        
+
+        modeText.text = StaticValues.isHardMode ? "持たざる者モード\nx2" : (StaticValues.isExMode ? "全力バトルモード\nx1.5" : ""); 
+
         int intTime = (int)StaticValues.time;
         int min = intTime / 60;
         int sec = intTime % 60;
@@ -35,12 +39,15 @@ public class Ending : MonoBehaviour
         timeText.text = strMin + ":" + strSec;
         
         coinText.text = StaticValues.maxCoinCount.ToString() + "枚";
+        maxCoinText.text = StaticValues.isExMode ? "/0" : "/3000";
         deadText.text = StaticValues.deadCount.ToString() + "回";
         
         int timeScore = Mathf.Max(0, 7200 - intTime) * 100;
         int coinScore = StaticValues.maxCoinCount * 100;
-        int deadScore = StaticValues.deadCount * 2000;
-        int totalScore = timeScore + coinScore - deadScore;
+        int deadScore = StaticValues.deadCount * 5000;
+        float totalScoreF = timeScore + coinScore - deadScore;
+        totalScoreF *= StaticValues.isHardMode ? 2 : (StaticValues.isExMode ? 1.5f : 1);
+        int totalScore = (int)Mathf.Floor(totalScoreF);
         
         calcText.text = "Time: +" + timeScore.ToString() + "\n";
         calcText.text += "Coin: +" + coinScore.ToString() + "\n";
