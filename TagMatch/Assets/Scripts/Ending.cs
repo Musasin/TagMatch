@@ -28,6 +28,7 @@ public class Ending : MonoBehaviour
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         skipText = GameObject.Find("SkipText").GetComponent<TextMeshProUGUI>();
         playNextText = GameObject.Find("PlayNextText").GetComponent<TextMeshProUGUI>();
+        GameObject.Find("OpenExText").SetActive(!StaticValues.isExMode);
 
         modeText.text = StaticValues.isHardMode ? "持たざる者モード\nx2" : (StaticValues.isExMode ? "全力バトルモード\nx1.5" : ""); 
 
