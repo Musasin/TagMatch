@@ -5443,7 +5443,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1605027654}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -34661,8 +34661,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1972180047}
-  - {fileID: 182675685}
   - {fileID: 1990667524}
+  - {fileID: 182675685}
   m_Father: {fileID: 1917615032}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49978,7 +49978,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1605027654}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -50835,6 +50835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083455577dd7946b38e13f1d937d7ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CAMERA_MOVE_SPEED: 5
 --- !u!4 &2087695753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1192988870680938800, guid: c14d609d2c345445ca96843cb0af6cb9,

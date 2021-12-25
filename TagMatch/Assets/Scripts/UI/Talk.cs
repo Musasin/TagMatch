@@ -109,6 +109,8 @@ public class Talk: MonoBehaviour
             AudioManager.Instance.PlayBGM("frimomen2nd_talk");
         else if (sceneName == "Stage6-FM" || sceneName == "Stage6-FY")
             AudioManager.Instance.PlayBGM("frimomen1st_talk");
+        else if (sceneName == "Epilogue-M" || sceneName == "Epilogue-Y")
+            { } // エピローグではエンディング用の曲を流しっぱなしで始める
         else if (AudioManager.Instance.lastPlayedBGM != "stage")
             AudioManager.Instance.PlayBGM("stage");
 
