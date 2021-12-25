@@ -9,14 +9,14 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 8,talk,itako,right,なんとか合流できましたの,,sad,close,cat,spirit_normal,breath,,0,itako-19
 9,instantiate,zunko,right,,,,,,,,,1,
 10,talk,zunko,right,次は負けませんよ！,,anger,half_open,mu,,,,0,zunko-8
-11,talk,yukari,left,実際のとこ\n再戦は有りなんですか?!,,anger,half_open,cat,sweat,,,0,
+11,talk,yukari,left,実際のとこ\n再戦は有りなんですか?!,,anger,half_open,cat,,,sweat,0,
 12,talk,kiritan,right,もちろん、\nリタイアに関する規約も特にありませんでしたからね！,,anger,half_open,laugh,,,,0,kiritan-16
 13,talk,maki,left,ガバガバなルールだなぁ,,sad,normal,laugh,,,,0,
 14,talk,zunko,right,ともかく！\nここまで来て勝ちを譲る気はありません！,,anger,normal,oxtu,,,,0,zunko-9
 15,talk,itako,right,三人揃った東北姉妹の力、\nお見せして差し上げましょう,,anger,half_open,omega,spirit_anger,nothing,,0,itako-20
 16,talk,yukari,left,くっ...\nゴネてもどうにもならなそうですね,,anger,normal,laugh,,,,0,
 17,talk,maki,left,覚悟を決めよう！\n準備はいい？,,anger,normal,laugh,,,,0,
-18,talk,yukari,left,もちろんです！\nやることは変わりませんからね！,,anger,close,omega,nothing,,,0,
+18,talk,yukari,left,もちろんです！\nやることは変わりませんからね！,,anger,close,omega,,,nothing,0,
 19,play_bgm,,,boss,,,,,,,,1,
 20,talk,itako,right,さあ！\nずんちゃん！きりちゃん！\n行きますわよ！,,anger,normal,cat,spirit_anger,,,0,itako-21
 21,talk,kiritan,right,合点！\n砲撃用意！,kiritan2,nothing,nothing,nothing,,,,0,kiritan-17
