@@ -207,9 +207,9 @@ public class Menu : MonoBehaviour
                     }
                 }
 
-                bgmVolumeText.text = Mathf.Floor(StaticValues.bgmVolume * 100).ToString() + "％";
-                seVolumeText.text = Mathf.Floor(StaticValues.seVolume * 100).ToString() + "％";
-                voiceVolumeText.text = Mathf.Floor(StaticValues.voiceVolume * 100).ToString() + "％";
+                bgmVolumeText.text = (Mathf.Round(StaticValues.bgmVolume * 10) * 10).ToString() + "％";
+                seVolumeText.text = (Mathf.Round(StaticValues.seVolume * 10 ) * 10).ToString() + "％";
+                voiceVolumeText.text = (Mathf.Round(StaticValues.voiceVolume * 10) * 10).ToString() + "％";
 
                 AxisDownChecker.AxisDownUpdate();
                 break;
