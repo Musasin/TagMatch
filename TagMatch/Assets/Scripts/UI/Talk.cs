@@ -86,6 +86,7 @@ public class Talk: MonoBehaviour
         
         string sceneName = SceneManager.GetActiveScene().name;
         string acbName = sceneName.Split('-')[0];
+        if (acbName == "Epilogue") acbName = "Ending"; // エピローグはエンディングと共通のacbを使う
         LoadACB(acbName, acbName + ".acb", acbName + ".awb");
 
 
@@ -106,13 +107,21 @@ public class Talk: MonoBehaviour
         AddChraObject("mob3", mob3Prefab);
 
         if (sceneName == "Stage6-F2")
+        {
             AudioManager.Instance.PlayBGM("frimomen2nd_talk");
+        }
         else if (sceneName == "Stage6-FM" || sceneName == "Stage6-FY")
+        {
             AudioManager.Instance.PlayBGM("frimomen1st_talk");
+        }
         else if (sceneName == "Epilogue-M" || sceneName == "Epilogue-Y")
-            { } // エピローグではエンディング用の曲を流しっぱなしで始める
+        {
+            if (AudioManager.Instance.lastPlayedBGM != "ending") AudioManager.Instance.PlayBGM("ending");
+        }
         else if (AudioManager.Instance.lastPlayedBGM != "stage")
+        {
             AudioManager.Instance.PlayBGM("stage");
+        }
 
         StaticValues.Save();
     }
