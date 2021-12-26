@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: MochiFuwa
-  productName: TagMatch
+  companyName: "\u3082\u3061\u3075\u308F\u98DF\u611F"
+  productName: "\u3086\u304B\u30DE\u30AD\u30BF\u30C3\u30B0\u30DE\u30C3\u30C1!!"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}

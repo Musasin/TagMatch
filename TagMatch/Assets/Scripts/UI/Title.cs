@@ -12,7 +12,7 @@ public class Title : MonoBehaviour
     Image fadePanel;
     GameObject titleCursor;
     GameObject optionCursor, optionLeftCursor, optionRightCursor, levelSelectCursor;
-    Text bgmVolumeText, seVolumeText, voiceVolumeText, levelDescriptionText;
+    Text bgmVolumeText, seVolumeText, voiceVolumeText, levelDescriptionText, windowSizeText;
     Vector2 titleCursorDefaultPos;
     Vector2 optionCursorDefaultPos;
     Vector2 levelSelecrCursorDefaultPos;
@@ -71,6 +71,7 @@ public class Title : MonoBehaviour
         seVolumeText = GameObject.Find("SEVolume").GetComponent<Text>();
         voiceVolumeText = GameObject.Find("VoiceVolume").GetComponent<Text>();
         levelDescriptionText = GameObject.Find("LevelDescriptionText").GetComponent<Text>();
+        windowSizeText = GameObject.Find("WindowSize").GetComponent<Text>();
         
         if (StaticValues.isReloadACB == false) { return; }
         AudioManager.Instance.LoadACB("Title", "Title.acb", "Title.awb");
@@ -283,6 +284,11 @@ public class Title : MonoBehaviour
                     var delta = 0.1f * (float)inputSign;
                     switch (optionSelection)
                     {
+                        case OptionList.WINDOW_SIZE:
+                            nowSelectionWindowSize += inputSign;
+                            nowSelectionWindowSize = (int)Mathf.Clamp(nowSelectionWindowSize, 0, 3);
+                            break;
+
                         case OptionList.BGM:
                             StaticValues.bgmVolume += delta;
                             StaticValues.bgmVolume = Mathf.Clamp(StaticValues.bgmVolume, 0, 1.0f);
@@ -327,13 +333,27 @@ public class Title : MonoBehaviour
                 seVolumeText.text = (Mathf.Round(StaticValues.seVolume * 10 ) * 10).ToString() + "％";
                 voiceVolumeText.text = (Mathf.Round(StaticValues.voiceVolume * 10) * 10).ToString() + "％";
 
+                switch (nowSelectionWindowSize)
+                {
+                    case 0:
+                        windowSizeText.text = "512 x 384";
+                        break;
+                    case 1:
+                        windowSizeText.text = "1024 x 768";
+                        break;
+                    case 2:
+                        windowSizeText.text= "2048 x 1536";
+                        break;
+                    case 3:
+                        windowSizeText.text = "FULL SCREEN";
+                        break;
+                }
 
                 AxisDownChecker.AxisDownUpdate();
 
 
                 if (KeyConfig.GetJumpKeyDown())
                 {
-                    AudioManager.Instance.PlaySE("accept");
                     switch (optionSelection)
                     {
                         case OptionList.WINDOW_SIZE:
@@ -343,11 +363,20 @@ public class Title : MonoBehaviour
                         case OptionList.VOICE:
                             break;
                         case OptionList.KEY_CONFIG:
+                            AudioManager.Instance.PlaySE("accept");
                             titleState = TitleState.KEY_CONFIG;
                             keyConfigUIScript.StartConfig();
                             break;
                         case OptionList.CLOSE:
+                            AudioManager.Instance.PlaySE("accept");
                             titleState = TitleState.TITLE;
+                            
+                            if (!PlayerPrefs.HasKey("WindowSize") || PlayerPrefs.GetInt("WindowSize") != nowSelectionWindowSize)
+                            {
+                                ResetWindowSize();
+                                PlayerPrefs.SetInt("WindowSize", nowSelectionWindowSize);
+                                SceneManager.LoadScene("Title");
+                            }
                             break;
                     }
                 }
