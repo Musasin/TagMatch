@@ -182,5 +182,14 @@ public class KeyConfigUI : MonoBehaviour
     public void ResetConfig()
     {
         KeyConfig.Reset();
+        jumpKey = KeyConfig.jumpKey;
+        shotKey = KeyConfig.shotKey;
+        switchKey = KeyConfig.switchKey;
+        menuKey = KeyConfig.menuKey;
+        
+        GameObject.Find("JumpKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(jumpKey);
+        GameObject.Find("ShotKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(shotKey);
+        GameObject.Find("SwitchKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(switchKey);
+        GameObject.Find("MenuKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(menuKey);
     }
 }
