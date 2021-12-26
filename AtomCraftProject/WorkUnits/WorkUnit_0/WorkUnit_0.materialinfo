@@ -84,6 +84,7 @@
           <Orca OrcaName="frimomen_throw.wav" Channels="2" EncodeFileSize="20556" ReloopEnd="72000" ResamplingRate="48000" SampleFrames="30000" SamplingRate="48000" SourceFileSize="120702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="spore.wav" Channels="2" EncodeFileSize="28740" ReloopEnd="54000" ResamplingRate="48000" SampleFrames="42000" SamplingRate="48000" SourceFileSize="168702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="bone_throw1.wav" Channels="2" EncodeFileSize="28740" ReloopEnd="42000" ResamplingRate="48000" SampleFrames="42000" SamplingRate="48000" SourceFileSize="168702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="quake_end.wav" Channels="2" ReloopEnd="144000" ResamplingRate="48000" SampleFrames="144000" SamplingRate="48000" SourceFileSize="576702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="VOICE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="Kotonoha" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
@@ -608,7 +609,7 @@
             <Orca OrcaName="yukari-97.wav" Channels="1" EncodeFileSize="71024" ReloopEnd="212639" ResamplingRate="44100" SampleFrames="212639" SamplingRate="44100" SourceFileSize="425322" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="yukari-98.wav" Channels="1" EncodeFileSize="32491" ReloopEnd="97150" ResamplingRate="44100" SampleFrames="97150" SamplingRate="44100" SourceFileSize="194344" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="yukari-99.wav" Channels="1" EncodeFileSize="52269" ReloopEnd="155867" ResamplingRate="44100" SampleFrames="155867" SamplingRate="44100" SourceFileSize="311778" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
-            <Orca OrcaName="yukari-134.wav" Channels="1" EncodeFileSize="27376" ReloopEnd="80918" ResamplingRate="44100" SampleFrames="80918" SamplingRate="44100" SourceFileSize="161880" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="yukari-134-0.wav" Channels="1" EncodeFileSize="27376" ReloopEnd="80918" ResamplingRate="44100" SampleFrames="80918" SamplingRate="44100" SourceFileSize="161880" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           </Orca>
         </Orca>
       </Orca>
