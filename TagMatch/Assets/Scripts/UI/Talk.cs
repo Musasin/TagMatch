@@ -1,12 +1,10 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using System.IO;
-using DG.Tweening;
-using TMPro;
-using UnityEngine.SceneManagement;
 using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Talk: MonoBehaviour
 {
@@ -418,6 +416,10 @@ public class Talk: MonoBehaviour
                         if (scenario[nowKey.ToString()].text == "isQuake")
                         {
                             AudioManager.Instance.PlaySE("Quake");
+                        }
+                        else if (scenario[nowKey.ToString()].text == "isFall")
+                        {
+                            AudioManager.Instance.PlaySE("Quake_End");
                         }
                     }
                 }
