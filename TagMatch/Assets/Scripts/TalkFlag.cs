@@ -18,8 +18,16 @@ public class TalkFlag : MonoBehaviour
         talkScript = GameObject.Find("TalkUI").GetComponent<Talk>();
         if (isForcePlay)
         {
-            // 発火前に動かれないように止めておく
-            StaticValues.isTalkPause = true;
+            if(StaticValues.isExMode)
+            {
+                // EXモード中は即発火
+                talkScript.SetScenario(scenarioFileName, false);
+                Destroy(gameObject);
+            } else
+            {
+                // 発火前に動かれないように止めておく
+                StaticValues.isTalkPause = true;
+            }
         }
     }
 
