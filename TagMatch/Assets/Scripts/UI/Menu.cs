@@ -262,7 +262,7 @@ public class Menu : MonoBehaviour
         yukariStatusText.text += "MP: " + StaticValues.yukariMP + "/" + StaticValues.yukariMaxMP + "\n";
         yukariStatusText.text += "武器: スターシューター\n";
         yukariStatusText.text += "威力: " + (int)(10 * StaticValues.yukariAttackRatio) + "\n";
-        yukariStatusText.text += "連射数: 5\n";
+        yukariStatusText.text += "連射数: 4\n";
         
         makiStatusText.text = "　　　【STATUS】\n";
         makiStatusText.text += "HP: " + StaticValues.makiHP + "/" + StaticValues.makiMaxHP + "\n";
