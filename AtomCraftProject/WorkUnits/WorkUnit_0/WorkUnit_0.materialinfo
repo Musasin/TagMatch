@@ -70,7 +70,7 @@
           <Orca OrcaName="ghost_sound.wav" Channels="2" Comment="効果音ラボ" EncodeFileSize="235386" ReloopEnd="393984" ResamplingRate="44100" SampleFrames="384000" SamplingRate="48000" SourceFileSize="1536702" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="YukariShotExp2.wav" Channels="1" EncodeFileSize="5552" ReloopEnd="23723" ResamplingRate="44100" SampleFrames="23723" SamplingRate="44100" SourceFileSize="47574" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="kotonoha_warp.wav" Channels="2" EncodeFileSize="44426" ReloopEnd="66406" ResamplingRate="44100" SampleFrames="66406" SamplingRate="44100" SourceFileSize="265848" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
-          <Orca OrcaName="generate_shot.wav" Channels="2" EncodeFileSize="34878" ReloopEnd="62648" ResamplingRate="44100" SampleFrames="62648" SamplingRate="44100" SourceFileSize="250720" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="generate_shot.wav" Channels="2" EncodeFileSize="42380" ReloopEnd="62648" ResamplingRate="44100" SampleFrames="62648" SamplingRate="44100" SourceFileSize="250720" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="generate_wepon.wav" Channels="2" EncodeFileSize="31468" ReloopEnd="54716" ResamplingRate="44100" SampleFrames="54716" SamplingRate="44100" SourceFileSize="218992" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="akane_burning_base.wav" Channels="2" EncodeFileSize="18510" ReloopEnd="33701" ResamplingRate="44100" SampleFrames="26810" SamplingRate="44100" SourceFileSize="107368" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="player_getoff_hold.wav" Channels="1" EncodeFileSize="1460" ReloopEnd="3636" ResamplingRate="44100" SampleFrames="3636" SamplingRate="44100" SourceFileSize="7400" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
@@ -609,7 +609,7 @@
             <Orca OrcaName="yukari-97.wav" Channels="1" EncodeFileSize="71024" ReloopEnd="212639" ResamplingRate="44100" SampleFrames="212639" SamplingRate="44100" SourceFileSize="425322" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="yukari-98.wav" Channels="1" EncodeFileSize="32491" ReloopEnd="97150" ResamplingRate="44100" SampleFrames="97150" SamplingRate="44100" SourceFileSize="194344" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
             <Orca OrcaName="yukari-99.wav" Channels="1" EncodeFileSize="52269" ReloopEnd="155867" ResamplingRate="44100" SampleFrames="155867" SamplingRate="44100" SourceFileSize="311778" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
-            <Orca OrcaName="yukari-134-0.wav" Channels="1" EncodeFileSize="27376" ReloopEnd="80918" ResamplingRate="44100" SampleFrames="80918" SamplingRate="44100" SourceFileSize="161880" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+            <Orca OrcaName="yukari-134.wav" Channels="1" EncodeFileSize="27376" ReloopEnd="80918" ResamplingRate="44100" SampleFrames="80918" SamplingRate="44100" SourceFileSize="161880" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           </Orca>
         </Orca>
       </Orca>
