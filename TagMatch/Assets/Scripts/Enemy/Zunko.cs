@@ -1,8 +1,6 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using DG.Tweening;
 
 public class Zunko : BossAIBase
 {
@@ -448,6 +446,7 @@ public class Zunko : BossAIBase
         holdingArrow.transform.localPosition = Vector2.zero;
         holdingArrow.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, rotateZ));
         holdingArrow.transform.localScale = new Vector2(1, 1);
+        AudioManager.Instance.PlaySE(IsLifeHalf() ? "draw_bow_speedup" : "draw_bow_normal");
         return holdingArrow;
     }
 
@@ -466,5 +465,6 @@ public class Zunko : BossAIBase
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.None;
         rb.AddForce(force);
+        AudioManager.Instance.PlaySE("arrow");
     }
 }
