@@ -713,6 +713,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 860680688216944620}
     m_Modifications:
+    - target: {fileID: 3422554867392138433, guid: a731979e87c7941ce8fd9d5e3532462a,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u3000\u3000\u3000\u3010STATUS\u3011\nHP: 100/100\nMP: 100/100\n\u6B66\u5668:
+        \u30B9\u30BF\u30FC\u30B7\u30E5\u30FC\u30BF\u30FC\n\u5A01\u529B: 10\n\u9023\u5C04\u6570:
+        4"
+      objectReference: {fileID: 0}
     - target: {fileID: 3422554868069987710, guid: a731979e87c7941ce8fd9d5e3532462a,
         type: 3}
       propertyPath: m_Name

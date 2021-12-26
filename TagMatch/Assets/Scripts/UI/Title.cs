@@ -21,6 +21,8 @@ public class Title : MonoBehaviour
     private int volumeWaitFlame;
     private int beforeInputHorSign;
 
+    int nowSelectionWindowSize;
+
     enum TitleState
     {
         FADE_IN, TITLE, NEW_GAME_SELECT, EX_MODE_SELECT, OPTION, KEY_CONFIG, FADE_OUT, EXIT
@@ -44,6 +46,12 @@ public class Title : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.HasKey("WindowSize"))
+            nowSelectionWindowSize = PlayerPrefs.GetInt("WindowSize");
+        else
+            nowSelectionWindowSize = 1;
+
+
         StaticValues.LoadIsCleared();
         StaticValues.LoadVolume();
         time = 0;
@@ -79,6 +87,28 @@ public class Title : MonoBehaviour
         if (StaticValues.isCleared)
         {
             GameObject.Find("EXModeText").GetComponent<TextMeshProUGUI>().color = new Vector4(0, 0, 0, 1);
+        }
+    }
+    
+    void ResetWindowSize()
+    {
+        switch (nowSelectionWindowSize)
+        {
+            case 0:
+                Screen.SetResolution(512, 384, false, 60);
+                break;
+            case 1:
+                Screen.SetResolution(1024, 768, false, 60);
+                break;
+            case 2:
+                Screen.SetResolution(2048, 1536, false, 60);
+                break;
+            case 3:
+                Screen.SetResolution(1024, 768, true, 60);
+                break;
+            default:
+                Screen.SetResolution(1024, 768, false, 60);
+                break;
         }
     }
 

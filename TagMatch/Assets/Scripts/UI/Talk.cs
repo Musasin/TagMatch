@@ -14,7 +14,8 @@ public class Talk: MonoBehaviour
     public GameObject leftWindow, rightWindow, angerLeftWindow, angerRightWindow, centerWindow;
     public GameObject leftNamePlate, rightNamePlate;
     public GameObject talkFlash, whiteOutPanel;
-
+    
+    CanvasScreenAutoFix canvasScreenAutoFix;
     WipePanel wipePanel;
     GameObject nowWindow, beforeWindow1, beforeWindow2;
     GameObject namePlate;
@@ -82,6 +83,7 @@ public class Talk: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvasScreenAutoFix = GameObject.Find("Canvas").GetComponent<CanvasScreenAutoFix>();
         wipePanel = GameObject.Find("WipePanel").GetComponent<WipePanel>();
         
         string sceneName = SceneManager.GetActiveScene().name;
@@ -509,11 +511,11 @@ public class Talk: MonoBehaviour
     void CloseWindow()
     {
         if (beforeWindow2 != null)
-            beforeWindow2.GetComponent<Transform>().DOMove(new Vector2(beforeWindow2.GetComponent<Transform>().position.x, 800), 0.3f);
+            beforeWindow2.GetComponent<Transform>().DOMove(new Vector2(beforeWindow2.GetComponent<Transform>().position.x, 800 * canvasScreenAutoFix.GetScaleRatio()), 0.3f);
         if (beforeWindow1 != null)
-            beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800), 0.3f);
+            beforeWindow1.GetComponent<Transform>().DOMove(new Vector2(beforeWindow1.GetComponent<Transform>().position.x, 800 * canvasScreenAutoFix.GetScaleRatio()), 0.3f);
         if (nowWindow != null)
-            nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800), 0.3f);
+            nowWindow.GetComponent<Transform>().DOMove(new Vector2(nowWindow.GetComponent<Transform>().position.x, 800 * canvasScreenAutoFix.GetScaleRatio()), 0.3f);
         if (namePlate != null) 
             Destroy(namePlate);
     }
@@ -532,13 +534,13 @@ public class Talk: MonoBehaviour
         if (beforeWindow1 != null)
         {
             Transform tr = beforeWindow1.GetComponent<Transform>();
-            tr.DOMove(new Vector2(tr.position.x, tr.position.y + 200), 0.3f);
+            tr.DOMove(new Vector2(tr.position.x, tr.position.y + (200 * canvasScreenAutoFix.GetScaleRatio())), 0.3f);
             beforeWindow1.GetComponentInChildren<Animator>().SetInteger("state", 1);
         }
         if (beforeWindow2 != null)
         {
             Transform tr = beforeWindow2.GetComponent<Transform>();
-            tr.DOMove(new Vector2(tr.position.x, tr.position.y + 200), 0.3f);
+            tr.DOMove(new Vector2(tr.position.x, tr.position.y + (200 * canvasScreenAutoFix.GetScaleRatio())), 0.3f);
             beforeWindow2.GetComponentInChildren<Animator>().SetInteger("state", 2);
         }
     }
