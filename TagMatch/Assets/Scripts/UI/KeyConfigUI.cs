@@ -36,6 +36,11 @@ public class KeyConfigUI : MonoBehaviour
         cursor = GameObject.Find("KeyConfigCursor");
         cursorDefaultPos = cursor.transform.localPosition;
         descriptionText = GameObject.Find("DescriptionText").GetComponent<Text>();
+        
+        jumpKey = KeyConfig.jumpKey;
+        shotKey = KeyConfig.shotKey;
+        switchKey = KeyConfig.switchKey;
+        menuKey = KeyConfig.menuKey;
 
         KeyConfig.Load();
         GameObject.Find("JumpKey").GetComponent<Text>().text = KeyConfig.GetTextFromKeyCode(KeyConfig.jumpKey);
