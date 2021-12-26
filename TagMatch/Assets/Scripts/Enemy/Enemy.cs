@@ -85,6 +85,19 @@ public class Enemy : EnemyBase
             return;
         }
 
+        // コウモリ以外の三種エネミーは落下地点より下に行ったら自動的に死なす
+        if (transform.position.y < -6.5f && (type == "slime" || type == "skeleton" || type == "kinoko"))
+        {
+            base.SetInvincible(0);
+            isDead = true;
+            bc.enabled = false;
+            damageCollider.enabled = false;
+            if (attackSequence != null)
+            {
+                attackSequence.Kill();
+            }
+        }
+
         anim.SetBool("isKnockBack", isKnockBack);
         if (isKnockBack) // 被ダメージ硬直
         {
