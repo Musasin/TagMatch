@@ -73,22 +73,24 @@ public class Title : MonoBehaviour
         levelDescriptionText = GameObject.Find("LevelDescriptionText").GetComponent<Text>();
         windowSizeText = GameObject.Find("WindowSize").GetComponent<Text>();
         
-        if (StaticValues.isReloadACB == false) { return; }
-        AudioManager.Instance.LoadACB("Title", "Title.acb", "Title.awb");
-        StaticValues.isReloadACB = false;
-
-        StaticValues.isReloadACB = false;
-
         if (PlayerPrefs.HasKey("Scene"))
         {
             nowSelection = TitleList.CONTINUE;
             titleCursor.transform.localPosition = new Vector2(titleCursorDefaultPos.x, titleCursorDefaultPos.y - (67 * (int)nowSelection));
             GameObject.Find("ContinueText").GetComponent<TextMeshProUGUI>().color = new Vector4(0, 0, 0, 1);
         }
+
         if (StaticValues.isCleared)
         {
             GameObject.Find("EXModeText").GetComponent<TextMeshProUGUI>().color = new Vector4(0, 0, 0, 1);
         }
+
+        if (StaticValues.isReloadACB)
+        {
+            AudioManager.Instance.LoadACB("Title", "Title.acb", "Title.awb");
+            StaticValues.isReloadACB = false;
+        }
+
     }
     
     void ResetWindowSize()
@@ -356,8 +358,6 @@ public class Title : MonoBehaviour
                 {
                     switch (optionSelection)
                     {
-                        case OptionList.WINDOW_SIZE:
-                            break;
                         case OptionList.BGM:
                         case OptionList.SE:
                         case OptionList.VOICE:
@@ -367,6 +367,7 @@ public class Title : MonoBehaviour
                             titleState = TitleState.KEY_CONFIG;
                             keyConfigUIScript.StartConfig();
                             break;
+                        case OptionList.WINDOW_SIZE:
                         case OptionList.CLOSE:
                             AudioManager.Instance.PlaySE("accept");
                             titleState = TitleState.TITLE;
