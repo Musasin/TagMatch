@@ -95,7 +95,7 @@ public class SupportBulletCreater : MonoBehaviour
             case ActionState.ZUNKO:
                 zunkoCount++;
                 if (zunkoCount % 3 == 1) AudioManager.Instance.PlayExVoice("zunko_attack", true);
-                AudioManager.Instance.PlaySE("swing");
+                AudioManager.Instance.PlaySE("arrow");
                 GameObject zb = Instantiate(zunkoBullet, transform.parent);
                 zb.transform.position = rightPos.transform.position;
                 zb.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1000, 0));
