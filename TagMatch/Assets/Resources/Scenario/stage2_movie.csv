@@ -1,7 +1,7 @@
 id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,play_next,voice
 1,instantiate,akane,right,,,,,,,,,1,
 2,instantiate,aoi,right,,,normal,normal,mu,,,,1,
-3,talk,akane,right,いやー、負けた負けた。完敗や,,normal,smile,laugh,,,,0,akane-8
+3,talk,akane,right,いやー、負けた負けた。\n完敗や,,normal,smile,laugh,,,,0,akane-8
 4,instantiate,yukari,left,,,,,,,,,1,
 5,instantiate,maki,left,,,normal,normal,omega,,,,1,
 6,talk,yukari,left,ふふふ、どんなもんですか,,normal,close,omega,,,,0,yukari-26

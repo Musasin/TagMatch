@@ -6,11 +6,11 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 5,talk,itako,right,煮るなり焼くなり\n好きにして下さいまし,,sad,close,triangle,spirit_sad,,,0,itako-10
 6,talk,yukari,left,別に取って食おうって\nわけじゃないんですがねぇ,,sad,close,laugh,,,,0,yukari-44
 7,talk,yukari,left,今はただはぐれた仲間と\n合流するために\n歩き回ってるだけです,,normal,normal,omega,,,,0,yukari-45
-8,talk,left_aoi,left,あと、\n私達は別に協力関係ってわけでもないです,,anger,half_open,mu,,,,0,aoi-20
+8,talk,left_aoi,left,あと、\n私達は別に協力関係って\nわけでもないです,,anger,half_open,mu,,,,0,aoi-20
 9,talk,itako,right,まあ！あたしったら\nとんだ勘違いを...,,anger,white,cat,spirit_normal,,,0,itako-11
-10,talk,yukari,left,そんなわけで迷子中なんですが、地上に戻れそうな道を\n知りませんか？,,sad,normal,laugh,,,,0,yukari-46
+10,talk,yukari,left,そんなわけで\n迷子中なんですが、\n地上に戻れそうな道を\n知りませんか？,,sad,normal,laugh,,,,0,yukari-46
 11,talk,itako,right,それが、実はあたしも\n同じような状況でして...,,sad,white_tears,omega,spirit_sad,,,0,itako-12
-12,talk,itako,right,ちょっと動物霊を降ろして知ってる子がいないか聞いてみますわね,,normal,normal,omega,spirit_normal,,,0,itako-13
+12,talk,itako,right,ちょっと動物霊を降ろして知ってる子がいないか\n聞いてみますわね,,normal,normal,omega,spirit_normal,,,0,itako-13
 13,talk,yukari,left,おお！さすがイタコ！,,anger,normal,laugh,,,,0,yukari-134
 14,talk,itako,right,むむむむ....,,anger,close,cat,nothing,,,0,itako-14
 15,talk,itako,right,あっちの方に...\n人でも登れるくらいの...\n緩やかな崖がある...にゃ,,anger,half_open,cat,nothing,,,0,itako-15

@@ -2,9 +2,9 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 1,instantiate,yukari,left,yukari,,,,,,,,1,
 2,instantiate,maki,left,maki,,,,,,,,1,
 3,talk,yukari,left,むむ。向こう岸が遠いですね,,anger,half_open,mu,,,,0,yukari-9
-4,talk,maki,left,ジャンプしても届かなさそうだね。\nどうしようか,,sad,normal,omega,,,,0,maki-6
+4,talk,maki,left,ジャンプしても\n届かなさそうだね\nどうしようか,,sad,normal,omega,,,,0,maki-6
 5,talk,yukari,left,周辺のコインを集めて、\nスキルを習得してみましょう,,normal,close,omega,,,,0,yukari-10
-6,talk,yukari,left,20枚もあれば私の\n「空中ダッシュ」が使えるようになるはずです,,normal,close,laugh,,,,0,yukari-11
+6,talk,yukari,left,20枚もあれば私の\n「空中ダッシュ」が\n使えるようになるはずです,,normal,close,laugh,,,,0,yukari-11
 7,talk,maki,left,そうだね！ メニューから\nスキルツリーを開いて、\nゆかりんの空中ダッシュを\n習得しよう！,,normal,smile,laugh,,,,0,maki-7
 8,out,yukari,left,yukari,,,,,,,,1,
 9,out,maki,left,maki,,,,,,,,1,

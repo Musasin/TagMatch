@@ -4,7 +4,7 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 3,instantiate,maki,left,,,,,,,,,1,
 4,talk,kiritan,right,ぐわー！,kiritan,sad,white_tears,laugh,,,,0,kiritan-11
 5,talk,yukari,left,っしゃあ！！,,anger,shock,laugh,,,,0,yukari-19
-6,talk,kiritan,right,小学生相手に2対1でボコボコにして、恥ずかしくないんですか！,,sad,white_tears,omega,,,,0,kiritan-12
+6,talk,kiritan,right,小学生相手に\n2対1でボコボコにして、\n恥ずかしくないんですか！,,sad,white_tears,omega,,,,0,kiritan-12
 7,talk,maki,left,ちょっと恥ずかしい,,sad,smile,laugh,,,,0,maki-13
 8,talk,yukari,left,勝ちゃあ良いんですよォ！,,anger,normal,laugh,,,,0,yukari-20
 9,talk,maki,left,ゆかりんのクールキャラが\n早くも剥がれつつあるねぇ,,sad,normal,laugh,,,,0,maki-14

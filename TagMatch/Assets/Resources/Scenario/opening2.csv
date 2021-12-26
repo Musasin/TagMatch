@@ -1,18 +1,18 @@
 id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,play_next,voice
 1,instantiate,frimomen,right,,,,,,,,,1,
 2,talk,frimomen,right,...というわけで、\n「ボイスロイド頂上決定戦」を開催するッ!!,frimomen,,,,,,,0,
-3,talk,frimomen,right,諸君らの戦闘能力を遺憾なく発揮し、真の最強を決めていただきたいッ!!,frimomen_smile,,,,,,,0,
-4,talk,frimomen,right,ルール等の詳細は先日共有した資料の通りだが、ざっくりまとめると、,frimomen,,,,,,,0,
+3,talk,frimomen,right,諸君らの戦闘能力を遺憾なく発揮し、真の最強を\n決めていただきたいッ!!,frimomen_smile,,,,,,,0,
+4,talk,frimomen,right,ルール等の詳細は先日\n共有した資料の通りだが、\nざっくりまとめると、,frimomen,,,,,,,0,
 5,talk,frimomen,right,指定の場所に向かい、\nたどり着いた者たちで争い、\nトップを決める戦いである！,frimomen_close,,,,,,,0,
-6,talk,frimomen,right,もちろん道中の妨害や決闘は自由！\n 全員ぶっ倒すつもりで望んでもらいたい！,frimomen_close_smile,,,,,,,0,
-7,talk,frimomen,right,それでは、\n競技開始は午後からのため、\n各自それぞれ準備を勧めておくように！,frimomen,,,,,,,0,
+6,talk,frimomen,right,もちろん\n道中の妨害や決闘は自由！\n全員ぶっ倒すつもりで\n望んでもらいたい！,frimomen_close_smile,,,,,,,0,
+7,talk,frimomen,right,それでは、\n競技開始は午後からのため、\n各自それぞれ\n準備を進めておくように！,frimomen,,,,,,,0,
 8,out,frimomen,right,,,,,,,,,1,
 9,wipe_out,,,,,,,,,,,0,
 10,close_window,,,,,,,,,,,1,
 11,wipe_in,,,,,,,,,,,0,
 12,instantiate,kiritan,right,,,normal,half_open,omega,,,,1,
 13,talk,kiritan,right,むっふっふ...\nこれはまたとないチャンス！,,,,,,,,0,kiritan-0
-14,talk,kiritan,right,この大会の賞金があれば欲しかったゲームが買い放題！,,,normal,laugh,,,,0,kiritan-1
+14,talk,kiritan,right,この大会の賞金があれば\n欲しかったゲームが\n買い放題！,,,normal,laugh,,,,0,kiritan-1
 15,talk,kiritan,right,さっそく準備を進めなくては,,,smile,,,,,0,kiritan-2
 16,out,kiritan,right,,,,,,,,,1,
 17,wipe_out,,,,,,,,,,,0,
@@ -33,9 +33,9 @@ id,type,chara,position,text,main,eye_brows,eye,mouse,option1,option2,option3,pla
 32,wipe_in,,,,,,,,,,,0,
 33,instantiate,yukari,left,,,anger,normal,mu,,,,1,
 34,name_plate,yukari,left,FPSが得意,,,,,,,,1,
-35,talk,yukari,left,うーむ...この大会、\n最終的には一人の優勝者を決める物ですが、\n過程のルールがなにもない...,,,,,,,,0,yukari-0
-36,talk,yukari,left,徒党を組んで他の組をリタイアさせた後、最後に代表が優勝して報酬を山分け...\nなんて事も可能,,,close,,,,,0,yukari-1
-37,talk,yukari,left,結託する組も多々出てくるでしょうし、ソロプレイは明らかに分が悪いですね...,,,,cat,,,,0,yukari-2
+35,talk,yukari,left,うーむ...この大会、\n最終的には一人の優勝者を\n決める物ですが、\n過程のルールがなにもない...,,,,,,,,0,yukari-0
+36,talk,yukari,left,徒党を組んで他の組を\nリタイアさせた後、最後に\n代表が優勝して報酬を\n山分け...なんて事も可能,,,close,,,,,0,yukari-1
+37,talk,yukari,left,結託する組も\n多々出てくるでしょうし、\nソロプレイは明らかに\n分が悪いですね...,,,,cat,,,,0,yukari-2
 38,instantiate,right_maki,right,,,normal,normal,laugh,,,,1,
 39,name_plate,maki,right,jamバンドのギター担当,,,,,,,,1,
 40,talk,right_maki,right,あ！いたいた！\nゆかりん！,,,,,,,,0,maki-0
