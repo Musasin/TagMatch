@@ -83,7 +83,7 @@ public class Talk: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canvasScreenAutoFix = GameObject.Find("Canvas").GetComponent<CanvasScreenAutoFix>();
+        canvasScreenAutoFix = gameObject.GetComponentInParent<CanvasScreenAutoFix>();
         wipePanel = GameObject.Find("WipePanel").GetComponent<WipePanel>();
         
         string sceneName = SceneManager.GetActiveScene().name;
