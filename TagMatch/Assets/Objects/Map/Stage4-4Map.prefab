@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4dad62791e44360b420787302dfe22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSideways: 0
+  isSideways: 1
 --- !u!1 &6473787112467941861
 GameObject:
   m_ObjectHideFlags: 0
