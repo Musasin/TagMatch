@@ -146,14 +146,21 @@
               </Orca>
             </Orca>
             <Orca OrcaName="shot_maki" Category0="/CriAtomCraftV2Root/GlobalSettings/Categories/CategoryGroup_0/SE" CueID="20" PlaybackLimitEnableFlag="True" PlaybackLimits="2" Pos3dDistanceMax="500" Pos3dDistanceMin="1" SynthType="SynthRandom" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthCue">
-              <Orca OrcaName="Track_shot_maki_D" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+              <Orca OrcaName="Track_shot_maki_D" ObjectColor="200, 40, 120, 200" PitchRnd="10" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="shot_maki_D.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/shot_maki_D.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform">
-                  <Orca OrcaName="shot_maki_D.wav_Trimmer" TrimmingEndPosition="3543.21287713432" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveformTrimmer"/>
+                  <Orca OrcaName="shot_maki_D.wav_Trimmer" TrimmingEndPosition="3233.21287713432" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveformTrimmer"/>
+                  <Orca OrcaName="shot_maki_D.wav_Fade" FadeOutCurveStrength="1.03" FadeOutCurveType="RapidStartSlowEnd" FadeOutTime="1005" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveformFade"/>
                 </Orca>
               </Orca>
-              <Orca OrcaName="Track_shot_maki_G" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
+              <Orca OrcaName="Track_shot_maki_G" ObjectColor="200, 40, 120, 200" PitchRnd="10" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="shot_maki_G.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/SE/shot_maki_G.wav" PanType="Default" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform">
-                  <Orca OrcaName="shot_maki_G.wav_Trimmer" TrimmingEndPosition="4543.21287713432" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveformTrimmer"/>
+                  <Orca OrcaName="shot_maki_G.wav_Trimmer" TrimmingEndPosition="3256.42575426864" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveformTrimmer"/>
+                  <Orca OrcaName="shot_maki_G.wav_Fade" FadeOutCurveStrength="1.5" FadeOutCurveType="RapidStartSlowEnd" FadeOutTime="990" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveformFade"/>
+                </Orca>
+              </Orca>
+              <Orca OrcaName="Automation" AisacType="Automation" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisac">
+                <Orca OrcaName="BandPassHi" ControlDestinationType="BandPassHi" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacGraph">
+                  <Orca OrcaName="Point" ControlValue="0" DestinationValue="0.8" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacPoint"/>
                 </Orca>
               </Orca>
             </Orca>
