@@ -12,9 +12,9 @@ public class StaticValues : MonoBehaviour
 {
     public static bool isCleared;
 
-    public static float bgmVolume = 0.6f;
+    public static float bgmVolume = 0.5f;
     public static float seVolume = 0.7f;
-    public static float voiceVolume = 0.6f;
+    public static float voiceVolume = 0.7f;
     
     public static bool isExMode;
     public static bool isHardMode;
