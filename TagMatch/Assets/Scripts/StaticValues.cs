@@ -99,7 +99,7 @@ public class StaticValues : MonoBehaviour
     {
         int playModeInt = 0;
         LoadInt(ref playModeInt, "IsExMode");
-        isExMode = (playModeInt == 1);
+        isExMode = true;//(playModeInt == 1);
         
         int levelInt = 0;
         LoadInt(ref levelInt, "IsHardMode");
